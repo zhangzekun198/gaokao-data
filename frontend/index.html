@@ -5,41 +5,45 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>高考志愿智能推荐 · 专业级（广东）</title>
 <style>
-  :root{--bg:#f5f6f8;--card:#fff;--ink:#1f2430;--sub:#6b7280;--line:#e6e8ec;
-    --chong:#ef6c3b;--wen:#16a34a;--bao:#2563eb;--accent:#3b5bdb;--warn:#b45309;--warnbg:#fff7ed;--okbg:#f0fdf4;}
+  :root{--bg:#f5f6f8;--card:#fff;--ink:#1f2430;--sub:#5b6472;--line:#e6e8ec;
+    --chong:#dc2626;--wen:#2563eb;--bao:#15803d;--accent:#3b5bdb;--brand-50:#eef1fb;--warn:#b45309;--warnbg:#fff7ed;--okbg:#f0fdf4;}
   *{box-sizing:border-box}
   body{margin:0;background:var(--bg);color:var(--ink);font-family:-apple-system,"PingFang SC","Microsoft YaHei",Roboto,Arial,sans-serif;font-size:15px;line-height:1.6}
   .wrap{max-width:1100px;margin:0 auto;padding:16px}
-  h1{font-size:21px;margin:0 0 2px}
+  
   .lead{color:var(--sub);font-size:13px;margin:0 0 14px}
   .card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px;margin-bottom:14px;box-shadow:0 1px 2px rgba(0,0,0,.03)}
-  .card h2{font-size:16px;margin:0 0 4px;display:flex;align-items:center;gap:8px}
+  .card h2{font-size:18px;margin:0 0 4px;display:flex;align-items:center;gap:8px}
   .step{display:inline-flex;width:22px;height:22px;border-radius:50%;background:var(--accent);color:#fff;font-size:13px;align-items:center;justify-content:center;flex:0 0 auto}
-  .hint{color:var(--sub);font-size:12.5px;margin:2px 0 12px}
+  .hint{color:var(--sub);font-size:13px;margin:2px 0 12px}
   label{font-size:13px;color:var(--sub);display:block;margin:8px 0 4px}
   input,select,textarea{width:100%;padding:9px 10px;border:1px solid var(--line);border-radius:9px;font-size:14px;font-family:inherit;background:#fff;color:var(--ink)}
   input:focus,select:focus{outline:none;border-color:var(--accent)}
   textarea{resize:vertical;min-height:70px;font-family:ui-monospace,Consolas,monospace;font-size:12.5px}
   .row{display:flex;gap:12px;flex-wrap:wrap}.row>div{flex:1;min-width:130px}
   button{cursor:pointer;border:none;border-radius:9px;font-size:14px;font-family:inherit;padding:9px 14px}
-  .btn{background:var(--accent);color:#fff}.btn:hover{filter:brightness(1.06)}
+  .btn{background:var(--accent);color:#fff;transition:transform .2s ease-out}.btn:hover{transform:scale(1.05)}.btn:active{transform:scale(.95)}
   .btn.ghost{background:#eef1f6;color:var(--ink)}.btn.sm{padding:6px 10px;font-size:13px}
   .btn.danger{background:#fee2e2;color:#b91c1c}.btn.big{font-size:16px;padding:12px 20px;width:100%}
-  .disc{background:var(--warnbg);border:1px solid #fed7aa;border-radius:10px;padding:10px 12px;font-size:12.5px;color:var(--warn);margin-bottom:14px}
+  .disc{background:var(--warnbg);border:1px solid #fed7aa;border-radius:10px;padding:10px 12px;font-size:13px;color:var(--warn);margin-bottom:14px}
   .dstat{border-radius:10px;padding:8px 12px;font-size:13px;margin-bottom:12px}
   .dstat.ok{background:var(--okbg);color:#15803d;border:1px solid #bbf7d0}
   .dstat.err{background:#fef2f2;color:#b91c1c;border:1px solid #fecaca}
-  table{width:100%;border-collapse:collapse;font-size:13px}
-  th,td{border-bottom:1px solid var(--line);padding:7px 6px;text-align:left;vertical-align:middle}
-  th{color:var(--sub);font-weight:600;font-size:12px;white-space:nowrap}
+  table{width:100%;border-collapse:collapse;font-size:14px}
+  th,td{border-bottom:1px solid var(--line);padding:9px 8px;text-align:left;vertical-align:middle}
+  thead th{position:sticky;top:0;background:#f4f6fa;color:var(--sub);font-weight:600;font-size:12px;white-space:nowrap;z-index:2}
+  tbody tr:nth-child(odd){background:#fafbfc}
+  tbody tr:hover{background:var(--brand-50)}
   td input{padding:6px 7px;font-size:13px}
+  td input[type=number],input[type=number]{font-variant-numeric:tabular-nums}
+  :focus-visible{outline:2px solid var(--accent);outline-offset:2px}
   .tier{font-weight:700;padding:2px 8px;border-radius:20px;color:#fff;font-size:12px;display:inline-block}
   .t-chong{background:var(--chong)}.t-wen{background:var(--wen)}.t-bao{background:var(--bao)}.t-na{background:#cbd5e1}
-  .sk-ok{color:var(--wen);font-weight:600}.sk-bad{color:#dc2626;font-weight:700}
+  .sk-ok{color:var(--bao);font-weight:600}.sk-bad{color:#dc2626;font-weight:700}
   .flag{display:inline-block;background:#fef2f2;color:#dc2626;border:1px solid #fecaca;border-radius:6px;font-size:11px;padding:1px 6px;margin-left:4px}
   .summary{display:flex;gap:10px;flex-wrap:wrap;margin:6px 0 12px}
   .chip{flex:1;min-width:80px;text-align:center;border-radius:10px;padding:10px 6px;color:#fff}
-  .chip b{display:block;font-size:22px}.chip span{font-size:12px;opacity:.95}
+  .chip b{display:block;font-size:26px;font-variant-numeric:tabular-nums}.chip span{font-size:12px;opacity:.95}
   .check{padding:8px 12px;border-radius:9px;margin-bottom:7px;font-size:13px;display:flex;gap:8px}
   .check.ok{background:var(--okbg);color:#15803d;border:1px solid #bbf7d0}
   .check.warn{background:var(--warnbg);color:var(--warn);border:1px solid #fed7aa}
@@ -72,7 +76,7 @@
   .rec .sch{color:var(--sub);font-size:12px}
   .rec .meta{color:var(--sub);display:flex;justify-content:space-between;margin-top:3px;gap:6px}
   .rec .trend{font-size:11.5px;color:#475569;margin-top:2px}
-  .rec.added{opacity:.5}
+  .rec.added,.vrow.added{opacity:.55}
   .rec .btns{display:flex;gap:5px;margin-top:5px}
   .rec .btns button{flex:1;padding:4px;font-size:12px}
   .badge{display:inline-block;border-radius:5px;font-size:10.5px;padding:0 5px;margin-left:3px}
@@ -84,13 +88,13 @@
   .kv .k{color:var(--sub);width:110px;flex:0 0 110px}.kv .v{flex:1}
   .foot{color:var(--sub);font-size:11.5px;text-align:center;margin:18px 0 8px}
   details{margin-top:8px}summary{cursor:pointer;color:var(--accent);font-size:13px}
-  @media(max-width:720px){.recwrap{grid-template-columns:1fr}}
-  @media(max-width:640px){.hidecol{display:none}}
+  @media(max-width:768px){.recwrap{grid-template-columns:1fr}}
+  @media(max-width:576px){.hidecol{display:none}}
   @media print{body{background:#fff}.noprint{display:none!important}.card{box-shadow:none;border:none;padding:0}#printArea{display:block!important}}
   #printArea{display:none}
-  /* ===== 新功能：Tab / 探校 / 探专业 / 捡漏 ===== */
+  /* ===== 新功能：Tab / 探校 / 探专业 ===== */
   .tabnav{display:flex;gap:6px;flex-wrap:wrap}
-  .tabbtn{cursor:pointer;border:1px solid var(--line);background:#fff;color:var(--sub);border-radius:9px;padding:8px 12px;font-size:13.5px;font-family:inherit}
+  .tabbtn{cursor:pointer;border:1px solid var(--line);background:#fff;color:var(--sub);border-radius:9px;padding:8px 12px;font-size:13px;font-family:inherit}
   .tabbtn.on{background:var(--accent);color:#fff;border-color:var(--accent)}
   .schcard{border:1px solid var(--line);border-radius:12px;padding:10px 12px;margin-bottom:10px;background:#fff}
   .schhd{border-bottom:1px solid var(--line);padding-bottom:6px;margin-bottom:8px}
@@ -173,20 +177,67 @@
   .mcard-tag.amber{background:#fef3c7;color:#92400e}
   .mcard-tag.gray{background:#e5e7eb;color:#374151}
   .mcard-tag.neutral{background:#f1f5f9;color:#475569}
-  @media(max-width:720px){.minfo .mk{flex:0 0 56px}}
-  /* 捡漏：分数徽章 + 醒目 */
-  .bargaincard{border-left:5px solid var(--warn);background:var(--warnbg)}
+  @media(max-width:768px){.minfo .mk{flex:0 0 56px}}
+    .bargaincard{border-left:5px solid var(--warn);background:var(--warnbg)}
   .bc-score{flex:0 0 auto;text-align:center}
   .bc-score b{display:block;font-size:20px;color:var(--warn);font-weight:800}
   .bc-score span{font-size:10px;color:var(--sub)}
   .bc-tag{display:inline-block;font-size:10.5px;font-weight:700;background:#fde68a;color:#92400e;border-radius:10px;padding:1px 7px;margin:3px 4px 0 0}
 
-  @media(max-width:720px){.schcols{grid-template-columns:1fr}.stratgrid{grid-template-columns:1fr}}
+  @media(max-width:768px){.schcols{grid-template-columns:1fr}.stratgrid{grid-template-columns:1fr}}
+
+  /* ===== 设计系统更新：单层 sticky 顶栏 + 考生档案条 + 报考视图 ===== */
+  header.top{background:var(--accent);color:#fff;padding:8px 14px;position:sticky;top:0;z-index:40}
+  header.top .bar{display:flex;align-items:center;gap:10px;max-width:1100px;margin:0 auto}
+  header.top h1{font-size:15px;margin:0;flex:0 0 auto;white-space:nowrap}
+  header.top .tabnav{display:flex;gap:6px;overflow-x:auto;scrollbar-width:none;flex:1}
+  header.top .tabnav::-webkit-scrollbar{display:none}
+  header.top .tabbtn{background:rgba(255,255,255,.14);color:#fff;border-color:transparent;white-space:nowrap}
+  header.top .tabbtn.on{background:rgba(255,255,255,.38);color:#fff;border-color:transparent}
+  .bigbtn{flex:0 0 auto;background:rgba(255,255,255,.14);border:none;color:#fff;border-radius:8px;padding:5px 10px;font-size:14px;cursor:pointer;font-family:inherit}
+  html.big{font-size:17px}
+  .profilebar{background:var(--brand-50);border-bottom:1px solid var(--line);position:sticky;top:46px;z-index:39}
+  .profilebar .in{max-width:1100px;margin:0 auto;padding:5px 16px;display:flex;align-items:center;gap:8px;font-size:13px;flex-wrap:wrap}
+  .profilebar b{font-variant-numeric:tabular-nums}
+  .profilebar .edit{margin-left:auto;color:var(--accent);cursor:pointer;border:none;background:none;font-size:13px;padding:2px 6px}
+  /* 报考视图：顺序志愿表 */
+  .vsum{display:flex;gap:8px;align-items:center;flex-wrap:wrap;font-size:14px;background:#fafbfc;border:1px solid var(--line);border-radius:10px;padding:8px 12px;margin-bottom:10px}
+  .pillc{font-size:12px;border-radius:10px;padding:1px 8px;color:#fff}
+  .pillc.chong{background:var(--chong)}.pillc.wen{background:var(--wen)}.pillc.bao{background:var(--bao)}
+  .vlist{display:flex;flex-direction:column}
+  .vrow{display:flex;align-items:center;gap:10px;padding:10px 8px;border-bottom:1px dashed var(--line);border-left:3px solid var(--line);background:#fff;border-radius:0 8px 8px 0;margin-bottom:6px}
+  .vrow.chong{border-left-color:var(--chong)}
+  .vrow.wen{border-left-color:var(--wen)}
+  .vrow.bao{border-left-color:var(--bao)}
+  .vrow.added{opacity:.55}
+  .vno{flex:0 0 30px;font-size:12px;color:var(--sub);font-variant-numeric:tabular-nums;text-align:center;background:#f4f6fa;border-radius:6px;padding:3px 0}
+  .vmain{flex:1;min-width:0}
+  .vname{font-weight:600;font-size:14px;display:flex;gap:6px;align-items:center;flex-wrap:wrap}
+  .vmaj{font-size:12px;color:var(--sub);font-variant-numeric:tabular-nums}
+  .vnum{flex:0 0 auto;text-align:right}
+  .vnum b{font-size:14px;font-variant-numeric:tabular-nums}
+  .vnum span{display:block;font-size:12px;color:var(--sub);font-variant-numeric:tabular-nums}
+  .vpill{flex:0 0 auto;font-size:12px;color:#fff;border-radius:10px;padding:2px 8px}
+  .vpill.chong{background:var(--chong)}.vpill.wen{background:var(--wen)}.vpill.bao{background:var(--bao)}
+  .vbtns{flex:0 0 auto;display:flex;gap:5px}
+  @media(max-width:576px){.vno{display:none}.vbtns .btn.sm{padding:5px 8px}}
 </style>
 </head>
 <body>
+<header class="top"><div class="bar">
+  <h1>高考志愿智能推荐</h1>
+  <nav class="tabnav" aria-label="模块导航">
+    <button class="tabbtn on" data-tab="tab-reco" onclick="switchTab('tab-reco')">🎯 智能推荐</button>
+    <button class="tabbtn" data-tab="tab-explore" onclick="switchTab('tab-explore')">🏫 探校</button>
+    <button class="tabbtn" data-tab="tab-major" onclick="switchTab('tab-major')">🔍 探专业</button>
+  </nav>
+  <button class="bigbtn" id="bigToggle" onclick="toggleBig()">大</button>
+</div></header>
+<div class="profilebar"><div class="in">
+  <span>考生档案：</span><span id="profileInfo">—</span>
+  <button class="edit" onclick="document.getElementById('rankCard').scrollIntoView({behavior:'smooth'})">修改 ▾</button>
+</div></div>
 <div class="wrap">
-  <h1>高考志愿智能推荐 · 专业级</h1>
   <p class="lead">位次·选科·方向 → 推荐到<b>具体专业</b>，校验再选科目 · 三年位次趋势 · 详情可展开 · 冲稳保 · 打印</p>
 
   <div class="disc">⚠️ 数据：各省<b>2026招生计划 + 23/24/25专业录取位次</b>（专家版）。位次已按2026专业组归一，仅供参考，录取以当年为准。方向依据官方<b>专业类</b>。</div>
@@ -232,20 +283,12 @@
     <div class="scicheck" id="reSelect"></div>
   </div>
 
-  <div class="card noprint" style="padding:8px 12px">
-    <div class="tabnav">
-      <button class="tabbtn on" data-tab="tab-reco" onclick="switchTab('tab-reco')">🎯 智能推荐</button>
-      <button class="tabbtn" data-tab="tab-explore" onclick="switchTab('tab-explore')">🏫 探校</button>
-      <button class="tabbtn" data-tab="tab-major" onclick="switchTab('tab-major')">🔍 探专业</button>
-      <button class="tabbtn" data-tab="tab-bargain" onclick="switchTab('tab-bargain')">💡 捡漏</button>
-    </div>
-  </div>
 
   <div id="tab-reco" class="tabpane">
   <!-- 步骤3 方向+推荐 -->
   <div class="card noprint">
     <h2><span class="step">3</span>选方向 → 生成推荐</h2>
-    <p class="hint">方向按官方<b>门类 → 专业类</b>分组（可多选）；再用下方关键词按校名/专业名精筛。不选=全部。<br><b>这是精准填报主工具</b>：先在这里定方向，再去「探校 / 探专业 / 捡漏」泛览对比。</p>
+    <p class="hint">方向按官方<b>门类 → 专业类</b>分组（可多选）；再用下方关键词按校名/专业名精筛。不选=全部。<br><b>这是精准填报主工具</b>：先在这里定方向，再去「探校 / 探专业」泛览对比。</p>
     <div id="dirBlock">
     <label>方向 / 专业类（按门类分组，点门类展开）</label>
     <div class="dirbar">
@@ -273,7 +316,7 @@
 
   </div><!-- /tab-reco -->
 
-  <!-- ===== 新功能：探校 / 探专业 / 捡漏 ===== -->
+  <!-- ===== 新功能：探校 / 探专业 ===== -->
   <div id="tab-explore" class="tabpane" style="display:none">
     <div class="card">
       <h2><span class="step">★</span>探校视图 · 我这分能上哪些学校</h2>
@@ -312,23 +355,6 @@
       <button class="btn big" style="margin-top:12px" onclick="exploreMajors()">🔍 生成探专业</button>
       <p class="mini" id="majorInfo"></p>
       <div id="majorWrap" style="margin-top:8px"></div>
-    </div>
-  </div>
-
-  <div id="tab-bargain" class="tabpane" style="display:none">
-    <div class="card">
-      <h2><span class="step">★</span>捡漏 · 冲刺档里捡好学校/好专业</h2>
-      <p class="hint">只在<b>需要冲刺的档（位次比 1.0–1.3）</b>里找：那些<b>学校层次或专业实力明显高于你位次"该得"</b>的项，或遇上<b>大小年线回落</b>的窗口——用刚够的分，撬动超出预期的院校/专业。</p>
-      <div class="row">
-        <div style="flex:0 0 130px"><label>显示数量</label><select id="bargainN"><option>15</option><option selected>25</option><option>40</option></select></div>
-      </div>
-      <div class="scicheck" style="margin-top:8px">
-        <label><input type="checkbox" id="bargainSci" checked>只显示选科匹配</label>
-        <label><input type="checkbox" id="bargainCoop">含中外合作/较高收费</label>
-      </div>
-      <button class="btn big" style="margin-top:12px" onclick="findBargain()">💡 找捡漏</button>
-      <p class="mini" id="bargainInfo"></p>
-      <div id="bargainWrap" style="margin-top:8px"></div>
     </div>
   </div>
 
@@ -693,41 +719,37 @@ function recommend(){
     if(r>=1.10&&r<=1.6)band='chong';else if(r>=0.93&&r<1.10)band='wen';else if(r>0&&r<0.93)band='bao';
     if(band)bands[band].push({i,rk,r,sn,nm,m});
   }
-  bands.chong.sort((a,b)=>a.r-b.r);
-  bands.wen.sort((a,b)=>Math.abs(1-a.r)-Math.abs(1-b.r));
-  bands.bao.sort((a,b)=>a.rk-b.rk); // 位次由近到远：先紧贴分数线的稳妥保底，再依次更低更靠后
   const baoNear=bands.bao.filter(x=>x.r>=0.70).length;
-  const conf=[['chong','冲','var(--chong)'],['wen','稳','var(--wen)'],['bao','保','var(--bao)']];
-  wrap.innerHTML='';
-  conf.forEach(([k,t,c])=>{
-    const col=document.createElement('div');col.className='reccol';
-    const list=bands[k].slice(0,N);
-    col.innerHTML=`<h4 style="background:${c}">${t}　${bands[k].length}选${list.length}</h4>`;
-    if(!list.length)col.innerHTML+='<p class="mini" style="text-align:center">无匹配</p>';
-    list.forEach(x=>{
-      const m=x.m,code=m[MC['院校代码']];
-      const src='M'+x.i, added=rows.some(r=>r._src===src);
-      const r1=m[MC['最低位次1']],r2=m[MC['最低位次2']],r3=m[MC['最低位次3']];
-      const badge=(is985(code)?'<span class="badge b985">985</span>':is211(code)?'<span class="badge b211">211</span>':'')
-        +`<span class="badge btype">${m[MC['专业类']]||''}</span>`
-        +((k==='bao'&&x.r<0.70)?'<span class="badge" style="background:#e0e7ff;color:#3730a3">兜底↓</span>':'');
-      const isArt=CURKE==='艺术';
-      const trend=isArt
-        ? `综合分 25：${m[MC['最低分1']]||'-'}${m[MC['最低分2']]!=null?(' / 24：'+m[MC['最低分2']]):''}　艺术分见备注　计划${m[MC['计划人数']]||'-'}`
-        : `位次 25/24/23：<b>${r1||'-'}</b> / ${r2||'-'} / ${r3||'-'}　计划${m[MC['计划人数']]||'-'}`;
-      const el=document.createElement('div');el.className='rec'+(added?' added':'');
-      el.innerHTML=`<div class="nm">${esc(m[MC['专业名称']])}${badge}</div>
-        <div class="sch">${esc(x.sn)}　组${m[MC['专业组代码']]||''}</div>
-        <div class="meta"><span>${esc(m[MC['选科要求']]||'')}</span><span>比${x.r.toFixed(2)}</span></div>
-        <div class="trend">${trend}</div>
-        <div class="btns">
-          <button onclick="openDetail(${x.i})">详情</button>
-          <button class="${added?'':'btn'}" style="${added?'':'color:#fff'}" onclick="addFromRec(${x.i},this)">${added?'已加入':'＋加入'}</button>
-        </div>`;
-      col.appendChild(el);
-    });
-    wrap.appendChild(col);
+  // 模拟真实报考视图：一张顺序志愿表（冲在前、稳居中、保在后），序号即投档检索顺序
+  bands.chong.sort((a,b)=>b.r-a.r);            // 冲：难度高的在前
+  bands.wen.sort((a,b)=>Math.abs(1-a.r)-Math.abs(1-b.r)); // 稳：最贴近自身位次的在前
+  bands.bao.sort((a,b)=>b.rk-a.rk);            // 保：最稳的在前（离我最远的兜底垫后）
+  const order=[...bands.chong.map(x=>({x,k:'chong'})),...bands.wen.map(x=>({x,k:'wen'})),...bands.bao.map(x=>({x,k:'bao'}))].slice(0,3*N);
+  const BTX={'all':'全部批次','本科':'本科批次','专科':'专科批次'};
+  let vh=`<div class="vsum"><span>${BTX[bt]||bt} · 平行志愿</span>`
+    +`<span class="pillc chong">冲 ${bands.chong.length}</span><span class="pillc wen">稳 ${bands.wen.length}</span><span class="pillc bao">保 ${bands.bao.length}</span></div>`
+    +`<div class="vlist">`;
+  order.forEach((o,idx)=>{
+    const x=o.x,k=o.k,m=x.m,code=m[MC['院校代码']],src='M'+x.i,added=rows.some(r=>r._src===src);
+    const r1=m[MC['最低位次1']],r2=m[MC['最低位次2']],r3=m[MC['最低位次3']];
+    const badge=(is985(code)?'<span class="badge b985">985</span>':is211(code)?'<span class="badge b211">211</span>':'')
+      +`<span class="badge btype">${m[MC['专业类']]||''}</span>`
+      +((k==='bao'&&x.r<0.70)?'<span class="badge" style="background:#e0e7ff;color:#3730a3">兜底↓</span>':'');
+    const isArt=CURKE==='艺术';
+    const trend=isArt
+      ? `综合分 25：${m[MC['最低分1']]||'-'}${m[MC['最低分2']]!=null?(' / 24：'+m[MC['最低分2']]):''}　艺术分见备注　计划${m[MC['计划人数']]||'-'}`
+      : `位次 25/24/23：${r1||'-'} / ${r2||'-'} / ${r3||'-'}　计划${m[MC['计划人数']]||'-'}`;
+    vh+=`<div class="vrow ${k}${added?' added':''}"><div class="vno">${String(idx+1).padStart(2,'0')}</div>`
+      +`<div class="vmain"><div class="vname">${esc(m[MC['专业名称']])}${badge}</div>`
+      +`<div class="vmaj">${esc(x.sn)}　组${m[MC['专业组代码']]||''}　${esc(m[MC['选科要求']]||'')}</div>`
+      +`<div class="vmaj">${trend}</div></div>`
+      +`<div class="vnum"><b>${(lineVal(m)||0).toLocaleString('zh-CN')}</b><span>比 ${x.r.toFixed(2)}</span></div>`
+      +`<span class="vpill ${k}">${k==='chong'?'冲':k==='wen'?'稳':'保'}</span>`
+      +`<div class="vbtns"><button class="btn sm" onclick="openDetail(${x.i})">详情</button>`
+      +`<button class="btn sm ${added?'ok':''}" onclick="addFromRec(${x.i},this)">${added?'✓ 已填':'＋ 加入'}</button></div></div>`;
   });
+  vh+='</div>';
+  wrap.innerHTML=vh;
   const baoFb=bands.bao.length-baoNear;
   let note=(CURKE==='艺术'?'艺术综合分 ':'考生位次 ')+`${stu}｜冲 ${bands.chong.length}·稳 ${bands.wen.length}·保 ${bands.bao.length}`;
   if(baoNear===0 && bands.bao.length>0) note+=`　⚠ 当前分数线附近无稳妥保底，已自动向下推荐 ${baoFb} 个分数更低院校兜底`;
@@ -738,7 +760,8 @@ function addFromRec(i,btn){const m=MAJ[i],code=m[MC['院校代码']],src='M'+i;
   if(rows.some(r=>r._src===src))return;
   rows.push({name:(schVal(code,'院校名称')||'')+' '+m[MC['专业名称']]+' 组'+(m[MC['专业组代码']]||''),
     sci:m[MC['选科要求']]||'',ref:String(lineVal(m)||''),_src:src,_mi:i});
-  if(btn){btn.textContent='已加入';btn.classList.remove('btn');btn.closest('.rec').classList.add('added');}
+  if(btn){btn.textContent='✓ 已填';btn.classList.add('ok');
+    const c=btn.closest('.vrow,.rec,.schi,.stratitem');if(c)c.classList.add('added');}
   render();recompute();save();}
 
 /* ================= 详情弹窗 ================= */
@@ -816,9 +839,10 @@ function renderSummary(stu){const cnt={chong:0,wen:0,bao:0,na:0};let sciBad=0,fi
   document.getElementById('checks').innerHTML=ck.join('');
   const re=[...stuReSel()].join('/');
   const subjStr=CURMODE==='综合'?('选考 '+re):(document.getElementById('firstPick').value+(re?'+'+re:''));
-  document.getElementById('printMeta').textContent=`${CURPROV||''}　位次 ${stu||'—'}　${subjStr}　冲${cnt.chong}/稳${cnt.wen}/保${cnt.bao}`;}
+  document.getElementById('printMeta').textContent=`${CURPROV||''}　位次 ${stu||'—'}　${subjStr}　冲${cnt.chong}/稳${cnt.wen}/保${cnt.bao}`;
+  updateProfileBar();}
 
-/* ================= 新功能：探校 / 探专业 / 捡漏 ================= */
+/* ================= 新功能：探校 / 探专业 ================= */
 function tierRank(code){const t=schVal(code,'院校标签')||'';
   if(/985/.test(t))return 4; if(/211/.test(t))return 3; if(/双一流/.test(t))return 2; return 1;}
 function tierLabel(code){const t=schVal(code,'院校标签')||'';
@@ -1198,43 +1222,8 @@ function exploreMajors(){
   info.textContent=`共 ${total} 个够得着的专业方向（显示前 ${list.length} 个，按"${sortLabel(sortBy)}"排序${onlyWen?'，仅含稳项方向':''}${menF!=='0'?('，门类='+menF):''}）；就业率/冷热为参考，具体以院校公布为准`;
 }
 
-function findBargain(){
-  if(!DB){alert('数据未载入');return;}
-  const stu=getStu();
-  const wrap=document.getElementById('bargainWrap'),info=document.getElementById('bargainInfo');
-  if(!stu){wrap.innerHTML='<p class="mini">'+(CURKE==='艺术'?'请先填艺术综合分。':'请先填考生位次。')+'</p>';info.textContent='';return;}
-  const first=document.getElementById('firstPick').value,bt=document.getElementById('batch').value;
-  const onlySci=document.getElementById('bargainSci').checked,incCoop=document.getElementById('bargainCoop').checked;
-  const kw=document.getElementById('kw').value.trim(),N=+document.getElementById('bargainN').value;
-  const items=[];
-  for(let i=0;i<MAJ.length;i++){const m=MAJ[i];const code=m[MC['院校代码']];
-    if(!passBase(m,first,bt,onlySci,incCoop,kw))continue;
-    const rk=lineVal(m); if(!rk)continue; const r=stu/rk;
-    if(r<1.0||r>1.3)continue;                         // 仅冲刺档：你刚好够不到、要冲
-    const rk2=+m[MC['最低位次2']]||0;
-    const dip=rk2 && rk>rk2*1.06;                     // 大小年：今年线比去年回落>6%
-    const tr=tierRank(code),ms=majorStrength(m);
-    if(tr<2&&ms<2&&!dip)continue;                     // 捡漏=层次/实力高于你位次该得，或遇大小年窗口
-    items.push({i,m,code,sn:schVal(code,'院校名称')||'',r,score:tr*3+ms*2+(dip?2:0),tr,ms,dip});}
-  items.sort((a,b)=>b.score-a.score||a.r-b.r);        // 分高优先；同分越贴近线(冲得动)越靠前
-  if(!items.length){wrap.innerHTML='<p class="mini">这个位次附近没有冲刺档捡漏项（位次比 1.0–1.3 内缺乏高层次院校/专业，或今年无线回落）。可放宽选科、含合作办学，或把位次再调高些再试。</p>';info.textContent='';return;}
-  wrap.innerHTML='';
-  items.slice(0,N).forEach(x=>{
-    const m=x.m,src='M'+x.i,added=rows.some(r=>r._src===src);
-    const reason=[]; if(x.tr>=3)reason.push(tierLabel(x.code)+'层次'); if(x.ms>=2)reason.push('专业实力强');
-    const rkRank=schVal(x.code,'软科排名'); if(rkRank)reason.push('软科'+rkRank); if(x.dip)reason.push('今年线回落(大小年)');
-    const card=document.createElement('div'); card.className='bargaincard';
-    card.innerHTML=`<div class="bc-score"><b>${x.score}</b><span>捡漏分</span></div>`
-      +`<div class="bc-main"><b>${esc(x.sn)} · ${esc(m[MC['专业名称']])}</b> ${tierBadges(x.code)}`
-      +`<div class="mini">${esc(m[MC['专业类']]||'')}　${esc(m[MC['专业水平']]||'')}　${esc(m[MC['学科评估']]||'')}</div>`
-      +`<div class="bc-reason">💡 捡漏：${reason.join(' · ')||'综合性价比高'}</div></div>`
-      +`<button class="${added?'':'btn'}" onclick="addFromRec(${x.i},this)">${added?'已加':'＋'}</button>`;
-    wrap.appendChild(card);});
-  info.textContent=`命中 ${items.length} 个冲刺档捡漏项（显示前 ${Math.min(N,items.length)} 个）`;
-}
-
 function switchTab(id){
-  ['tab-reco','tab-explore','tab-major','tab-bargain'].forEach(t=>{
+  ['tab-reco','tab-explore','tab-major'].forEach(t=>{
     const el=document.getElementById(t); if(el)el.style.display=(t===id)?'':'none';});
   document.querySelectorAll('.tabbtn').forEach(b=>b.classList.toggle('on',b.dataset.tab===id));
 }
@@ -1262,6 +1251,25 @@ function exportJSON(){const b=new Blob([JSON.stringify(snapshot(),null,2)],{type
 function importJSON(ev){const f=ev.target.files[0];if(!f)return;const r=new FileReader();
   r.onload=()=>{try{applyState(JSON.parse(r.result));save();alert('已导入');}catch(e){alert('文件有误');}};r.readAsText(f);ev.target.value='';}
 
+function toggleBig(){
+  const on=document.documentElement.classList.toggle('big');
+  try{localStorage.setItem('gk_big',on?'1':'0');}catch(e){}
+  document.getElementById('bigToggle').style.background=on?'rgba(255,255,255,.45)':'rgba(255,255,255,.14)';
+}
+try{if(localStorage.getItem('gk_big')==='1'){document.documentElement.classList.add('big');
+  const bt=document.getElementById('bigToggle');if(bt)bt.style.background='rgba(255,255,255,.45)';}}catch(e){}
+function updateProfileBar(){
+  const el=document.getElementById('profileInfo'); if(!el)return;
+  const stu=document.getElementById('stuRank').value||'—';
+  const re=[...stuReSel()].join('+');
+  const fp=document.getElementById('firstPick').value;
+  const subj=CURMODE==='综合'?('选考 '+(re||'—')):(fp+(re?'/'+re:''));
+  const bt=document.getElementById('batch');
+  const btx=bt.options[bt.selectedIndex]?bt.options[bt.selectedIndex].text:'';
+  const sc=document.getElementById('stuScore');
+  const art=(CURKE==='艺术'&&sc&&sc.value)?(' · 综合 '+sc.value):'';
+  el.innerHTML=`<b>${esc(String(stu))}</b> 位次${art} · ${esc(subj)} · ${esc(btx)}`;
+}
 const thChong=document.getElementById('thChong'),thWen=document.getElementById('thWen'),thBao=document.getElementById('thBao');
 const stuRank=document.getElementById('stuRank'),firstPick=document.getElementById('firstPick');
 boot();
