@@ -257,11 +257,6 @@
 <body>
 <header class="top"><div class="bar">
   <h1>高考志愿智能推荐</h1>
-  <nav class="tabnav" aria-label="模块导航">
-    <button class="tabbtn on" data-tab="tab-reco" onclick="switchTab('tab-reco')">🎯 智能推荐</button>
-    <button class="tabbtn" data-tab="tab-explore" onclick="switchTab('tab-explore')">🏫 探校</button>
-    <button class="tabbtn" data-tab="tab-major" onclick="switchTab('tab-major')">🔍 探专业</button>
-  </nav>
   <button class="bigbtn" id="bigToggle" onclick="toggleBig()">大</button>
 </div></header>
 <div class="profilebar"><div class="in">
@@ -269,27 +264,25 @@
   <button class="edit" onclick="document.getElementById('rankCard').scrollIntoView({behavior:'smooth'})">修改 ▾</button>
 </div></div>
 <div class="wrap">
-  <p class="lead">位次·选科·方向 → 推荐到<b>具体专业</b>，校验再选科目 · 三年位次趋势 · 详情可展开 · 冲稳保 · 打印</p>
+  <p class="lead">位次·选科 → 冲稳保推荐 → <b>标准志愿填报表</b>一键生成 / 打印</p>
 
   <div class="disc">⚠️ 数据：各省<b>2026招生计划 + 23/24/25专业录取位次</b>（专家版）。位次已按2026专业组归一，仅供参考，录取以当年为准。方向依据官方<b>专业类</b>。</div>
 
-  <div class="card noprint" style="padding:12px 16px">
-    <div class="row" style="align-items:flex-end">
+  <div class="card noprint" id="rankCard">
+    <h2><span class="step">1</span>考生信息与位次</h2>
+    <p class="hint">省份决定数据库；位次可直填，或选参考年份+分数，用<b>本省一分一段表</b>自动换算（内置22-25四年）。</p>
+    <div class="row">
       <div style="flex:0 0 200px"><label>省份（数据库）</label>
         <select id="provSel" onchange="onProvChange()"><option>加载中…</option></select></div>
-      <div><label style="visibility:hidden">.</label><div class="dstat" id="dstat" style="margin:0">正在载入省份清单…</div></div>
+      <div style="flex:1"><label style="visibility:hidden">.</label><div class="dstat" id="dstat" style="margin:0">正在载入省份清单…</div></div>
     </div>
-  </div>
-
-  <!-- 步骤1 位次 -->
-  <div class="card noprint" id="rankCard">
-    <h2><span class="step">1</span>位次测算</h2>
-    <p class="hint">已知位次可直接填；否则选参考年份+输分数，用<b>本省一分一段表</b>自动换算（内置22-25四年）。</p>
+    <div id="rankBlock">
     <div class="row">
-      <div style="flex:0 0 200px"><label>方式</label>
+      <div style="flex:0 0 160px"><label>位次方式</label>
         <select id="rankMode" onchange="toggleRankMode()"><option value="direct">直接输入位次</option><option value="score">按分数换算</option></select>
       </div>
-      <div id="directBox"><label>考生全省位次</label><input id="directRank" type="number" placeholder="如 12500" oninput="syncStuRank(this.value)"></div>
+      <div><label>考生全省位次</label><input id="stuRank" type="number" placeholder="如 12500" oninput="onStuChange()"></div>
+      <input id="directRank" type="hidden">
     </div>
     <div id="scoreBox" style="display:none">
       <div class="row">
@@ -298,28 +291,21 @@
         <div><label>对应位次</label><input id="qRankOut" readonly></div>
       </div><p class="mini" id="segInfo"></p>
     </div>
-  </div>
-
-  <!-- 步骤2 考生 -->
-  <div class="card noprint">
-    <h2><span class="step">2</span>考生信息</h2>
-    <div class="row">
-      <div><label>考生位次</label><input id="stuRank" type="number" placeholder="如 12500" oninput="onStuChange()"></div>
-      <div id="keleiWrap" style="display:none"><label>报考类别</label><select id="keleiPick" onchange="onKeleiChange()"><option value="普通">普通类</option></select></div>
-      <div id="fpWrap"><label>首选科目</label><select id="firstPick" onchange="onStuChange()"><option value="物理">物理</option><option value="历史">历史</option></select></div>
-      <div><label>批次 / 报考方式</label><select id="batch" onchange="onBatchChange()"><option value="all">全部批次</option><option value="本科">本科批次（汇总）</option><option value="专科">专科批次（汇总）</option></select><div class="mini" style="margin-top:3px">每个报考方式（含<b>提前批</b>）都是独立入口；选艺术类批次自动切到综合分</div></div>
     </div>
-    <div id="scoreWrap" style="display:none"><label>艺术综合分</label><input id="stuScore" type="number" placeholder="如 520" oninput="onStuChange()"></div>
+    <div class="row">
+      <div id="fpWrap"><label>首选科目</label><select id="firstPick" onchange="onStuChange()"><option value="物理">物理</option><option value="历史">历史</option></select></div>
+      <div id="keleiWrap" style="display:none"><label>报考类别</label><select id="keleiPick" onchange="onKeleiChange()"><option value="普通">普通类</option></select></div>
+      <div><label>批次 / 报考方式</label><select id="batch" onchange="onBatchChange()"><option value="all">全部批次</option><option value="本科">本科批次（汇总）</option><option value="专科">专科批次（汇总）</option></select><div class="mini" style="margin-top:3px">每个报考方式（含<b>提前批</b>）都是独立入口；选艺术类批次自动切到综合分</div></div>
+      <div id="scoreWrap" style="display:none"><label>艺术综合分</label><input id="stuScore" type="number" placeholder="如 520" oninput="onStuChange()"></div>
+    </div>
     <label id="selexLabel">再选科目（用于选科校验）</label>
     <div class="scicheck" id="reSelect"></div>
   </div>
 
-
-  <div id="tab-reco" class="tabpane">
-  <!-- 步骤3 方向+推荐 -->
+    <!-- 步骤3 方向+推荐 -->
   <div class="card noprint">
-    <h2><span class="step">3</span>选方向 → 生成推荐</h2>
-    <p class="hint">方向按官方<b>门类 → 专业类</b>分组（可多选）；再用下方关键词按校名/专业名精筛。不选=全部。<br><b>这是精准填报主工具</b>：先在这里定方向，再去「探校 / 探专业」泛览对比。</p>
+    <h2><span class="step">2</span>选方向 → 生成推荐</h2>
+    <p class="hint">方向按官方<b>门类 → 专业类</b>分组（可多选）；再用下方关键词按校名/专业名精筛。不选=全部。</p>
     <div id="dirBlock">
     <label>方向 / 专业类（按门类分组，点门类展开）</label>
     <div class="dirbar">
@@ -346,53 +332,11 @@
     <div class="toolbar noprint"><button class="btn" onclick="autoFillForm()">📋 按推荐顺序生成标准填报表</button></div>
   </div>
 
-  </div><!-- /tab-reco -->
 
   <!-- ===== 新功能：探校 / 探专业 ===== -->
-  <div id="tab-explore" class="tabpane" style="display:none">
-    <div class="card">
-      <h2><span class="step">★</span>探校视图 · 我这分能上哪些学校</h2>
-      <p class="hint">只按位次，不强制选方向。按<b>院校聚合</b>出一张张校卡：每校标注 985/211/城市/计划数，并把它的专业分成「稳妥能上 / 冲一冲 / 保底」三栏，回答家长第一问。</p>
-      <div class="row">
-        <div style="flex:0 0 150px"><label>每校每栏显示</label><select id="exPer"><option>3</option><option selected>4</option><option>6</option><option>8</option></select></div>
-        <div style="flex:0 0 150px"><label>层次</label><select id="exTier"><option value="0">不限</option><option value="211">211及以上</option><option value="985">仅985</option></select></div>
-        <div><label>关键词（校名/专业，可选）</label><input id="exKw" placeholder="留空=全部"></div>
-      </div>
-      <div class="scicheck" style="margin-top:8px">
-        <label><input type="checkbox" id="exSci" checked>只显示选科匹配</label>
-        <label><input type="checkbox" id="exCoop">含中外合作/较高收费</label>
-      </div>
-      <button class="btn big" style="margin-top:12px" onclick="exploreSchools()">🏫 生成探校列表</button>
-      <p class="mini" id="exploreInfo"></p>
-      <div id="exploreWrap" style="margin-top:8px"></div>
-    </div>
-  </div>
-
-  <div id="tab-major" class="tabpane" style="display:none">
-    <div class="card">
-      <h2><span class="step">★</span>探专业 · 我这分能读什么专业，学什么、去哪就业</h2>
-      <p class="hint">按你的位次，把<b>够得着的专业方向（专业类）</b>挑出来，逐个给卡片：<b>学什么 / 前景 / 就业率 / 就业方向 / 需要的软实力 / 深造方向 / 就业冷热</b>。可按排序与筛选调整；点卡片上的按钮可直接跳到「智能推荐 / 探校」看对应院校与专业。就业率与冷热为参考，具体以院校公布为准。</p>
-      <div class="row">
-        <div style="flex:0 0 150px"><label>层次</label><select id="mjTier"><option value="0">不限</option><option value="211">211及以上</option><option value="985">仅985</option></select></div>
-        <div style="flex:0 0 140px"><label>门类</label><select id="mjMen"><option value="0">全部门类</option></select></div>
-        <div style="flex:0 0 150px"><label>排序</label><select id="mjSort"><option value="match">最匹配</option><option value="wen">稳项最多</option><option value="school">院校最多</option><option value="tier">985/211最多</option></select></div>
-        <div style="flex:0 0 120px"><label>显示数量</label><input id="mjN" type="number" min="1" step="1" value="25" placeholder="任意数量" style="width:100%"></div>
-        <div><label>关键词（专业类/专业名，可选）</label><input id="mjKw" placeholder="留空=全部，如 计算机 / 临床 / 金融"></div>
-      </div>
-      <div class="scicheck" style="margin-top:8px">
-        <label><input type="checkbox" id="mjSci" checked>只显示选科匹配</label>
-        <label><input type="checkbox" id="mjCoop">含中外合作/较高收费</label>
-        <label><input type="checkbox" id="mjWenOnly">只看我有稳项的方向</label>
-      </div>
-      <button class="btn big" style="margin-top:12px" onclick="exploreMajors()">🔍 生成探专业</button>
-      <p class="mini" id="majorInfo"></p>
-      <div id="majorWrap" style="margin-top:8px"></div>
-    </div>
-  </div>
-
   <!-- 步骤4 标准志愿填报表 -->
   <div class="card" id="formCard">
-    <h2><span class="step">4</span>标准志愿填报表（对齐真实报考版式）</h2>
+    <h2><span class="step">3</span>标准志愿填报表（对齐真实报考版式）</h2>
     <p class="hint noprint">每个志愿 = 1 个院校专业组 + 最多 6 个专业 + 组内服从调剂，版式对齐省考试院填报系统。从推荐「＋加入」或「按推荐顺序自动填入」；专业代码数据未含，留空可手填。参考位次列仅屏幕显示（供体检），打印自动隐藏。</p>
     <div class="row noprint" style="align-items:flex-end">
       <div style="flex:0 0 110px"><label>志愿数</label><select id="formN" onchange="renderForm()"><option selected>20</option><option>31</option><option>45</option></select></div>
@@ -420,11 +364,11 @@
   </div>
 
     <!-- 步骤5 体检 -->
-  <div class="card"><h2><span class="step">5</span>方案体检</h2>
+  <div class="card"><h2><span class="step">4</span>方案体检</h2>
     <div class="summary" id="summary"></div><div id="checks"></div></div>
 
   <!-- 步骤6 导出 -->
-  <div class="card noprint"><h2><span class="step">6</span>导出/存档</h2>
+  <div class="card noprint"><h2><span class="step">5</span>导出/存档</h2>
     <div class="toolbar">
       <button class="btn" onclick="window.print()">🖨 打印/存PDF</button>
       <button class="btn ghost" onclick="exportJSON()">导出方案</button>
@@ -517,7 +461,7 @@ function onKeleiChange(){
   CURKE=document.getElementById('keleiPick').value;
   const art=CURKE==='艺术';
   const id=s=>document.getElementById(s);
-  if(id('rankCard'))id('rankCard').style.display=art?'none':'';      // 艺术不用位次/分数换算
+  if(id('rankBlock'))id('rankBlock').style.display=art?'none':'';   // 艺术用综合分，不涉位次换算      // 艺术不用位次/分数换算
   if(id('fpWrap'))id('fpWrap').style.display=art?'none':'';
   if(id('selexLabel'))id('selexLabel').style.display=art?'none':'';
   if(id('reSelect'))id('reSelect').style.display=art?'none':'';
@@ -631,7 +575,6 @@ function loadFromFile(ev){
 /* ================= 位次测算 ================= */
 function toggleRankMode(){const m=document.getElementById('rankMode').value;
   document.getElementById('scoreBox').style.display=m==='score'?'block':'none';
-  document.getElementById('directBox').style.display=m==='direct'?'block':'none';
   if(m==='score')lookupByScore();}
 function syncStuRank(v){document.getElementById('stuRank').value=v;onStuChange();}
 function onStuChange(){if(document.getElementById('rankMode').value==='score')lookupByScore();recompute();save();}
@@ -954,392 +897,6 @@ function renderSummary(stu){const cnt={chong:0,wen:0,bao:0,na:0};let sciBad=0,fi
   const subjStr=CURMODE==='综合'?('选考 '+re):(document.getElementById('firstPick').value+(re?'+'+re:''));
   document.getElementById('printMeta').textContent=`${CURPROV||''}　位次 ${stu||'—'}　${subjStr}　冲${cnt.chong}/稳${cnt.wen}/保${cnt.bao}`;
   updateProfileBar();}
-
-/* ================= 新功能：探校 / 探专业 ================= */
-function tierRank(code){const t=schVal(code,'院校标签')||'';
-  if(/985/.test(t))return 4; if(/211/.test(t))return 3; if(/双一流/.test(t))return 2; return 1;}
-function tierLabel(code){const t=schVal(code,'院校标签')||'';
-  if(/985/.test(t))return'985'; if(/211/.test(t))return'211'; if(/双一流/.test(t))return'双一流'; return'';}
-function tierBadges(code){const t=tierLabel(code); if(!t)return'';
-  const cls=t==='985'?'b985':t==='211'?'b211':'bsyl';
-  return `<span class="badge ${cls}">${t}</span>`;}
-function majorStrength(m){let s=0;const pl=m[MC['专业水平']]||'';
-  if(/国家级/.test(pl))s=3; else if(/省级|一流/.test(pl))s=2;
-  const de=m[MC['学科评估']]||''; if(/A/.test(de))s=Math.max(s,3); else if(/B/.test(de))s=Math.max(s,2);
-  return s;}
-function bandOf(r){if(!r||r<=0)return'na';const tC=+thChong.value,tW=+thWen.value;
-  if(r>=tC)return'chong'; if(r>=tW)return'wen'; return'bao';}
-function passBase(m,first,bt,onlySci,incCoop,kw){
-  if(!keleiFilter(m,first))return false;
-  const batch=m[MC['批次']]||'';
-  if(!batchMatch(batch,bt))return false;
-  if(CURKE!=='艺术'&&onlySci&&!sciOK(m[MC['选科要求']]||''))return false;
-  if(!incCoop){const nm=m[MC['专业名称']]||'',sn=schVal(m[MC['院校代码']],'院校名称')||'',rm=m[MC['专业备注']]||'';
-    if(/中外合作|合作办学|较高收费|国际学院/.test(nm+sn+rm))return false;}
-  if(kw){const nm=m[MC['专业名称']]||'',sn=schVal(m[MC['院校代码']],'院校名称')||'',dl=m[MC['专业类']]||'';
-    if(nm.indexOf(kw)<0&&sn.indexOf(kw)<0&&dl.indexOf(kw)<0)return false;}
-  return true;}
-function stratItem(x,sub){
-  const m=x.m,src='M'+x.i,added=rows.some(r=>r._src===src),cls=added?'':'btn';
-  const subr=CURKE==='艺术'?`综合分${m[MC['最低分1']]||'-'}`:`位次${m[MC['最低位次1']]||'-'}`;
-  return `<div class="stratitem"><div class="nm"><b>${esc(x.sn)} · ${esc(m[MC['专业名称']])}</b><span class="sub">${sub}</span></div>`
-    +`<div class="r">比<b>${x.r.toFixed(2)}</b><span class="mini">${subr}</span></div>`
-    +`<button class="${cls}" onclick="addFromRec(${x.i},this)">${added?'已加':'＋'}</button></div>`;}
-
-/* 学校名片：全部来自院校级真实字段，不编造 */
-// 标注型王牌专业：官方数据未填"专业水平/学科评估"但确为该校王牌的方向，由用户/专家补充，透明标注、不覆盖官方学科评估。
-// key=院校代码，value=王牌专业名（可多个）。
-const ACE_OVERRIDE={'1022':['人工智能（高瓴人工智能学院）']};
-function schoolProfile(code,rec){
-  const g=n=>{const v=schVal(code,n); return (v==null||v==='')?null:v;};
-  const tags=(g('院校标签')||'').split('/').map(t=>t.trim()).filter(Boolean);
-  const type=g('类型'),own=g('公私性质'),sub=g('隶属单位'),lvl=g('本科/专科'),prov=g('所在省');
-  const city=g('城市'),cityLv=g('城市水平标签');
-  const rk=g('软科排名'),rkLv=g('软科评级'),yr=g('院校排名');
-  const by=g('保研率'),ms=g('全校硕士专业数'),bs=g('全校博士专业数'),msN=g('全校硕士专业'),bsN=g('全校博士专业');
-  const ev=g('学科评估'),his=g('更名合并转设'),rule=g('录取规则'),tr=g('转专业情况'),url=g('招生章程');
-  let h='<div class="schprofile">';
-  const pills=tags.map(t=>`<span class="sp-pill ${t==='985'?'g':t==='211'?'s':t==='双一流'?'y':''}">${esc(t)}</span>`).join('');
-  const meta2=[type,own,sub].filter(Boolean).map(esc).join(' · ');
-  const meta3=[lvl,prov?('所在'+prov):null].filter(Boolean).map(esc).join(' · ');
-  h+=`<div class="sp-tags">${pills||'<span class="mini">无层次标签</span>'}${meta2?' <span class="sp-meta">'+meta2+'</span>':''}${meta3?' <span class="sp-meta">'+meta3+'</span>':''}</div>`;
-  const cells=[];
-  if(city!=null)cells.push(['所在地',`${esc(city)}${cityLv?` <span class="mini">${esc(cityLv)}</span>`:''}`]);
-  if(rk!=null)cells.push(['软科排名',`${esc(rk)}${rkLv?` <span class="mini">${esc(rkLv)}</span>`:''}`]);
-  if(yr!=null)cells.push(['院校排名',esc(yr)]);
-  if(by!=null){const bp=parseFloat(by); if(!isNaN(bp))cells.push(['保研率',(bp*100).toFixed(1)+'%']);}
-  if(ms!=null||bs!=null)cells.push(['硕/博点数',`${ms!=null?esc(ms):'-'} / ${bs!=null?esc(bs):'-'}`]);
-  if(cells.length)h+='<div class="sp-grid">'+cells.map(([k,v])=>`<div class="sp-item"><div class="sp-k">${k}</div><div class="sp-v">${v}</div></div>`).join('')+'</div>';
-  const ach=[];
-  if(ev)ach.push('学科评估：'+ev);
-  if(his)ach.push('沿革：'+his);
-  if(rule)ach.push('录取规则：'+rule);
-  if(tr)ach.push('转专业：'+tr);
-  if(ach.length)h+=`<div class="sp-ach">${ach.map(esc).join('　｜　')}</div>`;
-  const plat=[];
-  if(msN)plat.push('硕士点：'+msN);
-  if(bsN)plat.push('博士点：'+bsN);
-  if(plat.length)h+=`<div class="sp-soft" style="font-weight:500;color:#334155">🛠 学科平台：${plat.map(esc).join('　｜　')}</div>`;
-  const soft=g('院校水平');
-  if(soft)h+=`<div class="sp-soft">🎓 培养特色 / 软实力：${esc(soft)}</div>`;
-  if(rec){const seen=new Set(),strong=[];
-    for(let i=0;i<MAJ.length;i++){const m=MAJ[i]; if(m[MC['院校代码']]!==code)continue; const ss=majorStrength(m); if(ss<2)continue;
-      const nm=m[MC['专业名称']]; if(seen.has(nm))continue; seen.add(nm); strong.push(nm); if(strong.length>=4)break;}
-    const ov=(ACE_OVERRIDE[code]||[]).filter(Boolean).filter(n=>!strong.includes(n));
-    if(strong.length||ov.length){
-      const parts=[];
-      ov.forEach(n=>parts.push(`<span class="sp-ace-ov">${esc(n)}<span class="sp-ace-tag">标注</span></span>`));
-      strong.forEach(n=>parts.push(esc(n)));
-      h+=`<div class="sp-strong">🏆 王牌专业：${parts.join('、')}</div>`;
-      if(ov.length)h+=`<div class="sp-strong-note">ⓘ 标注项为用户/专家补充，非官方学科评估字段（该专业在官方数据中未填实力评级）</div>`;}
-  }
-  if(url)h+=`<a class="sp-link" href="${esc(url)}" target="_blank" rel="noopener">查看招生章程 ↗</a>`;
-  h+='</div>';
-  return h;
-}
-
-function exploreSchools(){
-  if(!DB){alert('数据未载入');return;}
-  const stu=getStu();
-  const wrap=document.getElementById('exploreWrap'),info=document.getElementById('exploreInfo');
-  if(!stu){wrap.innerHTML='<p class="mini">'+(CURKE==='艺术'?'请先在上方填艺术综合分。':'请先在上方填考生位次。')+'</p>';info.textContent='';return;}
-  const first=document.getElementById('firstPick').value,bt=document.getElementById('batch').value;
-  const onlySci=document.getElementById('exSci').checked,incCoop=document.getElementById('exCoop').checked;
-  const kw=document.getElementById('exKw').value.trim(),lvl=document.getElementById('exTier').value,perSch=+document.getElementById('exPer').value;
-  const tW=+thWen.value;
-  const map=new Map();
-  for(let i=0;i<MAJ.length;i++){const m=MAJ[i];const code=m[MC['院校代码']];
-    if(lvl==='985'&&!is985(code))continue; if(lvl==='211'&&!is211(code))continue;
-    if(!passBase(m,first,bt,onlySci,incCoop,kw))continue;
-    const rk=lineVal(m); if(!rk)continue; const r=stu/rk; if(r<0.5||r>1.8)continue;
-    let rec=map.get(code); if(!rec){rec={code,sn:schVal(code,'院校名称')||'',city:schVal(code,'城市')||'',lv:schVal(code,'院校水平')||'',rkRank:schVal(code,'软科排名')||'',majors:[]};map.set(code,rec);}
-    rec.majors.push({i,m,code,r,plan:(+m[MC['计划人数']]||0),band:bandOf(r)});}
-  let schools=[...map.values()].filter(s=>s.majors.some(x=>x.r>=0.7));
-  if(!schools.length){wrap.innerHTML='<p class="mini">该位次/条件下没有够得着的院校，试试放宽层次或勾选含中外合作。</p>';info.textContent='';return;}
-  schools.forEach(s=>{s.maxR=Math.max(...s.majors.map(x=>x.r));
-    s.wen=s.majors.filter(x=>x.band==='wen').length; s.chong=s.majors.filter(x=>x.band==='chong').length;
-    s.bao=s.majors.filter(x=>x.band==='bao').length; s.planSum=s.majors.reduce((a,x)=>a+x.plan,0);});
-  schools.sort((a,b)=>b.maxR-a.maxR);
-  wrap.innerHTML='';
-  schools.slice(0,5).forEach(s=>{
-    const split={wen:[],chong:[],bao:[]}; s.majors.forEach(x=>split[x.band].push(x));
-    const trk=tierRank(s.code);
-    const tcls=trk===4?'tier-985':trk===3?'tier-211':trk===2?'tier-syl':'';
-    const ttag=trk===4?'<span class="tier-tag g">985</span>':trk===3?'<span class="tier-tag s">211</span>':trk===2?'<span class="tier-tag y">双一流</span>':'';
-    const card=document.createElement('div'); card.className='schcard'+(tcls?' '+tcls:'');
-    let html=`<div class="schhd"><div><b>${esc(s.sn)}</b>${ttag}</div>`
-      +`<div class="schstats">${esc(s.city)||'—'} · ${esc(s.lv)||'—'} · ${s.rkRank?('软科'+esc(s.rkRank)):'排名未标注'}　｜　你可：稳上 <b>${s.wen}</b> · 冲 <b>${s.chong}</b> · 保 <b>${s.bao}</b> 个专业</div></div>`
-      +schoolProfile(s.code,s)
-      +`<div class="schcols">`;
-    [['wen','稳 能上',s.wen],['chong','冲一冲',s.chong],['bao','保底',s.bao]].forEach(([k,t,cnt])=>{
-      const list=split[k].sort((a,b)=>k==='bao'?b.r-a.r:a.r-b.r).slice(0,perSch);
-      html+=`<div class="schband"><div class="schbandhd t-${k}">${t} <span class="mini">${cnt}</span></div>`;
-      if(!list.length)html+='<div class="mini" style="padding:4px">—</div>';
-      list.forEach(x=>{const m=x.m,src='M'+x.i,added=rows.some(r=>r._src===src);
-        html+=`<div class="schi"><span class="schnm" title="${esc(m[MC['专业名称']])}">${esc(m[MC['专业名称']])}</span>`
-          +`<span class="mini">组${m[MC['专业组代码']]||''}·比${x.r.toFixed(2)}·计${x.plan||'-'}</span>`
-          +`<button class="${added?'':'btn'}" onclick="addFromRec(${x.i},this)">${added?'已加':'＋'}</button></div>`;});
-      html+='</div>';});
-    html+='</div>'; card.innerHTML=html; wrap.appendChild(card);});
-  info.textContent=`共 ${schools.length} 所够得着的院校（显示前 ${Math.min(5,schools.length)} 所，按可冲高度排序；每张卡片含学校名片）`;
-}
-
-/* ================= 探专业：专业名片知识库 ================= */
-/* 内容/前景/就业率/就业方向/需要的软实力。按 专业类 细化，未细化者回退到 门类 通用介绍。
-   就业率为近年本科平均参考区间，非院校精确值，仅供参考。 */
-function MI(c,p,r,d,s,deepen,card){return{content:c,prospect:p,rate:r,direction:d,soft:s,deepen:deepen,card:card};}
-const MAJOR_INFO={
-  // —— 工学 ——
-  '计算机类':MI('学程序设计、数据结构、算法、操作系统、网络、数据库与人工智能基础。','数字经济与AI驱动，需求长期旺盛，深造与就业面极宽。','近年本科平均约 94%–98%（参考）','互联网/软件/通信/金融IT/政企信息化，及算法、研发、测试、运维等岗位。','逻辑思维、自学习、抗压与团队协作。'),
-  '电子信息类':MI('学电路、信号与系统、嵌入式、通信原理、数字信号处理。','芯片、5G、物联网与智能硬件景气，国产替代带来机遇。','约 93%–97%（参考）','通信、集成电路、消费电子、汽车电子、军工电子研发与测试。','动手实践、耐心细致、数理基础。'),
-  '自动化类':MI('学控制理论、PLC、微机原理、机器人、过程控制。','智能制造与工业自动化升级，机器人/新能源车需求大。','约 92%–96%（参考）','工业控制、机器人、汽车、电力、智能制造系统集成。','系统思维、工程实践、跨学科沟通。'),
-  '机械类':MI('学工程制图、材料力学、机械设计、制造工艺、CAD/CAM。','制造业基本盘，向机电一体化与智能装备转型。','约 90%–95%（参考）','装备制造、汽车、航空航天、模具、设备运维与研发。','空间想象、严谨、动手。'),
-  '电气类':MI('学电路、电机学、电力系统、高电压、继电保护。','电网与新能源并网稳定需求，就业质量较高。','约 93%–97%（参考）','国家电网/南方电网、发电、电气设备、新能源企业。','严谨安全、责任意识。'),
-  '土木类':MI('学结构力学、混凝土、土力学、施工与造价。','行业调整期，向智能建造、城市更新与基建出海转型。','约 86%–92%（参考，近年承压）','设计院、施工单位、地产、监理、政府与城投。','吃苦、现场协调、规范意识。'),
-  '建筑类':MI('学建筑史、设计基础、构造、城市规划与数字技术。','地产下行，向城市更新、低碳建筑与参数化设计转型。','约 84%–91%（参考）','建筑设计院、规划院、地产、政府住建部门。','审美、创意、空间思维。'),
-  '材料类':MI('学材料科学基础、金属/高分子/陶瓷、材料表征。','新能源、半导体与航天材料需求上升，传统方向平稳。','约 89%–94%（参考）','半导体、新能源电池、钢铁有色、汽车、科研院所。','实验耐心、数据分析。'),
-  '化工与制药类':MI('学化工原理、反应工程、分离工程、制药工艺。','新能源材料与生物医药带动，安全环保要求高。','约 89%–94%（参考）','石化、制药、新能源、精细化工、质检与研发。','规范操作、安全观、实验能力。'),
-  '环境科学与工程类':MI('学水/气/固废污染控制、环境监测与评价。','双碳与环保监管趋严，市政与工业环保稳定。','约 88%–93%（参考）','环保公司、设计院、监测站、政府生态环境部门。','细致、政策理解、现场调研。'),
-  '能源动力类':MI('学工程热力学、传热学、锅炉、涡轮与制冷。','火电转型、新能源与储能景气。','约 91%–95%（参考）','电力、核电、汽车、空调制冷、新能源企业。','系统思维、工程素养。'),
-  '航空航天类':MI('学空气动力学、飞行力学、推进、航天器设计。','国产大飞机与商业航天高速发展，门槛高。','约 92%–96%（参考）','航空工业、商业航天、军工、科研院所。','严谨、抗压、跨学科。'),
-  '交通运输类':MI('学运筹、交通规划、物流与智能交通系统。','智慧交通与物流升级，城轨高铁稳定。','约 90%–94%（参考）','交通规划院、铁路局、地铁、物流与车企。','系统规划、数据分析。'),
-  '生物医学工程类':MI('学生物、医学与电子交叉，医疗器械与影像。','医疗器械国产替代与老龄化利好。','约 91%–95%（参考）','医疗器械企业、医院工程科、影像算法、监管。','交叉学习、细致。'),
-  '食品科学与工程类':MI('学食品化学、微生物、工艺与质量安全。','刚需行业，向健康食品与检测升级。','约 89%–93%（参考）','食品企业、检测机构、质检、研发与品控。','规范、实验、责任心。'),
-  '测绘类':MI('学测量、遥感、GIS与无人机测绘。','实景三维与自动驾驶高精地图带动。','约 89%–93%（参考）','测绘院、地理信息、国土、自动驾驶、基建。','细心、野外适应。'),
-  '水利类':MI('学水力学、水文、水工结构、水资源。','国家水网与防汛抗旱投入稳定。','约 90%–94%（参考）','水利设计院、流域机构、水电、市政。','严谨、现场适应。'),
-  '仪器类':MI('学精密机械、传感、测控与光学。','智能制造与计量检测需求稳。','约 90%–94%（参考）','计量院、仪器厂、半导体、质检。','精细、动手。'),
-  '生物工程类':MI('学发酵、基因工程、细胞与生化工程。','合成生物与生物医药前沿，落地周期长。','约 88%–93%（参考）','生物医药、发酵、检测、科研。','实验、耐心。'),
-  '安全科学与工程类':MI('学安全原理、风险评估、消防与应急。','监管趋严，工矿与住建刚需。','约 89%–93%（参考）','安监、应急、企业EHS、评价机构。','责任、规范。'),
-  // —— 理学 ——
-  '数学类':MI('学分析、代数、几何、概率与计算数学。','AI与金融建模底层，深造比例高。','约 90%–95%（参考，多深造）','金融、IT算法、精算、科研与教师。','抽象思维、钻研。'),
-  '物理学类':MI('学力学、电磁、量子与固体物理。','半导体与光电前沿，深造为主。','约 88%–93%（参考，多深造）','芯片、光电、科研、教师、金融量化。','逻辑、钻研。'),
-  '化学类':MI('学无机/有机/物化与分析化学。','新能源与材料交叉，深造为主。','约 88%–93%（参考）','化工、材料、制药、检测、科研。','实验、细致。'),
-  '生物科学类':MI('学细胞、遗传、生化与分子生物学。','生命科学与医药基础，深造比例高。','约 87%–92%（参考，多深造）','生物医药、检测、科研、教师。','实验、耐心。'),
-  '地理科学类':MI('学自然/人文地理、GIS与遥感。','国土空间与智慧城市需求稳。','约 88%–92%（参考）','规划院、国土、GIS企业、教师。','空间分析、调研。'),
-  '心理学类':MI('学认知、发展、社会与变态心理学及统计。','咨询与用户体验升温，需资质。','约 85%–91%（参考）','学校、咨询机构、HR、UX研究。','共情、倾听、沟通。'),
-  '统计学类':MI('学概率、数理统计、机器学习与数据分析。','数据驱动时代需求旺，跨行业通用。','约 92%–96%（参考）','金融、互联网、生物统计、政府统计。','数理、严谨。'),
-  '海洋科学类':MI('学物理/化学/生物海洋学、海洋调查。','海洋强国与蓝碳战略带动。','约 87%–92%（参考）','涉海科研院所、海事、环保、勘探。','野外、钻研。'),
-  // —— 医学 ——
-  '临床医学类':MI('学解剖、生理、内外妇儿等系统与见习实习。','社会刚需，但培养周期长（规培/专培）。','约 95%+（参考，含升学规培）','各级医院、基层医疗、科研与公卫。','责任心、抗压、共情。'),
-  '口腔医学类':MI('学口腔解剖、牙体牙髓、正畸与修复。','需求大、独立性高，就业口碑好。','约 96%+（参考）','口腔医院/诊所、综合医院口腔科、自主执业。','动手精细、耐心。'),
-  '基础医学类':MI('学人体微观机制与医学科研方法。','医药研发底座，以科研/深造为主。','约 88%–93%（参考，多深造）','科研院所、药企研发、高校。','钻研、实验。'),
-  '预防医学类':MI('学流行病学、卫生统计与公共卫生。','公卫体系强化，疾控与监测刚需。','约 90%–94%（参考）','疾控中心、卫生监督、医院公卫、海关。','数据、系统观。'),
-  '中医学类':MI('学中医基础、中药、方剂与针灸。','政策扶持与老龄化利好，需长期积累。','约 90%–94%（参考）','中医院、基层、康养、科研。','人文积淀、耐心。'),
-  '中西医结合类':MI('学中西医两套理论与临床。','互补诊疗受重视，培养周期长。','约 90%–93%（参考）','中西医医院、基层、科研。','包容、钻研。'),
-  '药学类':MI('学药理、药剂、药物化学与临床药学。','创新药与集采并行，研发与流通并重。','约 91%–95%（参考）','药企研发/医学、医院药房、监管、流通。','实验、规范。'),
-  '中药学类':MI('学中药鉴定、炮制、制剂与资源。','中医药振兴带动，产业链完整。','约 89%–93%（参考）','中药企业、医院、监管、种植基地。','细致、传统认知。'),
-  '法医学类':MI('学法医病理、物证、毒理与现场。','公安司法刚需，岗位集中。','约 90%–94%（参考）','公安、检察院、司法鉴定、保险。','冷静、严谨。'),
-  '医学技术类':MI('学检验、影像、放疗等技术操作。','医院技术岗稳定，不坐诊。','约 92%–95%（参考）','医院检验/影像/技师、检测机构。','规范、细致。'),
-  '护理学类':MI('学基础护理、内外科护理与社区护理。','刚需大、缺口明显，工作强度高。','约 94%–97%（参考）','各级医院、社区、养老、涉外护理。','责任心、体力、共情。'),
-  '公共卫生与预防医学类':MI('学流行病学、卫生统计与公卫管理。','公卫体系强化，疾控与监测刚需。','约 90%–94%（参考）','疾控中心、卫生监督、医院公卫、海关。','数据、系统观。'),
-  // —— 文学 ——
-  '中国语言文学类':MI('学古代/现当代文学、语言学与写作。','考公考编与文科通用，文案需求在。','约 86%–91%（参考）','教师、编辑、公务员、文案、新媒体。','读写、表达。'),
-  '外国语言文学类':MI('学外语技能、文学文化与翻译。','AI翻译冲击，向复合（外语+专业）转型。','约 85%–90%（参考）','翻译、外贸、教师、外企、留学服务。','语言、跨文化。'),
-  '新闻传播学类':MI('学采写编评、传播理论与新媒体运营。','媒体融合，短视频与公关需求旺。','约 87%–92%（参考）','媒体、公关、广告、企业品牌、政务宣传。','敏锐、表达、创意。'),
-  // —— 历史学 ——
-  '历史学类':MI('学中国/世界史、史学理论与考古。','考编与文博为主，岗位有限。','约 84%–89%（参考）','教师、文博、档案、公务员、出版。','阅读、考据。'),
-  // —— 哲学 ——
-  '哲学类':MI('学中西哲学、逻辑与伦理学。','培养思辨，考公/教研/文化为主。','约 82%–88%（参考）','教师、公务员、编辑、智库、企业文职。','思辨、写作。'),
-  // —— 经济学 ——
-  '经济学类':MI('学宏观/微观、计量与政治经济学。','经管通用底座，深造与考公常见。','约 88%–93%（参考）','金融、政府、研究院、企业战略。','数理、分析。'),
-  '财政学类':MI('学财政、税收与公债管理。','税务与公职稳定，专业对口强。','约 88%–92%（参考）','税务局、财政、企业财务、事务所。','细致、政策。'),
-  '金融学类':MI('学货币银行、投资、公司金融与风控。','行业分化，名校与复合背景占优。','约 89%–94%（参考）','银行、证券、基金、保险、企业财务。','数理、抗压、敏锐。'),
-  '经济与贸易类':MI('学国际贸易、实务与跨境电商。','外贸回暖与跨境电商带动。','约 87%–92%（参考）','外贸、跨境电商、关务、企业国际部。','外语、沟通。'),
-  // —— 法学 ——
-  '法学类':MI('学宪法、民法、刑法与诉讼法，备战法考。','法治刚需，但法考与名校门槛高。','约 82%–88%（参考，过考率高才稳）','律师、公检法、企业法务、公务员。','逻辑、记忆、表达。'),
-  '政治学类':MI('学政治理论、国际关系与比较政治。','科研/智库/公职为主。','约 84%–89%（参考）','公务员、智库、媒体、高校。','思辨、写作。'),
-  '社会学类':MI('学社会理论、调查方法与社工。','社会治理与社工升温。','约 84%–89%（参考）','社工机构、民政、调研、公务员。','共情、调研。'),
-  '马克思主义理论类':MI('学马原、思政与党史。','高校与中小学思政岗刚需。','约 88%–92%（参考）','思政教师、党校、公务员、宣传。','理论、表达。'),
-  '公安学类':MI('学公安业务、法律与警务。','公安联考渠道明确。','约 90%–94%（参考，联考为准）','人民警察、边检、国安。','纪律、体能。'),
-  // —— 教育学 ——
-  '教育学类':MI('学教心、课程与教管。','考编与教研为主，教培转型中。','约 86%–91%（参考）','教师、教务、教研、教育行政。','耐心、沟通。'),
-  '体育学类':MI('学运动人体、训练与体育教。','体教融合与健身产业升温。','约 86%–91%（参考）','体育教师、教练、健身、赛事。','体能、热情。'),
-  // —— 管理学 ——
-  '管理科学与工程类':MI('学运筹、信息系统与项目管理。','数智管理通用，IT与管理交叉。','约 90%–94%（参考）','企业运营、IT、咨询、物流。','逻辑、系统。'),
-  '工商管理类':MI('学管理、营销、会计与人力。','就业面极宽，竞争也大。','约 88%–93%（参考）','企业各职能、银行、创业、公务员。','沟通、组织。'),
-  '公共管理类':MI('学行政、政策与社保。','考公考编对口，稳定。','约 86%–91%（参考）','公务员、事业单位、社区、NGO。','服务、写作。'),
-  '图书情报与档案管理类':MI('学情报、档案与知识组织。','数字档案与数据治理需求升。','约 88%–92%（参考）','档案馆、图书馆、企业信息岗、数据治理。','细致、信息素养。'),
-  '物流管理与工程类':MI('学供应链、仓储与运输优化。','电商与供应链景气。','约 89%–93%（参考）','物流企业、供应链、仓储、跨境电商。','协调、系统。'),
-  '工业工程类':MI('学人因、生产与精益管理。','制造效率提升刚需。','约 89%–93%（参考）','制造、汽车、咨询、精益岗。','系统、改善。'),
-  '电子商务类':MI('学电商运营、数字营销与供应链。','直播电商与跨境带动。','约 88%–92%（参考）','电商、运营、数字营销、创业。','网感、数据。'),
-  '旅游管理类':MI('学旅游规划、酒店与会展。','文旅复苏，但起薪偏低。','约 85%–90%（参考）','景区、酒店、会展、文旅局。','服务、沟通。'),
-  // —— 艺术学 ——
-  '美术学类':MI('学素描、色彩、中外美术史与创作。','美育与文创需求，自由职业多。','约 82%–89%（参考）','教师、画室、插画、文创、策展。','审美、创意。'),
-  '设计学类':MI('学视觉/产品/环艺/数字媒体设计。','产业设计升级，数字媒体较热。','约 85%–91%（参考）','互联网设计、广告、产品、建筑装饰。','审美、创意、软件。'),
-  '音乐与舞蹈学类':MI('学声乐/器乐/舞蹈表演与理论。','院团与教培为主，竞争强。','约 80%–87%（参考）','院团、教师、培训机构、文旅。','表现力、坚持。'),
-  '戏剧与影视学类':MI('学表演、编导、影视制作。','短视频与影视带动，头部集中。','约 80%–87%（参考）','影视、短视频、广告、院团。','创意、表达。'),
-  '艺术学理论类':MI('学艺术史、批评与策展。','文博与美育研究为主。','约 82%–88%（参考）','美术馆、研究、出版、教育。','理论、写作。'),
-  // —— 农学 ——
-  '植物生产类':MI('学作物、园艺、植保与育种。','种业振兴与智慧农业利好。','约 86%–91%（参考）','农科院、种业、农技推广、企业。','踏实、田间。'),
-  '动物生产类':MI('学畜牧、遗传与饲料营养。','养殖规模化与种业需求。','约 86%–90%（参考）','养殖企业、种业、检疫、推广。','踏实、动手。'),
-  '动物医学类':MI('学兽医临床、疫病与公共卫生。','宠物医疗火爆，刚需强。','约 90%–94%（参考）','宠物医院、畜牧兽医、检疫、药企。','爱心、动手。'),
-  '林学类':MI('学林木遗传、造林与森林保护。','生态修复与碳汇利好。','约 85%–90%（参考）','林场、林草局、园林、生态修复。','野外、踏实。')
-};
-const MEN_INFO={
-  '哲学':MI('培养思辨与价值追问，课程含中西哲学与原著。','以教研、文化与公职为主，岗位有限。','约 82%–88%（参考）','教师、公务员、编辑、智库。','思辨、写作。','哲学/宗教学/马哲硕士，或跨考法学、新闻。','黄牌·岗位较窄，宜深造或考公'),
-  '经济学':MI('研究资源配置与经济运行，含宏微观与计量。','经管通用，金融与考公常见。','约 88%–93%（参考）','金融、政府、企业战略、研究院。','数理、分析。','金融/应用统计/国际商务硕，或读博进研究院。','绿牌·需求广但金融岗竞争激烈'),
-  '法学':MI('研究法律规则与治理，需过法考。','法治刚需，但门槛高。','约 82%–88%（参考）','律师、公检法、法务、公务员。','逻辑、表达。','法学硕博、法律硕士（过法考后执业）。','黄牌·过法考是关键，否则岗位受限'),
-  '教育学':MI('研究教育与人的发展，含教心与教管。','考编教研为主。','约 86%–91%（参考）','教师、教务、教研、行政。','耐心、沟通。','学科教学/教育硕博、心理学。','绿牌·刚需但编制竞争激烈'),
-  '文学':MI('研究语言、文学与传播。','文科通用，文案与传媒需求在。','约 85%–91%（参考）','教师、媒体、编辑、公务员、文案。','读写、表达。','中国语言文学/新闻传播/学科教学硕。','黄牌·通用文职，竞争偏大'),
-  '历史学':MI('研究过去与史料，含考古。','文博与考编为主。','约 84%–89%（参考）','教师、文博、档案、公务员。','考据、阅读。','中国史/世界史/文博硕博。','黄牌·岗位少，宜深造'),
-  '理学':MI('研究自然规律与基础科学，重理论实验。','科研与深造比例高，交叉应用广。','约 88%–93%（参考，多深造）','科研、IT、金融量化、教师、检测。','钻研、实验。','基础学科直博，或转统计/计算机/金融。','绿牌·深造率高，本科直接就业偏窄'),
-  '工学':MI('研究工程技术与应用，重设计与制造。','产业刚需，就业面最宽。','约 90%–95%（参考）','制造、IT、能源、建筑、通信等广泛行业。','工程、动手、系统。','专硕（电子信息/机械等）或学硕/直博。','绿牌·就业面最宽，产业刚需'),
-  '农学':MI('研究农业生物与生产，含种养与植保。','种业与智慧农业振兴。','约 85%–91%（参考）','农科院、种业、推广、企业、检疫。','踏实、田间。','农学/种业/植保硕博。','黄牌·待遇一般，种业向好'),
-  '医学':MI('研究生命与健康，培养临床与公卫人才。','社会刚需，培养周期长。','约 93%–97%（参考，含规培）','医院、疾控、药企、基层医疗。','责任、抗压、共情。','临床专硕（规培并轨）、基础医学博。','绿牌·刚需，但培养周期长'),
-  '管理学':MI('研究组织与资源效率，含工商与公共。','就业面宽，考公对口。','约 87%–92%（参考）','企业各职能、公务员、事业单位。','沟通、组织。','管科/会计/MBA等硕，或考公。','绿牌·面宽但"卷"，需差异化'),
-  '艺术学':MI('研究创作与审美，含美术设计音乐影视。','文创与美育需求，自由职业多。','约 82%–89%（参考）','教师、文创、设计、院团、自由职业。','审美、创意。','艺术硕博、设计/美术教育。','黄牌·自由职业多，起薪波动大'),
-  '军事学':MI('研究国防与军事科学。','主要为军校定向培养。','—（军校渠道）','部队与相关科研单位。','纪律、体能。','军校研究生（定向）。','特殊·军校渠道，社会岗位极少')
-};
-// 艺术类：按"专业名称"规范化后的学科本名建知识库（综合分模式专用，就业率/冷热为参考）
-const ART_INFO={
-  '美术':MI('学素描、色彩、速写、中外美术史与创作实践，分油画/国画/版画等方向。','美育与文创需求稳定，自由职业与教培较多。','约 82%–89%（参考）','中小学美术教师、画室/培训机构、插画、文创、策展、美术馆。','审美、动手创作、耐心。','美术学/美术教育硕博，或跨设计、文博。','黄牌·自由职业多，教培与文创为主'),
-  '音乐表演':MI('学声乐或器乐演奏、视唱练耳、乐理与舞台实践。','院团、教培与文旅演艺需求，竞争强、头部集中。','约 80%–87%（参考）','乐团/院团演奏员、音乐教师、培训机构、文旅演艺、录音。','长期练习的毅力、表现力、舞台素质。','音乐表演/音乐教育硕，或考乐团、读研。','黄牌·岗位有限，需持续精进'),
-  '音乐教育':MI('学音乐理论、声乐/器乐教学与教育学。','中小学与培训机构音乐教师需求稳定。','约 85%–90%（参考）','中小学音乐教师、培训机构、文化馆、社区教育。','耐心、表达、教学组织。','学科教学（音乐）硕、音乐教育硕博。','绿牌·师范对口，编制竞争大'),
-  '舞蹈表演':MI('学中国舞/芭蕾/现代舞等身体技术与剧目排演。','院团、文旅演艺与教培为主，职业周期偏短。','约 80%–86%（参考）','舞团演员、培训机构教师、文旅演艺、艺考助教。','形体素质、毅力、表现力。','舞蹈表演/舞蹈教育硕，或转编导、教学。','黄牌·职业周期短，宜早规划转教学/编导'),
-  '国际标准舞':MI('学拉丁/摩登等国际标准舞技术与竞技。','培训机构与赛事为主，职业周期短。','约 80%–86%（参考）','培训机构教师、赛事、文旅演艺、俱乐部。','形体、毅力、表现力。','舞蹈表演/教育硕，或转教学、裁判。','黄牌·教培为主，宜早规划'),
-  '播音与主持':MI('学普通话语音、即兴口语、采访播音与节目主持。','融媒体与短视频带动需求，头部集中、竞争大。','约 82%–89%（参考）','广电主持人、新媒体主播、活动主持、配音、传媒。','口才、镜头感、应变、形象气质。','广播电视/口语传播硕，或跨新闻传播。','黄牌·岗位竞争激烈，新媒体机会增多'),
-  '表演':MI('学声台形表（声乐/台词/形体/表演）、剧目排演。','影视/话剧/短视频演员需求在，但头部极度集中。','约 78%–85%（参考）','影视/话剧演员、短视频/直播、演艺经纪、配音。','表现力、共情、抗压、镜头感。','戏剧/电影表演硕，或进院团、剧组。','黄牌·出头难，宜多元发展'),
-  '戏剧影视表演':MI('学影视/话剧表演、镜头前与舞台塑造。','影视与短视频内容扩张带动，头部集中。','约 78%–85%（参考）','影视/话剧演员、短视频、演艺经纪、配音。','表现力、共情、镜头感、抗压。','戏剧/电影表演硕，或进院团、剧组。','黄牌·出头难，宜多元发展'),
-  '导演':MI('学剧本分析、场面调度、视听语言与拍摄实践。','影视/短视频/广告执导需求，创作岗门槛高。','约 80%–87%（参考）','影视/广告导演、短视频创作、编剧、制片。','创意、统筹、叙事、抗压。','电影/戏剧导演硕博，或跨编剧、制片。','黄牌·创作岗少，靠作品说话'),
-  '服装表演':MI('学形体、台步、服装展示与模特素养。','时装模特、电商直播与展示为主，职业周期短。','约 80%–86%（参考）','模特、电商主播、时尚编导、服饰陈列、演艺。','形体气质、镜头感、自信。','服装设计/表演硕，或转时尚管理、直播。','黄牌·职业周期短，宜早布局转型'),
-  '书法学':MI('学篆隶楷行草、篆刻与书法史论。','中小学书法教师与培训机构需求增长，偏小众。','约 82%–88%（参考）','书法教师、培训机构、文化馆、篆刻、文创。','静心、笔性、文化修养。','美术学（书法）硕博，或跨教育、文博。','黄牌·小众，教培与文创为主'),
-  '数字媒体艺术':MI('学交互设计、动效、游戏美术、三维与新媒体创作。','互联网/游戏/元宇宙内容需求旺，技术+艺术复合吃香。','约 86%–92%（参考）','游戏美术、UI/UX、动效、短视频、互联网设计。','审美、软件技能、创意、协作。','数字媒体/设计学硕，或跨计算机、交互。','绿牌·需求增长，复合人才紧缺'),
-  '游戏艺术设计':MI('学游戏原画、角色/场景概念、关卡视觉与引擎美术。','游戏与互动娱乐产业扩张，原画/场景岗需求大。','约 85%–91%（参考）','游戏原画、场景/角色设计、互动娱乐、动漫。','绘画功底、想象力、软件、协作。','设计学/数字媒体硕，或进大厂美术线。','绿牌·产业景气，原画岗竞争仍烈'),
-  '视觉传达设计':MI('学字体/版式/品牌/海报与数字视觉设计。','广告、互联网与文创刚需，岗位广。','约 85%–91%（参考）','品牌设计、广告、UI、包装、新媒体视觉。','审美、软件、创意、沟通。','设计学/视觉传达硕，或跨数字媒体。','绿牌·就业面宽，需作品集'),
-  '环境艺术设计':MI('学室内/景观/公共空间设计与制图。','家装、公装与景观行业需求稳，受地产周期影响。','约 84%–90%（参考）','室内设计、景观、会展、软装、公装公司。','空间审美、制图软件、沟通。','设计学/环艺硕，或跨建筑、规划。','黄牌·受地产周期影响，需差异化'),
-  '服装与服饰设计':MI('学服装造型、结构设计、面料与成衣制作。','服装品牌与电商直播带动，设计/买手/陈列皆有。','约 83%–89%（参考）','服装设计师、买手、陈列、电商、定制。','审美、手绘、潮流敏感、软件。','设计学/服装硕，或跨时尚管理。','黄牌·行业竞争激烈，电商带来新机会'),
-  '艺术设计':MI('学综合设计基础，涵盖视觉/环艺/数字等方向。','设计行业通用入口，就业面宽但需明确方向。','约 84%–90%（参考）','设计公司、互联网、文创、自主接单。','审美、软件、创意。','设计学各方向硕，或跨数字媒体。','黄牌·方向需尽早聚焦'),
-  '书画艺术':MI('学国画/书法与装裱，偏创作与技法。','教培、文创与非遗传习为主，偏小众。','约 82%–88%（参考）','书画教师、培训机构、文创、非遗工坊。','静心、笔性、文化修养。','美术学（国画/书法）硕，或跨教育。','黄牌·小众，教培与文创为主'),
-  '摄影摄像技术':MI('学摄影用光、构图、后期与影视拍摄。','电商/短视频/婚庆带动需求，自由职业多。','约 83%–89%（参考）','商业摄影、影视摄制、新媒体、婚庆、电商。','审美、器材熟练、创意。','摄影/影视硕，或跨数字媒体。','黄牌·设备门槛低，靠作品与口碑'),
-  '影视动画':MI('学原画、分镜、三维动画与后期合成。','动画/游戏/短视频内容需求增，制作岗稳定。','约 84%–90%（参考）','动画公司、游戏、短视频、特效、广告。','绘画、软件、叙事、耐心。','动画/数字媒体硕，或跨游戏美术。','绿牌·内容产业扩张，技术岗紧缺'),
-  '广告艺术设计':MI('学广告策划视觉、海报/短视频与全媒体设计。','营销与新媒体刚需，岗位广。','约 84%–90%（参考）','广告公司、品牌、电商、新媒体运营设计。','创意、软件、潮流敏感。','设计学/广告学硕，或跨数字媒体。','绿牌·需求广，需作品集'),
-  '戏曲表演':MI('学唱念做打、剧目与行当（生旦净丑）技艺。','院团与非遗传习为主，需求小众但受扶持。','约 80%–86%（参考）','戏曲院团、非遗工坊、戏校教师、文旅演艺。','功底、毅力、传统文化修养。','戏曲表演硕，或进院团、戏校。','特殊·小众受扶持，岗位有限'),
-  '曲艺表演':MI('学说唱、快板、鼓曲等曲艺技艺与创演。','文旅与非遗演出为主，极小众。','约 80%–85%（参考）','曲艺团、文旅演艺、非遗工坊、自媒体。','口才、功底、传统文化修养。','曲艺/戏剧硕，或跨表演、传媒。','特殊·极小众，多靠传承与自媒体'),
-  '人物形象设计':MI('学化妆、发型、整体造型与影视/新娘造型。','影视/婚庆/美业需求稳，自由职业多。','约 83%–89%（参考）','影视化妆、婚庆造型、美业、自媒体。','审美、手法、耐心、时尚敏感。','设计学/化妆造型进修，或跨影视美术。','黄牌·美业自由职业多'),
-  '舞台艺术设计':MI('学舞美、灯光、音响与人物造型设计。','院团、文旅演艺与活动制作需求。','约 82%–88%（参考）','院团舞美、演艺公司、文旅项目、活动制作。','空间审美、技术协作、创意。','舞台美术/设计学硕，或跨影视美术。','黄牌·项目制为主'),
-  '展示艺术设计':MI('学展陈、空间叙事与展览视觉设计。','博物馆、商业展陈与文旅展览需求。','约 83%–89%（参考）','展馆设计、商业美陈、文旅展览、策展助理。','空间审美、叙事、软件。','设计学/展示设计硕，或跨环艺。','黄牌·项目制，靠案例'),
-  '工艺美术':MI('学陶瓷、漆器、金属等手工艺与文创设计。','非遗工坊、文创与定制为主，偏小众。','约 82%–88%（参考）','非遗工坊、文创、定制、手作工作室。','手工、审美、耐心。','设计学/工艺美术硕，或跨文创。','黄牌·小众，文创与定制为主')
-};
-function artKey(n){
-  if(!n)return '艺术';
-  let s=String(n).replace(/[（(].*$/,'').replace(/_.*$/,'');
-  const alias={'音表':'音乐表演','播主':'播音与主持','服表':'服装表演','音教':'音乐教育','戏表':'戏曲表演','曲表':'曲艺表演','国标':'国际标准舞','戏影':'戏剧影视表演','影动':'影视动画','广艺':'广告艺术设计','人设':'人物形象设计','舞美':'舞台艺术设计','展艺':'展示艺术设计','书艺':'书画艺术','游设':'游戏艺术设计','摄技':'摄影摄像技术','美教':'美术教育'};
-  s=alias[s]||s;
-  return s.trim()||'艺术';
-}
-function majorInfo(rec){
-  let base,src;
-  if(rec.art && ART_INFO[rec.dl]){base=ART_INFO[rec.dl];src='art';}
-  else if(MAJOR_INFO[rec.dl]){base=MAJOR_INFO[rec.dl];src='major';}
-  else if(MEN_INFO[rec.men]){base=MEN_INFO[rec.men];src='men';}
-  else{
-    base={content:'该专业方向培养特定领域的专业人才，课程与就业因具体专业而异。',prospect:'前景与具体专业、院校层次及行业周期相关。',rate:'近年本科平均约 88%–93%（参考）',direction:'对应行业的企事业单位、政府机构及深造。',soft:'学习能力、沟通协作与持续自我提升。',deepen:'视具体专业与院校，常见为对口学硕/专硕或跨考相近学科。',card:'黄牌·因具体专业差异大'};
-    src='gen';
-  }
-  const out=Object.assign({src},base);
-  if(out.deepen==null && MEN_INFO[rec.men]) out.deepen=MEN_INFO[rec.men].deepen;
-  if(out.card==null && MEN_INFO[rec.men]) out.card=MEN_INFO[rec.men].card;
-  return out;
-}
-
-function escAttr(s){return String(s==null?'':s).replace(/\\/g,'\\\\').replace(/'/g,"\\'").replace(/"/g,'\\"');}
-function cardTag(t){
-  if(!t)return '—';
-  let cls='neutral';
-  if(/绿/.test(t))cls='green'; else if(/黄/.test(t))cls='amber'; else if(/特殊/.test(t))cls='gray';
-  return '<span class="mcard-tag '+cls+'">'+esc(t)+'</span>';
-}
-function sortLabel(s){return {match:'最匹配',wen:'稳项最多',school:'院校最多',tier:'985/211最多'}[s]||'最匹配';}
-let _menFilled=false;
-function fillMajorMen(){
-  if(_menFilled)return; const sel=document.getElementById('mjMen'); if(!sel)return;
-  const set=new Set();
-  for(let i=0;i<MAJ.length;i++){const v=MAJ[i][MC['门类']]; if(v)set.add(v);}
-  const opts=['<option value="0">全部门类</option>'].concat([...set].sort().map(x=>'<option value="'+escAttr(x)+'">'+esc(x)+'</option>'));
-  sel.innerHTML=opts.join(''); _menFilled=true;
-}
-function jumpToReco(dl){document.getElementById('kw').value=dl; switchTab('tab-reco'); recommend();}
-function jumpToExplore(dl){document.getElementById('exKw').value=dl; switchTab('tab-explore'); exploreSchools();}
-
-function exploreMajors(){
-  if(!DB){alert('数据未载入');return;}
-  const stu=getStu();
-  const wrap=document.getElementById('majorWrap'),info=document.getElementById('majorInfo');
-  if(!stu){wrap.innerHTML='<p class="mini">'+(CURKE==='艺术'?'请先填艺术综合分。':'请先填考生位次。')+'</p>';info.textContent='';return;}
-  const first=document.getElementById('firstPick').value,bt=document.getElementById('batch').value;
-  const onlySci=document.getElementById('mjSci').checked,incCoop=document.getElementById('mjCoop').checked;
-  const kw=document.getElementById('mjKw').value.trim(),lvl=document.getElementById('mjTier').value;
-  let N=parseInt(document.getElementById('mjN').value,10);
-  if(!isFinite(N)||N<1)N=25;
-  const sortBy=document.getElementById('mjSort').value;
-  const menF=document.getElementById('mjMen').value;
-  const onlyWen=document.getElementById('mjWenOnly').checked;
-  fillMajorMen();
-  const map=new Map();
-  for(let i=0;i<MAJ.length;i++){const m=MAJ[i];const code=m[MC['院校代码']];
-    if(lvl==='985'&&!is985(code))continue; if(lvl==='211'&&!is211(code))continue;
-    if(!passBase(m,first,bt,onlySci,incCoop,kw))continue;
-    const rk=lineVal(m); if(!rk)continue; const r=stu/rk; if(r<0.5||r>1.8)continue;
-    const isArt=CURKE==='艺术';
-    const dl=isArt?(artKey(m[MC['专业名称']]||'艺术')||'艺术'):(m[MC['专业类']]||'未分类');
-    const men=isArt?'艺术学':(m[MC['门类']]||'');
-    let rec=map.get(dl); if(!rec){rec={dl,men,art:isArt,items:[]};map.set(dl,rec);}
-    rec.items.push({i,m,code,sn:schVal(code,'院校名称')||'',r});}
-  let list=[...map.values()];
-  if(!list.length){wrap.innerHTML='<p class="mini">该位次/条件下没有够得着的专业方向，试试放宽层次或含中外合作。</p>';info.textContent='';return;}
-  list.forEach(rec=>{
-    rec.bands={chong:0,wen:0,bao:0}; rec.schools=new Set(); rec.best=1e9; rec.maxR=0; rec.tierTop=0;
-    rec.items.forEach(x=>{const b=bandOf(x.r); if(b==='na')return; rec.bands[b]++; rec.schools.add(x.code); if(x.r<rec.best)rec.best=x.r; if(x.r>rec.maxR)rec.maxR=x.r; if(is211(x.code))rec.tierTop++;});
-    rec.reach=rec.items.length;});
-  list=list.filter(r=>r.reach>0);
-  if(onlyWen)list=list.filter(r=>r.bands.wen>0);
-  if(menF!=='0')list=list.filter(r=>r.men===menF);
-  list.forEach(rec=>{
-    rec.tierDist={g:0,s:0,y:0,o:0};
-    rec.schools.forEach(code=>{const tr=tierRank(code); if(tr===4)rec.tierDist.g++; else if(tr===3)rec.tierDist.s++; else if(tr===2)rec.tierDist.y++; else rec.tierDist.o++;});});
-  const cmp={
-    match:(a,b)=>a.best-b.best,
-    wen:(a,b)=>b.bands.wen-a.bands.wen||a.best-b.best,
-    school:(a,b)=>b.schools.size-a.schools.size||a.best-b.best,
-    tier:(a,b)=>b.tierTop-a.tierTop||a.best-b.best
-  }[sortBy]||((a,b)=>a.best-b.best);
-  list.sort(cmp);
-  const total=list.length;
-  list=list.slice(0,N);
-  wrap.innerHTML='';
-  list.forEach(rec=>{
-    const info5=majorInfo(rec);
-    const tops=rec.items.slice().sort((a,b)=>a.r-b.r).slice(0,3).map(x=>{
-      const b=bandOf(x.r), cls=b==='chong'?'chong':b==='wen'?'wen':'bao', lbl=b==='chong'?'冲':b==='wen'?'稳':'保';
-      return '<span class="mtag '+cls+'">'+lbl+'</span>'+esc(x.sn)+'（比'+x.r.toFixed(2)+'）';}).join('、');
-    const td=rec.tierDist, dp=[];
-    if(td.g)dp.push('<b>'+td.g+'</b>所985'); if(td.s)dp.push('<b>'+td.s+'</b>所211');
-    if(td.y)dp.push('<b>'+td.y+'</b>所双一流'); if(td.o)dp.push('<b>'+td.o+'</b>所普通');
-    const distHtml=dp.length?('层次分布：'+dp.join('　')):'层次分布：—';
-    const card=document.createElement('div'); card.className='majorcard';
-    let html=`<h3>${esc(rec.dl)}<span class="mcat">${esc(rec.men)}</span></h3>`
-      +`<div class="mreach">稳 <b>${rec.bands.wen}</b> / 冲 <b>${rec.bands.chong}</b> / 保 <b>${rec.bands.bao}</b> 项，来自 <b>${rec.schools.size}</b> 所院校（最匹配比 <b>${rec.best.toFixed(2)}</b>–最高 <b>${rec.maxR.toFixed(2)}</b>）</div>`
-      +`<div class="mdist">${distHtml}</div>`
-      +`<div class="minfo">`
-      +`<div class="mrow"><div class="mk">学什么</div><div class="mv">${esc(info5.content)}</div></div>`
-      +`<div class="mrow"><div class="mk">前景</div><div class="mv">${esc(info5.prospect)}</div></div>`
-      +`<div class="mrow"><div class="mk">就业率</div><div class="mv rate">${esc(info5.rate)}</div></div>`
-      +`<div class="mrow"><div class="mk">就业方向</div><div class="mv">${esc(info5.direction)}</div></div>`
-      +`<div class="mrow"><div class="mk">需软实力</div><div class="mv">${esc(info5.soft)}</div></div>`
-      +`<div class="mrow"><div class="mk">深造方向</div><div class="mv">${esc(info5.deepen||'—')}</div></div>`
-      +`<div class="mrow"><div class="mk">就业冷热</div><div class="mv">${cardTag(info5.card)}</div></div>`
-      +`</div>`;
-    if(tops)html+=`<div class="mtops">代表院校（最匹配）：${tops}${info5.src==='men'?'　<span class="mini">· 按门类通用介绍</span>':info5.src==='gen'?'　<span class="mini">· 通用参考</span>':''}</div>`;
-    html+=`<div class="mjump"><button class="btn sm" onclick="jumpToReco('${escAttr(rec.dl)}')">🔍 看专业列表</button><button class="btn sm" onclick="jumpToExplore('${escAttr(rec.dl)}')">🏫 看开设院校</button></div>`;
-    card.innerHTML=html; wrap.appendChild(card);});
-  info.textContent=`共 ${total} 个够得着的专业方向（显示前 ${list.length} 个，按"${sortLabel(sortBy)}"排序${onlyWen?'，仅含稳项方向':''}${menF!=='0'?('，门类='+menF):''}）；就业率/冷热为参考，具体以院校公布为准`;
-}
-
-function switchTab(id){
-  ['tab-reco','tab-explore','tab-major'].forEach(t=>{
-    const el=document.getElementById(t); if(el)el.style.display=(t===id)?'':'none';});
-  document.querySelectorAll('.tabbtn').forEach(b=>b.classList.toggle('on',b.dataset.tab===id));
-}
 
 /* ================= 工具/存档 ================= */
 function esc(s){return String(s==null?'':s).replace(/"/g,'&quot;').replace(/</g,'&lt;').replace(/'/g,'&#39;');}
