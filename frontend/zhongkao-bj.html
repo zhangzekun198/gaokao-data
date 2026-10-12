@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>北京中考 · 区排定位 · 中高考考情分析平台</title>
+<style>
+  :root{--bg:#eef1f6;--card:#fff;--ink:#1f2430;--sub:#6b7280;--line:#e6e8ec;
+    --accent:#3b5bdb;--accent2:#0e7490;--warn:#b45309;--warnbg:#fff7ed;
+    --chong:#dc2626;--wen:#2563eb;--bao:#15803d;}
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);
+    font-family:-apple-system,"PingFang SC","Microsoft YaHei",Roboto,Arial,sans-serif;font-size:15px;line-height:1.6}
+  header.top{background:linear-gradient(135deg,#1e2a78,#3b5bdb 55%,#0e7490);color:#fff;padding:24px 18px}
+  header.top .bar{max-width:960px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}
+  header.top h1{margin:0;font-size:22px;letter-spacing:.5px}
+  header.top a{color:#fff;text-decoration:none;font-size:14px;opacity:.92}
+  .wrap{max-width:960px;margin:0 auto;padding:18px}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px;margin-bottom:16px;box-shadow:0 2px 10px rgba(0,0,0,.04)}
+  h2.sec{margin:0 0 6px;font-size:18px}
+  .hint{color:var(--sub);font-size:13.5px;margin:0 0 12px}
+  .note{background:var(--warnbg);border:1px solid #fed7aa;border-radius:12px;padding:12px 14px;font-size:13px;color:var(--warn);margin-bottom:16px}
+  .row{display:flex;gap:10px;flex-wrap:wrap;align-items:flex-end}
+  .row>div{display:flex;flex-direction:column;gap:4px;flex:1 1 150px}
+  label{font-size:12.5px;color:var(--sub)}
+  input,select{padding:9px 10px;border:1px solid var(--line);border-radius:9px;font-size:14px;font-family:inherit;background:#fff;color:var(--ink)}
+  .btn{cursor:pointer;background:var(--accent);color:#fff;border:none;border-radius:9px;padding:10px 16px;font-size:14px;font-weight:600;font-family:inherit}
+  .btn.ghost{background:#eef1f6;color:var(--ink);font-weight:500}
+  .pill{display:inline-block;font-size:11px;padding:1px 8px;border-radius:12px;background:#eef1f6;color:var(--sub)}
+  .pill.g{background:#e8f5ee;color:var(--bao)}
+  .grp{margin-top:14px}
+  .grp h3{margin:0 0 8px;font-size:15px;font-weight:700}
+  .grp.chong h3{color:var(--chong)} .grp.wen h3{color:var(--wen)} .grp.bao h3{color:var(--bao)}
+  table{width:100%;border-collapse:collapse;font-size:13.5px}
+  th,td{padding:8px 10px;text-align:left;border-bottom:1px solid #f0f2f4}
+  th{background:#fafbfc;color:var(--sub);font-weight:600;font-size:13px}
+  td.rank{text-align:right;font-variant-numeric:tabular-nums}
+  tbody tr:hover{background:#fcfcfd}
+  .empty{color:var(--sub);font-size:13.5px;padding:6px 0}
+  .foot{text-align:center;color:var(--sub);font-size:12px;margin:22px 0 10px}
+  @media(max-width:576px){ .row>div{flex:1 1 100%} header.top h1{font-size:19px} }
+</style>
+</head>
+<body>
+<header class="top"><div class="bar">
+  <h1>北京中考 · 区排定位</h1>
+  <a href="index.html">← 平台首页</a>
+</div></header>
+
+<div class="wrap">
+  <div class="note">
+    <b>数据口径：</b>本页为「<b>区内排名 → 目标高中</b>」对照，覆盖 <b>东城 / 西城 / 朝阳 / 丰台 / 海淀</b> 五区共 <b id="totSch">—</b> 所学校。区排名为<b>手动读取官方图片后整理的预估值</b>，用于志愿匹配参考；实际录取以当年官方发布为准。
+  </div>
+
+  <div class="card">
+    <h2 class="sec">区排测算</h2>
+    <div class="hint">选择所在区并填入孩子的<b>区内排名</b>（越小越靠前），按冲 / 稳 / 保给出目标高中。</div>
+    <div class="row">
+      <div><label>所在区</label><select id="dist"></select></div>
+      <div><label>区内排名</label><input id="rank" type="number" placeholder="如 800"></div>
+      <div style="flex:0 0 auto"><button class="btn" onclick="calc()">测算</button></div>
+      <div style="flex:0 0 auto"><button class="btn ghost" onclick="showAll()">查看本区全部</button></div>
+    </div>
+    <div id="out" style="margin-top:14px"></div>
+  </div>
+
+  <div class="card">
+    <h2 class="sec">各区覆盖</h2>
+    <div id="cover"></div>
+  </div>
+
+  <div class="foot">北京中考区排定位 · 中高考考情分析平台 · 数据仅供参考，请以官方发布为准</div>
+</div>
+
+<script>
+const D = {"meta":{"title":"北京各区区排对应目标高中","generated_at":"2026-09-08","scope":"预估区排为手动读取图片后整理，供志愿匹配参考；实际录取以当年官方发布为准。"},"data":{"东城区":[{"school":"北京市第二中学","district_rank_estimate":498},{"school":"北京市第一七一中学","district_rank_estimate":1141},{"school":"北京汇文中学","district_rank_estimate":1291},{"school":"北京市第五中学","district_rank_estimate":1450},{"school":"北京市广渠门中学","district_rank_estimate":1748},{"school":"北京景山学校","district_rank_estimate":2097},{"school":"北京市东直门中学","district_rank_estimate":2275},{"school":"北京市龙潭中学","district_rank_estimate":2658},{"school":"北京市第一六六中学","district_rank_estimate":2819},{"school":"北京市第十一中学","district_rank_estimate":3313},{"school":"北京市第五十中学","district_rank_estimate":3698},{"school":"北京市第五十五中学","district_rank_estimate":3797},{"school":"北京市第一六五中学","district_rank_estimate":4032},{"school":"北京市第二十二中学","district_rank_estimate":4268},{"school":"北京汇文实验中学（北京市第一二五中学）","district_rank_estimate":4468},{"school":"北京市第二十四中学","district_rank_estimate":4615},{"school":"北京市第一零九中学","district_rank_estimate":4683},{"school":"北京市第九十六中学","district_rank_estimate":5074},{"school":"北京市第一中学","district_rank_estimate":5418},{"school":"北京市第六十五中学","district_rank_estimate":5434},{"school":"北京市第一四二中学","district_rank_estimate":5699},{"school":"北京市第二十七中学","district_rank_estimate":5949},{"school":"北京市第二十五中学","district_rank_estimate":6245},{"school":"北京市第五十四中学","district_rank_estimate":6334},{"school":"北京市第二十一中学","district_rank_estimate":6514},{"school":"北京市第五十中学分校","district_rank_estimate":6605}],"西城区":[{"school":"北京市第四中学","district_rank_estimate":759},{"school":"北京师范大学附属实验中学","district_rank_estimate":1277},{"school":"北京市第八中学","district_rank_estimate":1537},{"school":"北京师范大学第二附属中学","district_rank_estimate":1974},{"school":"北京师范大学附属中学","district_rank_estimate":1974},{"school":"北京市第一六一中学","district_rank_estimate":2754},{"school":"北京市第三十五中学","district_rank_estimate":3664},{"school":"北京市第十三中学","district_rank_estimate":3664},{"school":"北京师范大学亚太实验学校","district_rank_estimate":4237},{"school":"北京市第十五中学","district_rank_estimate":4232},{"school":"北京市铁路第二中学","district_rank_estimate":4644},{"school":"北京市第十四中学","district_rank_estimate":5242},{"school":"北京市第一五六中学","district_rank_estimate":5721},{"school":"北京市第三中学","district_rank_estimate":6185},{"school":"北京市第一五九中学","district_rank_estimate":6584},{"school":"北京市西城外国语学校","district_rank_estimate":6970},{"school":"北京市第四十四中学","district_rank_estimate":7210},{"school":"北京市育才学校","district_rank_estimate":7670},{"school":"北京市第三十一中学","district_rank_estimate":7914},{"school":"北京市第七中学","district_rank_estimate":8272},{"school":"北京市第三十九中学","district_rank_estimate":8445},{"school":"北京市第六十六中学","district_rank_estimate":8853},{"school":"北京市鲁迅中学","district_rank_estimate":8853},{"school":"北京市回民学校","district_rank_estimate":9236},{"school":"北京市第四十三中学","district_rank_estimate":9425},{"school":"北京教育学院附属中学","district_rank_estimate":9635},{"school":"北京市宣武外国语实验学校","district_rank_estimate":9720},{"school":"北京市第五十六中","district_rank_estimate":9759}],"朝阳区":[{"school":"北京中学","district_rank_estimate":678},{"school":"中国传媒大学附属中学","district_rank_estimate":787},{"school":"北京市第八十中学","district_rank_estimate":902},{"school":"中国人民大学附属中学朝阳学校","district_rank_estimate":1553},{"school":"清华大学附属中学朝阳学校","district_rank_estimate":1836},{"school":"北京市第八十中学睿德分校","district_rank_estimate":1836},{"school":"北京市朝阳外国语学校","district_rank_estimate":2108},{"school":"清华大学附属中学望京学校","district_rank_estimate":2569},{"school":"北京市陈经纶中学","district_rank_estimate":2902},{"school":"北京中学科技分校","district_rank_estimate":2902},{"school":"清华大学附属中学广华学校","district_rank_estimate":3797},{"school":"首都师范大学附属中学朝阳学校","district_rank_estimate":3941},{"school":"北京市第二中学朝阳学校","district_rank_estimate":4071},{"school":"北京工业大学附属中学","district_rank_estimate":4487},{"school":"北京市日坛中学","district_rank_estimate":5233},{"school":"北京市和平街第一中学","district_rank_estimate":5766},{"school":"北京市和平街第一中学（莲葩园）","district_rank_estimate":6218},{"school":"对外经济贸易大学附属中学（北京市第九十四中学）","district_rank_estimate":6304},{"school":"东北师范大学附属中学朝阳学校","district_rank_estimate":6420},{"school":"北京市三里屯一中","district_rank_estimate":7149},{"school":"北京市第十七中学","district_rank_estimate":7755},{"school":"北京市东方德才学校","district_rank_estimate":8175},{"school":"北京第二外国语学院附属中学","district_rank_estimate":8491}],"丰台区":[{"school":"北京市第十二中学","district_rank_estimate":735},{"school":"北京十一学校中堂实验学校","district_rank_estimate":824},{"school":"北京钱学森中学","district_rank_estimate":866},{"school":"北京市丰台区第二中学","district_rank_estimate":1175},{"school":"北京市第十八中学","district_rank_estimate":1800},{"school":"北京第五实验学校","district_rank_estimate":1848},{"school":"北京师范大学实验中学丰台学校","district_rank_estimate":1895},{"school":"首都师范大学附属丽泽中学","district_rank_estimate":2195},{"school":"北京市丰台区第八中学","district_rank_estimate":2237},{"school":"北京市赵登禹学校","district_rank_estimate":2343},{"school":"中国人民大学附属中学丰台学校","district_rank_estimate":2343},{"school":"北京教育学院附属丰台实验学校","district_rank_estimate":2505},{"school":"北京市第十中学","district_rank_estimate":2552},{"school":"北京市第十中学晓月苑分校","district_rank_estimate":2687},{"school":"北京市丰台区外国语学校","district_rank_estimate":2851},{"school":"中央民族大学附属中学丰台实验学校","district_rank_estimate":3179},{"school":"中国教育科学研究院丰台实验学校","district_rank_estimate":3291},{"school":"北京市丰台区太平桥学校","district_rank_estimate":3396},{"school":"首都经济贸易大学附属中学","district_rank_estimate":3499},{"school":"首都师范大学附属云岗中学","district_rank_estimate":3996},{"school":"北京市大成学校","district_rank_estimate":4446},{"school":"北京市第十八中学蒲芳学校","district_rank_estimate":4446}],"海淀区":[{"school":"中国人民大学附属中学","district_rank_estimate":1096},{"school":"北京市十一学校","district_rank_estimate":1096},{"school":"北京市第一零一中学","district_rank_estimate":1452},{"school":"清华大学附属中学","district_rank_estimate":1452},{"school":"首都师范大学附属中学","district_rank_estimate":2067},{"school":"北京大学附属中学","district_rank_estimate":2523},{"school":"清华大学附属实验学校","district_rank_estimate":2523},{"school":"北京市育英学校","district_rank_estimate":3494},{"school":"北京市第五十七中学","district_rank_estimate":4720},{"school":"人大附中航天城学校","district_rank_estimate":5187},{"school":"北京交通大学附属中学","district_rank_estimate":5423},{"school":"北京市建华实验学校","district_rank_estimate":5423},{"school":"中国人民大学附属中学分校","district_rank_estimate":5423},{"school":"北京理工大学附属中学","district_rank_estimate":5664},{"school":"北京市第五十七中上庄分校","district_rank_estimate":6163},{"school":"首都师范大学附属玉泉学校","district_rank_estimate":6409},{"school":"北京市第一零一中学（温泉镇）","district_rank_estimate":6409},{"school":"北京市海淀区教师进修学校附属实验学校","district_rank_estimate":6409},{"school":"北京航空航天大学实验学校","district_rank_estimate":6409},{"school":"首都师范大学附属中学第一分校","district_rank_estimate":7050},{"school":"清华大学附属中学上地学校","district_rank_estimate":7460},{"school":"北京十一实验中学","district_rank_estimate":7660},{"school":"北京市八一学校","district_rank_estimate":8086},{"school":"北京市中关村中学","district_rank_estimate":8292},{"school":"中国人民大学附属中学翠微学校","district_rank_estimate":8292},{"school":"北京市第二十中学","district_rank_estimate":8292},{"school":"人大附中西山学校","district_rank_estimate":8480},{"school":"中央民族大学附属中学","district_rank_estimate":8848},{"school":"北京市育英中学","district_rank_estimate":8848},{"school":"首都师范大学第二附属中学","district_rank_estimate":9216},{"school":"北京一零一中石油分校","district_rank_estimate":9595},{"school":"北京市玉渊潭中学","district_rank_estimate":10375},{"school":"北京市第十九中学","district_rank_estimate":10375},{"school":"首都师范大学附属育新学校","district_rank_estimate":10867},{"school":"北京市海淀实验中学","district_rank_estimate":10867},{"school":"清华附中志新学校（原北京科技大学附属中学）","district_rank_estimate":11016},{"school":"北京大学附属中学北医分校（原北京医学院附属中学）","district_rank_estimate":11195},{"school":"北京实验学校（海淀）","district_rank_estimate":11782},{"school":"北京外国语大学附属中学","district_rank_estimate":11782},{"school":"北京师范大学第三附属中学","district_rank_estimate":11928},{"school":"北京外国语大学附属外国语学校","district_rank_estimate":12587},{"school":"北京市海淀区教师进修附属实验香山分校","district_rank_estimate":12908},{"school":"北京市中关村中学知春分校","district_rank_estimate":12908},{"school":"北京一零一中矿大分校","district_rank_estimate":12908},{"school":"北京市第十九中学闵庄校区","district_rank_estimate":12945},{"school":"北京交通大学附属中学第二分校","district_rank_estimate":13296},{"school":"清华大学附属中学永丰学校","district_rank_estimate":13300},{"school":"清华附中学院路学校（原中国地质大学附属中学）","district_rank_estimate":13507},{"school":"中国人民大学附属中学第二分校","district_rank_estimate":14150},{"school":"北京理工大学附属中学分校","district_rank_estimate":14262},{"school":"中国农业大学附属中学","district_rank_estimate":14364},{"school":"北京交通大学附属中学东校区","district_rank_estimate":14465},{"school":"北京交通大学附属中学分校","district_rank_estimate":14465},{"school":"北京市八一学校附属玉泉学校","district_rank_estimate":14765},{"school":"北京中法实验学校","district_rank_estimate":14863},{"school":"北京市清河中学","district_rank_estimate":15125}]},"summary":{"total_districts":5,"total_schools":155,"districts":{"东城区":26,"西城区":28,"朝阳区":23,"丰台区":22,"海淀区":56}}};
+const $=id=>document.getElementById(id);
+const esc=s=>(s==null?'':String(s)).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+
+(function init(){
+  const ds=Object.keys(D.data);
+  $('dist').innerHTML=ds.map(d=>'<option>'+esc(d)+'</option>').join('');
+  $('totSch').textContent=D.summary.total_schools;
+  $('cover').innerHTML='<table><thead><tr><th>区</th><th style="text-align:right">学校数</th></tr></thead><tbody>'+
+    ds.map(d=>'<tr><td>'+esc(d)+'</td><td class="rank">'+D.data[d].length+'</td></tr>').join('')+
+    '</tbody></table>';
+})();
+
+function listOf(d){ return (D.data[d]||[]).slice().sort((a,b)=>a.district_rank_estimate-b.district_rank_estimate); }
+
+function calc(){
+  const d=$('dist').value, r=parseInt($('rank').value,10);
+  const out=$('out');
+  if(!r||r<=0){ out.innerHTML='<div class="hint">请填写有效的区内排名。</div>'; return; }
+  const all=listOf(d);
+  // 数据稀疏（每区仅 22–56 所，区排跨度大），按"位置"分档而非固定比例，避免空档
+  let idx=all.findIndex(x=>x.district_rank_estimate>=r);
+  if(idx<0) idx=all.length;
+  const N=5;
+  const chong=all.slice(Math.max(0,idx-N), idx);   // 要求比你更靠前 → 冲
+  const wen  =all.slice(idx, idx+N);                // 要求与你接近/略宽松 → 稳
+  const bao  =all.slice(idx+N, idx+2*N);            // 要求明显宽松 → 保
+  const tbl=(arr,cls,title,tip)=>
+    '<div class="grp '+cls+'"><h3>'+title+'（'+arr.length+'）</h3>'+
+    (arr.length?'<table><thead><tr><th>学校</th><th style="text-align:right">预估区排</th></tr></thead><tbody>'+
+      arr.map(x=>'<tr><td>'+esc(x.school)+'</td><td class="rank">'+x.district_rank_estimate.toLocaleString()+'</td></tr>').join('')+
+    '</tbody></table>':'<div class="empty">'+tip+'</div>')+'</div>';
+  out.innerHTML='<div class="hint">'+esc(d)+' · 区内排名 <b>'+r.toLocaleString()+'</b> · 本区共 '+all.length+' 所</div>'+
+    tbl(chong,'chong','冲','本区暂无处于冲刺区间的高中')+
+    tbl(wen,'wen','稳','本区暂无处于稳妥区间的高中')+
+    tbl(bao,'bao','保','本区暂无处于保底区间的高中');
+}
+
+function showAll(){
+  const d=$('dist').value, all=listOf(d);
+  $('out').innerHTML='<div class="grp"><h3>'+esc(d)+' · 全部 '+all.length+' 所（按预估区排升序）</h3>'+
+    '<table><thead><tr><th>学校</th><th style="text-align:right">预估区排</th></tr></thead><tbody>'+
+    all.map(x=>'<tr><td>'+esc(x.school)+'</td><td class="rank">'+x.district_rank_estimate.toLocaleString()+'</td></tr>').join('')+
+    '</tbody></table></div>';
+}
+</script>
+</body>
+</html>
