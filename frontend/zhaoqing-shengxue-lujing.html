@@ -1,0 +1,949 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>广东·肇庆升学路径全景图（2026）</title>
+<style>
+:root{
+  --brand:#4d7c0f; --chong:#dc2626; --wen:#2563eb; --bao:#15803d;
+  --special:#7c3aed; --teal:#0d9488; --amber:#b45309;
+  --ink:#1a1f2b; --ink-2:#33404f; --muted:#5b6472;
+  --line:#e7eaf0; --bg:#f4f6fb; --card:#ffffff;
+  --brand-50:#eef2ff; --chong-50:#fef2f2; --wen-50:#eff6ff;
+  --bao-50:#ecfdf3; --special-50:#f5f3ff; --teal-50:#ecfdf9; --amber-50:#fff7ed;
+  --fs-h1:28px; --fs-h2:23px; --fs-h3:18px; --fs-card:16px;
+  --fs-base:15px; --fs-sm:14px; --fs-xs:12.5px; --fs-2xs:11.5px;
+  --radius:16px; --radius-sm:12px;
+  --shadow-sm:0 1px 2px rgba(16,24,40,.05),0 3px 10px rgba(16,24,40,.05);
+  --shadow-md:0 6px 20px rgba(16,24,40,.10);
+  --shadow-lg:0 24px 64px rgba(16,24,40,.20);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+  color:var(--ink); background:var(--bg); line-height:1.65; font-size:var(--fs-base);
+  -webkit-font-smoothing:antialiased;
+}
+a{color:var(--brand);text-decoration:none}
+.wrap{max-width:1120px;margin:0 auto;padding:0 16px}
+header.hero{
+  background-color:var(--brand);
+  background-image:
+    radial-gradient(1000px 360px at 88% -40%, rgba(255,255,255,.22), transparent 55%),
+    radial-gradient(rgba(255,255,255,.10) 1px, transparent 1.6px),
+    linear-gradient(135deg,#3b5bdb 0%, #2563eb 100%);
+  background-size:auto, 22px 22px, auto;
+  color:#fff; padding:40px 0 30px; position:relative;
+  box-shadow:0 6px 24px rgba(16,24,40,.12);
+}
+header.hero h1{font-size:var(--fs-h1);font-weight:800;letter-spacing:.5px;line-height:1.25}
+header.hero p{margin-top:10px;font-size:var(--fs-sm);opacity:.95;max-width:780px;line-height:1.7}
+.badge-row{margin-top:16px;display:flex;flex-wrap:wrap;gap:8px}
+.badge{background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.32);
+  padding:5px 12px;border-radius:999px;font-size:var(--fs-2xs);font-weight:600;backdrop-filter:blur(2px)}
+nav.tabs{position:sticky;top:0;z-index:30;background:rgba(255,255,255,.9);
+  -webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);
+  border-bottom:1px solid var(--line);box-shadow:0 2px 10px rgba(16,24,40,.04)}
+nav.tabs .wrap{display:flex;gap:6px;overflow-x:auto;padding:10px 16px;scrollbar-width:none}
+nav.tabs .wrap::-webkit-scrollbar{display:none}
+nav.tabs a{flex:0 0 auto;padding:8px 15px;border-radius:999px;font-size:var(--fs-sm);
+  color:var(--muted);white-space:nowrap;font-weight:600;transition:background .15s,color .15s}
+nav.tabs a:hover{background:var(--bg);color:var(--ink)}
+nav.tabs a.active{background:var(--brand);color:#fff;box-shadow:0 2px 8px rgba(59,91,219,.3)}
+.search{padding:20px 0 4px}
+.search input{width:100%;padding:13px 16px;border:1px solid var(--line);border-radius:var(--radius-sm);
+  font-size:var(--fs-base);outline:none;background:var(--card);transition:border-color .15s,box-shadow .15s}
+.search input:focus{border-color:var(--brand);box-shadow:0 0 0 3px rgba(59,91,219,.14)}
+section{padding:30px 0 10px}
+.sec-head{display:flex;align-items:baseline;gap:12px;margin-bottom:8px;flex-wrap:wrap}
+.sec-head h2{font-size:var(--fs-h2);font-weight:800;position:relative;padding-left:15px;line-height:1.3}
+.sec-head h2::before{content:"";position:absolute;left:0;top:3px;bottom:3px;width:5px;border-radius:3px;
+  background:linear-gradient(180deg,var(--brand),var(--wen))}
+.sec-head .sub{font-size:var(--fs-xs);color:var(--muted);line-height:1.6}
+.stage{margin:24px 0 8px;display:flex;align-items:center;gap:12px;
+  padding:11px 0 11px 16px;border-left:4px solid var(--brand);border-radius:0 12px 12px 0;
+  background:linear-gradient(90deg,rgba(59,91,219,.07),transparent 55%)}
+.stage .num{width:32px;height:32px;border-radius:50%;background:var(--brand);color:#fff;
+  display:flex;align-items:center;justify-content:center;font-weight:700;font-size:var(--fs-sm);flex:0 0 auto;
+  box-shadow:0 2px 6px rgba(16,24,40,.18)}
+.stage h3{font-size:var(--fs-h3);font-weight:700}
+.stage .tip{font-size:var(--fs-xs);color:var(--muted)}
+.stage.cat-chong{border-left-color:var(--chong);background:linear-gradient(90deg,rgba(220,38,38,.07),transparent 55%)}
+.stage.cat-chong .num{background:var(--chong)}
+.stage.cat-wen{border-left-color:var(--wen);background:linear-gradient(90deg,rgba(37,99,235,.07),transparent 55%)}
+.stage.cat-wen .num{background:var(--wen)}
+.stage.cat-bao{border-left-color:var(--bao);background:linear-gradient(90deg,rgba(21,128,61,.08),transparent 55%)}
+.stage.cat-bao .num{background:var(--bao)}
+.stage.cat-special{border-left-color:var(--special);background:linear-gradient(90deg,rgba(124,58,237,.07),transparent 55%)}
+.stage.cat-special .num{background:var(--special)}
+.stage.cat-teal{border-left-color:var(--teal);background:linear-gradient(90deg,rgba(13,148,136,.07),transparent 55%)}
+.stage.cat-teal .num{background:var(--teal)}
+.stage.cat-amber{border-left-color:var(--amber);background:linear-gradient(90deg,rgba(180,83,9,.07),transparent 55%)}
+.stage.cat-amber .num{background:var(--amber)}
+.grid{display:grid;grid-template-columns:1fr;gap:14px;margin-top:14px}
+@media(min-width:600px){.grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}}
+@media(min-width:992px){.grid{grid-template-columns:repeat(auto-fill,minmax(290px,1fr));gap:18px}}
+.card{background:var(--card);border:1px solid var(--line);border-top:3px solid var(--accent,var(--brand));
+  border-radius:var(--radius);padding:16px;box-shadow:var(--shadow-sm);
+  display:flex;flex-direction:column;gap:8px;transition:transform .16s ease,box-shadow .16s ease,border-color .16s ease}
+.card:hover{box-shadow:var(--shadow-md)}
+.card .ctitle{font-size:var(--fs-card);font-weight:700;display:flex;align-items:center;gap:8px;flex-wrap:wrap;line-height:1.4}
+.card .desc{font-size:var(--fs-sm);color:var(--ink-2);line-height:1.6}
+.pill{display:inline-block;font-size:var(--fs-2xs);padding:3px 10px;border-radius:999px;font-weight:600;line-height:1.4}
+.pill.t{background:var(--brand-50);color:#3249c7}
+.pill.time{background:var(--bao-50);color:#15803d}
+.pill.who{background:#fef2f2;color:#c2410c}
+.pill.note{background:var(--amber-50);color:#92400e}
+.meta{display:flex;flex-wrap:wrap;gap:6px;margin-top:2px}
+.card ul{margin:2px 0 0 18px;font-size:var(--fs-sm);color:var(--ink-2);line-height:1.6}
+.card ul li{margin:3px 0}
+.stage.cat-brand + .grid{--accent:var(--brand)}
+.stage.cat-chong + .grid{--accent:var(--chong)}
+.stage.cat-wen + .grid{--accent:var(--wen)}
+.stage.cat-bao + .grid{--accent:var(--bao)}
+.stage.cat-special + .grid{--accent:var(--special)}
+.stage.cat-teal + .grid{--accent:var(--teal)}
+.stage.cat-amber + .grid{--accent:var(--amber)}
+.trackbar{display:grid;grid-template-columns:1fr;gap:12px;margin:14px 0 4px}
+@media(min-width:600px){.trackbar{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(min-width:992px){.trackbar{grid-template-columns:repeat(4,minmax(0,1fr))}}
+.trackbar .tk{background:var(--card);border:1px solid var(--line);border-left:4px solid var(--brand);
+  border-radius:var(--radius-sm);padding:16px;box-shadow:var(--shadow-sm);transition:transform .16s,box-shadow .16s}
+.trackbar .tk:hover{transform:translateY(-2px);box-shadow:var(--shadow-md)}
+.trackbar .tk b{display:block;font-size:15px;margin-bottom:6px;color:var(--brand)}
+.trackbar .tk span{font-size:var(--fs-sm);color:var(--muted);line-height:1.6}
+.callout{background:var(--card);border-left:4px solid var(--brand);border-radius:0 12px 12px 0;
+  padding:15px 18px;margin:16px 0;color:var(--ink-2);font-size:var(--fs-sm);line-height:1.7;box-shadow:var(--shadow-sm)}
+footer{margin:34px 0;padding:20px 0;border-top:1px solid var(--line);color:var(--muted);font-size:var(--fs-xs);line-height:1.7}
+footer b{color:var(--ink)}
+@media(max-width:576px){
+  header.hero{padding:30px 0 24px}
+  header.hero h1{font-size:23px}
+  .sec-head h2{font-size:20px}
+  .stage h3{font-size:16px}
+  .card{padding:14px}
+}
+.card.clickable{cursor:pointer;transition:transform .16s ease,box-shadow .16s ease,border-color .16s ease}
+.card.clickable:hover{transform:translateY(-3px);box-shadow:var(--shadow-md)}
+.card.clickable:hover .detail-btn{background:#2f4ec4}
+.card.clickable:focus-within{outline:2px solid var(--brand);outline-offset:2px}
+.detail-btn{margin-top:6px;align-self:flex-start;background:var(--brand);color:#fff;border:none;
+  padding:9px 15px;border-radius:999px;font-size:var(--fs-sm);font-weight:600;cursor:pointer;
+  transition:background .15s,transform .12s}
+.detail-btn:active{transform:scale(.97)}
+.modal-mask{position:fixed;inset:0;background:rgba(16,24,40,.55);display:none;z-index:50;
+  align-items:flex-start;justify-content:center;padding:24px 16px;overflow:auto;backdrop-filter:blur(2px)}
+.modal-mask.open{display:flex}
+.modal{background:var(--card);max-width:780px;width:100%;border-radius:18px;box-shadow:var(--shadow-lg);
+  margin:auto;overflow:hidden;animation:pop .18s ease}
+@keyframes pop{from{transform:translateY(8px) scale(.98);opacity:.6}to{transform:none;opacity:1}}
+.modal-head{padding:20px 22px;background:linear-gradient(135deg,#3b5bdb,#2563eb);color:#fff;
+  display:flex;align-items:flex-start;justify-content:space-between;gap:12px}
+.modal-head h3{font-size:18px;font-weight:800;line-height:1.45}
+.modal-close{background:rgba(255,255,255,.2);border:none;color:#fff;width:34px;height:34px;border-radius:50%;
+  font-size:22px;cursor:pointer;flex:0 0 auto;line-height:1;transition:background .15s,transform .12s}
+.modal-close:hover{background:rgba(255,255,255,.38)}
+.modal-close:active{transform:scale(.9)}
+.modal-body{padding:18px 22px 24px;max-height:74vh;overflow:auto}
+.modal-intro{font-size:var(--fs-sm);color:var(--ink-2);margin-bottom:10px;line-height:1.7}
+.modal-note{font-size:var(--fs-xs);color:var(--muted);background:var(--bg);border:1px solid var(--line);
+  border-radius:12px;padding:12px 14px;margin-top:16px;line-height:1.65}
+.detail-table{width:100%;border-collapse:separate;border-spacing:0;font-size:var(--fs-sm);margin-top:4px;
+  border:1px solid var(--line);border-radius:12px;overflow:hidden}
+.detail-table th,.detail-table td{border-bottom:1px solid var(--line);padding:9px 11px;text-align:left;vertical-align:top}
+.detail-table th{background:var(--brand-50);color:#3249c7;font-weight:700}
+.detail-table tr:last-child td{border-bottom:none}
+.detail-table td.num,.detail-table th.num{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}
+.detail-table tr.sum td{background:var(--amber-50);font-weight:700}
+.detail-sub{font-size:var(--fs-xs);font-weight:700;color:var(--ink);margin:16px 0 4px;
+  padding-left:10px;border-left:3px solid var(--brand)}
+.cx-search{width:100%;padding:11px 14px;border:1px solid var(--line);border-radius:var(--radius-sm);
+  font-size:var(--fs-sm);margin:6px 0 10px;outline:none;background:var(--card);transition:border-color .15s,box-shadow .15s}
+.cx-search:focus{border-color:var(--brand);box-shadow:0 0 0 3px rgba(59,91,219,.14)}
+.card-data{width:100%;border-collapse:separate;border-spacing:0;margin:10px 0 2px;font-size:var(--fs-xs);background:var(--card);
+  border:1px solid var(--line);border-radius:10px;overflow:hidden}
+.card-data th{background:var(--brand-50);color:#3249c7;font-weight:700;text-align:left;padding:6px 9px;border-bottom:1px solid var(--line);white-space:nowrap}
+.card-data td{padding:6px 9px;border-bottom:1px solid var(--line);color:#1f2733;vertical-align:top;line-height:1.55}
+.card-data tr:last-child td{border-bottom:none}
+.card-data td:first-child{font-weight:600;color:var(--ink-2);background:#f7f9fc;white-space:nowrap}
+.card-data td b{color:#c0392b;font-variant-numeric:tabular-nums}
+.card-note{font-size:11px;color:var(--muted);line-height:1.6;border-top:1px dashed var(--line);
+  padding-top:8px;margin-top:8px}
+a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible{outline:2px solid var(--brand);outline-offset:2px}
+@media(prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important;scroll-behavior:auto!important}}
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="wrap">
+    <h1>广东·肇庆升学路径全景图（2026）</h1>
+    <p>初升高按肇庆中招、高升大按广东全省。肇庆 2025 年中考九年级约 <b>6.61 万人</b>、普通高中最低录取控制线 <b>405 分</b>（公办）；市属 3 所优质高中（肇庆中学、宣卿中学、大旺实验学校）将 <b>不低于 50%</b> 招生计划指标到校。本图把"初中→高中→大学"的关键路径一次说清。</p>
+    <div class="badge-row">
+      <span class="badge">肇庆中招 提前/统招/第一/第二批</span>
+      <span class="badge">市属 3 校指标到校 ≥50%</span>
+      <span class="badge">2025 公办控线 405</span>
+      <span class="badge">综合高中班试点</span>
+      <span class="badge">广东高招 3 批次</span>
+      <span class="badge">普高升学率 50.09%</span>
+      <span class="badge">"3+4" 中本贯通</span>
+    </div>
+  </div>
+</header>
+
+<nav class="tabs">
+  <div class="wrap">
+    <a href="#cz" class="active" data-tab="cz">① 初升高（肇庆中招路径）</a>
+    <a href="#gz" data-tab="gz">② 高升大（广东高招路径）</a>
+    <a href="#zx" data-tab="zx">③ 中职与四大路径</a>
+  </div>
+</nav>
+
+<div class="wrap search">
+  <input id="q" type="text" placeholder="搜索路径关键词：如 名额分配、指标到校、指标生、自主招生、综合高中班、中本贯通、三二分段、强基、综评、专项、公费师范、卫生专项、军士、艺术……">
+</div>
+
+<!-- ============ ① 初升高（肇庆中招） ============ -->
+<section id="cz" class="wrap">
+  <div class="sec-head">
+    <h2>① 初升高（肇庆中招路径）</h2>
+    <span class="sub">肇庆中考总分 830 分，实行考后知分填报，按"分数优先、遵循志愿"平行志愿投档，分四个批次录取（提前自主招生批→统招批→第一批→第二批）；被前一批次录取即不再参加后续。2025 年公办普通高中最低录取控制线 405 分，民办公费生 525 分、自费生 320 分。九年级约 6.61 万人参加中考，普通高中升学率 50.09%，新增公办学位 6,444 个。</span>
+  </div>
+
+  <div class="callout">
+    录取顺序：<b>提前自主招生批（自主招生）→ 统招批（市属及跨区域高中）→ 第一批（县属公办 + 民办公费）→ 第二批（民办自费 + 综合高中班）</b>。
+    指标到校（市属 3 校 ≥50%、区属按比例）是户籍生降分入读优质公办高中的核心渠道；综合高中班为 2025 年试点，构建"学术 + 技能"双轨；中本贯通 / 三二分段则是"规避高考竞争、直通本科 / 高职"的职教路径。
+  </div>
+
+  <div class="stage cat-chong"><span class="num">提</span><h3>提前自主招生批</h3><span class="tip">学科 / 创新 / 体艺特长，中考 + 校测择优</span></div>
+  <div class="grid">
+    <div class="card clickable" data-detail="zizhu" tabindex="0" role="button" aria-label="肇庆自主招生 提前批">
+      <div class="ctitle">自主招生（提前批） <span class="pill t">学科创新 / 体育艺术</span></div>
+      <div class="desc">在提前自主招生批录取，市属及国家级示范性普高可开展创新人才、学科特长生自主招生，其他普高可开展体育、艺术等特长特色自主招生，按"学业水平考试 + 学校专项考核"择优，是特长生"低分高就"的核心窗口。</div>
+      <div class="meta"><span class="pill time">提前批 · 仅 1 志愿</span><span class="pill who">创新 / 体艺专长</span></div>
+      <ul>
+        <li>学科创新类面向具创新潜质、学科特长应届初中毕业生；体艺类面向体育、艺术专长生与高水平运动队。</li>
+        <li>须先参加学校专项考核并取得资格，方可填报提前批志愿。</li>
+      </ul>
+      <button class="detail-btn" type="button">查看自主招生类型 →</button>
+    </div>
+
+    <div class="card clickable" data-detail="ty" tabindex="0" role="button" aria-label="肇庆体育艺术特长生 2025">
+      <div class="ctitle">体育 / 艺术特长生 <span class="pill t">提前批 · 已公布方案</span></div>
+      <div class="desc">肇庆普通高中体艺特长生属自主招生（提前批），含田径、射箭、武术、美术、书法、音乐、舞蹈及高水平运动队等。2025 部分学校已公布方案：百花中学 ≤55、碧海湾 120、实验中学 80、大旺中学 80、荣源龙 60（官方未发全市汇总表）。</div>
+      <ul>
+        <li>文化 + 术科合成录取，多数校按"学业×0.6 + 专业折算×0.4"。</li>
+        <li>须先通过学校专项考核并取得资格，具体项目与计划以各校自主招生简章为准。</li>
+      </ul>
+      <button class="detail-btn" type="button">查看体艺特长生计划 →</button>
+    </div>
+
+    <div class="card">
+      <div class="ctitle">综合高中班（2025 试点） <span class="pill t">中职附设 · 普高学籍</span></div>
+      <div class="desc">2025 年肇庆在中职学校试点附设综合高中班，与普高同步填报志愿、同步录取，入学注册普高学籍，高一结束后可转中职。</div>
+      <div class="meta"><span class="pill who">4 所中职试点</span></div>
+      <ul>
+        <li>公办：四会中等专业学校、封开县中等职业学校。</li>
+        <li>民办：肇庆理工中等职业学校、肇庆市科技中等职业学校；最低控制线 <b>320 分</b>。</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="stage cat-wen"><span class="num">2</span><h3>名额分配（指标到校）</h3><span class="tip">户籍生专属降分渠道</span></div>
+  <div class="grid">
+    <div class="card clickable" data-detail="minge" tabindex="0" role="button" aria-label="肇庆名额分配 指标到校 控制线与规则">
+      <div class="ctitle">名额分配（指标到校） <span class="pill t">户籍生 · 到校名额</span></div>
+      <div class="desc">肇庆将优质普高招生名额按比例分配到区域内初中（指标到校）。市属 3 所（肇庆中学、宣卿中学、大旺实验学校）分配到各区的指标，各区按<b>不低于本区招生总数 50%</b> 实行指标到校；肇庆市第一中学等区属优质校亦按比例分配。指标生控制线较正取生低 <b>40 分</b>。</div>
+      <div class="meta">
+        <span class="pill t">按初中考生数比例</span>
+        <span class="pill time">指标生 −40 分</span>
+        <span class="pill note">户籍生专属</span>
+      </div>
+      <ul>
+        <li>名额按区域内各初中中考报名学生数占该区域总数比例分配。</li>
+        <li>2025 年指标到校生须具该初中连续 2 年学籍并实际就读（2026 起改 3 年）。</li>
+      </ul>
+      <button class="detail-btn" type="button">查看分配规则与市属校线 →</button>
+    </div>
+  </div>
+
+  <div class="stage cat-brand"><span class="num">3</span><h3>统招批 / 第一批（普通高中）</h3><span class="tip">按分录取主力，区域差异化划线</span></div>
+  <div class="grid">
+    <div class="card clickable" data-detail="shida" tabindex="0" role="button" aria-label="肇庆主要高中录取线梯队 2025">
+      <div class="ctitle">主要高中录取线梯队 · 2025 <span class="pill t">满分 830 · 区域差异</span></div>
+      <div class="desc">2025 年肇庆中学端州正取 <b>749.9</b>、宣卿中学 735、大旺实验学校 721.5、市一中 715.1；各区差异化划线（鼎湖、高要、高新区另线）。区属优质如六中 660.1、端州中学 630、百花中学 578.3；四会中学 682.9、高要一中 606 等。</div>
+      <div class="meta"><span class="pill t">统招批平行志愿</span></div>
+      <ul>
+        <li>市属 3 所 + 市城区跨区域 4 所 + 四会中学 + 华师封开实验为统招批，平行志愿投档。</li>
+        <li>各县（市、区）属公办普高在第一批由属地教育局划定（不低于全市相应类别控制线）。</li>
+      </ul>
+      <button class="detail-btn" type="button">查看主要高中梯队（2025） →</button>
+    </div>
+
+    <div class="card clickable" data-detail="district" tabindex="0" role="button" aria-label="肇庆中考大盘 2025">
+      <div class="ctitle">肇庆中考大盘 · 2025 <span class="pill t">九年级 6.61 万 · 满分 830</span></div>
+      <div class="desc">2025 年肇庆九年级报考约 <b>6.61 万人</b>，中考满分 830 分；全市高中阶段招生指导性计划 <b>41,252 个</b>（含中职），市属 3 所普高计划 1,512 个。公办普高最低控制线 <b>405</b>、民办公费 525、自费 320；普高升学率 <b>50.09%</b>。</div>
+      <ul>
+        <li>录取分四批次：提前自主招生批→统招批→第一批→第二批。</li>
+        <li>新增盘活公办高中学位 6,444 个，4 所校入选省第一批特色高中。</li>
+      </ul>
+      <button class="detail-btn" type="button">查看中考大盘（2025） →</button>
+    </div>
+
+    <div class="card">
+      <div class="ctitle">志愿设置与投档 <span class="pill t">平行志愿 · 分数优先</span></div>
+      <div class="desc">肇庆实行"分数优先、遵循志愿"平行志愿投档。提前自主招生批仅填 1 个志愿；统招批最多 8 个；第一批（县属公办 + 民办公费）最多 10 个；第二批（民办自费 + 综合高中班）最多 10 个。</div>
+      <div class="meta"><span class="pill t">四批次依次录取</span></div>
+      <ul>
+        <li>被前一批次录取的考生，不再参加后续批次投档。</li>
+        <li>各类普高不得录取低于相应类别最低控制线的学生（自主招生 / 高水平运动队除外）。</li>
+      </ul>
+    </div>
+
+    <div class="card clickable" data-detail="minban" tabindex="0" role="button" aria-label="肇庆民办高中梯队 2025">
+      <div class="ctitle">民办高中梯队 <span class="pill t">公费生 / 自费生</span></div>
+      <div class="desc">民办公费生与县属公办同批（第一批），2025 最低控制线 <b>525</b>；自费生单独第二批，最低控制线 <b>320</b>。外国语学校 722.2、肇院实验 706.8、加美 685.8、凤凰三立 676.8 等公费线居前。</div>
+      <div class="meta"><span class="pill who">经济承受力需评估</span></div>
+      <ul>
+        <li>公费生线常逼近优质公办，自费生门槛较低。</li>
+        <li>填报前须看清收费标准与培养模式（公民融合班按公办收费）。</li>
+      </ul>
+      <button class="detail-btn" type="button">查看民办完整梯队（2025） →</button>
+    </div>
+
+    <div class="card clickable" data-detail="trend" tabindex="0" role="button" aria-label="肇庆主要高中分数线趋势 2024-2025">
+      <div class="ctitle">分数线趋势 <span class="pill t">2024 → 2025</span></div>
+      <div class="desc">顶尖校小幅上涨：肇庆中学端州 742.2→749.9、宣卿 730→735、市一中 712.7→715.1；区属校多回落：端州中学 642→630、百花中学 610→578.3、鼎湖中学 647.1→629.4。公办最低控制线 425→405（降 20）。</div>
+      <ul>
+        <li>市属优质校稳中有升，部分区属校因扩容回落。</li>
+        <li>民办公费生 2025 首次单列最低控制线 525（2024 与公办并线 425）。</li>
+      </ul>
+      <button class="detail-btn" type="button">查看近年分数线趋势 →</button>
+    </div>
+  </div>
+
+  <div class="stage cat-amber"><span class="num">4</span><h3>第二批（民办自费 + 综合高中班）</h3><span class="tip">民办自费生与中职附设综合高中班</span></div>
+  <div class="grid">
+    <div class="card">
+      <div class="ctitle">民办自费 + 综合高中班（第二批） <span class="pill t">升学并重</span></div>
+      <div class="desc">第二批为民办普通高中自费生与中职附设综合高中班，最低控制线均为 320 分；综合高中班注册普高学籍、高一后可转中职，贯通三二分段、中本贯通等升学通道（详见 ③ 中职与四大路径）。</div>
+      <div class="meta"><span class="pill who">技能导向、升学并重</span></div>
+      <ul>
+        <li>综合高中班试点：四会中专、封开中专（公办）+ 肇庆理工、肇庆科技中职（民办）。</li>
+        <li>自费生须看清收费，填报前核对学校公示收费标准。</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <div class="ctitle">"3+4" 中本贯通（肇庆） <span class="pill t">中职 → 本科</span></div>
+      <div class="desc">肇庆 2025 年"3+4"中本贯通学校：肇庆市工贸学校 <b>641.5 分</b>、肇庆市农业学校 <b>634.3 分</b>，均要求应届初中毕业生，是"规避高考竞争、直通本科"的职教路径。</div>
+      <ul>
+        <li>前 3 年中职、后 4 年本科，毕业获本科文凭。</li>
+        <li>具体计划与对接本科高校以肇庆市教育局公布为准。</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ============ ② 高升大（广东高招） ============ -->
+<section id="gz" class="wrap">
+  <div class="sec-head">
+    <h2>② 高升大（广东高招路径）</h2>
+    <span class="sub">广东夏季高考实行"3+1+2"，分提前、本科、专科（高职）三个批次，院校专业组平行志愿。录取顺序：强基 → 综评 / 高水平运动队 → 本科提前批 → 普通本科批（含专项）→ 专科提前批（军士 / 卫生专项）→ 普通专科批。</span>
+  </div>
+
+  <div class="callout">
+    多数路径对天赋 / 特长 / 户籍或定向服务有硬门槛；所有特殊招生都以"参加统一高考"为前提。专项计划、卫生专项、教师专项、公安专项等"带编带岗 / 免学费"路径，是广东考生冲击公办优质本科、锁定稳定就业的关键赛道。肇庆考生还可重点关注家门口的本土高校（肇庆学院、肇庆医学院等）。
+  </div>
+
+  <div class="stage cat-brand"><span class="num">★</span><h3>统招主赛道</h3></div>
+  <div class="grid">
+    <div class="card">
+      <div class="ctitle">普通高考统招 <span class="pill t">无门槛，全体考生</span></div>
+      <div class="desc">选择面最广的底层路径。广东实行院校专业组平行志愿（分数优先、遵循志愿），普通类分物理、历史两类分开划线、分开投档。</div>
+      <ul>
+        <li>本科批、专科批按"冲 / 稳 / 保"拉开院校专业组梯度。</li>
+        <li>应届生 3 门选择性考试科目对应的合格性考试须全部合格，否则志愿无效。</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <div class="ctitle">肇庆本土高校 · 升学在身边 <span class="pill t">家门口的名校</span></div>
+      <div class="desc">肇庆高等教育稳步发展，考生在家门口即可冲击本科层次高校：</div>
+      <table class="card-data">
+        <tbody>
+          <tr><td>肇庆学院</td><td>肇庆唯一定位于应用型本科的市属高校，本地就业对口率高</td></tr>
+          <tr><td>肇庆医学院</td><td>2024 年由肇庆医学高等专科学校升格本科，医学类特色</td></tr>
+          <tr><td>广州应用科技学院（肇庆校区）</td><td>民办本科，多科性应用型高校，坐落肇庆鼎湖</td></tr>
+        </tbody>
+      </table>
+      <div class="card-note">肇庆学院、肇庆医学院以普通高考统招为主，医学、师范、理工等专业面向全省招生；广州应用科技学院肇庆校区为民办本科。具体专业计划与选科要求以各高校 2026 简章及广东省教育考试院公布为准。</div>
+    </div>
+  </div>
+
+  <div class="stage cat-chong"><span class="num">↑</span><h3>尖子生冲名校</h3><span class="tip">竞赛 / 综合强考生专属，部分免高考 / 大幅降分</span></div>
+  <div class="grid">
+    <div class="card">
+      <div class="ctitle">广东尖子生冲名校 · 2026 具体数据</div>
+      <table class="card-data">
+        <tbody>
+          <tr><td>强基计划</td><td>39 所 985 试点在粤招生；<b>无需填报</b>，提前批录取前完成；聚焦基础学科，高考 ≥ 85% + 校测</td></tr>
+          <tr><td>综合评价</td><td>12 校在粤共 <b>2,771 人</b>（中大 495 / 港中深 451 / 南科大 307 / 华工 300 居前）</td></tr>
+          <tr><td>保送生</td><td>五大学科奥赛国家集训队、外语校优秀生、退役运动员、公安英烈子女，<b>免高考</b></td></tr>
+          <tr><td>高水平运动队</td><td>双一流高校；一级运动员 + 全国前八；文化课最低本科线 80%（2025 约 347 分）</td></tr>
+          <tr><td>港澳升学</td><td>港大 / 港中文 / 港科技等独立招生，不占统招志愿</td></tr>
+        </tbody>
+      </table>
+      <div class="card-note">强基 / 综评为高分考生"免高考 / 大幅降分"主通道；综合评价适合综合强、有竞赛 / 科创 / 外语特长的考生。具体专业计划、选科与入围线以各高校 2026 简章及广东省教育考试院公布为准。</div>
+    </div>
+
+    <div class="card">
+      <div class="ctitle">强基计划 <span class="pill t">年级前 5% / 竞赛特长</span></div>
+      <div class="desc">39 所 985 试点，聚焦数理化生 / 文史哲 / 古文字等基础学科。</div>
+      <div class="meta"><span class="pill time">4 月报名 / 6 月校测 / 锁档</span><span class="pill note">高考 ≥ 85% + 校测</span></div>
+      <ul>
+        <li>五大学科竞赛银牌及以上可破格入围。</li>
+        <li>录取后原则上不得转专业、档案锁定。</li>
+      </ul>
+    </div>
+
+    <div class="card clickable" data-detail="zhonghe" tabindex="0" role="button" aria-label="综合评价 2026 在粤招生院校">
+      <div class="ctitle">综合评价（631 / 高考为主） <span class="pill t">综合强考生</span></div>
+      <div class="desc">2026 年 <b>12 所高校在粤开展综合评价</b>，共录取 <b>2,771 人</b>（广州生源 880，占 31.8%）。</div>
+      <div class="meta"><span class="pill note">高考 + 校测 + 学考，部分锁档</span></div>
+      <ul>
+        <li>华南理工"631"计划 300 人（高考 60% + 校测 30% + 学考 10%）。</li>
+        <li>同校录取分常低于统招，且不占统招志愿（锁档除外）。</li>
+      </ul>
+      <button class="detail-btn" type="button">查看在粤综合评价院校 →</button>
+    </div>
+
+    <div class="card">
+      <div class="ctitle">保送生 <span class="pill t">免高考</span></div>
+      <div class="desc">五大学科奥赛国家集训队、16 所外语校优秀生、退役运动员、公安英烈子女。</div>
+      <ul>
+        <li>广东考生主流为竞赛国集保送。</li>
+        <li>确认保送后不再参加统招录取。</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <div class="ctitle">高水平运动队 / 艺术团 <span class="pill t">一级运动员 + 全国前八</span></div>
+      <div class="desc">双一流高校降分录取，文化课最低可至本科线 80%。</div>
+      <ul>
+        <li>入校后不能转普通专业。</li>
+        <li>2027 起增加全国赛事前八硬性要求。</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="stage cat-wen"><span class="num">粤</span><h3>广东专属降分 / 专项</h3><span class="tip">农村 / 欠发达地区户籍，本科批单列</span></div>
+  <div class="grid">
+    <div class="card clickable" data-detail="xiangxiang" tabindex="0" role="button" aria-label="专项计划 2026 在粤招生数据">
+      <div class="ctitle">专项计划（地方 + 高校） <span class="pill t">农村 / 欠发达户籍</span></div>
+      <div class="desc">2026 年<b>首年并入本科批</b>（取消各校自主校测，统一省系统申请）。全省 <b>201 个专业组、计划 2,879 人</b>，实际投档 2,862 人。</div>
+      <div class="meta"><span class="pill time">物理类 2,255 / 历史类 624</span></div>
+      <ul>
+        <li>地方专项面向原中央苏区、欠发达革命老区、少数民族地区农村学生。</li>
+        <li>高校专项面向边远、贫困、民族地区县以下农村学生（如中大地理科学类）。</li>
+      </ul>
+      <button class="detail-btn" type="button">查看 2026 专项计划分科数据 →</button>
+    </div>
+
+    <div class="card clickable" data-detail="weisheng" tabindex="0" role="button" aria-label="卫生专项 2026 订单定向计划">
+      <div class="ctitle">卫生专项（订单定向医学生） <span class="pill t">免学费 + 有编有岗</span></div>
+      <div class="desc">2026 年全省订单定向培养医学大学生 <b>1,187 名</b>（省财政 1,155 + 广州 32），定点 <b>11 所</b>院校培养。</div>
+      <div class="meta"><span class="pill note">毕业服务基层 6 年</span></div>
+      <ul>
+        <li>在校免学费、免住宿费，按月发生活补助。</li>
+        <li>毕业后到粤东西北乡镇卫生院等定向单位服务，落实事业编制。</li>
+      </ul>
+      <button class="detail-btn" type="button">查看 2026 卫生专项院校 →</button>
+    </div>
+
+    <div class="card clickable" data-detail="jiaoshi" tabindex="0" role="button" aria-label="教师专项与公费师范 2026">
+      <div class="ctitle">教师专项 / 公费师范 <span class="pill t">免学费 + 带编上岗</span></div>
+      <div class="desc">省属公费定向教师专项 + 国家公费师范生（部属 6 所），为粤东西北等地培养本科师范生。</div>
+      <div class="meta"><span class="pill note">毕业后任教 ≥ 6 年</span></div>
+      <ul>
+        <li>华南师范大学 2026 公费定向教师专项 <b>220 名</b>（面向 10 地市）。</li>
+        <li>免学杂费、住宿费，生活补助 8,000 元 / 年。</li>
+      </ul>
+      <button class="detail-btn" type="button">查看教师专项 / 公费师范 →</button>
+    </div>
+
+    <div class="card">
+      <div class="ctitle">公安专项 <span class="pill t">毕业有编有岗</span></div>
+      <div class="desc">广东警官学院 2026 公安专业人才专项培养 <b>200 名</b>，面向 12 个地级市及 5 个县户籍生源。</div>
+      <div class="meta"><span class="pill note">服务基层一线满 7 年</span></div>
+      <ul>
+        <li>入校不得转专业，须签专项培养协议。</li>
+        <li>毕业通过公安联考、符合条件的按协议录用，确保有编有岗。</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="stage cat-bao"><span class="num">稳</span><h3>稳定就业赛道</h3><span class="tip">免学费 / 带编带岗，求稳首选</span></div>
+  <div class="grid">
+    <div class="card">
+      <div class="ctitle">军警 / 公安 / 司法 / 消防 / 招飞 <span class="pill t">提前批军检</span></div>
+      <div class="desc">本科提前批含空军 / 海军 / 民航招飞，军检院校（军队、武警、公安、司法、消防等）。</div>
+      <ul>
+        <li>须政审、面试、体检、体能测评。</li>
+        <li>空军、海军招飞须达特招线，民航不低于本科线。</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <div class="ctitle">定向培养军士 <span class="pill t">专科提前批</span></div>
+      <div class="desc">专科提前批招收定向培养军士院校，毕业后入伍任军士。</div>
+      <ul>
+        <li>安排在本科批次结束后、普通专科批开始前录取。</li>
+        <li>面向成绩达专科线、志愿服役的考生。</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <div class="ctitle">公费师范 / 教师专项（深度） <span class="pill t">免学费 + 带编</span></div>
+      <div class="desc">详见上方"教师专项 / 公费师范"弹窗：华南师大省属专项 220 名 + 部属 6 所国家公费师范生。</div>
+      <ul>
+        <li>国家公费师范生在提前批非军检院校录取。</li>
+        <li>毕业后由定向地安排到中小学任教不少于 6 年。</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="stage cat-teal"><span class="num">际</span><h3>国际化赛道</h3><span class="tip">港澳 / 中外合作独立招生</span></div>
+  <div class="grid">
+    <div class="card">
+      <div class="ctitle">港澳高校独立招生 <span class="pill t">不占统招志愿</span></div>
+      <div class="desc">香港大学、香港中文大学、香港科技大学、香港理工大学、香港城市大学、澳门大学等在内地独立招生。</div>
+      <ul>
+        <li>须另行向港澳高校报名，与内地统招互不冲突。</li>
+        <li>适合英语强、家庭预算充足、有赴港澳就读规划的考生。</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <div class="ctitle">中外合作办学 / 联合培养 <span class="pill t">普通批内</span></div>
+      <div class="desc">普通批内"中外合作办学""联合培养""学分互认""国际班"等专业。</div>
+      <div class="meta"><span class="pill who">收费较高，需结合经济承受力</span></div>
+      <ul>
+        <li>部分专业全英文授课，非英语语种考生须慎重。</li>
+        <li>投档后若不符合培养要求可能被退档，须看清章程。</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="stage cat-special"><span class="num">艺</span><h3>艺术 / 体育类</h3><span class="tip">统考 + 校考，独立划线</span></div>
+  <div class="grid">
+    <div class="card">
+      <div class="ctitle">艺术类 <span class="pill t">统考 + 校考</span></div>
+      <div class="desc">本科提前批含经批准在提前批录取的艺术院校；本科批、专科批设艺体类院校专业组。</div>
+      <ul>
+        <li>戏曲类为省际联考，其余为省级统考 + 校考。</li>
+        <li>艺考生同批次不可兼报普通类，未录取可继续参与后续普通类投档。</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <div class="ctitle">体育类 <span class="pill t">文化 + 专业双过线</span></div>
+      <div class="desc">体育本科批 → 体育专科批，实行平行志愿投档。</div>
+      <ul>
+        <li>严格执行文化成绩、专业成绩双过线。</li>
+        <li>按官方合成总分择优录取，单独划线、单独排序。</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ============ ③ 中职与四大路径 ============ -->
+<section id="zx" class="wrap">
+  <div class="sec-head">
+    <h2>③ 中职与四大路径</h2>
+    <span class="sub">肇庆中考分流后，中职并非"终点"；"3+4"中本贯通（工贸学校 641.5、农业学校 634.3）、三二分段可一路贯通至本科 / 高职。广东持续推进职教高考、中高企协同长学制等试点，技能成才通道越来越宽。</span>
+  </div>
+
+  <div class="stage cat-amber"><span class="num">升</span><h3>中职升学具体通道</h3></div>
+  <div class="grid">
+    <div class="card clickable" data-detail="zb" tabindex="0" role="button" aria-label="中本贯通 2026 试点">
+      <div class="ctitle">中本贯通（中职 → 本科） <span class="pill t">7 年拿本科证</span></div>
+      <div class="desc">前 3 年中职、后 4 年本科，毕业获本科文凭。2026 试点扩至 <b>9 校 11 专业 318 人</b>（2025 仅 2 校 40 人），最低线普高第三梯度线（广州 632）。</div>
+      <ul>
+        <li>中本贯通采用普通高中梯度控制线上志愿优先投档。</li>
+        <li>被录取后不得参加后续批次；补录先于普通高中进行。</li>
+      </ul>
+      <button class="detail-btn" type="button">查看 2026 中本贯通试点 →</button>
+    </div>
+
+    <div class="card">
+      <div class="ctitle">中高职三二分段 <span class="pill t">中职 3 年 + 高职 2 年</span></div>
+      <div class="desc">2026 年广东三二分段 <b>399 专业、计划 18,996 人</b>，录取 15,620 人，其中 5,769 人达公办普高线。</div>
+      <ul>
+        <li>中职阶段后通过转段考核升入对口高职。</li>
+        <li>紧密对接广东"制造业当家"现代产业体系，报考热度攀升。</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <div class="ctitle">职教高考（"3+证书"考试） <span class="pill t">中职生升学的统考主通道</span></div>
+      <div class="desc">广东"3+证书"（语文、数学、英语 + 职业技能证书）是中职生升入本科 / 专科高职院校的主渠道。</div>
+      <ul>
+        <li>可报考省内应用型本科及高职（专科）院校。</li>
+        <li>技能大赛获奖考生可获免试或加分优待。</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <div class="ctitle">技能拔尖人才免试升学 <span class="pill t">世界技能大赛等</span></div>
+      <div class="desc">在世界技能大赛获奖、或全国职业院校技能大赛获奖的中职毕业生，可免试入读相应高职院校。</div>
+      <ul>
+        <li>须符合当年广东省免试录取政策与院校招生章程。</li>
+        <li>是"以赛促学、技能成才"的直通车。</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="stage cat-amber"><span class="num">4</span><h3>中职生升学四条主通道（专家概括）</h3></div>
+  <div class="trackbar">
+    <div class="tk"><b>通道 1 · 升入普通高中</b><span>主流路径，2025 肇庆九年级约 6.61 万人；三年后目标升入理想大学。</span></div>
+    <div class="tk"><b>通道 2 · 中本贯通 / 三二分段</b><span>职教升本 / 高职主通道：肇庆"3+4"中本贯通工贸学校 641.5、农业学校 634.3；三二分段贯通对口高职。</span></div>
+    <div class="tk"><b>通道 3 · 职教高考</b><span>"3+证书"考试是中职生升本科 / 高职的统考主通道，技能大赛获奖可免试。</span></div>
+    <div class="tk"><b>通道 4 · 补录与征集</b><span>普通高中 / 综合高中班 / 中本贯通未录满计划统一补录；凡未被录取且达线考生均可填报。</span></div>
+  </div>
+</section>
+
+<footer class="wrap">
+  <p><b>数据说明：</b>本页肇庆中考数据来自肇庆市教育局《2025 年高中阶段有关学校招生工作要求及安排》、肇庆教育号 / 西江网 / 南方+ 公布的 2025 年录取分数线（市属 3 所：肇庆中学端州 749.9 / 宣卿 735 / 大旺实验 721.5；市一中端州 715.1；指标到校 −40；公办最低控制线 405、民办公费 525、自费 320；"3+4" 工贸 641.5 / 农业 634.3）；中考大盘（九年级约 6.61 万、满分 830、高中阶段计划 41,252、普高升学率 50.09%）来自肇庆市招生考试部门及 2025 教育工作会议。广东高招数据来自广东省教育考试院及官方媒体公布的 2026 年录取结果（综合评价 2,771 人、专项 2,879 人、卫生专项 1,187 名、教师专项华南师大 220 名等）。</p>
+  <p>具体招生计划、名额、控制线、选科要求以<b>肇庆市教育局、肇庆市招生考试办公室、广东省教育考试院</b>当年官方公布为准。本页为升学路径科普，不构成报考建议。</p>
+</footer>
+
+<!-- 名额明细弹窗 -->
+<div class="modal-mask" id="detailMask">
+  <div class="modal" role="dialog" aria-modal="true" aria-labelledby="detailTitle">
+    <div class="modal-head">
+      <h3 id="detailTitle"></h3>
+      <button class="modal-close" id="detailClose" type="button" aria-label="关闭">×</button>
+    </div>
+    <div class="modal-body" id="detailBody"></div>
+  </div>
+</div>
+
+<script>
+const DETAIL = {
+  minge: {
+    title: '名额分配（指标到校）· 名额与规则',
+    intro: '肇庆将优质普高招生名额按比例分配到区域内初中（即指标到校）。市属 3 所（广东肇庆中学、肇庆宣卿中学、广东肇庆中学大旺实验学校）分配到各区的指标，各区按<b>不低于本区招生总数 50%</b> 实行指标到校；肇庆市第一中学等区属优质校亦按比例分配。指标生录取控制线较普通正取生低 <b>40 分</b>，实际校线由各校按成绩、志愿及名额从高分到低分择优，<b>官方不公布统一校线</b>。',
+    cols: ['学校（市属 / 区属优质）', '2025 统招线（端州区）', '指标到校线', '指标比例'],
+    subs: [
+      { label: '市属 3 所普通高中（分配到各区，不低于本区招生总数 50% 指标到校）', rows: [
+        ['广东肇庆中学', '749.9', '709.9（−40）', '≥50%'],
+        ['肇庆宣卿中学', '735.0', '695.0（−40）', '≥50%'],
+        ['肇庆中学大旺实验学校', '721.5', '681.5（−40）', '≥50%']
+      ]},
+      { label: '肇庆市第一中学（端州区属优质）', rows: [
+        ['肇庆市第一中学', '715.1', '675.1（−40）', '按政策比例']
+      ]}
+    ],
+    sum: ['市属 3 所合计', '计划 1,512 人', '指标到校 ≥ 本区总数 50%'],
+    note: '指标到校名额主要按区域内各初中学校中考报名学生数占该区域总数比例分配；市属 3 所高中分配到各区的指标，各区按不低于本区招生总数 50% 实行指标到校；2025 年指标到校生须具该初中连续 2 年学籍并实际就读（2026 年起改 3 年）。实际校线由各校按成绩、志愿及指标名额从高分到低分择优，官方不公布统一校线，仅知控制线较正取生低 40 分。来源：肇庆市教育局《2025 年高中阶段有关学校招生工作要求及安排》、肇庆教育号 2025-07-19。'
+  },
+  zizhu: {
+    title: '自主招生（提前批）· 类型说明',
+    intro: '肇庆普通高中自主招生在<b>提前自主招生批</b>录取（仅填 1 个志愿），市属及国家级示范性普高可开展创新人才、学科特长生自主招生，其他普高可开展体育、艺术等特长特色自主招生，按"学业水平考试 + 学校专项考核"合成总分择优，是特长生"低分高就"的核心窗口。',
+    cols: ['类型', '招生对象', '录取方式'],
+    subs: [
+      { label: '自主招生两大类型', rows: [
+        ['学科 / 创新人才类', '广东肇庆中学、宣卿中学、大旺实验学校等市属及各县区国家级示范性普高，面向具创新潜质、学科特长应届初中毕业生', '学业水平考试 + 学校综合能力考核，提前批择优'],
+        ['体育 / 艺术 / 科技特长类', '其他普通高中可开展体育、艺术等特长特色自主招生；含高中阶段高水平运动队', '中考后术科考核 + 学业成绩，按学校方案合成总分']
+      ]}
+    ],
+    sum: ['提前自主招生批', '仅填 1 个志愿', '成绩不低于正取线下 100 分'],
+    note: '考生须先参加招生学校专项考核并取得合格资格，方可填报提前批志愿；自主招生在提前自主招生批完成，被录取后不再参加后续批次。所录学生学业水平考试成绩原则上不低于该校正取生录取分数线下 100 分；纳入高水平运动队建设的学生分数不低于当年全市相应类别普高最低控制线。自主招生总计划与学校数官方未公布全市汇总，下表为部分学校已公布方案。来源：肇庆市教育局 2025 招生文件、各高中自主招生简章。'
+  },
+  shida: {
+    title: '主要高中录取线 · 2025（区域差异化划线）',
+    intro: '2025 年肇庆中学端州正取 <b>749.9</b>、宣卿中学 735.0、大旺实验学校 721.5、市一中 715.1；各区差异化划线（鼎湖、高要、高新区另线）。区属优质如六中 660.1、端州中学 630.0、百花中学 578.3；四会中学 682.9、高要一中 606.0 等。中考满分 <b>830 分</b>，市属 3 所及市城区跨区域 4 所按"分数优先、遵循志愿"平行志愿投档，县（市、区）属公办普高在第一批由属地教育局划定（不低于全市相应类别控制线）。',
+    cols: ['学校', '2025 统招线（端州区 / 主招区）', '分区 / 指标线', '招生计划'],
+    subs: [
+      { label: '市属 / 统招批（面向端州、鼎湖、高要、高新区）', rows: [
+        ['广东肇庆中学', '端州 749.9 / 鼎湖 745.1 / 高要 753.3 / 高新区 761.6', '指标到校 −40', '860（市属）'],
+        ['肇庆宣卿中学', '端州 735.0 / 鼎湖 720.0 / 高要 733.1 / 高新区 745.7', '指标到校 −40', '400（市属）'],
+        ['肇庆中学大旺实验学校', '端州 721.5 / 鼎湖 705.9 / 高要 713.6 / 高新区 728.0', '指标到校 −40', '252（市属）'],
+        ['肇庆市第一中学', '端州 715.1 / 鼎湖·高要·高新区 720.1', '端州指标 675.1', '跨区 100 + 端州属地'],
+        ['肇庆鼎湖中学', '跨区 672.1 / 鼎湖 629.4', '鼎湖指标 549.4', '—'],
+        ['高要区第二中学', '跨区 674.9', '高要区属另划', '1,500（含跨区 100）'],
+        ['肇庆高新区大旺中学', '跨区 648.0', '—', '—'],
+        ['华南师大共建封开实验学校', '跨区计划 100 人', '—', '100（跨区）'],
+        ['深圳高级中学（集团）四会中学', '面向四会市', '—', '1,200（四会）']
+      ]},
+      { label: '主要县（市、区）属第一批公办', rows: [
+        ['肇庆市第六中学（端州）', '660.1', '—', '—'],
+        ['肇庆市端州中学（端州）', '630.0', '指标 590.0', '—'],
+        ['肇庆市百花中学（端州）', '578.3', '—', '—'],
+        ['高要区第一中学', '跨区 674.9 / 高要 606.0', '高要指标 523.5', '1,400'],
+        ['肇庆市实验中学（高要）', '高要区属招生', '指标另划', '1,000'],
+        ['高要区新桥中学', '高要区属招生', '—', '1,100'],
+        ['四会中学', '四会 682.9', '指标 642.9', '1,200'],
+        ['广宁中学', '473.1', '—', '—'],
+        ['德庆县香山中学', '424.9', '—', '—'],
+        ['封开县江口中学', '513.9', '—', '—'],
+        ['怀集县第一中学', '522.0', '—', '—']
+      ]}
+    ],
+    sum: ['说明', '区域差异化划线', '“—”为当年未公开计划 / 已含统招'],
+    note: '肇庆中考满分 830 分。市属 3 所及市城区跨区域 4 所（市一中、鼎湖中学、高要二中、大旺中学）+ 四会中学 + 华师封开实验为统招批，按"分数优先、遵循志愿"平行志愿投档；各县（市、区）属公办普高在第一批由属地教育局划线（不低于全市相应类别最低控制线）。2025 公办普高最低控制线 405、民办公费 525、民办自费 320。统招线数据来自肇庆教育局 / 肇庆教育号 2025-07-19 公布；部分区属第一批线由各县区划定，计划数未公开者以"—"标注。以官方公布为准。'
+  },
+  district: {
+    title: '肇庆中考大盘 · 2025',
+    intro: '2025 年肇庆九年级报考约 <b>6.61 万人</b>，中考满分 <b>830 分</b>；全市高中阶段招生指导性计划 <b>41,252 个</b>（含中职），市属 3 所普高计划 1,512 个。公办普高最低控制线 <b>405</b>、民办公费 525、自费 320，普通高中升学率 <b>50.09%</b>，新增盘活公办学位 6,444 个。',
+    cols: ['指标', '2025 数据'],
+    subs: [
+      { label: '肇庆 2025 中考大盘', rows: [
+        ['中考满分', '830 分'],
+        ['九年级报考人数', '约 6.61 万人（较上年增 2,968 人）'],
+        ['八年级报考人数', '约 6.87 万人'],
+        ['全市高中阶段招生指导性计划', '41,252 个（含中职）'],
+        ['市属 3 所普高计划', '1,512 个（不含新疆班、自主招生）'],
+        ['公办普高最低控制线', '405 分'],
+        ['民办普高（公费生）最低控制线', '525 分'],
+        ['民办普高（自费生）最低控制线', '320 分'],
+        ['中职附设综合高中班最低控制线', '320 分'],
+        ['普通高中升学率', '50.09%（2025 教育工作报告）'],
+        ['新增盘活公办高中学位', '6,444 个（2025）'],
+        ['录取批次', '提前自主招生批 / 统招批 / 第一批 / 第二批']
+      ]},
+      { label: '省第一批特色高中（肇庆 4 所）', rows: [
+        ['广东肇庆中学', '省第一批特色高中'],
+        ['肇庆市百花中学', '省第一批特色高中'],
+        ['肇庆市实验学校', '省第一批特色高中（挂牌"肇庆市艺术中学"）'],
+        ['肇庆市四会中等专业学校', '省第一批特色高中']
+      ]}
+    ],
+    sum: ['2025 全市', '普高升学率 50.09%', '公办学位大幅扩容'],
+    note: '数据来源：肇庆市教育局《2025 年高中阶段有关学校招生工作要求及安排》（2025-04）、肇庆教育号 2025-07-19 分数线公布、肇庆市 2025 年教育工作会议（普高升学率 50.09%、新增公办学位 6,444 个）。报名人数来自肇庆市招生考试部门 2025-07-04 通报。具体计划以官方公布为准。'
+  },
+  zb: {
+    title: '中本贯通（中职 → 本科）· 2026 试点',
+    intro: '2026 年广东中本贯通试点扩至 <b>9 校、11 个专业、计划 318 人</b>（2025 仅 2 校 40 人），最低录取分 632 分（普高第三梯度投档控制线）。下表为部分试点（数据来自专家版整理，个别专业类别标注差异以官方为准）。',
+    cols: ['中职学校', '专业', '对接本科高校', '2026 计划'],
+    subs: [
+      { label: '2026 中本贯通试点（部分）', rows: [
+        ['广州市旅游商务职业学校', '中餐烹饪', '韩山师范学院', '30'],
+        ['广州市信息技术职业学校', '软件与信息服务', '广州职业技术大学', '30'],
+        ['广州市交通运输职业学校', '汽车运用与维修', '广州职业技术大学', '30'],
+        ['广州市城市建设职业学校', '建筑工程施工', '广州职业技术大学', '30'],
+        ['广州市财经商贸职业学校', '物流服务与管理', '广东轻工职业技术大学', '40'],
+        ['广州市轻工职业学校', '民族食品加工技术', '广东轻工职业技术大学', '40'],
+        ['广州市轻工职业学校', '机电技术应用', '广东轻工职业技术大学', '20'],
+        ['广州市纺织服装职业学校', '工艺美术', '广州职业技术大学', '20'],
+        ['广州市番禺区职业技术学校', '汽车运用与维修', '广州职业技术大学', '20']
+      ]}
+    ],
+    sum: ['全省合计', '318 人（官方）', '9 校 · 11 专业 · 最低线 632'],
+    note: '中本贯通前 3 年中职、后 4 年本科，毕业获本科文凭（标注"专升本"路径）。志愿从 2025 年 2 个增至 2026 年 3 个；除足球、舞蹈试点外，采用普通高中第三梯度控制线上志愿优先投档，录取最低控制线为普高第三梯度线。被中本贯通录取不得参加后续批次；补录时先进行中本贯通投档。最高分：轻工机电技术应用 708、信息技术软件与信息服务 644。数据来源：广州招考网 + 专家版整理；以官方公布为准。'
+  },
+  zhonghe: {
+    title: '在粤综合评价招生 · 2026 院校',
+    intro: '2026 年 <b>12 所高校在粤开展综合评价</b>，共录取 <b>2,771 人</b>（广州生源 880，占 31.8%；广深合计约七成）。中大、港中深、南科大、华工为招生主力。',
+    cols: ['在粤综合评价招生院校', '2026 录取人数'],
+    subs: [
+      { label: '2026 在粤综合评价（12 校，共 2,771 人）', rows: [
+        ['中山大学', '495'], ['香港中文大学（深圳）', '451'], ['南方科技大学', '307'],
+        ['华南理工大学', '300'], ['北师香港浸会大学（UIC）', '—'], ['浙江大学', '—'],
+        ['北京外国语大学', '—'], ['上海纽约大学', '—'], ['昆山杜克大学', '—'],
+        ['西湖大学', '—'], ['西交利物浦大学', '—'], ['深圳北理莫斯科大学', '—']
+      ]}
+    ],
+    sum: ['在粤合计', '2,771 人', '广州生源 880（31.8%）'],
+    note: '综合评价采用"高考成绩 + 学校考核 + 学考"综合计分（如华南理工"631"：高考 60% + 校测 30% + 学考 10%），在"特殊类型招生院校"志愿栏填报，不占普通批志愿（锁档除外）。中大、港中深、北师港浸大三校合计录取 1,686 人，占 60.8%。2025 年 11 月教育部首次系统规范综评，要求逐步提高高考文化课成绩占比。数据来源：广东省教育考试院公示 + 广州日报大洋网；以各高校 2026 简章为准。'
+  },
+  xiangxiang: {
+    title: '专项计划（地方 + 高校）· 2026 在粤',
+    intro: '2026 年广东<b>专项计划首年并入本科批</b>录取（取消各校自主校测，考生统一通过省报名系统申请）。全省 <b>201 个专业组、计划 2,879 人</b>，实际投档 2,862 人。',
+    cols: ['类别', '专业组', '2026 计划', '实际投档'],
+    subs: [
+      { label: '普通类（物理）', rows: [
+        ['地方专项', '52', '1,992', '1,989'],
+        ['高校专项', '95', '263', '252']
+      ]},
+      { label: '普通类（历史）', rows: [
+        ['地方专项', '28', '579', '全满'],
+        ['高校专项', '26', '45', '42']
+      ]}
+    ],
+    sum: ['全省合计', '201 组 · 2,879 人', '投档 2,862'],
+    note: '地方专项面向原中央苏区、欠发达革命老区、少数民族地区农村学生；高校专项面向边远、贫困、民族地区县以下农村学生（如中大地理科学类）。专项计划投档数据单独统计，不纳入各院校普通批次投档线。顶尖高校专项仍强劲（北大物理类专项最低排位 343、清华 352，与非专项几乎无差）。华南农业大学地方专项 450 人全满档；华南师范大学地方专项多个专业组满档。数据来源：广东省 2026 年高招投档结果通报；以广东省教育考试院为准。'
+  },
+  weisheng: {
+    title: '卫生专项（订单定向医学生）· 2026',
+    intro: '2026 年全省订单定向培养医学大学生 <b>1,187 名</b>（省财政补助 1,155 + 广州市定向 32），定点 <b>11 所</b>院校培养，免学费、免住宿费并按月发生活补助。',
+    cols: ['定点培养院校', '2026 计划'],
+    subs: [
+      { label: '2026 卫生专项（订单定向，部分）', rows: [
+        ['广东医科大学', '222'], ['广东药科大学', '147'],
+        ['（其他 9 所合计：韶关学院、嘉应学院、肇庆医学院等）', '818']
+      ]}
+    ],
+    sum: ['全省订单定向', '1,187 名', '免学费住宿 + 生活补助 · 服务 6 年 · 有编有岗'],
+    note: '招生专业以临床医学、中医学为主；报考对象限广东省户籍（不限农村户口），定向就业涵盖粤东西北乡镇卫生院及广州市相关区。毕业后按协议到定向单位服务 6 年，落实事业编制；本科定向医学生须参加 3 年全科 / 中医全科规培，专科参加 2 年助理全科培训。在提前批本科 / 提前批专科填报，平行志愿、高考成绩录取，无需提前报名与校测。数据来源：广东省 2026 年卫生专项投档通报（广东医 222、广药大 147 等）；以广东省教育考试院为准。'
+  },
+  jiaoshi: {
+    title: '教师专项 / 公费师范 · 2026',
+    intro: '广东为粤东西北等地培养本科师范生，分"省属公费定向教师专项"与"国家公费师范生（部属 6 所）"两类，均免学杂费、住宿费并发生活补助，毕业后带编到定向县任教。',
+    cols: ['培养院校 / 类型', '2026 计划'],
+    subs: [
+      { label: '一、广东省属公费定向教师专项', rows: [
+        ['华南师范大学', '220'],
+        ['（其他省属师范院校，按地市需求下达）', '—']
+      ]},
+      { label: '二、国家公费师范生（部属 6 所，提前批非军检）', rows: [
+        ['北京师范大学', '—'], ['华东师范大学', '—'], ['东北师范大学', '—'],
+        ['华中师范大学', '—'], ['陕西师范大学', '—'], ['西南大学', '—']
+      ]}
+    ],
+    sum: ['华南师大教师专项', '220 名', '免学费住宿 + 生活补助 8,000/年 · 任教 ≥ 6 年'],
+    note: '华南师范大学 2026 年公费定向教师专项面向汕尾、揭阳、汕头、韶关、清远、河源、云浮、茂名、江门、惠州等 10 地市，培养期内免除学费、住宿费、军训服装费、教材资料费和实习实践费，另发生活补助 8,000 元 / 年；毕业后由定向地教育行政部门派遣到定向县服务单位任教不少于 6 年。国家公费师范生在本科提前批非军检院校录取。数据来源：华南师范大学 2026 校园开放日公布 + 教育部直属师范院校招生章程；以广东省教育考试院为准。'
+  },
+  ty: {
+    title: '体育 / 艺术特长生（2025）· 计划说明',
+    intro: '肇庆普通高中体艺特长生属自主招生（<b>提前自主招生批</b>），含田径、射箭、武术、健美操、美术、书法、音乐、舞蹈及高水平运动队等。下表为部分学校已公布的 2025 自主招生方案（官方未发布全市体艺特长生总计划汇总表）。',
+    cols: ['学校', '2025 体艺自主招生计划', '项目'],
+    subs: [
+      { label: '部分学校已公布体艺特长生 / 高水平运动队计划（全市总计划官方未汇总）', rows: [
+        ['肇庆市百花中学', '≤55 人', '田径、射箭、美术、书法、音乐、舞蹈'],
+        ['肇庆市碧海湾学校', '120 人', '体育 60、美术 30、音乐 30'],
+        ['肇庆市实验中学', '80 人', '音乐 10、舞蹈 5、美术 40、传媒 5、书法 5、体育 15（含高水平篮球）'],
+        ['肇庆高新区大旺中学', '80 人', '体育 44（武术/健美操/垒球/田径/足球）、艺术 36'],
+        ['肇庆市荣源龙高级中学', '60 人', '体育 30、艺术 15、高水平男子足球 15']
+      ]},
+      { label: '录取方式', rows: [
+        ['文化 + 术科合成', '学业水平考试 ×0.6 + 专业考核折算 ×0.4（实验中学方案）', '不低于正取线下 50~100 分'],
+        ['高水平运动队', '专项测试 + 学业成绩，按学校方案', '不低于全市相应类别普高最低控制线']
+      ]}
+    ],
+    sum: ['官方未公布', '全市体艺总计划 / 学校总数', '已公布 5 校累计 ≥ 395 人'],
+    note: '体育、艺术特长生招生属普通高中自主招生（提前自主招生批），须先在中考业务管理系统填报提前批志愿并参加学校术科考核。各高中方案由学校公布，全市体艺特长生总计划与学校总数官方未发布汇总表；上表为部分学校已公布的 2025 自主招生方案。自主招生所录学生学业成绩原则上不低于该校正取生录取分数线下 100 分（部分校 50 分），高水平运动队按最低控制线。来源：各高中 2025 自主招生简章、肇庆市教育局招生文件。'
+  },
+  trend: {
+    title: '主要高中分数线趋势 · 2024 → 2025',
+    intro: '2024 与 2025 同为主招区 / 第一批可比口径：顶尖校小幅上涨（肇庆中学端州 742.2→749.9、宣卿 730→735、市一中 712.7→715.1）；部分区属校因扩容回落（端州中学、百花中学、鼎湖中学）。全市公办普高最低控制线由 425 降至 405（降 20 分）。',
+    cols: ['学校（主招区）', '2024 线', '2025 线', '涨跌'],
+    subs: [
+      { label: '主要高中统招线两年对比（端州区 / 鼎湖区第一批）', rows: [
+        ['广东肇庆中学（端州）', '742.2', '749.9', '+7.7'],
+        ['肇庆宣卿中学（端州）', '730.0', '735.0', '+5.0'],
+        ['肇庆市第一中学（端州）', '712.7', '715.1', '+2.4'],
+        ['肇庆市第六中学（端州）', '662.8', '660.1', '−2.7'],
+        ['肇庆市端州中学（端州）', '642.0', '630.0', '−12.0'],
+        ['肇庆市百花中学（端州）', '610.0', '578.3', '−31.7'],
+        ['鼎湖中学（鼎湖）', '647.1', '629.4', '−17.7']
+      ]},
+      { label: '全市最低控制线', rows: [
+        ['公办普高最低控制线', '425.0', '405.0', '−20.0'],
+        ['民办自费生最低控制线', '340.0', '320.0', '−20.0'],
+        ['民办公费生最低控制线', '425.0', '525.0', '单列为 525']
+      ]}
+    ],
+    sum: ['趋势', '顶尖校小幅上涨', '区属校多回落，控制线降 20 分'],
+    note: '2024 与 2025 同为主招区 / 第一批可比口径：肇庆中学、宣卿、一中端州线小幅上涨；端州中学、百花中学、鼎湖中学等区属校回落。公办普高最低控制线由 425 降至 405（降 20 分），民办自费由 340 降至 320。民办公费生 2025 首次单列最低控制线 525（2024 与公办并线 425）。数据来源：肇庆教育号 2024-07-19、2025-07-19 分数线公布。以官方公布为准。'
+  },
+  minban: {
+    title: '民办高中梯队 · 2025（公费生 / 自费生）',
+    intro: '肇庆民办普通高中公费生与县（市、区）属公办普高同批次（第一批）录取，2025 最低控制线 <b>525</b>；自费生单独列为第二批，最低控制线 <b>320</b>。下表为已公布学校的第一批公费生线（数据来自肇庆教育号 / 各县区 2025 招生方案）。',
+    cols: ['学校', '2025 公费生线（第一批）', '备注'],
+    subs: [
+      { label: '民办高中公费生梯队（2025，最低控制线 525）', rows: [
+        ['肇庆市外国语学校', '722.2', '民办公费头部'],
+        ['肇庆市肇院实验学校', '706.8', '民办'],
+        ['肇庆市加美学校', '685.8', '民办'],
+        ['肇庆市凤凰三立学校', '676.8', '公费 676.8 / 自费 320'],
+        ['肇庆市荣源龙高级中学', '公费待遇（计划 30）', '民办，含高水平足球'],
+        ['肇庆市博纳实验学校', '公费 50 人', '高要区，公民融合'],
+        ['肇庆市长田学校', '公费 20 人', '高要区，公民融合'],
+        ['四会市实验中学', '公费 100 人', '四会，较 2024 增'],
+        ['肇庆市衡立高级中学', '公费 150 人', '四会'],
+        ['肇庆市华赋实验学校', '699.9（2024 参考）', '民办']
+      ]},
+      { label: '自费生 / 综合高中班', rows: [
+        ['民办自费生最低控制线', '320 分', '具体各校自费线官方未单列'],
+        ['综合高中班（中职附设）', '320 分', '四会中专等 4 校试点']
+      ]}
+    ],
+    sum: ['说明', '公费线 525 起、自费 320 起', '填报前看清收费与培养模式'],
+    note: '肇庆民办普通高中公费生与县（市、区）公办普高同批次（第一批）录取，自费生单独列为第二批。2025 民办公费生最低控制线 525、自费生 320。上表公费线为已公布学校第一批线；华赋实验为公费 699.9（2024 参考，2025 未单列）。具体各校自费线、收费标准差异大，以学校当年公示及肇庆市教育局公布为准。数据来源：肇庆教育号 2025-07-19、各县区 2025 招生方案。'
+  }
+};
+
+const mask = document.getElementById('detailMask');
+const mTitle = document.getElementById('detailTitle');
+const mBody = document.getElementById('detailBody');
+const isNumCol = (cols, i) => i > 0 && cols[i] && /2026|2025|2024|名额|计划|录取|控制|预测|数/.test(cols[i]);
+function renderGenericTables(d){
+  let html = '';
+  d.subs.forEach(s=>{
+    html += '<div class="detail-sub">' + s.label + '</div>';
+    html += '<table class="detail-table"><thead><tr>' +
+      d.cols.map((c,i)=>'<th'+(isNumCol(d.cols,i)?' class="num"':'')+'>'+c+'</th>').join('') +
+      '</tr></thead><tbody>';
+    s.rows.forEach(r=>{
+      html += '<tr>' + r.map((v,i)=>'<td'+(isNumCol(d.cols,i)?' class="num"':'')+'>'+v+'</td>').join('') + '</tr>';
+    });
+    html += '</tbody></table>';
+  });
+  if(d.sum){
+    html += '<table class="detail-table"><tbody><tr class="sum">' +
+      d.sum.map((v,i)=>'<td'+(i>0?' class="num"':'')+'>'+v+'</td>').join('') + '</tr></tbody></table>';
+  }
+  return html;
+}
+function renderGeneric(d){
+  return '<p class="modal-intro">' + d.intro + '</p>' + renderGenericTables(d) + '<div class="modal-note">' + d.note + '</div>';
+}
+function openDetail(key){
+  const d = DETAIL[key];
+  if(!d) return;
+  mTitle.innerHTML = d.title;
+  mBody.innerHTML = renderGeneric(d);
+  mask.classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function closeDetail(){ mask.classList.remove('open'); document.body.style.overflow = ''; }
+document.querySelectorAll('[data-detail]').forEach(c=>{
+  c.addEventListener('click', e=>{ e.preventDefault(); openDetail(c.getAttribute('data-detail')); });
+});
+document.getElementById('detailClose').addEventListener('click', closeDetail);
+mask.addEventListener('click', e=>{ if(e.target === mask) closeDetail(); });
+document.addEventListener('keydown', e=>{ if(e.key === 'Escape') closeDetail(); });
+
+const links = document.querySelectorAll('nav.tabs a');
+links.forEach(a=>{
+  a.addEventListener('click',e=>{
+    e.preventDefault();
+    const id=a.getAttribute('href').slice(1);
+    document.getElementById(id).scrollIntoView({behavior:'smooth',block:'start'});
+  });
+});
+const secs=['cz','gz','zx'];
+const obs=new IntersectionObserver(es=>{
+  es.forEach(en=>{
+    if(en.isIntersecting){
+      links.forEach(l=>l.classList.toggle('active', l.getAttribute('href').slice(1)===en.target.id));
+    }
+  });
+},{rootMargin:'-45% 0px -50% 0px'});
+secs.forEach(id=>obs.observe(document.getElementById(id)));
+
+const q=document.getElementById('q');
+q.addEventListener('input',()=>{
+  const v=q.value.trim().toLowerCase();
+  document.querySelectorAll('.card').forEach(c=>{
+    const txt=c.textContent.toLowerCase();
+    c.style.display = (!v || txt.includes(v)) ? '' : 'none';
+  });
+});
+</script>
+</body>
+</html>
