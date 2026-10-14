@@ -1,0 +1,954 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>广东·梅州升学路径全景图（2026）</title>
+<style>
+:root{
+  --brand:#be123c; --chong:#dc2626; --wen:#2563eb; --bao:#15803d;
+  --special:#7c3aed; --teal:#0d9488; --amber:#b45309;
+  --ink:#1a1f2b; --ink-2:#33404f; --muted:#5b6472;
+  --line:#e7eaf0; --bg:#f4f6fb; --card:#ffffff;
+  --brand-50:#fff1f3; --chong-50:#fef2f2; --wen-50:#eff6ff;
+  --bao-50:#ecfdf3; --special-50:#f5f3ff; --teal-50:#ecfdf9; --amber-50:#fff7ed;
+  --fs-h1:28px; --fs-h2:23px; --fs-h3:18px; --fs-card:16px;
+  --fs-base:15px; --fs-sm:14px; --fs-xs:12.5px; --fs-2xs:11.5px;
+  --radius:16px; --radius-sm:12px;
+  --shadow-sm:0 1px 2px rgba(16,24,40,.05),0 3px 10px rgba(16,24,40,.05);
+  --shadow-md:0 6px 20px rgba(16,24,40,.10);
+  --shadow-lg:0 24px 64px rgba(16,24,40,.20);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+  color:var(--ink); background:var(--bg); line-height:1.65; font-size:var(--fs-base);
+  -webkit-font-smoothing:antialiased;
+}
+a{color:var(--brand);text-decoration:none}
+.wrap{max-width:1120px;margin:0 auto;padding:0 16px}
+header.hero{
+  background-color:var(--brand);
+  background-image:
+    radial-gradient(1000px 360px at 88% -40%, rgba(255,255,255,.22), transparent 55%),
+    radial-gradient(rgba(255,255,255,.10) 1px, transparent 1.6px),
+    linear-gradient(135deg,#be123c 0%, #9f1239 100%);
+  background-size:auto, 22px 22px, auto;
+  color:#fff; padding:40px 0 30px; position:relative;
+  box-shadow:0 6px 24px rgba(16,24,40,.12);
+}
+header.hero h1{font-size:var(--fs-h1);font-weight:800;letter-spacing:.5px;line-height:1.25}
+header.hero p{margin-top:10px;font-size:var(--fs-sm);opacity:.95;max-width:780px;line-height:1.7}
+.badge-row{margin-top:16px;display:flex;flex-wrap:wrap;gap:8px}
+.badge{background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.32);
+  padding:5px 12px;border-radius:999px;font-size:var(--fs-2xs);font-weight:600;backdrop-filter:blur(2px)}
+nav.tabs{position:sticky;top:0;z-index:30;background:rgba(255,255,255,.9);
+  -webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);
+  border-bottom:1px solid var(--line);box-shadow:0 2px 10px rgba(16,24,40,.04)}
+nav.tabs .wrap{display:flex;gap:6px;overflow-x:auto;padding:10px 16px;scrollbar-width:none}
+nav.tabs .wrap::-webkit-scrollbar{display:none}
+nav.tabs a{flex:0 0 auto;padding:8px 15px;border-radius:999px;font-size:var(--fs-sm);
+  color:var(--muted);white-space:nowrap;font-weight:600;transition:background .15s,color .15s}
+nav.tabs a:hover{background:var(--bg);color:var(--ink)}
+nav.tabs a.active{background:var(--brand);color:#fff;box-shadow:0 2px 8px rgba(190,18,60,.3)}
+.search{padding:20px 0 4px}
+.search input{width:100%;padding:13px 16px;border:1px solid var(--line);border-radius:var(--radius-sm);
+  font-size:var(--fs-base);outline:none;background:var(--card);transition:border-color .15s,box-shadow .15s}
+.search input:focus{border-color:var(--brand);box-shadow:0 0 0 3px rgba(190,18,60,.14)}
+section{padding:30px 0 10px}
+.sec-head{display:flex;align-items:baseline;gap:12px;margin-bottom:8px;flex-wrap:wrap}
+.sec-head h2{font-size:var(--fs-h2);font-weight:800;position:relative;padding-left:15px;line-height:1.3}
+.sec-head h2::before{content:"";position:absolute;left:0;top:3px;bottom:3px;width:5px;border-radius:3px;
+  background:linear-gradient(180deg,var(--brand),var(--wen))}
+.sec-head .sub{font-size:var(--fs-xs);color:var(--muted);line-height:1.6}
+.stage{margin:24px 0 8px;display:flex;align-items:center;gap:12px;
+  padding:11px 0 11px 16px;border-left:4px solid var(--brand);border-radius:0 12px 12px 0;
+  background:linear-gradient(90deg,rgba(190,18,60,.07),transparent 55%)}
+.stage .num{width:32px;height:32px;border-radius:50%;background:var(--brand);color:#fff;
+  display:flex;align-items:center;justify-content:center;font-weight:700;font-size:var(--fs-sm);flex:0 0 auto;
+  box-shadow:0 2px 6px rgba(16,24,40,.18)}
+.stage h3{font-size:var(--fs-h3);font-weight:700}
+.stage .tip{font-size:var(--fs-xs);color:var(--muted)}
+.stage.cat-chong{border-left-color:var(--chong);background:linear-gradient(90deg,rgba(220,38,38,.07),transparent 55%)}
+.stage.cat-chong .num{background:var(--chong)}
+.stage.cat-wen{border-left-color:var(--wen);background:linear-gradient(90deg,rgba(37,99,235,.07),transparent 55%)}
+.stage.cat-wen .num{background:var(--wen)}
+.stage.cat-bao{border-left-color:var(--bao);background:linear-gradient(90deg,rgba(21,128,61,.08),transparent 55%)}
+.stage.cat-bao .num{background:var(--bao)}
+.stage.cat-special{border-left-color:var(--special);background:linear-gradient(90deg,rgba(124,58,237,.07),transparent 55%)}
+.stage.cat-special .num{background:var(--special)}
+.stage.cat-teal{border-left-color:var(--teal);background:linear-gradient(90deg,rgba(13,148,136,.07),transparent 55%)}
+.stage.cat-teal .num{background:var(--teal)}
+.stage.cat-amber{border-left-color:var(--amber);background:linear-gradient(90deg,rgba(180,83,9,.07),transparent 55%)}
+.stage.cat-amber .num{background:var(--amber)}
+.grid{display:grid;grid-template-columns:1fr;gap:14px;margin-top:14px}
+@media(min-width:600px){.grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}}
+@media(min-width:992px){.grid{grid-template-columns:repeat(auto-fill,minmax(290px,1fr));gap:18px}}
+.card{background:var(--card);border:1px solid var(--line);border-top:3px solid var(--accent,var(--brand));
+  border-radius:var(--radius);padding:16px;box-shadow:var(--shadow-sm);
+  display:flex;flex-direction:column;gap:8px;transition:transform .16s ease,box-shadow .16s ease,border-color .16s ease}
+.card:hover{box-shadow:var(--shadow-md)}
+.card .ctitle{font-size:var(--fs-card);font-weight:700;display:flex;align-items:center;gap:8px;flex-wrap:wrap;line-height:1.4}
+.card .desc{font-size:var(--fs-sm);color:var(--ink-2);line-height:1.6}
+.pill{display:inline-block;font-size:var(--fs-2xs);padding:3px 10px;border-radius:999px;font-weight:600;line-height:1.4}
+.pill.t{background:var(--brand-50);color:#be123c}
+.pill.time{background:var(--bao-50);color:#15803d}
+.pill.who{background:#fef2f2;color:#c2410c}
+.pill.note{background:var(--amber-50);color:#92400e}
+.meta{display:flex;flex-wrap:wrap;gap:6px;margin-top:2px}
+.card ul{margin:2px 0 0 18px;font-size:var(--fs-sm);color:var(--ink-2);line-height:1.6}
+.card ul li{margin:3px 0}
+.stage.cat-brand + .grid{--accent:var(--brand)}
+.stage.cat-chong + .grid{--accent:var(--chong)}
+.stage.cat-wen + .grid{--accent:var(--wen)}
+.stage.cat-bao + .grid{--accent:var(--bao)}
+.stage.cat-special + .grid{--accent:var(--special)}
+.stage.cat-teal + .grid{--accent:var(--teal)}
+.stage.cat-amber + .grid{--accent:var(--amber)}
+.trackbar{display:grid;grid-template-columns:1fr;gap:12px;margin:14px 0 4px}
+@media(min-width:600px){.trackbar{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(min-width:992px){.trackbar{grid-template-columns:repeat(4,minmax(0,1fr))}}
+.trackbar .tk{background:var(--card);border:1px solid var(--line);border-left:4px solid var(--brand);
+  border-radius:var(--radius-sm);padding:16px;box-shadow:var(--shadow-sm);transition:transform .16s,box-shadow .16s}
+.trackbar .tk:hover{transform:translateY(-2px);box-shadow:var(--shadow-md)}
+.trackbar .tk b{display:block;font-size:15px;margin-bottom:6px;color:var(--brand)}
+.trackbar .tk span{font-size:var(--fs-sm);color:var(--muted);line-height:1.6}
+.callout{background:var(--card);border-left:4px solid var(--brand);border-radius:0 12px 12px 0;
+  padding:15px 18px;margin:16px 0;color:var(--ink-2);font-size:var(--fs-sm);line-height:1.7;box-shadow:var(--shadow-sm)}
+footer{margin:34px 0;padding:20px 0;border-top:1px solid var(--line);color:var(--muted);font-size:var(--fs-xs);line-height:1.7}
+footer b{color:var(--ink)}
+@media(max-width:576px){
+  header.hero{padding:30px 0 24px}
+  header.hero h1{font-size:23px}
+  .sec-head h2{font-size:20px}
+  .stage h3{font-size:16px}
+  .card{padding:14px}
+}
+.card.clickable{cursor:pointer;transition:transform .16s ease,box-shadow .16s ease,border-color .16s ease}
+.card.clickable:hover{transform:translateY(-3px);box-shadow:var(--shadow-md)}
+.card.clickable:hover .detail-btn{background:#9f1239}
+.card.clickable:focus-within{outline:2px solid var(--brand);outline-offset:2px}
+.detail-btn{margin-top:6px;align-self:flex-start;background:var(--brand);color:#fff;border:none;
+  padding:9px 15px;border-radius:999px;font-size:var(--fs-sm);font-weight:600;cursor:pointer;
+  transition:background .15s,transform .12s}
+.detail-btn:active{transform:scale(.97)}
+.modal-mask{position:fixed;inset:0;background:rgba(16,24,40,.55);display:none;z-index:50;
+  align-items:flex-start;justify-content:center;padding:24px 16px;overflow:auto;backdrop-filter:blur(2px)}
+.modal-mask.open{display:flex}
+.modal{background:var(--card);max-width:780px;width:100%;border-radius:18px;box-shadow:var(--shadow-lg);
+  margin:auto;overflow:hidden;animation:pop .18s ease}
+@keyframes pop{from{transform:translateY(8px) scale(.98);opacity:.6}to{transform:none;opacity:1}}
+.modal-head{padding:20px 22px;background:linear-gradient(135deg,#be123c,#9f1239);color:#fff;
+  display:flex;align-items:flex-start;justify-content:space-between;gap:12px}
+.modal-head h3{font-size:18px;font-weight:800;line-height:1.45}
+.modal-close{background:rgba(255,255,255,.2);border:none;color:#fff;width:34px;height:34px;border-radius:50%;
+  font-size:22px;cursor:pointer;flex:0 0 auto;line-height:1;transition:background .15s,transform .12s}
+.modal-close:hover{background:rgba(255,255,255,.38)}
+.modal-close:active{transform:scale(.9)}
+.modal-body{padding:18px 22px 24px;max-height:74vh;overflow:auto}
+.modal-intro{font-size:var(--fs-sm);color:var(--ink-2);margin-bottom:10px;line-height:1.7}
+.modal-note{font-size:var(--fs-xs);color:var(--muted);background:var(--bg);border:1px solid var(--line);
+  border-radius:12px;padding:12px 14px;margin-top:16px;line-height:1.65}
+.detail-table{width:100%;border-collapse:separate;border-spacing:0;font-size:var(--fs-sm);margin-top:4px;
+  border:1px solid var(--line);border-radius:12px;overflow:hidden}
+.detail-table th,.detail-table td{border-bottom:1px solid var(--line);padding:9px 11px;text-align:left;vertical-align:top}
+.detail-table th{background:var(--brand-50);color:#be123c;font-weight:700}
+.detail-table tr:last-child td{border-bottom:none}
+.detail-table td.num,.detail-table th.num{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}
+.detail-table tr.sum td{background:var(--amber-50);font-weight:700}
+.detail-sub{font-size:var(--fs-xs);font-weight:700;color:var(--ink);margin:16px 0 4px;
+  padding-left:10px;border-left:3px solid var(--brand)}
+.cx-search{width:100%;padding:11px 14px;border:1px solid var(--line);border-radius:var(--radius-sm);
+  font-size:var(--fs-sm);margin:6px 0 10px;outline:none;background:var(--card);transition:border-color .15s,box-shadow .15s}
+.cx-search:focus{border-color:var(--brand);box-shadow:0 0 0 3px rgba(190,18,60,.14)}
+.card-data{width:100%;border-collapse:separate;border-spacing:0;margin:10px 0 2px;font-size:var(--fs-xs);background:var(--card);
+  border:1px solid var(--line);border-radius:10px;overflow:hidden}
+.card-data th{background:var(--brand-50);color:#be123c;font-weight:700;text-align:left;padding:6px 9px;border-bottom:1px solid var(--line);white-space:nowrap}
+.card-data td{padding:6px 9px;border-bottom:1px solid var(--line);color:#1f2733;vertical-align:top;line-height:1.55}
+.card-data tr:last-child td{border-bottom:none}
+.card-data td:first-child{font-weight:600;color:var(--ink-2);background:#f7f9fc;white-space:nowrap}
+.card-data td b{color:#c0392b;font-variant-numeric:tabular-nums}
+.card-note{font-size:11px;color:var(--muted);line-height:1.6;border-top:1px dashed var(--line);
+  padding-top:8px;margin-top:8px}
+a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible{outline:2px solid var(--brand);outline-offset:2px}
+@media(prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important;scroll-behavior:auto!important}}
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="wrap">
+    <h1>广东·梅州升学路径全景图（2026）</h1>
+    <p>初升高按梅州中招、高升大按广东全省。梅州 2025 年中考约 <b>6.5 万人</b>、普通高中招生 <b>3.75 万</b>（普高率约 58%）；中考总分 <b>850 分</b>，实行“提前批 + 五批次”录取（提前批中本贯通班→第一批→第二批→第三批→第四批→第五批）。市属 2 所示范性高中最低控制线 <b>719 分</b>、全市普高最低控制线 <b>500 分</b>；13 所公办优质普高按招生计划 <b>50%</b> 名额分配到初中（名额到校）。本图把“初中→高中→大学”的关键路径一次说清。</p>
+    <div class="badge-row">
+      <span class="badge">梅州中招 提前批+5 批次</span>
+      <span class="badge">13 所优质普高 名额到校 50%</span>
+      <span class="badge">2025 中考约 6.5 万人</span>
+      <span class="badge">普高率约 58%</span>
+      <span class="badge">中考总分 850</span>
+      <span class="badge">市属示范线 719</span>
+      <span class="badge">普高最低控线 500</span>
+      <span class="badge">“3+4”中本贯通试点</span>
+      <span class="badge">广东高招 3 批次</span>
+      <span class="badge">综合评价 2,771 人</span>
+    </div>
+  </div>
+</header>
+
+<nav class="tabs">
+  <div class="wrap">
+    <a href="#cz" class="active" data-tab="cz">① 初升高（梅州中招路径）</a>
+    <a href="#gz" data-tab="gz">② 高升大（广东高招路径）</a>
+    <a href="#zx" data-tab="zx">③ 中职与四大路径</a>
+  </div>
+</nav>
+
+<div class="wrap search">
+  <input id="q" type="text" placeholder="搜索路径关键词：如 名额分配、名额到校、指标生、东山中学、示范性高中、自主招生、体艺特长生、中本贯通、三二分段、强基、综评、专项、公费师范、卫生专项、军士、艺术……">
+</div>
+
+<!-- ============ ① 初升高（梅州中招） ============ -->
+<section id="cz" class="wrap">
+  <div class="sec-head">
+    <h2>① 初升高（梅州中招路径）</h2>
+    <span class="sub">梅州中考总分 850 分（语文 / 数学 / 英语各 120、物理 100、化学 80、历史 80、道法 60、地理 40、生物 40、体育 90），计分科目构成与其他地市不同。2025 年实行“提前批 + 五批次”录取（提前批中本贯通班→第一批→第二批→第三批→第四批→第五批），各批次按“分数优先、遵循志愿”投档，被前一批次录取即不再参加后续。全市约 6.5 万初三考生，普高招生 3.75 万、中职 1.64 万（普高率约 58%）；市属 2 所示范性高中最低控制线 719 分、全市普高最低控制线 500 分。</span>
+  </div>
+
+  <div class="callout">
+    录取顺序：<b>提前批（中本贯通班）→ 第一批（示范 / 优质公办 + 民办“公费生”+ 名额分配生 + 自主招生）→ 第二批（一般公办 + 民办“自费生”）→ 第三批（中职三二分段）→ 第四批（市内中职全日制）→ 第五批（市外中职全日制）</b>。
+    名额分配（指标生，13 所公办优质普高按 50% 名额到校）是考生降分入读优质公办高中的核心渠道；体育艺术特长生自主招生在提前批录取；中本贯通 / 三二分段则是“规避高考竞争、直通本科 / 高职”的职教路径。
+  </div>
+
+  <div class="stage cat-chong"><span class="num">提</span><h3>提前批（中本贯通班）</h3><span class="tip">中职直通本科，2025 首试点</span></div>
+  <div class="grid">
+    <div class="card">
+      <div class="ctitle">中本贯通班（2025 首试点） <span class="pill t">中职 3 年 + 本科 4 年</span></div>
+      <div class="desc">2025 年梅州首次在提前批设“3+4”七年一体化中本贯通班，前 3 年中职、后 4 年本科，对接嘉应学院“计算机科学与技术”专业，毕业获全日制本科文凭：</div>
+      <table class="card-data">
+        <tbody>
+          <tr><td>梅州市职业技术学校</td><td>731.5 分（30 人）</td></tr>
+          <tr><td>大埔县田家炳高级职业学校</td><td>711.3 分（30 人）</td></tr>
+        </tbody>
+      </table>
+      <div class="card-note">中本贯通班安排在提前批录取，面向全市，志愿 2 个；分数来自梅州市教育局 2025-07-15 公布。被录取不得参加后续批次；仅招应届初中毕业生。</div>
+    </div>
+  </div>
+
+  <div class="stage cat-chong"><span class="num">自</span><h3>第一批·自主招生（体艺特长生）</h3><span class="tip">中考 + 术科择优，提前批内</span></div>
+  <div class="grid">
+    <div class="card clickable" data-detail="zizhu" tabindex="0" role="button" aria-label="梅州自主招生 体艺特长生">
+      <div class="ctitle">自主招生（体艺特长生） <span class="pill t">体育 / 艺术</span></div>
+      <div class="desc">梅州普通高中体艺特长生在提前批录取，按“中考文化分 + 学校术科分”合成总分择优，是特长生“低分高就”的核心窗口。2025 年依据《梅市教体〔2025〕14 号》实施。</div>
+      <div class="meta"><span class="pill time">提前批录取</span><span class="pill who">体艺专长</span></div>
+      <ul>
+        <li>体育、艺术类由招生学校设定文化分与术科分最低控制线（原则上≥430 分）。</li>
+        <li>须先参加学校专项（术科）考试并取得资格，方可填报相应志愿。</li>
+      </ul>
+      <button class="detail-btn" type="button">查看自主招生类型 →</button>
+    </div>
+
+    <div class="card clickable" data-detail="ty" tabindex="0" role="button" aria-label="梅州体育艺术特长生 2025">
+      <div class="ctitle">体育 / 艺术特长生 <span class="pill t">提前批 · 合成择优</span></div>
+      <div class="desc">梅州体艺特长生与自主招生同批，面向第一批招生学校及民办高中。各校正比例不同（如梅州中学音乐文化≥510、美术≥595；虎山中学文化≥600）。全市体艺特长生汇总计划官方未发布，以各校简章为准。</div>
+      <ul>
+        <li>文化、术科双过线后按合成分由高到低录取，未录满不降分补录。</li>
+        <li>被录取特长生原则上不得转为普通生。</li>
+      </ul>
+      <button class="detail-btn" type="button">查看体艺特长生计划 →</button>
+    </div>
+  </div>
+
+  <div class="stage cat-wen"><span class="num">指</span><h3>名额分配（指标生 · 13 所 50% 名额到校）</h3><span class="tip">初中校内竞争降分入读优质公办</span></div>
+  <div class="grid">
+    <div class="card clickable" data-detail="minge" tabindex="0" role="button" aria-label="梅州名额分配 控制线与规则">
+      <div class="ctitle">名额分配（指标生） <span class="pill t">13 所优质普高 · 50%</span></div>
+      <div class="desc">梅州 13 所公办优质普通高中按招生计划 <b>50%</b> 将名额分配到初中（名额到校），2025 年合计约 <b>5,230 个</b>。名额分配生由考生所在初中校内竞争产生录取线，<b>不公布统一“降 X 分”值</b>；未完成的名额分配计划转入普通生计划。</div>
+      <div class="meta">
+        <span class="pill t">13 所公办优质普高</span>
+        <span class="pill time">50% 名额到校</span>
+        <span class="pill note">须本校 3 年完整学籍</span>
+      </div>
+      <ul>
+        <li>名额分配是考生降分入读优质公办高中的核心“福利”渠道。</li>
+        <li>须具有梅州市学籍且同一初中在籍在读满 3 年，中途转学不得参与。</li>
+      </ul>
+      <button class="detail-btn" type="button">查看名额分配规则与计划 →</button>
+    </div>
+  </div>
+
+  <div class="stage cat-brand"><span class="num">1</span><h3>第一批（普通生 · 示范 / 优质公办 + 民办公费）</h3><span class="tip">按分录取主力，全市统一划线</span></div>
+  <div class="grid">
+    <div class="card clickable" data-detail="shida" tabindex="0" role="button" aria-label="梅州第一批录取线梯队 2025">
+      <div class="ctitle">第一批录取线梯队 · 2025 <span class="pill t">东山 771.2 最高</span></div>
+      <div class="desc">2025 年第一批普通生线：东山中学 771.2 / 曾宪梓 757.4 / 梅县外国语 764.3 / 兴宁一中 738.5 / 梅县区高级 733.1 / 五华水寨 715.3 / 梅州中学 721.7 / 兴宁齐昌 718.3 / 丰顺 706.8 / 虎山 702.7 / 五华高级 684 / 平远 696.6 / 蕉岭 659.2。梅州中考不区分户籍 / 随迁双线，全市统一划线。</div>
+      <div class="meta"><span class="pill t">全市统一划线</span></div>
+      <ul>
+        <li>13 所公办优质普高构成第一梯队，民办“公费生”常逼近顶尖公办。</li>
+        <li>市属 2 所示范高中最低控制线 719 分、全市普高最低控制线 500 分。</li>
+      </ul>
+      <button class="detail-btn" type="button">查看第一批梯队（2025） →</button>
+    </div>
+
+    <div class="card clickable" data-detail="district" tabindex="0" role="button" aria-label="梅州公办高中分布">
+      <div class="ctitle">梅州公办高中版图 <span class="pill t">市辖区 + 1 市 + 5 县</span></div>
+      <div class="desc">梅州公办普高分布于梅江区、梅县区（市辖区）及兴宁市（县级市）、大埔、丰顺、五华、平远、蕉岭五县。除 13 所公办优质普高（名额分配校）外，各县区另有大批第二批一般公办高中。</div>
+      <ul>
+        <li>13 所公办优质普高为优质核心，名额分配 50% 释放优质学位。</li>
+        <li>第二批一般公办高中是考生保底入读公办的重要承载。</li>
+      </ul>
+      <button class="detail-btn" type="button">查看公办高中分布 →</button>
+    </div>
+
+    <div class="card">
+      <div class="ctitle">第一批普通统招（志愿梯度） <span class="pill t">分数优先 · 遵循志愿</span></div>
+      <div class="desc">除自主招生、名额分配之外的普通高中招生计划在第一批录取。第一批志愿设置为：自主招生 1 个、名额分配生 2 个、普通生 8 个；各批次按“分数优先、遵循志愿”投档。</div>
+      <div class="meta"><span class="pill t">全市统一划线</span></div>
+      <ul>
+        <li>梅州中考不区分户籍生 / 随迁子女双线，统一按成绩与志愿投档。</li>
+        <li>凡被前一批次录取的考生，不再参加后续批次投档。</li>
+      </ul>
+    </div>
+
+    <div class="card clickable" data-detail="minban" tabindex="0" role="button" aria-label="梅州民办高中梯队 2025">
+      <div class="ctitle">民办高中梯队 <span class="pill t">公费生 / 自费生</span></div>
+      <div class="desc">梅州民办共 6 所，特色为“第一批录取参照公办收费、第二批录取按民办标准收费”。五华中英文第一批 779.7、华业外国语 777.9 等公费生线常逼近顶尖公办；第二批自费生多压至 500 分，收费 1.5 万–2.3 万/学期。</div>
+      <div class="meta"><span class="pill who">经济承受力需评估</span></div>
+      <ul>
+        <li>民办公费生（第一批）学费约 1070 元/学期，同公办。</li>
+        <li>自费生（第二批）门槛较低，填报前须看清收费标准。</li>
+      </ul>
+      <button class="detail-btn" type="button">查看民办完整梯队（2025） →</button>
+    </div>
+
+    <div class="card clickable" data-detail="trend" tabindex="0" role="button" aria-label="梅州第一批分数线趋势 2024-2025">
+      <div class="ctitle">第一批分数线趋势 <span class="pill t">2024 → 2025</span></div>
+      <div class="desc">对比 2024：东山 766.3→771.2、曾宪梓 751.5→757.4、梅县外国语 755.4→764.3；虎山中学涨幅最大（+13.6）；蕉岭中学由 683.6 回落至 659.2（−24.4）。丰顺县实验中学为 2025 新增第一批。</div>
+      <ul>
+        <li>多数校 2025 较 2024 小幅上涨（0~9 分）。</li>
+        <li>蕉岭中学异常回落，需关注当年报考热度。</li>
+      </ul>
+      <button class="detail-btn" type="button">查看近年分数线趋势 →</button>
+    </div>
+  </div>
+
+  <div class="stage cat-amber"><span class="num">2</span><h3>第二批（一般公办 + 民办自费）</h3><span class="tip">本县招生 + 民办自费</span></div>
+  <div class="grid">
+    <div class="card">
+      <div class="ctitle">第二批普通生（一般公办 + 民办自费） <span class="pill t">本县招生</span></div>
+      <div class="desc">第二批为一般普通高中（含民办），公办普通生、自主招生面向本县（市、区）招生，民办面向全市。第二批普通生线：兴宁沐彬 676.8、兴民 652.1、梅县南口 637.3、乐育 629.4、五华中学 604.3、平远实验 602.1 等；民办自费多压至普高最低控制线 500 分。</div>
+      <div class="meta"><span class="pill who">本县（市、区）招生</span></div>
+      <ul>
+        <li>第二批未完成计划可降分补录（征集志愿）。</li>
+        <li>民办自费生收费较高，须结合经济承受力。</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <div class="ctitle">中职及技工院校（第三~五批） <span class="pill t">升学并重</span></div>
+      <div class="desc">第三批为中职、中技三二分段，第四批为市内中职全日制，第五批为市外中职全日制，是“不想走普高、但求一技之长”考生的主要去向，贯通三二分段、中本贯通等升学通道（详见 ③ 中职与四大路径）。</div>
+      <div class="meta"><span class="pill who">技能导向、升学并重</span></div>
+      <ul>
+        <li>中职学校贯通三二分段、中本贯通等升学通道。</li>
+        <li>第三、四、五批中职中技面向全市招生。</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ============ ② 高升大（广东高招） ============ -->
+<section id="gz" class="wrap">
+  <div class="sec-head">
+    <h2>② 高升大（广东高招路径）</h2>
+    <span class="sub">广东夏季高考实行“3+1+2”，分提前、本科、专科（高职）三个批次，院校专业组平行志愿。录取顺序：强基 → 综评 / 高水平运动队 → 本科提前批 → 普通本科批（含专项）→ 专科提前批（军士 / 卫生专项）→ 普通专科批。</span>
+  </div>
+
+  <div class="callout">
+    多数路径对天赋 / 特长 / 户籍或定向服务有硬门槛；所有特殊招生都以“参加统一高考”为前提。专项计划、卫生专项、教师专项、公安专项等“带编带岗 / 免学费”路径，是广东考生冲击公办优质本科、锁定稳定就业的关键赛道。梅州考生还可重点关注家门口的本土高校（嘉应学院、广东梅州职业技术学院等）。
+  </div>
+
+  <div class="stage cat-brand"><span class="num">★</span><h3>统招主赛道</h3></div>
+  <div class="grid">
+    <div class="card">
+      <div class="ctitle">普通高考统招 <span class="pill t">无门槛，全体考生</span></div>
+      <div class="desc">选择面最广的底层路径。广东实行院校专业组平行志愿（分数优先、遵循志愿），普通类分物理、历史两类分开划线、分开投档。</div>
+      <ul>
+        <li>本科批、专科批按“冲 / 稳 / 保”拉开院校专业组梯度。</li>
+        <li>应届生 3 门选择性考试科目对应的合格性考试须全部合格，否则志愿无效。</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <div class="ctitle">梅州本土高校 · 升学在身边 <span class="pill t">家门口的名校</span></div>
+      <div class="desc">梅州高等教育以嘉应学院为本土本科主力，考生无需远行即可冲击应用型本科：</div>
+      <table class="card-data">
+        <tbody>
+          <tr><td>嘉应学院</td><td>梅州本土公办本科，文理工农医多学科，本地就业对口率高；也是梅州卫生专项 / 教师专项定向培养院校之一</td></tr>
+          <tr><td>广东梅州职业技术学院</td><td>梅州本土公办高职，对接中职三二分段、中本贯通</td></tr>
+          <tr><td>周边：中大 / 华工 / 韩山师范等</td><td>通过广东统考或综合评价在粤招生</td></tr>
+        </tbody>
+      </table>
+      <div class="card-note">嘉应学院是梅州唯一的本土本科高校，以普通高考统招为主；“3+4”中本贯通对接嘉应学院计算机科学与技术专业。具体专业计划与选科要求以各高校 2026 简章及广东省教育考试院公布为准。</div>
+    </div>
+  </div>
+
+  <div class="stage cat-chong"><span class="num">↑</span><h3>尖子生冲名校</h3><span class="tip">竞赛 / 综合强考生专属，部分免高考 / 大幅降分</span></div>
+  <div class="grid">
+    <div class="card">
+      <div class="ctitle">广东尖子生冲名校 · 2026 具体数据</div>
+      <table class="card-data">
+        <tbody>
+          <tr><td>强基计划</td><td>39 所 985 试点在粤招生；<b>无需填报</b>，提前批录取前完成；聚焦基础学科，高考 ≥ 85% + 校测</td></tr>
+          <tr><td>综合评价</td><td>12 校在粤共 <b>2,771 人</b>（中大 495 / 港中深 451 / 南科大 307 / 华工 300 居前）</td></tr>
+          <tr><td>保送生</td><td>五大学科奥赛国家集训队、外语校优秀生、退役运动员、公安英烈子女，<b>免高考</b></td></tr>
+          <tr><td>高水平运动队</td><td>双一流高校；一级运动员 + 全国前八；文化课最低本科线 80%（2025 约 347 分）</td></tr>
+          <tr><td>港澳升学</td><td>港大 / 港中文 / 港科技等独立招生，不占统招志愿</td></tr>
+        </tbody>
+      </table>
+      <div class="card-note">强基 / 综评为高分考生“免高考 / 大幅降分”主通道；综合评价适合综合强、有竞赛 / 科创 / 外语特长的考生。具体专业计划、选科与入围线以各高校 2026 简章及广东省教育考试院公布为准。</div>
+    </div>
+
+    <div class="card">
+      <div class="ctitle">强基计划 <span class="pill t">年级前 5% / 竞赛特长</span></div>
+      <div class="desc">39 所 985 试点，聚焦数理化生 / 文史哲 / 古文字等基础学科。</div>
+      <div class="meta"><span class="pill time">4 月报名 / 6 月校测 / 锁档</span><span class="pill note">高考 ≥ 85% + 校测</span></div>
+      <ul>
+        <li>五大学科竞赛银牌及以上可破格入围。</li>
+        <li>录取后原则上不得转专业、档案锁定。</li>
+      </ul>
+    </div>
+
+    <div class="card clickable" data-detail="zhonghe" tabindex="0" role="button" aria-label="综合评价 2026 在粤招生院校">
+      <div class="ctitle">综合评价（631 / 高考为主） <span class="pill t">综合强考生</span></div>
+      <div class="desc">2026 年 <b>12 所高校在粤开展综合评价</b>，共录取 <b>2,771 人</b>（广州生源 880，占 31.8%）。</div>
+      <div class="meta"><span class="pill note">高考 + 校测 + 学考，部分锁档</span></div>
+      <ul>
+        <li>华南理工“631”计划 300 人（高考 60% + 校测 30% + 学考 10%）。</li>
+        <li>同校录取分常低于统招，且不占统招志愿（锁档除外）。</li>
+      </ul>
+      <button class="detail-btn" type="button">查看在粤综合评价院校 →</button>
+    </div>
+
+    <div class="card">
+      <div class="ctitle">保送生 <span class="pill t">免高考</span></div>
+      <div class="desc">五大学科奥赛国家集训队、16 所外语校优秀生、退役运动员、公安英烈子女。</div>
+      <ul>
+        <li>广东考生主流为竞赛国集保送。</li>
+        <li>确认保送后不再参加统招录取。</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <div class="ctitle">高水平运动队 / 艺术团 <span class="pill t">一级运动员 + 全国前八</span></div>
+      <div class="desc">双一流高校降分录取，文化课最低可至本科线 80%。</div>
+      <ul>
+        <li>入校后不能转普通专业。</li>
+        <li>2027 起增加全国赛事前八硬性要求。</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="stage cat-wen"><span class="num">粤</span><h3>广东专属降分 / 专项</h3><span class="tip">农村 / 欠发达地区户籍，本科批单列</span></div>
+  <div class="grid">
+    <div class="card clickable" data-detail="xiangxiang" tabindex="0" role="button" aria-label="专项计划 2026 在粤招生数据">
+      <div class="ctitle">专项计划（地方 + 高校） <span class="pill t">农村 / 欠发达户籍</span></div>
+      <div class="desc">2026 年<b>首年并入本科批</b>（取消各校自主校测，统一省系统申请）。全省 <b>201 个专业组、计划 2,879 人</b>，实际投档 2,862 人。</div>
+      <div class="meta"><span class="pill time">物理类 2,255 / 历史类 624</span></div>
+      <ul>
+        <li>地方专项面向原中央苏区、欠发达革命老区、少数民族地区农村学生。</li>
+        <li>高校专项面向边远、贫困、民族地区县以下农村学生（如中大地理科学类）。</li>
+      </ul>
+      <button class="detail-btn" type="button">查看 2026 专项计划分科数据 →</button>
+    </div>
+
+    <div class="card clickable" data-detail="weisheng" tabindex="0" role="button" aria-label="卫生专项 2026 订单定向计划">
+      <div class="ctitle">卫生专项（订单定向医学生） <span class="pill t">免学费 + 有编有岗</span></div>
+      <div class="desc">2026 年全省订单定向培养医学大学生 <b>1,187 名</b>（省财政 1,155 + 广州 32），定点 <b>11 所</b>院校培养。</div>
+      <div class="meta"><span class="pill note">毕业服务基层 6 年</span></div>
+      <ul>
+        <li>在校免学费、免住宿费，按月发生活补助。</li>
+        <li>毕业后到粤东西北乡镇卫生院等定向单位服务，落实事业编制。</li>
+      </ul>
+      <button class="detail-btn" type="button">查看 2026 卫生专项院校 →</button>
+    </div>
+
+    <div class="card clickable" data-detail="jiaoshi" tabindex="0" role="button" aria-label="教师专项与公费师范 2026">
+      <div class="ctitle">教师专项 / 公费师范 <span class="pill t">免学费 + 带编上岗</span></div>
+      <div class="desc">省属公费定向教师专项 + 国家公费师范生（部属 6 所），为粤东西北等地培养本科师范生。</div>
+      <div class="meta"><span class="pill note">毕业后任教 ≥ 6 年</span></div>
+      <ul>
+        <li>华南师范大学 2026 公费定向教师专项 <b>220 名</b>（面向 10 地市）。</li>
+        <li>免学杂费、住宿费，生活补助 8,000 元 / 年。</li>
+      </ul>
+      <button class="detail-btn" type="button">查看教师专项 / 公费师范 →</button>
+    </div>
+
+    <div class="card">
+      <div class="ctitle">公安专项 <span class="pill t">毕业有编有岗</span></div>
+      <div class="desc">广东警官学院 2026 公安专业人才专项培养 <b>200 名</b>，面向 12 个地级市及 5 个县户籍生源。</div>
+      <div class="meta"><span class="pill note">服务基层一线满 7 年</span></div>
+      <ul>
+        <li>入校不得转专业，须签专项培养协议。</li>
+        <li>毕业通过公安联考、符合条件的按协议录用，确保有编有岗。</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="stage cat-bao"><span class="num">稳</span><h3>稳定就业赛道</h3><span class="tip">免学费 / 带编带岗，求稳首选</span></div>
+  <div class="grid">
+    <div class="card">
+      <div class="ctitle">军警 / 公安 / 司法 / 消防 / 招飞 <span class="pill t">提前批军检</span></div>
+      <div class="desc">本科提前批含空军 / 海军 / 民航招飞，军检院校（军队、武警、公安、司法、消防等）。</div>
+      <ul>
+        <li>须政审、面试、体检、体能测评。</li>
+        <li>空军、海军招飞须达特招线，民航不低于本科线。</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <div class="ctitle">定向培养军士 <span class="pill t">专科提前批</span></div>
+      <div class="desc">专科提前批招收定向培养军士院校，毕业后入伍任军士。</div>
+      <ul>
+        <li>安排在本科批次结束后、普通专科批开始前录取。</li>
+        <li>面向成绩达专科线、志愿服役的考生。</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <div class="ctitle">公费师范 / 教师专项（深度） <span class="pill t">免学费 + 带编</span></div>
+      <div class="desc">详见上方“教师专项 / 公费师范”弹窗：华南师大省属专项 220 名 + 部属 6 所国家公费师范生。</div>
+      <ul>
+        <li>国家公费师范生在提前批非军检院校录取。</li>
+        <li>毕业后由定向地安排到中小学任教不少于 6 年。</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="stage cat-teal"><span class="num">际</span><h3>国际化赛道</h3><span class="tip">港澳 / 中外合作独立招生</span></div>
+  <div class="grid">
+    <div class="card">
+      <div class="ctitle">港澳高校独立招生 <span class="pill t">不占统招志愿</span></div>
+      <div class="desc">香港大学、香港中文大学、香港科技大学、香港理工大学、香港城市大学、澳门大学等在内地独立招生。</div>
+      <ul>
+        <li>须另行向港澳高校报名，与内地统招互不冲突。</li>
+        <li>适合英语强、家庭预算充足、有赴港澳就读规划的考生。</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <div class="ctitle">中外合作办学 / 联合培养 <span class="pill t">普通批内</span></div>
+      <div class="desc">普通批内“中外合作办学”“联合培养”“学分互认”“国际班”等专业。</div>
+      <div class="meta"><span class="pill who">收费较高，需结合经济承受力</span></div>
+      <ul>
+        <li>部分专业全英文授课，非英语语种考生须慎重。</li>
+        <li>投档后若不符合培养要求可能被退档，须看清章程。</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="stage cat-special"><span class="num">艺</span><h3>艺术 / 体育类</h3><span class="tip">统考 + 校考，独立划线</span></div>
+  <div class="grid">
+    <div class="card">
+      <div class="ctitle">艺术类 <span class="pill t">统考 + 校考</span></div>
+      <div class="desc">本科提前批含经批准在提前批录取的艺术院校；本科批、专科批设艺体类院校专业组。</div>
+      <ul>
+        <li>戏曲类为省际联考，其余为省级统考 + 校考。</li>
+        <li>艺考生同批次不可兼报普通类，未录取可继续参与后续普通类投档。</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <div class="ctitle">体育类 <span class="pill t">文化 + 专业双过线</span></div>
+      <div class="desc">体育本科批 → 体育专科批，实行平行志愿投档。</div>
+      <ul>
+        <li>严格执行文化成绩、专业成绩双过线。</li>
+        <li>按官方合成总分择优录取，单独划线、单独排序。</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ============ ③ 中职与四大路径 ============ -->
+<section id="zx" class="wrap">
+  <div class="sec-head">
+    <h2>③ 中职与四大路径</h2>
+    <span class="sub">梅州中考分流后，中职并非“终点”；中本贯通、三二分段可一路贯通至本科 / 高职。广东持续推进职教高考、中高企协同长学制等试点，技能成才通道越来越宽。</span>
+  </div>
+
+  <div class="stage cat-amber"><span class="num">升</span><h3>中职升学具体通道</h3></div>
+  <div class="grid">
+    <div class="card clickable" data-detail="zb" tabindex="0" role="button" aria-label="中本贯通 2026 试点">
+      <div class="ctitle">中本贯通（中职 → 本科） <span class="pill t">7 年拿本科证</span></div>
+      <div class="desc">前 3 年中职、后 4 年本科，毕业获本科文凭。2026 试点扩至 <b>9 校 11 专业 318 人</b>（2025 仅 2 校 40 人），最低线普高第三梯度线（广州 632）。</div>
+      <ul>
+        <li>中本贯通采用普通高中梯度控制线上志愿优先投档。</li>
+        <li>被录取后不得参加后续批次；补录先于普通高中进行。</li>
+      </ul>
+      <button class="detail-btn" type="button">查看 2026 中本贯通试点 →</button>
+    </div>
+
+    <div class="card">
+      <div class="ctitle">中高职三二分段 <span class="pill t">中职 3 年 + 高职 2 年</span></div>
+      <div class="desc">2026 年广东三二分段 <b>399 专业、计划 18,996 人</b>，录取 15,620 人，其中 5,769 人达公办普高线。</div>
+      <ul>
+        <li>中职阶段后通过转段考核升入对口高职。</li>
+        <li>紧密对接广东“制造业当家”现代产业体系，报考热度攀升。</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <div class="ctitle">职教高考（“3+证书”考试） <span class="pill t">中职生升学的统考主通道</span></div>
+      <div class="desc">广东“3+证书”（语文、数学、英语 + 职业技能证书）是中职生升入本科 / 专科高职院校的主渠道。</div>
+      <ul>
+        <li>可报考省内应用型本科及高职（专科）院校。</li>
+        <li>技能大赛获奖考生可获免试或加分优待。</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <div class="ctitle">技能拔尖人才免试升学 <span class="pill t">世界技能大赛等</span></div>
+      <div class="desc">在世界技能大赛获奖、或全国职业院校技能大赛获奖的中职毕业生，可免试入读相应高职院校。</div>
+      <ul>
+        <li>须符合当年广东省免试录取政策与院校招生章程。</li>
+        <li>是“以赛促学、技能成才”的直通车。</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="stage cat-amber"><span class="num">4</span><h3>中职生升学四条主通道（专家概括）</h3></div>
+  <div class="trackbar">
+    <div class="tk"><b>通道 1 · 升入普通高中</b><span>主流路径，2025 梅州中考约 6.5 万人；三年后目标升入理想大学。</span></div>
+    <div class="tk"><b>通道 2 · 中本贯通 / 三二分段</b><span>职教升本 / 高职主通道：中本贯通 9 校 318 人、三二分段 399 专业 1.9 万计划，7 年拿本科证。</span></div>
+    <div class="tk"><b>通道 3 · 职教高考</b><span>“3+证书”考试是中职生升本科 / 高职的统考主通道，技能大赛获奖可免试。</span></div>
+    <div class="tk"><b>通道 4 · 补录与征集</b><span>普通高中 / 中本贯通 / 三二分段未录满计划统一补录；凡未被录取且达线考生均可填报。</span></div>
+  </div>
+</section>
+
+<footer class="wrap">
+  <p><b>数据说明：</b>本页梅州中考数据来自《梅州市 2025 年初中学业水平考试与高中阶段学校招生工作意见》、梅州市教育局 2025-05-23《关于公布 2025 年普通高中招生计划的通知》（全市普高计划 37,500、13 所公办优质普高名额分配 50% 合计 5,230）、2025-07-15 第一批录取分数线、2025-07-18 第二批录取分数线（本地宝学校库、掌上梅州转引）；提前批中本贯通班 731.5 / 711.3；中考总分 850；市属 2 所示范性高中最低控制线 719、全市普高最低控制线 500。广东高招数据来自广东省教育考试院及官方媒体公布的 2026 年录取结果（综合评价 2,771 人、专项 2,879 人、卫生专项 1,187 名、教师专项华南师大 220 名等）。</p>
+  <p>具体招生计划、名额、控制线、选科要求以<b>梅州市教育局、广东省教育考试院</b>当年官方公布为准。本页为升学路径科普，不构成报考建议。<b>未公布项：</b>梅州中考全市统一划线（不区分户籍 / 随迁双线）；体艺特长生全市汇总计划、民办各校分项目计划等官方未单列，以各校自主招生简章为准。</p>
+</footer>
+
+<!-- 名额明细弹窗 -->
+<div class="modal-mask" id="detailMask">
+  <div class="modal" role="dialog" aria-modal="true" aria-labelledby="detailTitle">
+    <div class="modal-head">
+      <h3 id="detailTitle"></h3>
+      <button class="modal-close" id="detailClose" type="button" aria-label="关闭">×</button>
+    </div>
+    <div class="modal-body" id="detailBody"></div>
+  </div>
+</div>
+
+<script>
+const DETAIL = {
+  minge: {
+    title: '名额分配（指标生 · 13 所公办优质普高 50%）· 名额与规则',
+    intro: '梅州 13 所公办优质普通高中按招生计划的 <b>50%</b> 将名额分配到初中学校（即名额分配 / 指标生 / 名额到校），2025 年 13 校名额分配计划合计 <b>5,230 个</b>。名额分配生由考生所在初中校内竞争产生录取线，<b>官方不公布统一“降 X 分”值</b>；未完成的名额分配计划自动转入该校普通生计划。',
+    cols: ['公办优质普高（13 所）', '招生计划', '名额分配（50%）', '备注'],
+    subs: [
+      { label: '2025 十三所公办优质普高 名额分配计划（50%）', rows: [
+        ['广东梅县东山中学（市属·国家级示范）', '1000', '500', '—'],
+        ['梅州市曾宪梓中学（市属·国家级示范）', '420', '210', '—'],
+        ['梅州中学（国家级示范）', '700', '350', '—'],
+        ['梅县区高级中学（国家级示范）', '700', '350', '—'],
+        ['兴宁市第一中学（国家级示范）', '1200', '600', '—'],
+        ['平远中学（国家级示范）', '600', '300', '—'],
+        ['蕉岭中学（国家级示范）', '700', '350', '—'],
+        ['大埔县虎山中学（国家级示范）', '800', '400', '—'],
+        ['丰顺中学（国家级示范）', '800', '400', '—'],
+        ['五华县水寨中学（国家级示范）', '1200', '600', '—'],
+        ['五华县高级中学（国家级示范）', '1300', '650', '—'],
+        ['广东梅县外国语学校（国家级示范）', '240', '120', '—'],
+        ['兴宁市齐昌中学（优质）', '800', '400', '—']
+      ]}
+    ],
+    sum: ['十三校合计', '5,230 个名额', '须本校 3 年完整学籍'],
+    note: '名额分配机制：13 所公办优质普高（以国家级示范性高中为主体）按招生计划 50% 将名额分配到各初中，考生在具有 3 年完整学籍的初中校内竞争，按学业考试成绩择优录取；因校内竞争，官方不公布各校统一的最低录取分，也无“比统招低 X 分”的固定值。须具有梅州市学籍且同一初中在籍在读满 3 年，中途转学不得参与；未完成名额分配计划转入普通生计划。数据来源：梅州市教育局 2025-05-23《关于公布 2025 年普通高中招生计划的通知》及附件 2《2025 年公办优质普通高中“名额分配”计划表》；以官方公布为准。'
+  },
+  zizhu: {
+    title: '自主招生（体艺特长生）· 类型说明',
+    intro: '梅州普通高中<b>自主招生</b>面向体艺专长生，在<b>提前批</b>录取，按“初中学业水平考试文化分 + 学校专项（术科）考核分”合成总分择优录取，是特长生“低分高就”的核心窗口。2025 年依据《梅市教体〔2025〕14 号》实施。',
+    cols: ['类型', '招生对象', '录取方式'],
+    subs: [
+      { label: '自主招生两大类型', rows: [
+        ['体育类', '田径、球类、游泳、武术等体育专长生', '中考文化分 + 学校术科分合成总分，从高到低择优'],
+        ['艺术类', '音乐、美术、舞蹈等艺术专长生', '中考文化分 + 学校术科分合成总分，从高到低择优']
+      ]}
+    ],
+    sum: ['提前批录取', '须先取得术科资格', '文化 / 术科双过线'],
+    note: '考生须先参加招生学校组织的专项（术科）考试并取得合格资格，方可填报相应自主招生志愿；体艺特长生与自主招生同在提前批完成，被录取后不再参加后续批次，且原则上不得转为普通生。文化分与术科分最低控制线由招生学校设定（原则上文化分不低于 430 分，各校比例不同，如梅州中学音乐文化≥510、美术≥595，虎山中学文化≥600）。全市体艺特长生汇总计划官方未发布，具体招生学校、项目与计划以梅州市教育局公布的各校自主招生简章为准。'
+  },
+  shida: {
+    title: '第一批录取线梯队 · 2025（全市统一划线）',
+    intro: '2025 年梅州第一批普通生线：<b>东山中学 771.2</b> 居首，其后梅县外国语 764.3、曾宪梓 757.4、兴宁一中 738.5、梅县区高级 733.1、梅州中学 721.7、齐昌 718.3、水寨 715.3、丰顺 706.8、虎山 702.7、平远 696.6、嘉应 692.2、五华高级 684、梅县华侨 678.2、蕉岭 659.2、田家炳（五华）651.6、丰顺实验 638.6。梅州中考<b>不区分户籍 / 随迁双线，全市统一划线</b>。',
+    cols: ['学校', '2025 第一批线', '招生计划', '类别'],
+    subs: [
+      { label: '民办（第一批·公费生，参照公办收费）', rows: [
+        ['五华县中英文高级中学', '779.7', '120', '民办公费'],
+        ['梅州市华业外国语高级中学', '777.9', '140', '民办公费'],
+        ['梅州市外语实验学校', '762', '80', '民办公费'],
+        ['梅州市培英东山高级中学', '755.9', '120', '民办公费'],
+        ['梅州市梅雁中学', '730.4', '120', '民办公费']
+      ]},
+      { label: '公办优质普高（第一批·普通生）', rows: [
+        ['广东梅县东山中学', '771.2', '1000', '市属示范'],
+        ['广东梅县外国语学校', '764.3', '240', '国家级示范'],
+        ['梅州市曾宪梓中学', '757.4', '420', '市属示范'],
+        ['兴宁市第一中学', '738.5', '1200', '国家级示范'],
+        ['梅县区高级中学', '733.1', '700', '国家级示范'],
+        ['梅州中学', '721.7', '700', '国家级示范'],
+        ['兴宁市齐昌中学', '718.3', '800', '优质'],
+        ['五华县水寨中学', '715.3', '1200', '国家级示范'],
+        ['丰顺中学', '706.8', '800', '国家级示范'],
+        ['大埔县虎山中学', '702.7', '800', '国家级示范'],
+        ['平远中学', '696.6', '600', '国家级示范'],
+        ['梅江区嘉应中学', '692.2', '600', '市一级'],
+        ['五华县高级中学', '684', '1300', '国家级示范'],
+        ['梅县区华侨中学', '678.2', '600', '市一级'],
+        ['蕉岭中学', '659.2', '750', '国家级示范'],
+        ['五华县田家炳中学', '651.6', '1300', '省一级'],
+        ['丰顺县实验中学', '638.6', '1000', '2025 新增第一批']
+      ]}
+    ],
+    sum: ['说明', '全市统一划线', '市属 2 所示范控线 719 / 普高控线 500'],
+    note: '录取线为各高中第一批（统一招生）普通生最低录取分数线，梅州中考不区分户籍生 / 随迁子女，全市统一按成绩与志愿投档（无“双线”）。市属 2 所示范性高中（东山、曾宪梓）最低控制线 719 分，全市普通高中最低录取控制线 500 分。数据来源：梅州市教育局 2025-07-15 第一批录取分数线公布（本地宝学校库、掌上梅州转引）；以官方公布为准。'
+  },
+  district: {
+    title: '梅州公办高中版图',
+    intro: '梅州公办普高分布于<b>梅江区、梅县区（市辖区）</b>及<b>兴宁市（县级市）、大埔、丰顺、五华、平远、蕉岭五县</b>。13 所公办优质普高（名额分配校）构成优质核心，各县区另有大批第二批一般公办高中（保底入读公办的重要承载）。',
+    cols: ['区域', '代表公办高中'],
+    subs: [
+      { label: '市辖区 · 梅江区', rows: [
+        ['梅州中学（国家级示范）', '嘉应中学、乐育中学、联合中学等市一级高中'],
+        ['市属（市直）', '东山中学、曾宪梓中学（市直属·国家级示范）']
+      ]},
+      { label: '市辖区 · 梅县区', rows: [
+        ['梅县区高级中学（国家级示范）', '华侨中学、松口中学、畲江中学、丙村中学、南口中学、松源中学等'],
+        ['广东梅县外国语学校（国家级示范）', '—']
+      ]},
+      { label: '兴宁市（县级市）', rows: [
+        ['兴宁市第一中学（国家级示范）', '齐昌中学、沐彬中学、兴民中学、宁中中学等']
+      ]},
+      { label: '五华县', rows: [
+        ['五华县水寨中学 / 五华县高级中学（国家级示范）', '田家炳中学、五华中学、安流中学等']
+      ]},
+      { label: '大埔 / 丰顺 / 平远 / 蕉岭', rows: [
+        ['虎山中学（大埔·国家级示范）', '丰顺中学（丰顺·国家级示范）'],
+        ['平远中学（平远·国家级示范）', '蕉岭中学（蕉岭·国家级示范）']
+      ]}
+    ],
+    sum: ['全市合计', '60+ 所普通高中', '13 所公办优质普高 · 名额分配 50%'],
+    note: '梅州实行“市属 + 县（市、区）属”两级办学，公办普高覆盖全部 2 区 1 市 5 县；13 所公办优质普高（以国家级示范性高中为主体）名额分配 50% 释放大量优质学位，各县区第二批一般公办高中是考生保底入读公办的重要承载。具体招生学校、校区与计划以梅州市教育局 / 各县区教育局当年公布为准。'
+  },
+  zb: {
+    title: '中本贯通（中职 → 本科）· 2026 试点',
+    intro: '2026 年广东中本贯通试点扩至 <b>9 校、11 个专业、计划 318 人</b>（2025 仅 2 校 40 人），最低录取分 632 分（普高第三梯度投档控制线）。下表为部分试点（数据来自专家版整理，个别专业类别标注差异以官方为准）。',
+    cols: ['中职学校', '专业', '对接本科高校', '2026 计划'],
+    subs: [
+      { label: '2026 中本贯通试点（部分）', rows: [
+        ['广州市旅游商务职业学校', '中餐烹饪', '韩山师范学院', '30'],
+        ['广州市信息技术职业学校', '软件与信息服务', '广州职业技术大学', '30'],
+        ['广州市交通运输职业学校', '汽车运用与维修', '广州职业技术大学', '30'],
+        ['广州市城市建设职业学校', '建筑工程施工', '广州职业技术大学', '30'],
+        ['广州市财经商贸职业学校', '物流服务与管理', '广东轻工职业技术大学', '40'],
+        ['广州市轻工职业学校', '民族食品加工技术', '广东轻工职业技术大学', '40'],
+        ['广州市轻工职业学校', '机电技术应用', '广东轻工职业技术大学', '20'],
+        ['广州市纺织服装职业学校', '工艺美术', '广州职业技术大学', '20'],
+        ['广州市番禺区职业技术学校', '汽车运用与维修', '广州职业技术大学', '20']
+      ]}
+    ],
+    sum: ['全省合计', '318 人（官方）', '9 校 · 11 专业 · 最低线 632'],
+    note: '中本贯通前 3 年中职、后 4 年本科，毕业获本科文凭（标注“专升本”路径）。志愿从 2025 年 2 个增至 2026 年 3 个；除足球、舞蹈试点外，采用普通高中第三梯度控制线上志愿优先投档，录取最低控制线为普高第三梯度线。被中本贯通录取不得参加后续批次；补录时先进行中本贯通投档。最高分：轻工机电技术应用 708、信息技术软件与信息服务 644。数据来源：广州招考网 + 专家版整理；以官方公布为准。'
+  },
+  zhonghe: {
+    title: '在粤综合评价招生 · 2026 院校',
+    intro: '2026 年 <b>12 所高校在粤开展综合评价</b>，共录取 <b>2,771 人</b>（广州生源 880，占 31.8%；广深合计约七成）。中大、港中深、南科大、华工为招生主力。',
+    cols: ['在粤综合评价招生院校', '2026 录取人数'],
+    subs: [
+      { label: '2026 在粤综合评价（12 校，共 2,771 人）', rows: [
+        ['中山大学', '495'], ['香港中文大学（深圳）', '451'], ['南方科技大学', '307'],
+        ['华南理工大学', '300'], ['北师香港浸会大学（UIC）', '—'], ['浙江大学', '—'],
+        ['北京外国语大学', '—'], ['上海纽约大学', '—'], ['昆山杜克大学', '—'],
+        ['西湖大学', '—'], ['西交利物浦大学', '—'], ['深圳北理莫斯科大学', '—']
+      ]}
+    ],
+    sum: ['在粤合计', '2,771 人', '广州生源 880（31.8%）'],
+    note: '综合评价采用“高考成绩 + 学校考核 + 学考”综合计分（如华南理工“631”：高考 60% + 校测 30% + 学考 10%），在“特殊类型招生院校”志愿栏填报，不占普通批志愿（锁档除外）。中大、港中深、北师港浸大三校合计录取 1,686 人，占 60.8%。2025 年 11 月教育部首次系统规范综评，要求逐步提高高考文化课成绩占比。数据来源：广东省教育考试院公示 + 广州日报大洋网；以各高校 2026 简章为准。'
+  },
+  xiangxiang: {
+    title: '专项计划（地方 + 高校）· 2026 在粤',
+    intro: '2026 年广东<b>专项计划首年并入本科批</b>录取（取消各校自主校测，考生统一通过省报名系统申请）。全省 <b>201 个专业组、计划 2,879 人</b>，实际投档 2,862 人。',
+    cols: ['类别', '专业组', '2026 计划', '实际投档'],
+    subs: [
+      { label: '普通类（物理）', rows: [
+        ['地方专项', '52', '1,992', '1,989'],
+        ['高校专项', '95', '263', '252']
+      ]},
+      { label: '普通类（历史）', rows: [
+        ['地方专项', '28', '579', '全满'],
+        ['高校专项', '26', '45', '42']
+      ]}
+    ],
+    sum: ['全省合计', '201 组 · 2,879 人', '投档 2,862'],
+    note: '地方专项面向原中央苏区、欠发达革命老区、少数民族地区农村学生；高校专项面向边远、贫困、民族地区县以下农村学生（如中大地理科学类）。专项计划投档数据单独统计，不纳入各院校普通批次投档线。顶尖高校专项仍强劲（北大物理类专项最低排位 343、清华 352，与非专项几乎无差）。华南农业大学地方专项 450 人全满档；华南师范大学地方专项多个专业组满档。数据来源：广东省 2026 年高招投档结果通报；以广东省教育考试院为准。'
+  },
+  weisheng: {
+    title: '卫生专项（订单定向医学生）· 2026',
+    intro: '2026 年全省订单定向培养医学大学生 <b>1,187 名</b>（省财政补助 1,155 + 广州市定向 32），定点 <b>11 所</b>院校培养，免学费、免住宿费并按月发生活补助。',
+    cols: ['定点培养院校', '2026 计划'],
+    subs: [
+      { label: '2026 卫生专项（订单定向，部分）', rows: [
+        ['广东医科大学', '222'], ['广东药科大学', '147'],
+        ['（其他 9 所合计：韶关学院、嘉应学院、肇庆医学院等）', '818']
+      ]}
+    ],
+    sum: ['全省订单定向', '1,187 名', '免学费住宿 + 生活补助 · 服务 6 年 · 有编有岗'],
+    note: '招生专业以临床医学、中医学为主；报考对象限广东省户籍（不限农村户口），定向就业涵盖粤东西北乡镇卫生院及广州市相关区。毕业后按协议到定向单位服务 6 年，落实事业编制；本科定向医学生须参加 3 年全科 / 中医全科规培，专科参加 2 年助理全科培训。在提前批本科 / 提前批专科填报，平行志愿、高考成绩录取，无需提前报名与校测。数据来源：广东省 2026 年卫生专项投档通报（广东医 222、广药大 147 等）；以广东省教育考试院为准。'
+  },
+  jiaoshi: {
+    title: '教师专项 / 公费师范 · 2026',
+    intro: '广东为粤东西北等地培养本科师范生，分“省属公费定向教师专项”与“国家公费师范生（部属 6 所）”两类，均免学杂费、住宿费并发生活补助，毕业后带编到定向县任教。',
+    cols: ['培养院校 / 类型', '2026 计划'],
+    subs: [
+      { label: '一、广东省属公费定向教师专项', rows: [
+        ['华南师范大学', '220'],
+        ['（其他省属师范院校，按地市需求下达）', '—']
+      ]},
+      { label: '二、国家公费师范生（部属 6 所，提前批非军检）', rows: [
+        ['北京师范大学', '—'], ['华东师范大学', '—'], ['东北师范大学', '—'],
+        ['华中师范大学', '—'], ['陕西师范大学', '—'], ['西南大学', '—']
+      ]}
+    ],
+    sum: ['华南师大教师专项', '220 名', '免学费住宿 + 生活补助 8,000/年 · 任教 ≥ 6 年'],
+    note: '华南师范大学 2026 年公费定向教师专项面向汕尾、揭阳、汕头、韶关、清远、河源、云浮、茂名、江门、惠州等 10 地市，培养期内免除学费、住宿费、军训服装费、教材资料费和实习实践费，另发生活补助 8,000 元 / 年；毕业后由定向地教育行政部门派遣到定向县服务单位任教不少于 6 年。国家公费师范生在本科提前批非军检院校录取。数据来源：华南师范大学 2026 校园开放日公布 + 教育部直属师范院校招生章程；以广东省教育考试院为准。'
+  },
+  ty: {
+    title: '体育 / 艺术特长生（2025）· 计划说明',
+    intro: '梅州普通高中体艺特长生与自主招生同批（<b>提前批</b>），按“<b>中考文化分 + 学校术科分</b>”合成总分择优。文化分与术科分须双过线（原则上文化分不低于 430 分，各校比例不同）。全市体艺特长生<b>汇总计划官方未发布</b>，以各校简章为准。',
+    cols: ['类别', '说明', '文化 / 术科线'],
+    subs: [
+      { label: '体艺特长生（文化 / 术科双过线，合成择优）', rows: [
+        ['体育类', '田径、球类、游泳、武术等', '文化分≥430（原则）；术科过校线'],
+        ['艺术类', '音乐、美术、舞蹈等', '如梅州中学音乐文化≥510、美术≥595；虎山中学文化≥600'],
+        ['全市汇总计划', '官方未发布', '以各校自主招生简章为准']
+      ]}
+    ],
+    sum: ['说明', '文化 / 术科双过线', '被录取原则上不得转普通生'],
+    note: '数据来源：梅州市教育局《梅市教体〔2025〕14 号》及 2025 年各校自主招生简章（招生规则官方）+ 掌上梅州 / 本地宝汇总。考生须先参加学校专项（术科）考试并取得资格；文化、术科双过线后按合成分由高到低录取，未录满不降分补录；被录取特长生原则上不得转为普通生。全市体艺特长生汇总计划官方未发布，本页仅列规则与示例，招生学校、项目与计划以官方公布为准。'
+  },
+  trend: {
+    title: '第一批分数线趋势 · 2024 → 2025',
+    intro: '对比 2024：多数校 2025 较 2024 小幅上涨（0~9 分）；<b>蕉岭中学由 683.6 回落至 659.2（−24.4）</b>异常回落；<b>虎山中学涨幅最大（+13.6）</b>。丰顺县实验中学为 2025 新增第一批（2024 无）。数据来自梅州市教育局 2024 / 2025 第一批录取分数线公布。',
+    cols: ['学校', '2024 线', '2025 线', '涨跌'],
+    subs: [
+      { label: '第一批主要校 两年对比（公办优质 + 头部民办）', rows: [
+        ['广东梅县东山中学', '766.3', '771.2', '+4.9'],
+        ['梅州市曾宪梓中学', '751.5', '757.4', '+5.9'],
+        ['广东梅县外国语学校', '755.4', '764.3', '+8.9'],
+        ['兴宁市第一中学', '734.9', '738.5', '+3.6'],
+        ['梅县区高级中学', '733.3', '733.1', '−0.2'],
+        ['梅州中学', '720.8', '721.7', '+0.9'],
+        ['兴宁市齐昌中学', '714.6', '718.3', '+3.7'],
+        ['五华县水寨中学', '712.4', '715.3', '+2.9'],
+        ['丰顺中学', '702.3', '706.8', '+4.5'],
+        ['大埔县虎山中学', '689.1', '702.7', '+13.6'],
+        ['平远中学', '693.5', '696.6', '+3.1'],
+        ['蕉岭中学', '683.6', '659.2', '−24.4'],
+        ['五华县高级中学', '681.8', '684', '+2.2'],
+        ['五华县中英文高级中学（民办）', '773.2', '779.7', '+6.5'],
+        ['梅州市华业外国语高级中学（民办）', '—', '777.9', '新增']
+      ]}
+    ],
+    sum: ['多数校', '2025 较 2024 涨 0~9 分', '蕉岭异常回落 −24.4'],
+    note: '涨跌幅为第一批普通生最低录取分数线对比；虎山中学 2025 涨幅最大（+13.6），蕉岭中学由 683.6 回落至 659.2（−24.4），或与当年报考热度变化有关。丰顺县实验中学为 2025 年新增第一批招生学校（2024 无对应线）。梅州中考全市统一划线，无户籍 / 随迁双线差异。数据来源：梅州市教育局 2024 / 2025 中招录取分数线公布（本地宝、掌上梅州转引）；以官方公布为准。'
+  },
+  minban: {
+    title: '民办高中梯队 · 2025（公费生 / 自费生）',
+    intro: '梅州民办共 <b>6 所</b>，特色为“<b>第一批录取参照公办收费（公费生）、第二批录取按民办标准收费（自费生）</b>”。第一批公费生线常逼近甚至超过顶尖公办；第二批自费生多压至普高最低控制线 500 分。下表为 2025 年各民办高中第一批（公费）与第二批（自费）线及收费。',
+    cols: ['学校', '第一批（公费生）', '第二批（自费生）', '自费学费 / 学期'],
+    subs: [
+      { label: '六所民办高中（2025 公费 / 自费 + 收费）', rows: [
+        ['五华县中英文高级中学', '779.7', '607.1', '18000 元'],
+        ['梅州市华业外国语高级中学', '777.9', '500', '23000 元'],
+        ['梅州市外语实验学校', '762', '500', '23000 元'],
+        ['梅州市培英东山高级中学', '755.9', '500', '19800 元'],
+        ['梅州市梅雁中学', '730.4', '513.8', '15200 元'],
+        ['梅州市培英中学', '—（无公费批）', '500', '16800 元']
+      ]}
+    ],
+    sum: ['说明', '自费生门槛低至 500', '第一批公费学费同公办 1070 元/期'],
+    note: '梅州民办高中实行两阶段收费：第一批“公费生”按省一级公办高中标准收费（学费 1070 元/学期），第二批“自费生”按民办标准收费（1.5 万~2.3 万元/学期，另加住宿费）。培英中学 2025 年仅在第二批招生（无第一批公费线）。自费生收费标准差异大，须以学校当年公示为准。数据来源：梅州市教育局 2025-07-15 第一批、2025-07-18 第二批录取分数线公布 + 各校收费标准公示（九考网转引）；以官方公布为准。'
+  }
+};
+
+const mask = document.getElementById('detailMask');
+const mTitle = document.getElementById('detailTitle');
+const mBody = document.getElementById('detailBody');
+const isNumCol = (cols, i) => i > 0 && cols[i] && /2026|2025|2024|名额|计划|录取|控制|预测|数/.test(cols[i]);
+function renderGenericTables(d){
+  let html = '';
+  d.subs.forEach(s=>{
+    html += '<div class="detail-sub">' + s.label + '</div>';
+    html += '<table class="detail-table"><thead><tr>' +
+      d.cols.map((c,i)=>'<th'+(isNumCol(d.cols,i)?' class="num"':'')+'>'+c+'</th>').join('') +
+      '</tr></thead><tbody>';
+    s.rows.forEach(r=>{
+      html += '<tr>' + r.map((v,i)=>'<td'+(isNumCol(d.cols,i)?' class="num"':'')+'>'+v+'</td>').join('') + '</tr>';
+    });
+    html += '</tbody></table>';
+  });
+  if(d.sum){
+    html += '<table class="detail-table"><tbody><tr class="sum">' +
+      d.sum.map((v,i)=>'<td'+(i>0?' class="num"':'')+'>'+v+'</td>').join('') + '</tr></tbody></table>';
+  }
+  return html;
+}
+function renderGeneric(d){
+  return '<p class="modal-intro">' + d.intro + '</p>' + renderGenericTables(d) + '<div class="modal-note">' + d.note + '</div>';
+}
+function openDetail(key){
+  const d = DETAIL[key];
+  if(!d) return;
+  mTitle.innerHTML = d.title;
+  mBody.innerHTML = renderGeneric(d);
+  mask.classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function closeDetail(){ mask.classList.remove('open'); document.body.style.overflow = ''; }
+document.querySelectorAll('[data-detail]').forEach(c=>{
+  c.addEventListener('click', e=>{ e.preventDefault(); openDetail(c.getAttribute('data-detail')); });
+});
+document.getElementById('detailClose').addEventListener('click', closeDetail);
+mask.addEventListener('click', e=>{ if(e.target === mask) closeDetail(); });
+document.addEventListener('keydown', e=>{ if(e.key === 'Escape') closeDetail(); });
+
+const links = document.querySelectorAll('nav.tabs a');
+links.forEach(a=>{
+  a.addEventListener('click',e=>{
+    e.preventDefault();
+    const id=a.getAttribute('href').slice(1);
+    document.getElementById(id).scrollIntoView({behavior:'smooth',block:'start'});
+  });
+});
+const secs=['cz','gz','zx'];
+const obs=new IntersectionObserver(es=>{
+  es.forEach(en=>{
+    if(en.isIntersecting){
+      links.forEach(l=>l.classList.toggle('active', l.getAttribute('href').slice(1)===en.target.id));
+    }
+  });
+},{rootMargin:'-45% 0px -50% 0px'});
+secs.forEach(id=>obs.observe(document.getElementById(id)));
+
+const q=document.getElementById('q');
+q.addEventListener('input',()=>{
+  const v=q.value.trim().toLowerCase();
+  document.querySelectorAll('.card').forEach(c=>{
+    const txt=c.textContent.toLowerCase();
+    c.style.display = (!v || txt.includes(v)) ? '' : 'none';
+  });
+});
+</script>
+</body>
+</html>
