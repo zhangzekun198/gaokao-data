@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>广东升学路径全景 · 21 市</title>
+<style>
+  :root{--bg:#eef1f6;--card:#fff;--ink:#1f2430;--sub:#6b7280;--line:#e6e8ec;--accent:#3b5bdb}
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);font-family:-apple-system,"PingFang SC","Microsoft YaHei",Roboto,Arial,sans-serif;font-size:15px;line-height:1.6}
+  .hero{background:linear-gradient(135deg,#1e2a78,#3b5bdb 55%,#0e7490);color:#fff;padding:32px 18px 28px;text-align:center}
+  .hero h1{margin:0 0 6px;font-size:24px;letter-spacing:1px}
+  .hero p{margin:0;opacity:.92;font-size:14px}
+  .wrap{max-width:1040px;margin:0 auto;padding:18px}
+  .back{display:inline-block;margin:6px 0 14px;color:var(--accent);text-decoration:none;font-size:14px;font-weight:600}
+  .back:hover{text-decoration:underline}
+  .pcard{background:#fff;border-radius:16px;padding:20px;box-shadow:0 6px 20px rgba(0,0,0,.10);border:1px solid var(--line)}
+  .pcard .tag{display:inline-block;font-size:12px;font-weight:700;padding:2px 9px;border-radius:20px;color:#fff;background:#3b5bdb;margin-bottom:8px}
+  .pcard h2{margin:0 0 4px;font-size:20px}
+  .pcard p.desc{color:var(--sub);font-size:13px;margin:0 0 16px}
+  .cities{display:grid;grid-template-columns:repeat(auto-fit,minmax(110px,1fr));gap:10px}
+  .cities a{text-align:center;text-decoration:none;padding:16px 8px;border-radius:12px;font-size:16px;font-weight:700;color:#fff;transition:filter .15s}
+  .cities a:hover{filter:brightness(1.08)}
+  .cities a small{display:block;font-size:11px;font-weight:500;opacity:.85;margin-top:3px}
+  /* 21 市色 token */
+  .c-gzlu{background:#0d9488}.c-szlu{background:#7c3aed}.c-dglu{background:#be185d}.c-zhlu{background:#0369a1}
+  .c-fslu{background:#db2777}.c-hzlu{background:#0e7490}.c-zslu{background:#ca8a04}.c-jmlu{background:#9333ea}
+  .c-stlu{background:#0284c7}.c-zjlu{background:#ea580c}.c-zqlu{background:#4d7c0f}.c-mmlu{background:#c026d3}
+  .c-mzlu{background:#be123c}.c-swlu{background:#1d4ed8}.c-hylm{background:#65a30d}.c-yjlu{background:#c2410c}
+  .c-qylu{background:#0891b2}.c-sglu{background:#581c87}.c-czlu{background:#9f1239}.c-jylu{background:#1e40af}
+  .c-yflu{background:#166534}
+  .note{background:#fff7ed;border:1px solid #fed7aa;border-radius:12px;padding:12px 14px;font-size:13px;color:#b45309;margin:16px 0}
+  .foot{text-align:center;color:var(--sub);font-size:12px;margin:22px 0 10px}
+</style>
+</head>
+<body>
+<header class="hero">
+  <h1>广东升学路径全景</h1>
+  <p>21 个地级市 · 一张图看全初升高 / 高升大 / 中职贯通升学通道</p>
+</header>
+<div class="wrap">
+  <a class="back" href="index.html">← 返回门户</a>
+  <div class="pcard">
+    <span class="tag">广东 · 21 市</span>
+    <h2>选择城市，进入升学路径全景</h2>
+    <p class="desc">每个城市页含 12 大模块：名额分配 / 自主招生 / 优质校线 / 公办版图 / 体艺特长生 / 分数线趋势 / 民办梯队，以及全省通用的中本贯通 / 综合评价 / 专项 / 卫生 / 教师专项。官方未单列数据均如实标注。</p>
+    <div class="cities">
+      <a class="c-gzlu" href="gz-shengxue-lujing.html">广州<small>gz</small></a>
+      <a class="c-szlu" href="sz-shengxue-lujing.html">深圳<small>sz</small></a>
+      <a class="c-dglu" href="dg-shengxue-lujing.html">东莞<small>dg</small></a>
+      <a class="c-zhlu" href="zhuhai-shengxue-lujing.html">珠海<small>zh</small></a>
+      <a class="c-fslu" href="foshan-shengxue-lujing.html">佛山<small>fs</small></a>
+      <a class="c-hzlu" href="huizhou-shengxue-lujing.html">惠州<small>hz</small></a>
+      <a class="c-zslu" href="zhongshan-shengxue-lujing.html">中山<small>zs</small></a>
+      <a class="c-jmlu" href="jiangmen-shengxue-lujing.html">江门<small>jm</small></a>
+      <a class="c-stlu" href="shantou-shengxue-lujing.html">汕头<small>st</small></a>
+      <a class="c-zjlu" href="zhanjiang-shengxue-lujing.html">湛江<small>zj</small></a>
+      <a class="c-zqlu" href="zhaoqing-shengxue-lujing.html">肇庆<small>zq</small></a>
+      <a class="c-mmlu" href="maoming-shengxue-lujing.html">茂名<small>mm</small></a>
+      <a class="c-mzlu" href="meizhou-shengxue-lujing.html">梅州<small>mz</small></a>
+      <a class="c-swlu" href="shanwei-shengxue-lujing.html">汕尾<small>sw</small></a>
+      <a class="c-hylm" href="heyuan-shengxue-lujing.html">河源<small>hy</small></a>
+      <a class="c-yjlu" href="yangjiang-shengxue-lujing.html">阳江<small>yj</small></a>
+      <a class="c-qylu" href="qingyuan-shengxue-lujing.html">清远<small>qy</small></a>
+      <a class="c-sglu" href="shaoguan-shengxue-lujing.html">韶关<small>sg</small></a>
+      <a class="c-czlu" href="chaozhou-shengxue-lujing.html">潮州<small>cz</small></a>
+      <a class="c-jylu" href="jieyang-shengxue-lujing.html">揭阳<small>jy</small></a>
+      <a class="c-yflu" href="yunfu-shengxue-lujing.html">云浮<small>yf</small></a>
+    </div>
+  </div>
+  <div class="note"><b>关于数据：</b>各城市页基于 2025 年当地中招 / 高招公开资料整理，分数为录取参考线 / 定位分估算，官方未单列的数据均标注“官方未公布 / 未单列 / —”，不构成录取承诺；最终以市中招办与学校官方公布为准。</div>
+  <div class="foot">中高考考情分析平台 · 广东升学路径</div>
+</div>
+</body>
+</html>
