@@ -48,6 +48,12 @@
   .chart .tag{display:inline-block;font-size:12px;font-weight:700;padding:2px 9px;border-radius:20px;color:#5660a8;background:#d9def7;margin-bottom:8px}
   .chart h2{margin:0 0 4px;font-size:20px}
   .chart p.csub{color:var(--sub);font-size:13px;margin:0 0 14px}
+  .tabs{display:flex;gap:8px;margin:0 0 14px;flex-wrap:wrap}
+  .tab{border:1px solid var(--line);background:#fff;color:var(--sub);font-size:13px;font-weight:600;padding:7px 15px;border-radius:20px;cursor:pointer;transition:.15s}
+  .tab:hover{border-color:var(--accent);color:var(--accent)}
+  .tab.active{background:var(--accent);color:#fff;border-color:var(--accent)}
+  .panel{display:none}
+  .panel.active{display:block}
   .bar{display:grid;grid-template-columns:62px 1fr 52px;align-items:center;gap:10px;text-decoration:none;color:var(--ink);padding:5px 0}
   .bar:hover .bf{filter:brightness(.95)}
   .bar:hover .bn{color:var(--accent)}
@@ -57,6 +63,15 @@
   .bv{font-size:13px;font-weight:700;text-align:left;color:#5a6072}
   .cnote{background:#fdf3e7;border:1px solid #f6dcc0;border-radius:12px;padding:12px 14px;font-size:12.5px;color:#a9763f;margin-top:14px}
   @media(max-width:520px){.bar{grid-template-columns:52px 1fr 44px;gap:7px}.bn{font-size:13px}}
+  /* 录取路径对比表 */
+  .ctable{width:100%;border-collapse:collapse;font-size:13px;margin-top:2px}
+  .ctable th{text-align:left;color:var(--sub);font-weight:600;padding:9px 10px;border-bottom:2px solid var(--line)}
+  .ctable td{padding:9px 10px;border-bottom:1px solid var(--line);vertical-align:middle}
+  .ctable tr:hover td{background:#fafbff}
+  .ctable .city{font-weight:700;white-space:nowrap}
+  .mini{background:#eef0f5;border-radius:6px;height:16px;width:88px;overflow:hidden;display:inline-block;vertical-align:middle;margin-right:8px}
+  .mini>i{display:block;height:100%;border-radius:6px}
+  .chip{display:inline-block;font-size:11px;padding:2px 9px;border-radius:10px;background:#eef0f5;color:#9aa0ad}
   .note{background:#fdf3e7;border:1px solid #f6dcc0;border-radius:12px;padding:12px 14px;font-size:13px;color:#a9763f;margin:16px 0}
   .foot{text-align:center;color:var(--sub);font-size:12px;margin:22px 0 10px}
 </style>
@@ -96,35 +111,257 @@
       <a class="c-yflu" href="yunfu-shengxue-lujing.html">云浮<small>yf</small></a>
     </div>
   </div>
+
   <div class="chart">
     <span class="tag">一图看懂 · 21 市</span>
-    <h2>各市中考满分对比</h2>
-    <p class="csub">广东 21 个地级市的中考满分并不相同（600–1000 分），直观看出各市计分方案的差异。柱条按满分从高到低排列，点击任意柱条可进入该市中心页。数据为 2025 年各市公开方案整理。</p>
-    <a class="bar" href="yangjiang-shengxue-lujing.html"><span class="bn">阳江</span><span class="bt"><span class="bf c-yjlu" style="width:100%"></span></span><span class="bv">1000</span></a>
-    <a class="bar" href="jieyang-shengxue-lujing.html"><span class="bn">揭阳</span><span class="bt"><span class="bf c-jylu" style="width:87%"></span></span><span class="bv">870</span></a>
-    <a class="bar" href="yunfu-shengxue-lujing.html"><span class="bn">云浮</span><span class="bt"><span class="bf c-yflu" style="width:87%"></span></span><span class="bv">870</span></a>
-    <a class="bar" href="shantou-shengxue-lujing.html"><span class="bn">汕头</span><span class="bt"><span class="bf c-stlu" style="width:85.5%"></span></span><span class="bv">855</span></a>
-    <a class="bar" href="heyuan-shengxue-lujing.html"><span class="bn">河源</span><span class="bt"><span class="bf c-hylm" style="width:85%"></span></span><span class="bv">850</span></a>
-    <a class="bar" href="meizhou-shengxue-lujing.html"><span class="bn">梅州</span><span class="bt"><span class="bf c-mzlu" style="width:85%"></span></span><span class="bv">850</span></a>
-    <a class="bar" href="shanwei-shengxue-lujing.html"><span class="bn">汕尾</span><span class="bt"><span class="bf c-swlu" style="width:84%"></span></span><span class="bv">840</span></a>
-    <a class="bar" href="chaozhou-shengxue-lujing.html"><span class="bn">潮州</span><span class="bt"><span class="bf c-czlu" style="width:83%"></span></span><span class="bv">830</span></a>
-    <a class="bar" href="zhaoqing-shengxue-lujing.html"><span class="bn">肇庆</span><span class="bt"><span class="bf c-zqlu" style="width:83%"></span></span><span class="bv">830</span></a>
-    <a class="bar" href="gz-shengxue-lujing.html"><span class="bn">广州</span><span class="bt"><span class="bf c-gzlu" style="width:81%"></span></span><span class="bv">810</span></a>
-    <a class="bar" href="dg-shengxue-lujing.html"><span class="bn">东莞</span><span class="bt"><span class="bf c-dglu" style="width:80%"></span></span><span class="bv">800</span></a>
-    <a class="bar" href="jiangmen-shengxue-lujing.html"><span class="bn">江门</span><span class="bt"><span class="bf c-jmlu" style="width:80%"></span></span><span class="bv">800</span></a>
-    <a class="bar" href="maoming-shengxue-lujing.html"><span class="bn">茂名</span><span class="bt"><span class="bf c-mmlu" style="width:80%"></span></span><span class="bv">800</span></a>
-    <a class="bar" href="qingyuan-shengxue-lujing.html"><span class="bn">清远</span><span class="bt"><span class="bf c-qylu" style="width:80%"></span></span><span class="bv">800</span></a>
-    <a class="bar" href="zhanjiang-shengxue-lujing.html"><span class="bn">湛江</span><span class="bt"><span class="bf c-zjlu" style="width:76%"></span></span><span class="bv">760</span></a>
-    <a class="bar" href="foshan-shengxue-lujing.html"><span class="bn">佛山</span><span class="bt"><span class="bf c-fslu" style="width:74%"></span></span><span class="bv">740</span></a>
-    <a class="bar" href="huizhou-shengxue-lujing.html"><span class="bn">惠州</span><span class="bt"><span class="bf c-hzlu" style="width:74%"></span></span><span class="bv">740</span></a>
-    <a class="bar" href="shaoguan-shengxue-lujing.html"><span class="bn">韶关</span><span class="bt"><span class="bf c-sglu" style="width:72%"></span></span><span class="bv">720</span></a>
-    <a class="bar" href="zhuhai-shengxue-lujing.html"><span class="bn">珠海</span><span class="bt"><span class="bf c-zhlu" style="width:70%"></span></span><span class="bv">700</span></a>
-    <a class="bar" href="sz-shengxue-lujing.html"><span class="bn">深圳</span><span class="bt"><span class="bf c-szlu" style="width:61%"></span></span><span class="bv">610</span></a>
-    <a class="bar" href="zhongshan-shengxue-lujing.html"><span class="bn">中山</span><span class="bt"><span class="bf c-zslu" style="width:60%"></span></span><span class="bv">600</span></a>
-    <div class="cnote"><b>怎么看：</b>柱长只反映各市中考“满分”不同（计分科目与权重不同），不代表考试难易或录取难度。想看录取率、招生计划、校线等更细的维度，点柱条进对应城市页，那里有完整的 12 模块数据（官方未单列的均如实标注）。</div>
+    <h2>广东各市初升高关键差异</h2>
+    <p class="csub">三个维度横向对比各市中考方案与升学规模。柱条按数值从高到低排列，点击可进入该市中心页；官方未单列的维度诚实标注“未公布”，不作估算填充。</p>
+    <div class="tabs">
+      <button class="tab active" data-p="p-total">中考满分</button>
+      <button class="tab" data-p="p-rate">普高录取率</button>
+      <button class="tab" data-p="p-scale">考生规模</button>
+    </div>
+
+    <!-- 中考满分 -->
+    <div class="panel active" id="p-total">
+      <p class="csub" style="margin-top:0">各市中考满分（600–1000 分）不同，反映计分科目与权重差异，不代表考试难易或录取难度。</p>
+      <a class="bar" href="yangjiang-shengxue-lujing.html"><span class="bn">阳江</span><span class="bt"><span class="bf c-yjlu" style="width:100%"></span></span><span class="bv">1000</span></a>
+      <a class="bar" href="jieyang-shengxue-lujing.html"><span class="bn">揭阳</span><span class="bt"><span class="bf c-jylu" style="width:87%"></span></span><span class="bv">870</span></a>
+      <a class="bar" href="yunfu-shengxue-lujing.html"><span class="bn">云浮</span><span class="bt"><span class="bf c-yflu" style="width:87%"></span></span><span class="bv">870</span></a>
+      <a class="bar" href="shantou-shengxue-lujing.html"><span class="bn">汕头</span><span class="bt"><span class="bf c-stlu" style="width:85.5%"></span></span><span class="bv">855</span></a>
+      <a class="bar" href="heyuan-shengxue-lujing.html"><span class="bn">河源</span><span class="bt"><span class="bf c-hylm" style="width:85%"></span></span><span class="bv">850</span></a>
+      <a class="bar" href="meizhou-shengxue-lujing.html"><span class="bn">梅州</span><span class="bt"><span class="bf c-mzlu" style="width:85%"></span></span><span class="bv">850</span></a>
+      <a class="bar" href="shanwei-shengxue-lujing.html"><span class="bn">汕尾</span><span class="bt"><span class="bf c-swlu" style="width:84%"></span></span><span class="bv">840</span></a>
+      <a class="bar" href="chaozhou-shengxue-lujing.html"><span class="bn">潮州</span><span class="bt"><span class="bf c-czlu" style="width:83%"></span></span><span class="bv">830</span></a>
+      <a class="bar" href="zhaoqing-shengxue-lujing.html"><span class="bn">肇庆</span><span class="bt"><span class="bf c-zqlu" style="width:83%"></span></span><span class="bv">830</span></a>
+      <a class="bar" href="gz-shengxue-lujing.html"><span class="bn">广州</span><span class="bt"><span class="bf c-gzlu" style="width:81%"></span></span><span class="bv">810</span></a>
+      <a class="bar" href="dg-shengxue-lujing.html"><span class="bn">东莞</span><span class="bt"><span class="bf c-dglu" style="width:80%"></span></span><span class="bv">800</span></a>
+      <a class="bar" href="jiangmen-shengxue-lujing.html"><span class="bn">江门</span><span class="bt"><span class="bf c-jmlu" style="width:80%"></span></span><span class="bv">800</span></a>
+      <a class="bar" href="maoming-shengxue-lujing.html"><span class="bn">茂名</span><span class="bt"><span class="bf c-mmlu" style="width:80%"></span></span><span class="bv">800</span></a>
+      <a class="bar" href="qingyuan-shengxue-lujing.html"><span class="bn">清远</span><span class="bt"><span class="bf c-qylu" style="width:80%"></span></span><span class="bv">800</span></a>
+      <a class="bar" href="zhanjiang-shengxue-lujing.html"><span class="bn">湛江</span><span class="bt"><span class="bf c-zjlu" style="width:76%"></span></span><span class="bv">760</span></a>
+      <a class="bar" href="foshan-shengxue-lujing.html"><span class="bn">佛山</span><span class="bt"><span class="bf c-fslu" style="width:74%"></span></span><span class="bv">740</span></a>
+      <a class="bar" href="huizhou-shengxue-lujing.html"><span class="bn">惠州</span><span class="bt"><span class="bf c-hzlu" style="width:74%"></span></span><span class="bv">740</span></a>
+      <a class="bar" href="shaoguan-shengxue-lujing.html"><span class="bn">韶关</span><span class="bt"><span class="bf c-sglu" style="width:72%"></span></span><span class="bv">720</span></a>
+      <a class="bar" href="zhuhai-shengxue-lujing.html"><span class="bn">珠海</span><span class="bt"><span class="bf c-zhlu" style="width:70%"></span></span><span class="bv">700</span></a>
+      <a class="bar" href="sz-shengxue-lujing.html"><span class="bn">深圳</span><span class="bt"><span class="bf c-szlu" style="width:61%"></span></span><span class="bv">610</span></a>
+      <a class="bar" href="zhongshan-shengxue-lujing.html"><span class="bn">中山</span><span class="bt"><span class="bf c-zslu" style="width:60%"></span></span><span class="bv">600</span></a>
+      <div class="cnote"><b>怎么看：</b>柱长只反映各市中考“满分”不同（计分科目与权重不同），不代表考试难易或录取难度。录取率、招生计划、校线等更细维度，点柱条进对应城市页查看（官方未单列的均如实标注）。</div>
+    </div>
+
+    <!-- 普高录取率 -->
+    <div class="panel" id="p-rate">
+      <p class="csub" style="margin-top:0">官方公布的普高录取率（升入普通高中比例，多数为全市 / 含民办口径）。深圳为“全市含民办”口径，珠海仅公布“普高计划占报名比”（实际录取率未单列，不计入）。</p>
+      <a class="bar" href="shantou-shengxue-lujing.html"><span class="bn">汕头</span><span class="bt"><span class="bf c-stlu" style="width:100%"></span></span><span class="bv">74.6%</span></a>
+      <a class="bar" href="sz-shengxue-lujing.html"><span class="bn">深圳</span><span class="bt"><span class="bf c-szlu" style="width:97.9%"></span></span><span class="bv">73%</span></a>
+      <a class="bar" href="foshan-shengxue-lujing.html"><span class="bn">佛山</span><span class="bt"><span class="bf c-fslu" style="width:89.8%"></span></span><span class="bv">67%</span></a>
+      <a class="bar" href="jieyang-shengxue-lujing.html"><span class="bn">揭阳</span><span class="bt"><span class="bf c-jylu" style="width:83.1%"></span></span><span class="bv">62%</span></a>
+      <a class="bar" href="huizhou-shengxue-lujing.html"><span class="bn">惠州</span><span class="bt"><span class="bf c-hzlu" style="width:80.4%"></span></span><span class="bv">60%</span></a>
+      <a class="bar" href="qingyuan-shengxue-lujing.html"><span class="bn">清远</span><span class="bt"><span class="bf c-qylu" style="width:78.3%"></span></span><span class="bv">58.4%</span></a>
+      <a class="bar" href="maoming-shengxue-lujing.html"><span class="bn">茂名</span><span class="bt"><span class="bf c-mmlu" style="width:72.4%"></span></span><span class="bv">54%</span></a>
+      <div class="cnote"><b>未公布：</b>广州、东莞、中山、江门、河源、阳江、韶关、湛江、肇庆、梅州、汕尾、潮州、云浮——官方未单列 2025 实际普高录取率（珠海仅公布计划占报名比 65.28%，非实际录取率）。这些城市点对应卡片进页查看招生计划与校线。</div>
+    </div>
+
+    <!-- 考生规模 -->
+    <div class="panel" id="p-scale">
+      <p class="csub" style="margin-top:0">中考报考 / 参考人数（单位：万人）。部分市含八年级生地中考，口径略有差异，仅供量级比较。</p>
+      <a class="bar" href="gz-shengxue-lujing.html"><span class="bn">广州</span><span class="bt"><span class="bf c-gzlu" style="width:100%"></span></span><span class="bv">15.1</span></a>
+      <a class="bar" href="sz-shengxue-lujing.html"><span class="bn">深圳</span><span class="bt"><span class="bf c-szlu" style="width:96.0%"></span></span><span class="bv">14.5</span></a>
+      <a class="bar" href="zhanjiang-shengxue-lujing.html"><span class="bn">湛江</span><span class="bt"><span class="bf c-zjlu" style="width:73.5%"></span></span><span class="bv">11.1</span></a>
+      <a class="bar" href="maoming-shengxue-lujing.html"><span class="bn">茂名</span><span class="bt"><span class="bf c-mmlu" style="width:72.8%"></span></span><span class="bv">11.0</span></a>
+      <a class="bar" href="huizhou-shengxue-lujing.html"><span class="bn">惠州</span><span class="bt"><span class="bf c-hzlu" style="width:60.4%"></span></span><span class="bv">9.12</span></a>
+      <a class="bar" href="foshan-shengxue-lujing.html"><span class="bn">佛山</span><span class="bt"><span class="bf c-fslu" style="width:59.6%"></span></span><span class="bv">9.0</span></a>
+      <a class="bar" href="shaoguan-shengxue-lujing.html"><span class="bn">韶关</span><span class="bt"><span class="bf c-sglu" style="width:58.5%"></span></span><span class="bv">8.83</span></a>
+      <a class="bar" href="jieyang-shengxue-lujing.html"><span class="bn">揭阳</span><span class="bt"><span class="bf c-jylu" style="width:56.5%"></span></span><span class="bv">8.53</span></a>
+      <a class="bar" href="shantou-shengxue-lujing.html"><span class="bn">汕头</span><span class="bt"><span class="bf c-stlu" style="width:55.0%"></span></span><span class="bv">8.3</span></a>
+      <a class="bar" href="zhaoqing-shengxue-lujing.html"><span class="bn">肇庆</span><span class="bt"><span class="bf c-zqlu" style="width:43.8%"></span></span><span class="bv">6.61</span></a>
+      <a class="bar" href="qingyuan-shengxue-lujing.html"><span class="bn">清远</span><span class="bt"><span class="bf c-qylu" style="width:41.8%"></span></span><span class="bv">6.31</span></a>
+      <a class="bar" href="jiangmen-shengxue-lujing.html"><span class="bn">江门</span><span class="bt"><span class="bf c-jmlu" style="width:35.1%"></span></span><span class="bv">5.3</span></a>
+      <a class="bar" href="heyuan-shengxue-lujing.html"><span class="bn">河源</span><span class="bt"><span class="bf c-hylm" style="width:34.6%"></span></span><span class="bv">5.23</span></a>
+      <a class="bar" href="zhongshan-shengxue-lujing.html"><span class="bn">中山</span><span class="bt"><span class="bf c-zslu" style="width:31.8%"></span></span><span class="bv">4.8</span></a>
+      <a class="bar" href="yunfu-shengxue-lujing.html"><span class="bn">云浮</span><span class="bt"><span class="bf c-yflu" style="width:27.4%"></span></span><span class="bv">4.14</span></a>
+      <a class="bar" href="yangjiang-shengxue-lujing.html"><span class="bn">阳江</span><span class="bt"><span class="bf c-yjlu" style="width:26.6%"></span></span><span class="bv">4.02</span></a>
+      <a class="bar" href="chaozhou-shengxue-lujing.html"><span class="bn">潮州</span><span class="bt"><span class="bf c-czlu" style="width:20.9%"></span></span><span class="bv">3.15</span></a>
+      <a class="bar" href="zhuhai-shengxue-lujing.html"><span class="bn">珠海</span><span class="bt"><span class="bf c-zhlu" style="width:18.7%"></span></span><span class="bv">2.82</span></a>
+      <div class="cnote"><b>未公布：</b>梅州、汕尾——官方未单列 2025 中考报考人数（进页查看招生计划与校线）。韶关等部分市人数含八年级生地中考，口径不完全一致。</div>
+    </div>
   </div>
+
+  <div class="chart">
+    <span class="tag">路径差异 · 指标生</span>
+    <h2>初升高录取路径 · 指标生（名额分配）到校</h2>
+    <p class="csub">指标生（名额分配）是广东各地户籍生降分入读优质公办高中的核心渠道，但“分配到校比例”各市差异明显——从部分优质校设指标到全市优质校 50% 甚至最高 70%。下表为各市公开口径，未单列的诚实标注。<b>注意：表中“50% / 70%”指“指标生占该校招生计划的百分比”，不是占全市中考总考生的比例</b>（占总考生比例见下方广州 / 深圳换算）。</p>
+    <table class="ctable">
+      <thead><tr><th>城市</th><th>指标生 / 名额分配（2025 公开口径）</th><th>划线方式（户籍 / 随迁）</th></tr></thead>
+      <tbody>
+        <tr><td class="city">珠海</td><td><span class="mini"><i class="c-zhlu" style="width:100%"></i></span>优质高中最高 70%</td><td>按招生区域分线 · 随迁同线</td></tr>
+        <tr><td class="city">东莞</td><td><span class="mini"><i class="c-dglu" style="width:71.4%"></i></span>十一大校 50%（6,954 个）</td><td>户籍 / 随迁 双线</td></tr>
+        <tr><td class="city">佛山</td><td><span class="mini"><i class="c-fslu" style="width:71.4%"></i></span>市一中等 11 校 50%</td><td>户籍 / 随迁 双线</td></tr>
+        <tr><td class="city">惠州</td><td><span class="mini"><i class="c-hzlu" style="width:71.4%"></i></span>优质公办高中 ≥50%</td><td>户籍 / 随迁 双线</td></tr>
+        <tr><td class="city">中山</td><td><span class="mini"><i class="c-zslu" style="width:71.4%"></i></span>8 所指标生校 50%（6,144 个）</td><td>总分 A / B 两类</td></tr>
+        <tr><td class="city">江门</td><td><span class="mini"><i class="c-jmlu" style="width:71.4%"></i></span>公办优质高中 ≥50%</td><td>户籍 / 随迁 分线</td></tr>
+        <tr><td class="city">揭阳</td><td><span class="mini"><i class="c-jylu" style="width:71.4%"></i></span>优质高中 50%（提前批单独）</td><td>全市统一线 · 户籍随迁同线</td></tr>
+        <tr><td class="city">河源</td><td><span class="mini"><i class="c-hylm" style="width:71.4%"></i></span>重点普高 50%</td><td>全市统一线</td></tr>
+        <tr><td class="city">阳江</td><td><span class="mini"><i class="c-yjlu" style="width:71.4%"></i></span>公办优质高中 ≥50%</td><td>按县区分别划线</td></tr>
+        <tr><td class="city">韶关</td><td><span class="mini"><i class="c-sglu" style="width:71.4%"></i></span>公办优质高中 ≥50%</td><td>全市统一线 · 户籍随迁同线</td></tr>
+        <tr><td class="city">湛江</td><td><span class="mini"><i class="c-zjlu" style="width:71.4%"></i></span>示范 / 省一级 50%</td><td>户籍 / 随迁 双线</td></tr>
+        <tr><td class="city">潮州</td><td><span class="mini"><i class="c-czlu" style="width:71.4%"></i></span>市属 3 校 50%</td><td>分县区分别划线</td></tr>
+        <tr><td class="city">清远</td><td><span class="mini"><i class="c-qylu" style="width:71.4%"></i></span>清中 50%（两区）</td><td>按县区分别划线</td></tr>
+        <tr><td class="city">广州</td><td>名额分配 86 校 · 3.19 万（占报考约 21%）</td><td>户籍 / 非户籍 / 外区 三线</td></tr>
+        <tr><td class="city">深圳</td><td>指标生 88 校 · 3.70 万（占报名约 25.5%）</td><td>深户 / 非深户 双线</td></tr>
+        <tr><td class="city">茂名</td><td>部分优质校设 · 统招线下 35 分</td><td>全市统一线</td></tr>
+        <tr><td class="city">梅州</td><td>13 所优质普高 50%（约 5,230 个）</td><td>全市统一线</td></tr>
+        <tr><td class="city">汕头</td><td>十一大校 50%</td><td>户籍 / 随迁 双线</td></tr>
+        <tr><td class="city">肇庆</td><td>市属 3 校 ≥50%、区属按比例</td><td>按批次 / 类别分线</td></tr>
+        <tr><td class="city">汕尾</td><td>省一级以上公办 ≥50%</td><td>按招生范围分线</td></tr>
+        <tr><td class="city">云浮</td><td>省一级以上公办 · 指标到校（约 1,748 人，录满即止）</td><td>全市统一线 · 户籍随迁同线</td></tr>
+      </tbody>
+    </table>
+    <div class="cnote"><b>怎么看：</b>条形长度以珠海"最高 70%"为满格参考，但那是"占该校招生计划"的比例，不是占总考生。广州、深圳按"分配计划总数 / 招生校"公布（已换算占总考生约 21% / 25.5%）；两市指标生占"该校计划"的口径与全省一致（省统一要求不低于 50%）。茂名仅部分优质校设指标生，可在统招线下 35 分内录取；梅州 13 所、云浮省一级以上公办、汕尾省一级以上公办、汕头十一大校、肇庆市属 3 校等均已公开指标生比例。各市"划线方式（户籍 / 随迁）"详见下方对比表；更完整的路径（自主招生、体艺特长生、中本贯通等）进各市中心页查看。</div>
+  </div>
+
+  <div class="chart">
+    <span class="tag">路径差异 · ① 划线方式</span>
+    <h2>中考划线方式（户籍 / 随迁）全市对比</h2>
+    <p class="csub">广东各地"怎么划线"差异明显：广州、深圳、东莞、佛山、惠州、江门、湛江、汕头为<b>户籍 / 随迁分别划线（双线）</b>；珠海按招生区域分别划线、随迁满足条件后与户籍生同线；中山走总分 A / B 两类计划；茂名、梅州、河源、韶关、揭阳、云浮为<b>全市统一线（户籍随迁同线）</b>；清远、阳江、潮州、汕尾、肇庆按县区或招生范围分别划线但不分户籍 / 随迁。满分栏"—"表示当年未公开。</p>
+    <table class="ctable">
+      <thead><tr><th>城市</th><th>中考满分</th><th>划线方式（户籍 / 随迁）</th><th>说明</th></tr></thead>
+      <tbody>
+        <tr><td class="city">珠海</td><td>700</td><td>按招生区域分线 · 随迁同线</td><td>香洲 / 斗门 / 金湾等分别划线；随迁满足条件后与户籍生同线（无单独线）</td></tr>
+        <tr><td class="city">东莞</td><td>800</td><td>户籍 / 随迁 双线</td><td>分赛道分别划线，顶尖校随迁线接近户籍线</td></tr>
+        <tr><td class="city">佛山</td><td>740</td><td>户籍 / 随迁 双线</td><td>第一批统招户籍生、随迁子女分别划线</td></tr>
+        <tr><td class="city">惠州</td><td>740</td><td>户籍 / 随迁 双线</td><td>第一批统招双线；市直龙头按县区分别投档</td></tr>
+        <tr><td class="city">中山</td><td>600</td><td>总分 A / B 两类</td><td>B 类计划主要面向随迁等非户籍；普通批同达普高控线</td></tr>
+        <tr><td class="city">江门</td><td>—</td><td>户籍 / 随迁 分线</td><td>蓬江 / 江海 / 市直市统筹线；县级市分别划线、随迁分赛道</td></tr>
+        <tr><td class="city">揭阳</td><td>870</td><td>全市统一线 · 户籍随迁同线</td><td>户籍 / 随迁统一投档</td></tr>
+        <tr><td class="city">河源</td><td>850</td><td>全市统一线</td><td>未公开双线，随迁按同等条件参考</td></tr>
+        <tr><td class="city">阳江</td><td>1000</td><td>按县区分别划线</td><td>未单列户籍 / 随迁双线</td></tr>
+        <tr><td class="city">韶关</td><td>720</td><td>全市统一线 · 户籍随迁同线</td><td>2025 起不设提前批，分第一~四批</td></tr>
+        <tr><td class="city">湛江</td><td>—</td><td>户籍 / 随迁 双线</td><td>第一批统招双线；市直属 6 校面向全市</td></tr>
+        <tr><td class="city">潮州</td><td>830</td><td>分县区分别划线</td><td>湘桥 / 潮安 / 饶平及面向区 / 镇分别划线，无二元分线</td></tr>
+        <tr><td class="city">清远</td><td>800</td><td>按县区分别划线</td><td>不区分户籍 / 随迁</td></tr>
+        <tr><td class="city">广州</td><td>810</td><td>户籍 / 非户籍 / 外区 三线</td><td>梯度投档（第一梯度线 712 等），非户籍、外区生各设单独线</td></tr>
+        <tr><td class="city">深圳</td><td>610</td><td>深户 / 非深户 双线</td><td>两类考生分别划线、分别投档</td></tr>
+        <tr><td class="city">茂名</td><td>800</td><td>全市统一线</td><td>不区分户籍 / 随迁双线，统一按成绩与志愿投档</td></tr>
+        <tr><td class="city">梅州</td><td>—</td><td>全市统一线</td><td>不区分户籍 / 随迁双线</td></tr>
+        <tr><td class="city">汕头</td><td>—</td><td>户籍 / 随迁 双线</td><td>户籍生、随迁子女分别划线</td></tr>
+        <tr><td class="city">肇庆</td><td>830</td><td>按批次 / 类别分线</td><td>公办控线 405 / 民办公费 525 / 自费 320，未单列户籍 / 随迁双线</td></tr>
+        <tr><td class="city">汕尾</td><td>840</td><td>按招生范围分线</td><td>面向全市 / 本县分线，无户籍 / 随迁双线</td></tr>
+        <tr><td class="city">云浮</td><td>870</td><td>全市统一线 · 户籍随迁同线</td><td>平行志愿不分母线</td></tr>
+      </tbody>
+    </table>
+    <div class="cnote"><b>怎么看：</b>"双线"指户籍生与随迁子女分别划定录取线、分别投档；"统一线"指两类考生同一条线竞争；"按区域 / 范围分线"是按招生片区或面向全市 / 本县划分，并不按户籍 / 随迁二元切分。珠海随迁需满足居住 / 社保 / 学籍等条件后方可与户籍生同线。</div>
+  </div>
+
+  <div class="chart">
+    <span class="tag">路径差异 · ② 录取批次</span>
+    <h2>录取批次结构与投档规则全市对比</h2>
+    <p class="csub">各地批次数量与结构不一：广州多批次 + 梯度控制线，深圳 / 茂名 5 批次，梅州 6 批次，中山 / 韶关 4 批次，多数市为"提前批（自主招生 / 指标）→ 第一批（普高统招）→ 第二批"结构。下表为 2025 年公开口径。</p>
+    <table class="ctable">
+      <thead><tr><th>城市</th><th>录取批次（主要顺序）</th><th>投档规则要点</th></tr></thead>
+      <tbody>
+        <tr><td class="city">珠海</td><td>提前批→第一批（统招+指标生）→第二批（中职）</td><td>分数优先遵循志愿，前批录满不进后续</td></tr>
+        <tr><td class="city">东莞</td><td>提前批（自主招生）→第一批（普高统招）→第二批</td><td>3 批次，分数优先遵循志愿</td></tr>
+        <tr><td class="city">佛山</td><td>提前批→第一批（名额分配+普通生多层级）→第二批</td><td>1:1 投档，控线下 5 分一段依次降分</td></tr>
+        <tr><td class="city">惠州</td><td>提前批→第一批（普高统招，双线）→第二批</td><td>市、县区分线，同步公布</td></tr>
+        <tr><td class="city">中山</td><td>提前批（外国语 / 港澳台 / 体艺）→第一批（普通生 总分A）→第二批→第三批中职</td><td>4 批次，前批录满不进后续</td></tr>
+        <tr><td class="city">江门</td><td>提前批→第一批（普通生）→第二批</td><td>蓬江 / 江海 / 市直市统筹线；县级市分别划线；无全市统一控线</td></tr>
+        <tr><td class="city">揭阳</td><td>提前批（指标生 / 自主招生）→第一批→第二批</td><td>指标生单独提前批次、不设限分线</td></tr>
+        <tr><td class="city">河源</td><td>提前批（自主招生）→名额分配批→第一批（正取）→第二批</td><td>指标到校 50%，一校一线</td></tr>
+        <tr><td class="city">阳江</td><td>提前批（学科科技+体育艺术）→第一批→第二批</td><td>随迁与户籍同待遇</td></tr>
+        <tr><td class="city">韶关</td><td>第一~四批（2025 起不设提前批）</td><td>自主招生融入各批次；户籍随迁同线</td></tr>
+        <tr><td class="city">湛江</td><td>提前批→第一批（普高统招，双线）→第二批</td><td>市直属 6 校面向全市，其余市辖区公办面向市辖区</td></tr>
+        <tr><td class="city">潮州</td><td>指标生（提前批）→第一~四批</td><td>市属 3 校 50% 属地招生</td></tr>
+        <tr><td class="city">清远</td><td>提前批（自主招生）→第一批（名额分配）→第二批→第三批</td><td>多批次</td></tr>
+        <tr><td class="city">广州</td><td>独立批→提前批→第一批→第二批→第三批→第四批</td><td>多批次 + 梯度控制线（6 档：712 / 672 / 632 / 592 / 552 / 512）</td></tr>
+        <tr><td class="city">深圳</td><td>自主招生批→指标生批→第一批→第二批→第三批</td><td>5 批次，平行志愿</td></tr>
+        <tr><td class="city">茂名</td><td>提前批→第一批→第二批→第三批→第四批</td><td>5 批次；第一批 10 志愿平行志愿</td></tr>
+        <tr><td class="city">梅州</td><td>提前批（中本贯通）→第一批→第二批→第三批（三二分段）→第四批（市内中职）→第五批（市外中职）</td><td>6 批次</td></tr>
+        <tr><td class="city">汕头</td><td>提前批→第一批（普通生，双线；计划生 / 名额分配生双线）→第二批</td><td>分数优先遵循志愿，户籍随迁分别划线</td></tr>
+        <tr><td class="city">肇庆</td><td>提前批（自主招生 / 指标到校）→第一批（公办+民办公费）→第二批（民办自费+综合高中）</td><td>按类别设最低控制线</td></tr>
+        <tr><td class="city">汕尾</td><td>提前批（4 类特长 / 传媒 / 港澳台）→第一批（5 志愿，普通生级差 30 分，指标生无级差）</td><td>指标生先于普通生投档</td></tr>
+        <tr><td class="city">云浮</td><td>提前一批次（体艺 / 自主招生）→第一批（指标到校）→第二批</td><td>平行志愿不分母线</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="chart">
+    <span class="tag">路径差异 · ③ 随迁门槛</span>
+    <h2>随迁子女（非户籍）报考门槛全市对比</h2>
+    <p class="csub">随迁子女能否读公办普高、按什么线录取，各市不同：广州、深圳门槛最高（需满足异地中考资格并单独划线）；东莞、佛山、惠州、江门、湛江、汕头为户籍 / 随迁双线或分赛道；珠海随迁满足条件后同线；中山走总分 B 类计划；其余多数市"与户籍生同待遇、未单列额外门槛"。</p>
+    <table class="ctable">
+      <thead><tr><th>城市</th><th>随迁报考门槛 / 同线情况</th><th>关键条件</th></tr></thead>
+      <tbody>
+        <tr><td class="city">珠海</td><td>满足条件后与户籍同线（无单独线）</td><td>需满足居住 / 社保 / 学籍，同线竞争</td></tr>
+        <tr><td class="city">东莞</td><td>与户籍分赛道双线</td><td>随迁资格后分线竞争，顶尖校随迁线接近户籍线</td></tr>
+        <tr><td class="city">佛山</td><td>与户籍双线 + 指标生惠及非户籍</td><td>名额分配向符合条件非户籍生开放</td></tr>
+        <tr><td class="city">惠州</td><td>与户籍双线</td><td>随迁资格后分线</td></tr>
+        <tr><td class="city">中山</td><td>走总分 B 类计划</td><td>B 类主要面向随迁等非户籍</td></tr>
+        <tr><td class="city">江门</td><td>与户籍分赛道</td><td>县级市分别划线、随迁分赛道</td></tr>
+        <tr><td class="city">揭阳</td><td>与户籍同待遇</td><td>统一投档</td></tr>
+        <tr><td class="city">河源</td><td>与户籍同待遇</td><td>未公开双线，同等条件参考</td></tr>
+        <tr><td class="city">阳江</td><td>与户籍同待遇</td><td>随迁与户籍同待遇</td></tr>
+        <tr><td class="city">韶关</td><td>与户籍同待遇</td><td>统一划线，随迁同线</td></tr>
+        <tr><td class="city">湛江</td><td>与户籍双线</td><td>随迁资格后分线</td></tr>
+        <tr><td class="city">潮州</td><td>与户籍同待遇</td><td>分县区分线不分户籍</td></tr>
+        <tr><td class="city">清远</td><td>与户籍同待遇</td><td>按县区分线但不分户籍</td></tr>
+        <tr><td class="city">广州</td><td>单独非户籍线（门槛最高）</td><td>需满足异地中考资格（学籍 + 居住证 / 社保等），单独划线</td></tr>
+        <tr><td class="city">深圳</td><td>深户 / 非深户 双线</td><td>需满足非深户资格（社保 / 居住证 / 学籍），双线投档</td></tr>
+        <tr><td class="city">茂名</td><td>与户籍同待遇</td><td>不分双线，统一投档</td></tr>
+        <tr><td class="city">梅州</td><td>与户籍同待遇</td><td>不区分双线</td></tr>
+        <tr><td class="city">汕头</td><td>与户籍分别划线</td><td>随迁资格后分线</td></tr>
+        <tr><td class="city">肇庆</td><td>与户籍同待遇</td><td>按批次 / 类别分线不分户籍</td></tr>
+        <tr><td class="city">汕尾</td><td>与户籍同待遇</td><td>按招生范围分线不分户籍</td></tr>
+        <tr><td class="city">云浮</td><td>与户籍同待遇</td><td>统一线，随迁同线</td></tr>
+      </tbody>
+    </table>
+    <div class="cnote"><b>说明：</b>"与户籍同待遇"指官方未单列随迁子女的额外录取门槛，随迁资格（通常含学籍 / 居住证 / 社保）审核通过后与户籍生按同一规则投档；广州、深圳等地则明确设非户籍单独线，门槛相对更高。</div>
+  </div>
+
+  <div class="chart">
+    <span class="tag">路径差异 · ④ 自主招生</span>
+    <h2>普通高中自主招生类型与规模全市对比</h2>
+    <p class="csub">自主招生是特长 / 专长生"低分高就"的核心窗口。广州（56 校约 2,828 人）、深圳（一类 79 + 二类 83 所）、湛江（8,859 人）、韶关（2,065 人）规模领先；多数市公办自主招生比例控制在年度计划 10% 以内。下表为 2025 年公开口径，未单列全市汇总的以各校方案为准。</p>
+    <table class="ctable">
+      <thead><tr><th>城市</th><th>自主招生类型</th><th>规模 / 计划（2025）</th></tr></thead>
+      <tbody>
+        <tr><td class="city">珠海</td><td>学科 / 科技 + 体育艺术</td><td>17 所 1,197 人（≤10%）</td></tr>
+        <tr><td class="city">东莞</td><td>提前批自主招生</td><td>以各校方案为准（未单列全市汇总）</td></tr>
+        <tr><td class="city">佛山</td><td>学科 / 科技 + 体育艺术</td><td>21 校 1,191 人（≤10%）</td></tr>
+        <tr><td class="city">惠州</td><td>国防班 / 体艺等</td><td>未单列全市汇总（华罗庚国防班 200 等）</td></tr>
+        <tr><td class="city">中山</td><td>学科类 + 体艺特长生</td><td>学科类 1,069 人</td></tr>
+        <tr><td class="city">江门</td><td>学科 / 体育 / 艺术</td><td>未发布总计划（江门一中 100 / 新会一中 105 / 培英 45 等）</td></tr>
+        <tr><td class="city">揭阳</td><td>指标生 + 体艺特长生</td><td>体艺文化 ≥300；未公布学科类</td></tr>
+        <tr><td class="city">河源</td><td>科创班 + 体艺特长生 + 国防生</td><td>≤10%；汇总未发布</td></tr>
+        <tr><td class="city">阳江</td><td>学科科技 + 体育艺术（公办 ≤10%）</td><td>未发布体艺全市汇总</td></tr>
+        <tr><td class="city">韶关</td><td>学科科技 + 体育艺术</td><td>2,065 人（融入各批次）</td></tr>
+        <tr><td class="city">湛江</td><td>体艺特长生等</td><td>8,859 人（含民办自主招生）</td></tr>
+        <tr><td class="city">潮州</td><td>公办 ≤10% + 民办补录（暨实 200）</td><td>体艺第三批 4 校 339 人（术科 498）</td></tr>
+        <tr><td class="city">清远</td><td>体育 / 艺术</td><td>4 校 591 人（华侨体育 216 等）</td></tr>
+        <tr><td class="city">广州</td><td>公办自主招生（学科 / 体艺 / 外语等）</td><td>56 校约 2,828 人</td></tr>
+        <tr><td class="city">深圳</td><td>一类（学科科技）+ 二类（体育艺术）</td><td>一类 79 + 二类 83 所公办</td></tr>
+        <tr><td class="city">茂名</td><td>特长生（体育 / 艺术 / 科技）+ 特色班（数理 / 人文）</td><td>科技特长生 480 人</td></tr>
+        <tr><td class="city">梅州</td><td>体艺特长生</td><td>全市汇总未发布</td></tr>
+        <tr><td class="city">汕头</td><td>体艺等（公办 ≤10%）</td><td>未单列总计划</td></tr>
+        <tr><td class="city">肇庆</td><td>自主招生 / 高水平运动队</td><td>规模未单列</td></tr>
+        <tr><td class="city">汕尾</td><td>理工 / 人文特长生 + 艺体 + 传媒班 + 港澳台班</td><td>规模未单列</td></tr>
+        <tr><td class="city">云浮</td><td>体艺（提前一批次）</td><td>邓发纪念 / 云浮中学体艺（重点公办文化 438 / 其他 338）</td></tr>
+      </tbody>
+    </table>
+  </div>
+
   <div class="note"><b>关于数据：</b>各城市页基于 2025 年当地中招 / 高招公开资料整理，分数为录取参考线 / 定位分估算，官方未单列的数据均标注“官方未公布 / 未单列 / —”，不构成录取承诺；最终以市中招办与学校官方公布为准。</div>
   <div class="foot">中高考考情分析平台 · 广东升学路径</div>
 </div>
+<script>
+  document.querySelectorAll('.tab').forEach(function(b){
+    b.addEventListener('click', function(){
+      document.querySelectorAll('.tab').forEach(function(t){t.classList.remove('active')});
+      document.querySelectorAll('.panel').forEach(function(p){p.classList.remove('active')});
+      b.classList.add('active');
+      document.getElementById(b.dataset.p).classList.add('active');
+    });
+  });
+</script>
 </body>
 </html>
