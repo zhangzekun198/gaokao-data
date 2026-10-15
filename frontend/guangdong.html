@@ -44,6 +44,19 @@
   .c-czlu{background:#f5c2c0;color:#b1454a}
   .c-jylu{background:#c2cadf;color:#3e4f7e}
   .c-yflu{background:#d5dd9e;color:#6e8a3a}
+  .chart{background:#fff;border-radius:16px;padding:20px;box-shadow:0 6px 22px rgba(70,80,130,.08);border:1px solid var(--line);margin-top:16px}
+  .chart .tag{display:inline-block;font-size:12px;font-weight:700;padding:2px 9px;border-radius:20px;color:#5660a8;background:#d9def7;margin-bottom:8px}
+  .chart h2{margin:0 0 4px;font-size:20px}
+  .chart p.csub{color:var(--sub);font-size:13px;margin:0 0 14px}
+  .bar{display:grid;grid-template-columns:62px 1fr 52px;align-items:center;gap:10px;text-decoration:none;color:var(--ink);padding:5px 0}
+  .bar:hover .bf{filter:brightness(.95)}
+  .bar:hover .bn{color:var(--accent)}
+  .bn{font-size:14px;font-weight:600;text-align:right}
+  .bt{background:#eef0f5;border-radius:9px;height:22px;overflow:hidden}
+  .bf{display:block;height:100%;border-radius:9px;min-width:6px}
+  .bv{font-size:13px;font-weight:700;text-align:left;color:#5a6072}
+  .cnote{background:#fdf3e7;border:1px solid #f6dcc0;border-radius:12px;padding:12px 14px;font-size:12.5px;color:#a9763f;margin-top:14px}
+  @media(max-width:520px){.bar{grid-template-columns:52px 1fr 44px;gap:7px}.bn{font-size:13px}}
   .note{background:#fdf3e7;border:1px solid #f6dcc0;border-radius:12px;padding:12px 14px;font-size:13px;color:#a9763f;margin:16px 0}
   .foot{text-align:center;color:var(--sub);font-size:12px;margin:22px 0 10px}
 </style>
@@ -82,6 +95,33 @@
       <a class="c-jylu" href="jieyang-shengxue-lujing.html">揭阳<small>jy</small></a>
       <a class="c-yflu" href="yunfu-shengxue-lujing.html">云浮<small>yf</small></a>
     </div>
+  </div>
+  <div class="chart">
+    <span class="tag">一图看懂 · 21 市</span>
+    <h2>各市中考满分对比</h2>
+    <p class="csub">广东 21 个地级市的中考满分并不相同（600–1000 分），直观看出各市计分方案的差异。柱条按满分从高到低排列，点击任意柱条可进入该市中心页。数据为 2025 年各市公开方案整理。</p>
+    <a class="bar" href="yangjiang-shengxue-lujing.html"><span class="bn">阳江</span><span class="bt"><span class="bf c-yjlu" style="width:100%"></span></span><span class="bv">1000</span></a>
+    <a class="bar" href="jieyang-shengxue-lujing.html"><span class="bn">揭阳</span><span class="bt"><span class="bf c-jylu" style="width:87%"></span></span><span class="bv">870</span></a>
+    <a class="bar" href="yunfu-shengxue-lujing.html"><span class="bn">云浮</span><span class="bt"><span class="bf c-yflu" style="width:87%"></span></span><span class="bv">870</span></a>
+    <a class="bar" href="shantou-shengxue-lujing.html"><span class="bn">汕头</span><span class="bt"><span class="bf c-stlu" style="width:85.5%"></span></span><span class="bv">855</span></a>
+    <a class="bar" href="heyuan-shengxue-lujing.html"><span class="bn">河源</span><span class="bt"><span class="bf c-hylm" style="width:85%"></span></span><span class="bv">850</span></a>
+    <a class="bar" href="meizhou-shengxue-lujing.html"><span class="bn">梅州</span><span class="bt"><span class="bf c-mzlu" style="width:85%"></span></span><span class="bv">850</span></a>
+    <a class="bar" href="shanwei-shengxue-lujing.html"><span class="bn">汕尾</span><span class="bt"><span class="bf c-swlu" style="width:84%"></span></span><span class="bv">840</span></a>
+    <a class="bar" href="chaozhou-shengxue-lujing.html"><span class="bn">潮州</span><span class="bt"><span class="bf c-czlu" style="width:83%"></span></span><span class="bv">830</span></a>
+    <a class="bar" href="zhaoqing-shengxue-lujing.html"><span class="bn">肇庆</span><span class="bt"><span class="bf c-zqlu" style="width:83%"></span></span><span class="bv">830</span></a>
+    <a class="bar" href="gz-shengxue-lujing.html"><span class="bn">广州</span><span class="bt"><span class="bf c-gzlu" style="width:81%"></span></span><span class="bv">810</span></a>
+    <a class="bar" href="dg-shengxue-lujing.html"><span class="bn">东莞</span><span class="bt"><span class="bf c-dglu" style="width:80%"></span></span><span class="bv">800</span></a>
+    <a class="bar" href="jiangmen-shengxue-lujing.html"><span class="bn">江门</span><span class="bt"><span class="bf c-jmlu" style="width:80%"></span></span><span class="bv">800</span></a>
+    <a class="bar" href="maoming-shengxue-lujing.html"><span class="bn">茂名</span><span class="bt"><span class="bf c-mmlu" style="width:80%"></span></span><span class="bv">800</span></a>
+    <a class="bar" href="qingyuan-shengxue-lujing.html"><span class="bn">清远</span><span class="bt"><span class="bf c-qylu" style="width:80%"></span></span><span class="bv">800</span></a>
+    <a class="bar" href="zhanjiang-shengxue-lujing.html"><span class="bn">湛江</span><span class="bt"><span class="bf c-zjlu" style="width:76%"></span></span><span class="bv">760</span></a>
+    <a class="bar" href="foshan-shengxue-lujing.html"><span class="bn">佛山</span><span class="bt"><span class="bf c-fslu" style="width:74%"></span></span><span class="bv">740</span></a>
+    <a class="bar" href="huizhou-shengxue-lujing.html"><span class="bn">惠州</span><span class="bt"><span class="bf c-hzlu" style="width:74%"></span></span><span class="bv">740</span></a>
+    <a class="bar" href="shaoguan-shengxue-lujing.html"><span class="bn">韶关</span><span class="bt"><span class="bf c-sglu" style="width:72%"></span></span><span class="bv">720</span></a>
+    <a class="bar" href="zhuhai-shengxue-lujing.html"><span class="bn">珠海</span><span class="bt"><span class="bf c-zhlu" style="width:70%"></span></span><span class="bv">700</span></a>
+    <a class="bar" href="sz-shengxue-lujing.html"><span class="bn">深圳</span><span class="bt"><span class="bf c-szlu" style="width:61%"></span></span><span class="bv">610</span></a>
+    <a class="bar" href="zhongshan-shengxue-lujing.html"><span class="bn">中山</span><span class="bt"><span class="bf c-zslu" style="width:60%"></span></span><span class="bv">600</span></a>
+    <div class="cnote"><b>怎么看：</b>柱长只反映各市中考“满分”不同（计分科目与权重不同），不代表考试难易或录取难度。想看录取率、招生计划、校线等更细的维度，点柱条进对应城市页，那里有完整的 12 模块数据（官方未单列的均如实标注）。</div>
   </div>
   <div class="note"><b>关于数据：</b>各城市页基于 2025 年当地中招 / 高招公开资料整理，分数为录取参考线 / 定位分估算，官方未单列的数据均标注“官方未公布 / 未单列 / —”，不构成录取承诺；最终以市中招办与学校官方公布为准。</div>
   <div class="foot">中高考考情分析平台 · 广东升学路径</div>
