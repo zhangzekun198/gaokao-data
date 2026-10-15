@@ -5,31 +5,46 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>广东升学路径全景 · 21 市</title>
 <style>
-  :root{--bg:#eef1f6;--card:#fff;--ink:#1f2430;--sub:#6b7280;--line:#e6e8ec;--accent:#3b5bdb}
+  :root{--bg:#f6f7fb;--card:#fff;--ink:#3a3f4b;--sub:#7a8090;--line:#e9ebf0;--accent:#8a93e0}
   *{box-sizing:border-box}
   body{margin:0;background:var(--bg);color:var(--ink);font-family:-apple-system,"PingFang SC","Microsoft YaHei",Roboto,Arial,sans-serif;font-size:15px;line-height:1.6}
-  .hero{background:linear-gradient(135deg,#1e2a78,#3b5bdb 55%,#0e7490);color:#fff;padding:32px 18px 28px;text-align:center}
+  .hero{background:linear-gradient(135deg,#d6e4f7,#e9dcf4 50%,#d9ede9);color:#51586a;padding:32px 18px 28px;text-align:center}
   .hero h1{margin:0 0 6px;font-size:24px;letter-spacing:1px}
-  .hero p{margin:0;opacity:.92;font-size:14px}
+  .hero p{margin:0;opacity:.82;font-size:14px}
   .wrap{max-width:1040px;margin:0 auto;padding:18px}
   .back{display:inline-block;margin:6px 0 14px;color:var(--accent);text-decoration:none;font-size:14px;font-weight:600}
   .back:hover{text-decoration:underline}
-  .pcard{background:#fff;border-radius:16px;padding:20px;box-shadow:0 6px 20px rgba(0,0,0,.10);border:1px solid var(--line)}
-  .pcard .tag{display:inline-block;font-size:12px;font-weight:700;padding:2px 9px;border-radius:20px;color:#fff;background:#3b5bdb;margin-bottom:8px}
+  .pcard{background:#fff;border-radius:16px;padding:20px;box-shadow:0 6px 22px rgba(70,80,130,.08);border:1px solid var(--line)}
+  .pcard .tag{display:inline-block;font-size:12px;font-weight:700;padding:2px 9px;border-radius:20px;color:#5660a8;background:#d9def7;margin-bottom:8px}
   .pcard h2{margin:0 0 4px;font-size:20px}
   .pcard p.desc{color:var(--sub);font-size:13px;margin:0 0 16px}
   .cities{display:grid;grid-template-columns:repeat(auto-fit,minmax(110px,1fr));gap:10px}
-  .cities a{text-align:center;text-decoration:none;padding:16px 8px;border-radius:12px;font-size:16px;font-weight:700;color:#fff;transition:filter .15s}
-  .cities a:hover{filter:brightness(1.08)}
-  .cities a small{display:block;font-size:11px;font-weight:500;opacity:.85;margin-top:3px}
-  /* 21 市色 token */
-  .c-gzlu{background:#0d9488}.c-szlu{background:#7c3aed}.c-dglu{background:#be185d}.c-zhlu{background:#0369a1}
-  .c-fslu{background:#db2777}.c-hzlu{background:#0e7490}.c-zslu{background:#ca8a04}.c-jmlu{background:#9333ea}
-  .c-stlu{background:#0284c7}.c-zjlu{background:#ea580c}.c-zqlu{background:#4d7c0f}.c-mmlu{background:#c026d3}
-  .c-mzlu{background:#be123c}.c-swlu{background:#1d4ed8}.c-hylm{background:#65a30d}.c-yjlu{background:#c2410c}
-  .c-qylu{background:#0891b2}.c-sglu{background:#581c87}.c-czlu{background:#9f1239}.c-jylu{background:#1e40af}
-  .c-yflu{background:#166534}
-  .note{background:#fff7ed;border:1px solid #fed7aa;border-radius:12px;padding:12px 14px;font-size:13px;color:#b45309;margin:16px 0}
+  .cities a{text-align:center;text-decoration:none;padding:16px 8px;border-radius:12px;font-size:16px;font-weight:700;color:#444;transition:filter .15s,transform .15s;border:1px solid rgba(0,0,0,.05)}
+  .cities a:hover{filter:brightness(.97);transform:translateY(-1px)}
+  .cities a small{display:block;font-size:11px;font-weight:500;opacity:.7;margin-top:3px}
+  /* 21 市马卡龙色 token（低饱和柔和色 + 同色系深字，保证可读） */
+  .c-gzlu{background:#b9e4d0;color:#2e8b6b}
+  .c-szlu{background:#d8c9f0;color:#6a4aa0}
+  .c-dglu{background:#f1c4d6;color:#ad4a72}
+  .c-zhlu{background:#c5ddef;color:#3a6da0}
+  .c-fslu{background:#f9c6cb;color:#c25a72}
+  .c-hzlu{background:#c2e6e2;color:#2f8a82}
+  .c-zslu{background:#f6e3a3;color:#9c7a22}
+  .c-jmlu{background:#e2c9f0;color:#7a4fa6}
+  .c-stlu{background:#c6ddf3;color:#3f73a8}
+  .c-zjlu{background:#f9dcae;color:#a86e1e}
+  .c-zqlu{background:#d0e3a6;color:#6b8a30}
+  .c-mmlu{background:#edc6ec;color:#8c4a8c}
+  .c-mzlu{background:#f2c0c8;color:#a8455a}
+  .c-swlu{background:#c6def5;color:#3a6fa8}
+  .c-hylm{background:#d3e8a4;color:#6c8a2e}
+  .c-yjlu{background:#f8c9b0;color:#b35a3a}
+  .c-qylu{background:#bfe7e1;color:#2f8f88}
+  .c-sglu{background:#d3c9f2;color:#5e4aa8}
+  .c-czlu{background:#f5c2c0;color:#b1454a}
+  .c-jylu{background:#c2cadf;color:#3e4f7e}
+  .c-yflu{background:#d5dd9e;color:#6e8a3a}
+  .note{background:#fdf3e7;border:1px solid #f6dcc0;border-radius:12px;padding:12px 14px;font-size:13px;color:#a9763f;margin:16px 0}
   .foot{text-align:center;color:var(--sub);font-size:12px;margin:22px 0 10px}
 </style>
 </head>
