@@ -1,0 +1,4280 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>深圳中考志愿智能推荐 · 中高考考情分析平台</title>
+<style>
+  :root{--bg:#f5f6f8;--card:#fff;--ink:#1f2430;--sub:#5b6472;--line:#e6e8ec;
+    --chong:#dc2626;--wen:#15803d;--bao:#2563eb;--accent:#3b5bdb;--warn:#b45309;--warnbg:#fff7ed;--okbg:#f0fdf4;--purple:#7c3aed;}
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);font-family:-apple-system,"PingFang SC","Microsoft YaHei",Roboto,Arial,sans-serif;font-size:15px;line-height:1.6}
+  .wrap{max-width:1120px;margin:0 auto;padding:14px}
+  header.top{background:linear-gradient(135deg,#15803d,#16a34a);color:#fff;padding:14px 16px;position:sticky;top:0;z-index:40;box-shadow:0 2px 8px rgba(0,0,0,.12)}
+  header.top .bar{display:flex;align-items:center;gap:10px;max-width:1120px;margin:0 auto;flex-wrap:wrap}
+  header.top h1{font-size:18px;margin:0;flex:1;min-width:200px}
+  header.top a.home{color:#fff;text-decoration:none;background:rgba(255,255,255,.16);padding:6px 12px;border-radius:8px;font-size:13px}
+  header.top a.home:hover{background:rgba(255,255,255,.28)}
+  .topnav{display:flex;gap:6px;overflow-x:auto;padding:8px 4px;background:#fff;border-bottom:1px solid var(--line);position:sticky;top:54px;z-index:39}
+  .topnav a{white-space:nowrap;text-decoration:none;color:var(--sub);font-size:12.5px;padding:5px 10px;border-radius:20px;border:1px solid var(--line);background:#fafbfc}
+  .topnav a:hover{color:var(--accent);border-color:var(--accent)}
+  h2.sec{font-size:17px;margin:0 0 4px;display:flex;align-items:center;gap:8px}
+  .step{display:inline-flex;width:24px;height:24px;border-radius:50%;background:var(--accent);color:#fff;font-size:13px;align-items:center;justify-content:center;flex:0 0 auto}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px;margin-bottom:14px;box-shadow:0 1px 2px rgba(0,0,0,.03)}
+  .hint{color:var(--sub);font-size:12.5px;margin:2px 0 12px}
+  label{font-size:13px;color:var(--sub);display:block;margin:8px 0 4px}
+  input,select,textarea{width:100%;padding:9px 10px;border:1px solid var(--line);border-radius:9px;font-size:14px;font-family:inherit;background:#fff;color:var(--ink)}
+  input:focus,select:focus{outline:none;border-color:var(--accent)}
+  .row{display:flex;gap:12px;flex-wrap:wrap}.row>div{flex:1;min-width:130px}
+  button{cursor:pointer;border:none;border-radius:9px;font-size:14px;font-family:inherit;padding:9px 14px}
+  .btn{background:var(--accent);color:#fff}.btn:hover{filter:brightness(1.06)}
+  .btn.ghost{background:#eef1f6;color:var(--ink)}.btn.sm{padding:6px 10px;font-size:13px}
+  .btn.danger{background:#fee2e2;color:#b91c1c}.btn.big{font-size:16px;padding:12px 20px;width:100%}
+  .disc{background:var(--warnbg);border:1px solid #fed7aa;border-radius:10px;padding:10px 12px;font-size:12.5px;color:var(--warn);margin-bottom:14px}
+  .dstat{border-radius:10px;padding:8px 12px;font-size:13px;margin-bottom:12px}
+  .dstat.ok{background:var(--okbg);color:#15803d;border:1px solid #bbf7d0}
+  .dstat.err{background:#fef2f2;color:#b91c1c;border:1px solid #fecaca}
+  table{width:100%;border-collapse:collapse;font-size:13px}
+  th,td{border-bottom:1px solid var(--line);padding:7px 6px;text-align:left;vertical-align:middle}
+  th{color:var(--sub);font-weight:600;font-size:12px;white-space:nowrap}
+  .tier{font-weight:700;padding:2px 8px;border-radius:20px;color:#fff;font-size:12px;display:inline-block}
+  .t-chong{background:var(--chong)}.t-wen{background:var(--wen)}.t-bao{background:var(--bao)}.t-na{background:#cbd5e1}
+  .rule-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:10px;margin-top:6px}
+  .rule-card{border:1px solid var(--line);border-radius:11px;padding:11px 12px;background:#fafbfc}
+  .rule-card h4{margin:0 0 4px;font-size:14px;color:var(--accent)}
+  .rule-card p{margin:0;font-size:12.5px;color:#334155;line-height:1.55}
+  .flow{display:flex;align-items:stretch;gap:0;flex-wrap:wrap;margin:10px 0}
+  .flow .stage{flex:1;min-width:150px;border:1px solid var(--line);border-radius:10px;padding:9px 11px;position:relative;background:#fff}
+  .flow .stage:not(:last-child)::after{content:"→";position:absolute;right:-11px;top:50%;transform:translateY(-50%);color:var(--sub);font-size:16px;z-index:2}
+  .flow .stage b{display:block;font-size:13.5px}
+  .flow .stage span{font-size:11.5px;color:var(--sub)}
+  .summary{display:flex;gap:10px;flex-wrap:wrap;margin:6px 0 12px}
+  .chip{flex:1;min-width:90px;text-align:center;border-radius:10px;padding:10px 6px;color:#fff}
+  .chip b{display:block;font-size:22px}.chip span{font-size:12px;opacity:.95}
+  .check{padding:8px 12px;border-radius:9px;margin-bottom:7px;font-size:13px;display:flex;gap:8px}
+  .check.ok{background:var(--okbg);color:#15803d;border:1px solid #bbf7d0}
+  .check.warn{background:var(--warnbg);color:var(--warn);border:1px solid #fed7aa}
+  .check.err{background:#fef2f2;color:#b91c1c;border:1px solid #fecaca}
+  .recwrap{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;margin-top:6px}
+  .reccol{background:#fafbfc;border:1px solid var(--line);border-radius:10px;padding:8px}
+  .reccol h4{margin:0 0 6px;font-size:14px;text-align:center;padding:5px;border-radius:7px;color:#fff}
+  .rec{background:#fff;border:1px solid var(--line);border-radius:8px;padding:7px 8px;margin-bottom:6px;font-size:12.5px}
+  .rec .nm{font-weight:600;font-size:13px;line-height:1.3}
+  .rec .sch{color:var(--sub);font-size:12px}
+  .rec .btns{display:flex;gap:5px;margin-top:5px}
+  .rec .btns button{flex:1;padding:4px;font-size:12px}
+  .rec.added{opacity:.5}
+  .tabnav{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:8px}
+  .tabbtn{cursor:pointer;border:1px solid var(--line);background:#fff;color:var(--sub);border-radius:9px;padding:8px 12px;font-size:13.5px;font-family:inherit}
+  .tabbtn.on{background:var(--accent);color:#fff;border-color:var(--accent)}
+  .schcard{border:1px solid var(--line);border-radius:12px;padding:10px 12px;margin-bottom:10px;background:#fff}
+  .schcard .schhd{border-bottom:1px solid var(--line);padding-bottom:6px;margin-bottom:8px;display:flex;justify-content:space-between;align-items:center;gap:8px}
+  .schcard .schhd b{font-size:15px}
+  .schcols{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px}
+  .schband{background:#fafbfc;border:1px solid var(--line);border-radius:9px;padding:6px}
+  .schbandhd{font-size:13px;font-weight:700;color:#fff;text-align:center;padding:4px;border-radius:6px;margin-bottom:5px}
+  .schi{display:flex;align-items:center;gap:6px;font-size:12.5px;padding:3px 0;border-bottom:1px dashed #eef}
+  .schi:last-child{border-bottom:none}
+  .schnm{flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-weight:600}
+  .schprofile{background:linear-gradient(180deg,#f8fafc,#f1f5f9);border:1px solid var(--line);border-radius:10px;padding:9px 11px;margin-bottom:9px}
+  .sp-pills{display:flex;flex-wrap:wrap;gap:5px;align-items:center;margin-bottom:7px}
+  .sp-pill{font-size:11px;font-weight:700;padding:2px 7px;border-radius:20px;color:#fff;background:#94a3b8}
+  .sp-pill.g{background:#b8860b}.sp-pill.s{background:#64748b}.sp-pill.y{background:#2563eb}.sp-pill.p{background:#15803d}
+  .sp-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(84px,1fr));gap:7px;margin-bottom:7px}
+  .sp-item{background:#fff;border:1px solid var(--line);border-radius:8px;padding:5px 7px;text-align:center}
+  .sp-k{font-size:11px;color:var(--sub)}
+  .sp-v{font-size:14px;font-weight:700;color:var(--ink);margin-top:1px}
+  .tags{display:flex;flex-wrap:wrap;gap:7px;margin-top:4px}
+  .tag{padding:5px 12px;border-radius:20px;border:1px solid var(--line);background:#fff;color:var(--sub);font-size:12.5px;cursor:pointer;user-select:none}
+  .tag.on{background:var(--accent);color:#fff;border-color:var(--accent)}
+  .batch{margin-bottom:12px}
+  .batch h4{font-size:14px;margin:0 0 6px;display:flex;align-items:center;gap:8px}
+  .wishrow{display:flex;gap:8px;align-items:center;margin-bottom:6px}
+  .wishrow .wn{flex:0 0 28px;text-align:center;color:var(--sub);font-size:13px}
+  .wishrow .wname{flex:1}
+  .wishrow .wm{flex:0 0 90px;color:var(--sub);font-size:12px}
+  .wishrow button{flex:0 0 auto;padding:5px 9px;font-size:12px}
+  .addline{display:flex;gap:8px;margin-top:6px}
+  .addline input{flex:1}
+  .modal{position:fixed;inset:0;background:rgba(0,0,0,.45);display:none;align-items:center;justify-content:center;z-index:50;padding:14px}
+  .modal.on{display:flex}
+  .modalbox{background:#fff;border-radius:14px;max-width:680px;width:100%;max-height:86vh;overflow:auto;padding:18px}
+  .modalbox h3{margin:0 0 2px}
+  .kv{display:flex;font-size:13px;border-bottom:1px solid var(--line);padding:5px 0}
+  .kv .k{color:var(--sub);width:120px;flex:0 0 120px}.kv .v{flex:1}
+  .foot{color:var(--sub);font-size:11.5px;text-align:center;margin:18px 0 8px}
+  .mini{font-size:12px;color:var(--sub)}
+  .batchsel{font-size:12px;color:#fff;padding:2px 9px;border-radius:20px;background:var(--accent)}
+  .pill{display:inline-block;font-size:11px;padding:1px 7px;border-radius:12px;background:#eef1f6;color:var(--sub);margin-right:4px}
+  .lvl-tbl td,.lvl-tbl th{text-align:center;padding:5px 4px}
+</style>
+</head>
+<body>
+<header class="top"><div class="bar">
+  <h1>深圳中考志愿智能推荐</h1>
+  <a class="home" href="sz-shengxue-lujing.html">← 深圳升学路径</a>
+  <a class="home" href="index.html">平台首页</a>
+</div></header>
+<div class="topnav">
+  <a href="#m1">① 报考规则</a><a href="#m2">② 位次测算</a><a href="#m3">③ 考生信息</a>
+  <a href="#m4">④ 智能推荐</a>
+  <a href="#m5">⑤ 选方向生成</a><a href="#m6">⑥ 我的志愿表</a>
+  <a href="#m7">⑦ 方案体检</a><a href="#m8">⑧ 导出存档</a><a href="#m9">⑨ 录取分·指标生·自招</a>
+</div>
+<div class="wrap">
+
+<div class="disc">数据来源：<b>2026 深圳中考志愿填报工具包</b>（公办 / 民办高中录取分、指标生控制线、自主招生）。录取分为各校 2025 年最低录取分（AC 类 = 深户及不限户籍 / D 类 = 非深户），含住宿 / 走读两条线，智能推荐取<b>住宿线</b>定位；2026 预测线（26 指控测）已并入。<b>精确位次请以当年官方“一分一段表”为准</b>；本工具用于定位与方案推演，最终填报请核对官方计划。</div>
+
+<!-- ① 报考规则介绍 -->
+<div class="card" id="m1">
+  <h2 class="sec"><span class="step">1</span>报考规则介绍</h2>
+  <div class="hint">深圳中考总分 610，实行“分数优先、依照志愿顺序”投档，分五个批次录取；被前一批次录取即不再参加后续。</div>
+  <div id="rulesOut"></div>
+</div>
+
+<!-- ② 位次测算 -->
+<div class="card" id="m2">
+  <h2 class="sec"><span class="step">2</span>位次测算（分数定位）</h2>
+  <div class="hint">输入预估分与考生类型（AC / D），定位相对高中层次（全市统一，不分区域）。</div>
+  <div class="row">
+    <div><label>预估总分（满分 610）</label><input id="rkScore" type="number" placeholder="如 560"></div>
+    <div><label>考生类型</label><select id="rkType">
+      <option value="ac">AC 类（深户 / 不限户籍）</option><option value="d">D 类（非深户）</option>
+    </select></div>
+    <div style="flex:0 0 auto;display:flex;align-items:flex-end"><button class="btn" onclick="calcRank()">测算</button></div>
+  </div>
+  <div id="rkOut" style="margin-top:10px"></div>
+</div>
+
+<!-- ③ 考生信息 -->
+<div class="card" id="m3">
+  <h2 class="sec"><span class="step">3</span>考生信息</h2>
+  <div class="hint">填写后用于智能推荐与方案体检；初中学校用于“指标生”资格核对。</div>
+  <div class="row">
+    <div><label>姓名 / 昵称</label><input id="stName" placeholder="选填"></div>
+    <div><label>所在区（隶属）</label><input id="stDist" placeholder="如 福田区 / 市直属"></div>
+    <div><label>初中学校</label><input id="stSchool" placeholder="用于指标生查询，如 深圳市 xxx 中学"></div>
+  </div>
+  <div class="row">
+    <div><label>考生类型</label><select id="stType">
+      <option value="ac">AC 类（深户 / 不限户籍）</option><option value="d">D 类（非深户）</option></select></div>
+    <div><label>预估总分</label><input id="stScore" type="number" placeholder="如 560"></div>
+    <div><label>目标批次</label><select id="stBatch">
+      <option value="">不限</option><option value="第一批">第一批（普高）</option><option value="自招批">自主招生批</option><option value="指标生批">指标生批</option></select></div>
+    <div style="flex:0 0 auto;display:flex;align-items:flex-end"><button class="btn" onclick="saveStudent()">保存</button></div>
+  </div>
+  <div id="stOut" style="margin-top:8px"></div>
+</div>
+
+<!-- ④ 智能推荐 -->
+<div class="card" id="m4">
+  <h2 class="sec"><span class="step">4</span>智能推荐</h2>
+  <div class="hint">基于所选考生类型 2025 年最低录取分（住宿线），按“冲—稳—保”给出学校清单。</div>
+  <div class="row">
+    <div><label>考生类型</label><select id="recType">
+      <option value="ac">AC 类（深户 / 不限户籍）</option><option value="d">D 类（非深户）</option></select></div>
+    <div><label>分数</label><input id="recScore" type="number" placeholder="默认取考生信息"></div>
+    <div style="flex:0 0 auto;display:flex;align-items:flex-end"><button class="btn" onclick="recommend()">生成推荐</button></div>
+  </div>
+  <div id="recOut" style="margin-top:10px"></div>
+</div>
+
+<!-- ⑤ 选方向生成 -->
+<div class="card" id="m5">
+  <h2 class="sec"><span class="step">5</span>选方向 → 生成推荐</h2>
+  <div class="hint">勾选你倾向的方向，一键生成候选清单，再按需加入志愿表。</div>
+  <div class="tags" id="dirTags"></div>
+  <div class="row" style="margin-top:10px"><div style="flex:0 0 auto"><button class="btn" onclick="genByDirection()">生成候选</button></div>
+  <div style="flex:0 0 auto"><button class="btn ghost" onclick="addDraftToWish()">全部加入志愿表</button></div></div>
+  <div id="dirOut" style="margin-top:10px"></div>
+</div>
+
+<!-- ⑥ 我的志愿表 -->
+<div class="card" id="m6">
+  <h2 class="sec"><span class="step">6</span>我的志愿表</h2>
+  <div class="hint">按批次组织志愿。点击学校或推荐的“加入”按钮添加；可手动补充（如自主招生、指标生、补录）。</div>
+  <div id="wishOut"></div>
+  <div class="addline"><select id="wishBatch">
+    <option value="自招批">自主招生批</option><option value="指标生批">指标生批</option><option value="第一批">第一批（普高）</option><option value="第二批">第二批（中职）</option><option value="第三批">第三批（部省属中职）</option></select>
+    <input id="wishName" placeholder="学校 / 项目名称"><input id="wishScore" type="number" placeholder="参考分(选填)">
+    <button class="btn sm" onclick="addWishManual()">添加</button></div>
+  <div class="row" style="margin-top:10px"><div style="flex:0 0 auto"><button class="btn ghost sm" onclick="clearWish()">清空</button></div></div>
+</div>
+
+<!-- ⑦ 方案体检 -->
+<div class="card" id="m7">
+  <h2 class="sec"><span class="step">7</span>方案体检</h2>
+  <div class="hint">检查志愿表是否“冲稳保”梯度合理、批次覆盖、户籍限制等。</div>
+  <div id="hcOut" style="margin-top:6px"></div>
+</div>
+
+<!-- ⑧ 导出存档 -->
+<div class="card" id="m8">
+  <h2 class="sec"><span class="step">8</span>导出 / 存档</h2>
+  <div class="hint">志愿表与考生信息自动保存在本机浏览器；可导出为自包含 HTML 或复制文本。</div>
+  <div class="row">
+    <div style="flex:0 0 auto"><button class="btn" onclick="exportHTML()">导出 HTML</button></div>
+    <div style="flex:0 0 auto"><button class="btn ghost" onclick="copyText()">复制文本</button></div>
+    <div style="flex:0 0 auto"><button class="btn ghost" onclick="loadWish()">载入已存</button></div>
+  </div>
+  <div id="expOut" style="margin-top:8px"></div>
+</div>
+
+<!-- ⑨ 录取分·指标生·自招 -->
+<div class="card" id="m9">
+  <h2 class="sec"><span class="step">9</span>录取分 · 指标生 · 自招（2025 / 2026）</h2>
+  <div class="hint">数据源：<b>2026 深圳中考志愿填报工具包</b>，共 <b id="p26Total">—</b> 所高中（含 2025 录取分 + 2026 预测 + 招生计划），另含指标生控制线与自主招生名单。</div>
+  <div class="tabnav">
+    <button class="tabbtn on" id="p26t1" onclick="switchP26('score')">录取分检索</button>
+    <button class="tabbtn" id="p26t2" onclick="switchP26('quota')">指标生控制线</button>
+    <button class="tabbtn" id="p26t3" onclick="switchP26('zz')">自主招生</button>
+  </div>
+  <div id="p26-score">
+    <div class="row">
+      <div><label>关键字（学校名）</label><input id="p26Kw" placeholder="如 深圳中学 / 红岭 / 宝安"></div>
+      <div><label>性质</label><select id="p26Nat"><option value="">全部</option><option value="公办">公办</option><option value="民办">民办</option></select></div>
+      <div style="flex:0 0 auto;display:flex;align-items:flex-end"><button class="btn" onclick="renderScore()">查询</button></div>
+    </div>
+    <div id="p26Out" style="margin-top:10px"></div>
+  </div>
+  <div id="p26-quota" style="display:none">
+    <div class="hint">输入<b>高中学校</b>，查看该校 2024 年指标生录取分与控制线（AC / D 类）。指标生为户籍生专属降分渠道。</div>
+    <div class="row">
+      <div><label>高中学校</label><input id="p26qKw" placeholder="如 深圳中学 / 红岭中学"></div>
+      <div style="flex:0 0 auto;display:flex;align-items:flex-end"><button class="btn" onclick="renderQuota()">查询</button></div>
+    </div>
+    <div id="p26qOut" style="margin-top:10px"></div>
+  </div>
+  <div id="p26-zz" style="display:none">
+    <div class="hint">2025 年普通高中一类自主招生（原模式）名单与分数线。</div>
+    <div id="p26zOut" style="margin-top:10px"></div>
+  </div>
+</div>
+
+<div class="foot">深圳中考志愿智能推荐 · 中高考考情分析平台 · 数据仅供参考，请以官方发布为准</div>
+</div>
+
+<div class="modal" id="schModal" onclick="if(event.target===this)this.classList.remove('on')">
+  <div class="modalbox" id="schModalBox"></div>
+</div>
+
+<script>
+const DATA = {
+ "meta": {
+  "city": "深圳",
+  "year": 2025,
+  "total": 610,
+  "src": "2026深圳中考志愿填报工具包.xlsx（公办/民办高中、指标生、自主招生）",
+  "note": "录取分为 2025 年最低录取分（AC类=深户及不限户籍 / D类=非深户），含住宿/走读两条线；智能推荐取住宿线定位。2026 预测线（26指控测）已并入。精确位次请以官方“一分一段表”为准。",
+  "year2026": "2026 预测线按 2025 录取分 + 专家降分测算并入"
+ },
+ "policy": {
+  "batches": [
+   {
+    "name": "自主招生批",
+    "vol": "1 个志愿",
+    "note": "普通高中一类 / 二类自招，按特长 / 专项考核择优，在中考成绩基础上合成总分排序"
+   },
+   {
+    "name": "指标生批",
+    "vol": "1 个志愿",
+    "note": "原“名额分配”，户籍生专属降分渠道；达到该校指标生控制线即可在同校竞争中降分录取"
+   },
+   {
+    "name": "第一批（普通高中）",
+    "vol": "12 普高 + 4 中职志愿",
+    "note": "按分录取主力批次，AC 类（深户及不限户籍）/ D 类（非深户）分别划线投档"
+   },
+   {
+    "name": "第二批（中职）",
+    "vol": "18 个中职志愿",
+    "note": "本市中等职业学校，可选不超过 4 所学校勾选“接受走读调剂”"
+   },
+   {
+    "name": "第三批（部省属中职）",
+    "vol": "6 个志愿",
+    "note": "部、省属中等职业学校在深招生计划"
+   }
+  ],
+  "lines": {
+   "2025": {
+    "A+": 568,
+    "A": 534,
+    "B+": 484
+   },
+   "2024": {
+    "A+": 565,
+    "A": 526,
+    "B+": 470
+   },
+   "2023": {
+    "A+": 573,
+    "A": 542,
+    "B+": 489
+   },
+   "2022": {
+    "A+": 571,
+    "A": 535,
+    "B+": 484
+   }
+  },
+  "rule": "深圳中考实行“分数优先、依照志愿顺序”投档：在同一批次内，按考生总分从高到低依次检索其志愿，分数达标即投档，遵循志愿顺序。被前一批次录取即不再参加后续批次。",
+  "hukou": "ACD 类：AC = 深户（及不限户籍的计划），D = 非深户。AC 类、D 类分别划定最低录取控制线，D 类分数线通常高于 AC 类。非深户报考公办高中须满足深圳市随迁子女升学条件（父母持有效居住证、合法稳定职业与住所、社保缴纳年限等）。",
+  "minge": "指标生（原名额分配）面向具有深圳户籍、在同一初中学校连续就读三年且拥有正式学籍的应届初三毕业生。考生达到招生学校指标生控制线，即可以低于正取线一定的分数在同校（同初中）竞争中优先录取。指标生批设 1 个志愿。",
+  "principle": "志愿之间必须拉开梯度：每个志愿的预估录取分应逐级下降，避免全部扎在同一分数段导致滑档。可参考“冲—稳—保”结构，结合各校近年最低分与 2026 预测线排序。",
+  "total": 610
+ },
+ "scores": [
+  {
+   "name": "深圳中学",
+   "grade": "A+",
+   "district": "罗湖",
+   "belong": "市直属",
+   "nature": "公办",
+   "b": "第一批",
+   "ac2025": [
+    574,
+    570
+   ],
+   "d2025": [
+    574,
+    570
+   ],
+   "ac2026pred": 571.7,
+   "d2026pred": 572.3,
+   "plan2025": 1970,
+   "plan2025_board": 1750
+  },
+  {
+   "name": "深圳实验",
+   "grade": "A+",
+   "district": "南山",
+   "belong": "市直属",
+   "nature": "公办",
+   "b": "第一批",
+   "ac2025": [
+    570,
+    569
+   ],
+   "d2025": [
+    570,
+    565
+   ],
+   "ac2026pred": 570,
+   "d2026pred": 570.3,
+   "plan2025": 554,
+   "plan2025_board": 528
+  },
+  {
+   "name": "深圳高级",
+   "grade": "A+",
+   "district": "福田",
+   "belong": "市直属",
+   "nature": "公办",
+   "b": "第一批",
+   "ac2025": [
+    569,
+    568
+   ],
+   "d2025": [
+    569,
+    564
+   ],
+   "ac2026pred": 568.7,
+   "d2026pred": 568.7,
+   "plan2025": 945,
+   "plan2025_board": 900
+  },
+  {
+   "name": "深圳外国语",
+   "grade": "A+",
+   "district": "盐田",
+   "belong": "市直属",
+   "nature": "公办",
+   "b": "第一批",
+   "ac2025": [
+    568,
+    566
+   ],
+   "d2025": [
+    568,
+    562
+   ],
+   "ac2026pred": 568.3,
+   "d2026pred": 568.3,
+   "plan2025": 831,
+   "plan2025_board": 782
+  },
+  {
+   "name": "红岭中学",
+   "grade": "A头",
+   "district": "福田",
+   "belong": "福田",
+   "nature": "公办",
+   "b": "第一批",
+   "ac2025": [
+    565,
+    564
+   ],
+   "d2025": [
+    565,
+    557
+   ],
+   "ac2026pred": 564.7,
+   "d2026pred": 565.3,
+   "plan2025": 1312,
+   "plan2025_board": 1250
+  },
+  {
+   "name": "育才中学",
+   "grade": "A头",
+   "district": "南山",
+   "belong": "南山",
+   "nature": "公办",
+   "b": "第一批",
+   "ac2025": [
+    564,
+    563
+   ],
+   "d2025": [
+    564,
+    561
+   ],
+   "ac2026pred": 563.3,
+   "d2026pred": 563.3,
+   "plan2025": 770,
+   "plan2025_board": 735
+  },
+  {
+   "name": "宝安中学",
+   "grade": "A头",
+   "district": "宝安",
+   "belong": "宝安",
+   "nature": "公办",
+   "b": "第一批",
+   "ac2025": [
+    564,
+    562
+   ],
+   "d2025": [
+    562,
+    558
+   ],
+   "ac2026pred": 563.7,
+   "d2026pred": 563.7,
+   "plan2025": 1050,
+   "plan2025_board": 1000
+  },
+  {
+   "name": "深大附中",
+   "grade": "A头",
+   "district": "南山",
+   "belong": "市直属",
+   "nature": "公办",
+   "b": "第一批",
+   "ac2025": [
+    562,
+    560
+   ],
+   "d2025": [
+    562,
+    551
+   ],
+   "ac2026pred": 562.3,
+   "d2026pred": 562.3,
+   "plan2025": 660,
+   "plan2025_board": 630
+  },
+  {
+   "name": "北师大附中",
+   "grade": "A头",
+   "district": "南山",
+   "belong": "南山",
+   "nature": "公办",
+   "b": "第一批",
+   "ac2025": [
+    562,
+    560
+   ],
+   "d2025": [
+    562,
+    554
+   ],
+   "ac2026pred": 560.3,
+   "d2026pred": 559.7,
+   "plan2025": 440,
+   "plan2025_board": 420
+  },
+  {
+   "name": "深圳科高",
+   "grade": "A头",
+   "district": "龙岗",
+   "belong": "市直属",
+   "nature": "公办",
+   "b": "第一批",
+   "ac2025": [
+    560,
+    558
+   ],
+   "d2025": [
+    560,
+    550
+   ],
+   "ac2026pred": 560,
+   "d2026pred": 560.7,
+   "plan2025": 1155,
+   "plan2025_board": 1100
+  },
+  {
+   "name": "南外高",
+   "grade": "A中",
+   "district": "南山",
+   "belong": "南山",
+   "nature": "公办",
+   "b": "第一批",
+   "ac2025": [
+    559,
+    558
+   ],
+   "d2025": [
+    557,
+    553
+   ],
+   "ac2026pred": 557,
+   "d2026pred": 557,
+   "plan2025": 630,
+   "plan2025_board": 600
+  },
+  {
+   "name": "龙城高",
+   "grade": "A中",
+   "district": "龙岗",
+   "belong": "龙岗",
+   "nature": "公办",
+   "b": "第一批",
+   "ac2025": [
+    557,
+    554
+   ],
+   "d2025": [
+    557,
+    554
+   ],
+   "ac2026pred": 555.7,
+   "d2026pred": 556.3,
+   "plan2025": 1050,
+   "plan2025_board": 1000
+  },
+  {
+   "name": "翠园中学",
+   "grade": "A中",
+   "district": "罗湖",
+   "belong": "罗湖",
+   "nature": "公办",
+   "b": "第一批",
+   "ac2025": [
+    557,
+    555
+   ],
+   "d2025": [
+    556,
+    555
+   ],
+   "ac2026pred": 554.7,
+   "d2026pred": 554.3,
+   "plan2025": 735,
+   "plan2025_board": 700
+  },
+  {
+   "name": "深圳第二高级",
+   "grade": "A中",
+   "district": "南山",
+   "belong": "市直属",
+   "nature": "公办",
+   "b": "第一批",
+   "ac2025": [
+    557,
+    555
+   ],
+   "d2025": [
+    554,
+    546
+   ],
+   "ac2026pred": 556.3,
+   "d2026pred": 555,
+   "plan2025": 1100,
+   "plan2025_board": 1050
+  },
+  {
+   "name": "南科大附",
+   "grade": "A中",
+   "district": "宝安",
+   "belong": "市直属",
+   "nature": "公办",
+   "b": "第一批",
+   "ac2025": [
+    556,
+    552
+   ],
+   "d2025": [
+    556,
+    553
+   ],
+   "ac2026pred": 555.3,
+   "d2026pred": 556.7,
+   "plan2025": 840,
+   "plan2025_board": 800
+  },
+  {
+   "name": "龙华高",
+   "grade": "A中",
+   "district": "龙华",
+   "belong": "龙华",
+   "nature": "公办",
+   "b": "第一批",
+   "ac2025": [
+    553,
+    551
+   ],
+   "d2025": [
+    552,
+    543
+   ],
+   "ac2026pred": 552,
+   "d2026pred": 552,
+   "plan2025": 630,
+   "plan2025_board": 600
+  },
+  {
+   "name": "人大附深",
+   "grade": "A中",
+   "district": "大鹏",
+   "belong": "大鹏",
+   "nature": "公办",
+   "b": "第一批",
+   "ac2025": [
+    553,
+    541
+   ],
+   "d2025": [
+    552,
+    538
+   ],
+   "ac2026pred": 551.3,
+   "d2026pred": 551,
+   "plan2025": 1210,
+   "plan2025_board": 1155
+  },
+  {
+   "name": "深圳第二实验",
+   "grade": "A中",
+   "district": "罗湖",
+   "belong": "市直属",
+   "nature": "公办",
+   "b": "第一批",
+   "ac2025": [
+    550,
+    547
+   ],
+   "d2025": [
+    552,
+    547
+   ],
+   "ac2026pred": 552,
+   "d2026pred": 551.7,
+   "plan2025": 472,
+   "plan2025_board": 450
+  },
+  {
+   "name": "深实光明",
+   "grade": "A中",
+   "district": "光明",
+   "belong": "市直属",
+   "nature": "公办",
+   "b": "第一批",
+   "ac2025": [
+    549,
+    542
+   ],
+   "d2025": [
+    552,
+    549
+   ],
+   "ac2026pred": 549.7,
+   "d2026pred": 552.7,
+   "plan2025": 1050,
+   "plan2025_board": 1000
+  },
+  {
+   "name": "省实深圳",
+   "grade": "A中",
+   "district": "龙岗",
+   "belong": "市直属",
+   "nature": "公办",
+   "b": "第一批",
+   "ac2025": [
+    549,
+    540
+   ],
+   "d2025": [
+    550,
+    536
+   ],
+   "ac2026pred": 548.3,
+   "d2026pred": 549.7,
+   "plan2025": 735,
+   "plan2025_board": 700
+  },
+  {
+   "name": "深外龙华",
+   "grade": "A中",
+   "district": "龙华",
+   "belong": "市直属",
+   "nature": "公办",
+   "b": "第一批",
+   "ac2025": [
+    549,
+    543
+   ],
+   "d2025": [
+    549,
+    541
+   ],
+   "ac2026pred": 549,
+   "d2026pred": 547.3,
+   "plan2025": 945,
+   "plan2025_board": 900
+  },
+  {
+   "name": "育才蛇口",
+   "grade": "A中",
+   "district": "南山",
+   "belong": "南山",
+   "nature": "公办",
+   "b": "第一批",
+   "ac2025": [
+    549,
+    546
+   ],
+   "d2025": [
+    548,
+    546
+   ],
+   "ac2026pred": 499.7,
+   "d2026pred": 518.7,
+   "plan2025": 880,
+   "plan2025_board": 840
+  },
+  {
+   "name": "深高东",
+   "grade": "A中",
+   "district": "坪山",
+   "belong": "市直属",
+   "nature": "公办",
+   "b": "第一批",
+   "ac2025": [
+    548,
+    538
+   ],
+   "d2025": [
+    546,
+    539
+   ],
+   "ac2026pred": 547.7,
+   "d2026pred": 545.7,
+   "plan2025": 1050,
+   "plan2025_board": 1000
+  },
+  {
+   "name": "新安中学",
+   "grade": "A中",
+   "district": "宝安",
+   "belong": "宝安",
+   "nature": "公办",
+   "b": "第一批",
+   "ac2025": [
+    547,
+    544
+   ],
+   "d2025": [
+    549,
+    542
+   ],
+   "ac2026pred": 547,
+   "d2026pred": 548.7,
+   "plan2025": 840,
+   "plan2025_board": 760
+  },
+  {
+   "name": "深大附实",
+   "grade": "A中",
+   "district": "光明",
+   "belong": "市直属",
+   "nature": "公办",
+   "b": "第一批",
+   "ac2025": [
+    546,
+    540
+   ],
+   "d2025": [
+    548,
+    541
+   ],
+   "ac2026pred": 544,
+   "d2026pred": 545.7,
+   "plan2025": 630,
+   "plan2025_board": 600
+  },
+  {
+   "name": "科高龙岗",
+   "grade": "A中",
+   "district": "龙岗",
+   "belong": "市直属",
+   "nature": "公办",
+   "b": "第一批",
+   "ac2025": [
+    545,
+    538
+   ],
+   "d2025": [
+    547,
+    539
+   ],
+   "ac2026pred": 545,
+   "d2026pred": 546.7,
+   "plan2025": 577,
+   "plan2025_board": 550
+  },
+  {
+   "name": "华中师附",
+   "grade": "A中",
+   "district": "龙岗",
+   "belong": "龙岗",
+   "nature": "公办",
+   "b": "第一批",
+   "ac2025": [
+    545,
+    540
+   ],
+   "d2025": [
+    545,
+    538
+   ],
+   "ac2026pred": 544.7,
+   "d2026pred": 544.3,
+   "plan2025": 1050,
+   "plan2025_board": 1000
+  },
+  {
+   "name": "北理莫附",
+   "grade": "A底",
+   "district": "龙岗",
+   "belong": "市直属",
+   "nature": "公办",
+   "b": "第一批",
+   "ac2025": [
+    544,
+    535
+   ],
+   "d2025": [
+    545,
+    537
+   ],
+   "ac2026pred": 541.3,
+   "d2026pred": 543,
+   "plan2025": 630,
+   "plan2025_board": 600
+  },
+  {
+   "name": "中科附高",
+   "grade": "A底",
+   "district": "光明",
+   "belong": "光明",
+   "nature": "公办",
+   "b": "第一批",
+   "ac2025": [
+    542,
+    537
+   ],
+   "d2025": [
+    541,
+    538
+   ],
+   "ac2026pred": 537.3,
+   "d2026pred": 539.3,
+   "plan2025": 735,
+   "plan2025_board": 700
+  },
+  {
+   "name": "南头中学",
+   "grade": "A底",
+   "district": "南山",
+   "belong": "南山",
+   "nature": "公办",
+   "b": "第一批",
+   "ac2025": [
+    541,
+    539
+   ],
+   "d2025": [
+    542,
+    536
+   ],
+   "ac2026pred": 541,
+   "d2026pred": 543.7,
+   "plan2025": 924,
+   "plan2025_board": 880
+  },
+  {
+   "name": "东北师附深",
+   "grade": "A底",
+   "district": "坪山",
+   "belong": "市直属",
+   "nature": "公办",
+   "b": "第一批",
+   "ac2025": [
+    540,
+    530
+   ],
+   "d2025": [
+    543,
+    534
+   ],
+   "ac2026pred": 540.3,
+   "d2026pred": 542,
+   "plan2025": 660,
+   "plan2025_board": 630
+  },
+  {
+   "name": "盐高",
+   "grade": "A底",
+   "district": "盐田",
+   "belong": "盐田",
+   "nature": "公办",
+   "b": "第一批",
+   "ac2025": [
+    539,
+    525
+   ],
+   "d2025": [
+    541,
+    530
+   ],
+   "ac2026pred": 540.3,
+   "d2026pred": 542.3,
+   "plan2025": 1050,
+   "plan2025_board": 1000
+  },
+  {
+   "name": "格致中学",
+   "grade": "A底",
+   "district": "龙华",
+   "belong": "龙华",
+   "nature": "公办",
+   "b": "第一批",
+   "ac2025": [
+    537,
+    529
+   ],
+   "d2025": [
+    541,
+    529
+   ],
+   "ac2026pred": 537.3,
+   "d2026pred": 541,
+   "plan2025": 630,
+   "plan2025_board": 600
+  },
+  {
+   "name": "红山中学",
+   "grade": "A底",
+   "district": "龙华",
+   "belong": "龙华",
+   "nature": "公办",
+   "b": "第一批",
+   "ac2025": [
+    537,
+    531
+   ],
+   "d2025": [
+    540,
+    532
+   ],
+   "ac2026pred": 536.7,
+   "d2026pred": 539.3,
+   "plan2025": 630,
+   "plan2025_board": 600
+  },
+  {
+   "name": "龙实高",
+   "grade": "A底",
+   "district": "龙岗",
+   "belong": "龙岗",
+   "nature": "公办",
+   "b": "第一批",
+   "ac2025": [
+    536,
+    524
+   ],
+   "d2025": [
+    540,
+    532
+   ],
+   "ac2026pred": 530.3,
+   "d2026pred": 538.3,
+   "plan2025": 440,
+   "plan2025_board": 400
+  },
+  {
+   "name": "港中深明德",
+   "grade": "A底",
+   "district": "福田",
+   "belong": "福田",
+   "nature": "公办",
+   "b": "第一批",
+   "ac2025": [
+    536,
+    533
+   ],
+   "d2025": [
+    539,
+    534
+   ],
+   "ac2026pred": 535.7,
+   "d2026pred": 536.7,
+   "plan2025": 630,
+   "plan2025_board": 600
+  },
+  {
+   "name": "华侨城高级",
+   "grade": "A底",
+   "district": "南山",
+   "belong": "南山",
+   "nature": "公办",
+   "b": "第一批",
+   "ac2025": [
+    536,
+    533
+   ],
+   "d2025": [
+    537,
+    531
+   ],
+   "ac2026pred": 537.7,
+   "d2026pred": 538.7,
+   "plan2025": 840,
+   "plan2025_board": 800
+  },
+  {
+   "name": "松岗中学",
+   "grade": "B+头",
+   "district": "宝安",
+   "belong": "宝安",
+   "nature": "公办",
+   "b": "第一批",
+   "ac2025": [
+    532,
+    527
+   ],
+   "d2025": [
+    538,
+    533
+   ],
+   "ac2026pred": 534.7,
+   "d2026pred": 538,
+   "plan2025": 420,
+   "plan2025_board": 400
+  },
+  {
+   "name": "深高创新",
+   "grade": "B+头",
+   "district": "龙岗",
+   "belong": "市直属",
+   "nature": "公办",
+   "b": "第一批",
+   "ac2025": [
+    532,
+    519
+   ],
+   "d2025": [
+    538,
+    527
+   ],
+   "ac2026pred": 534,
+   "d2026pred": 535.7,
+   "plan2025": 880,
+   "plan2025_board": 840
+  },
+  {
+   "name": "罗湖外",
+   "grade": "B+头",
+   "district": "罗湖",
+   "belong": "罗湖",
+   "nature": "公办",
+   "b": "第一批",
+   "ac2025": [
+    532,
+    519
+   ],
+   "d2025": [
+    538,
+    526
+   ],
+   "ac2026pred": 532,
+   "d2026pred": 535.7,
+   "plan2025": 835,
+   "plan2025_board": 700
+  },
+  {
+   "name": "福田中学",
+   "grade": "B+头",
+   "district": "福田",
+   "belong": "福田",
+   "nature": "公办",
+   "b": "第一批",
+   "ac2025": [
+    532,
+    525
+   ],
+   "d2025": [
+    537,
+    531
+   ],
+   "ac2026pred": 531,
+   "d2026pred": 534.7,
+   "plan2025": 1050,
+   "plan2025_board": 1000
+  },
+  {
+   "name": "深技大附",
+   "grade": "B+头",
+   "district": "坪山",
+   "belong": "市直属",
+   "nature": "公办",
+   "b": "第一批",
+   "ac2025": [
+    531,
+    519
+   ],
+   "d2025": [
+    536,
+    529
+   ],
+   "ac2026pred": 525.7,
+   "d2026pred": 533,
+   "plan2025": 630,
+   "plan2025_board": 600
+  },
+  {
+   "name": "宝一外",
+   "grade": "B+头",
+   "district": "宝安",
+   "belong": "宝安",
+   "nature": "公办",
+   "b": "第一批",
+   "ac2025": [
+    531,
+    521
+   ],
+   "d2025": [
+    535,
+    526
+   ],
+   "ac2026pred": 534,
+   "d2026pred": 538.3,
+   "plan2025": 800,
+   "plan2025_board": 750
+  },
+  {
+   "name": "深圳二外",
+   "grade": "B+头",
+   "district": "龙华",
+   "belong": "市直属",
+   "nature": "公办",
+   "b": "第一批",
+   "ac2025": [
+    530,
+    521
+   ],
+   "d2025": [
+    534,
+    525
+   ],
+   "ac2026pred": 531.3,
+   "d2026pred": 534.3,
+   "plan2025": 990,
+   "plan2025_board": 945
+  },
+  {
+   "name": "龙津中学",
+   "grade": "B+头",
+   "district": "宝安",
+   "belong": "宝安",
+   "nature": "公办",
+   "b": "第一批",
+   "ac2025": [
+    528,
+    504
+   ],
+   "d2025": [
+    534,
+    521
+   ],
+   "ac2026pred": 528.3,
+   "d2026pred": 534.3,
+   "plan2025": 1155,
+   "plan2025_board": 1000
+  },
+  {
+   "name": "西交利物浦外高",
+   "grade": "B+头",
+   "district": "福田",
+   "belong": "福田",
+   "nature": "公办",
+   "b": "第一批",
+   "ac2025": [
+    524,
+    519
+   ],
+   "d2025": [
+    530,
+    526
+   ],
+   "ac2026pred": 522.3,
+   "d2026pred": 524.3,
+   "plan2025": 735,
+   "plan2025_board": 700
+  },
+  {
+   "name": "三高",
+   "grade": "B+头",
+   "district": "龙岗",
+   "belong": "市直属",
+   "nature": "公办",
+   "b": "第一批",
+   "ac2025": [
+    524,
+    514
+   ],
+   "d2025": [
+    530,
+    520
+   ],
+   "ac2026pred": 523,
+   "d2026pred": 527.7,
+   "plan2025": 787,
+   "plan2025_board": 700
+  },
+  {
+   "name": "深高理慧",
+   "grade": "B+头",
+   "district": "龙岗",
+   "belong": "市直属",
+   "nature": "公办",
+   "b": "第一批",
+   "ac2025": [
+    524,
+    496
+   ],
+   "d2025": [
+    529,
+    512
+   ],
+   "ac2026pred": 522.7,
+   "d2026pred": 523,
+   "plan2025": 945,
+   "plan2025_board": 900
+  },
+  {
+   "name": "罗湖高",
+   "grade": "B+头",
+   "district": "罗湖",
+   "belong": "罗湖",
+   "nature": "公办",
+   "b": "第一批",
+   "ac2025": [
+    523,
+    518
+   ],
+   "d2025": [
+    528,
+    523
+   ],
+   "ac2026pred": 519.7,
+   "d2026pred": 523.3,
+   "plan2025": 682,
+   "plan2025_board": 650
+  },
+  {
+   "name": "燕川中学",
+   "grade": "B+头",
+   "district": "宝安",
+   "belong": "宝安",
+   "nature": "公办",
+   "b": "第一批",
+   "ac2025": [
+    521,
+    487
+   ],
+   "d2025": [
+    532,
+    514
+   ],
+   "ac2026pred": 513.3,
+   "d2026pred": 531,
+   "plan2025": 1155,
+   "plan2025_board": 1000
+  },
+  {
+   "name": "红岭大鹏",
+   "grade": "B+头",
+   "district": "大鹏",
+   "belong": "大鹏",
+   "nature": "公办",
+   "b": "第一批",
+   "ac2025": [
+    521,
+    501
+   ],
+   "d2025": [
+    531,
+    519
+   ],
+   "ac2026pred": 517,
+   "d2026pred": 527.3,
+   "plan2025": 630,
+   "plan2025_board": 600
+  },
+  {
+   "name": "平冈中学",
+   "grade": "B+中",
+   "district": "龙岗",
+   "belong": "龙岗",
+   "nature": "公办",
+   "b": "第一批",
+   "ac2025": [
+    519,
+    509
+   ],
+   "d2025": [
+    533,
+    528
+   ],
+   "ac2026pred": 514,
+   "d2026pred": 529.7,
+   "plan2025": 650,
+   "plan2025_board": 600
+  },
+  {
+   "name": "深高有为",
+   "grade": "B+中",
+   "district": "龙岗",
+   "belong": "市直属",
+   "nature": "公办",
+   "b": "第一批",
+   "ac2025": [
+    517,
+    491
+   ],
+   "d2025": [
+    523,
+    507
+   ],
+   "ac2026pred": 510,
+   "d2026pred": 516.3,
+   "plan2025": 525,
+   "plan2025_board": 500
+  },
+  {
+   "name": "深外弘知",
+   "grade": "B+中",
+   "district": "光明",
+   "belong": "市直属",
+   "nature": "公办",
+   "b": "第一批",
+   "ac2025": [
+    514,
+    503
+   ],
+   "d2025": [
+    520,
+    515
+   ],
+   "ac2026pred": 511,
+   "d2026pred": 513.7,
+   "plan2025": 1050,
+   "plan2025_board": 1000
+  },
+  {
+   "name": "西乡中学",
+   "grade": "B+中",
+   "district": "宝安",
+   "belong": "宝安",
+   "nature": "公办",
+   "b": "第一批",
+   "ac2025": [
+    513,
+    506
+   ],
+   "d2025": [
+    523,
+    518
+   ],
+   "ac2026pred": 506.3,
+   "d2026pred": 521.7,
+   "plan2025": 1050,
+   "plan2025_board": 1000
+  },
+  {
+   "name": "深高文博",
+   "grade": "B+中",
+   "district": "龙岗",
+   "belong": "市直属",
+   "nature": "公办",
+   "b": "第一批",
+   "ac2025": [
+    512,
+    482
+   ],
+   "d2025": [
+    522,
+    503
+   ],
+   "ac2026pred": 514.7,
+   "d2026pred": 518.3,
+   "plan2025": 1050,
+   "plan2025_board": 1000
+  },
+  {
+   "name": "深实明理",
+   "grade": "B+中",
+   "district": "坪山",
+   "belong": "市直属",
+   "nature": "公办",
+   "b": "第一批",
+   "ac2025": [
+    511,
+    476
+   ],
+   "d2025": [
+    523,
+    492
+   ],
+   "ac2026pred": 517.7,
+   "d2026pred": 520.3,
+   "plan2025": 1050,
+   "plan2025_board": 1000
+  },
+  {
+   "name": "深实崇文",
+   "grade": "B+中",
+   "district": "坪山",
+   "belong": "市直属",
+   "nature": "公办",
+   "b": "第一批",
+   "ac2025": [
+    511,
+    480
+   ],
+   "d2025": [
+    513,
+    500
+   ],
+   "ac2026pred": 502,
+   "d2026pred": 508.3,
+   "plan2025": 945,
+   "plan2025_board": 900
+  },
+  {
+   "name": "光明高级",
+   "grade": "B+中",
+   "district": "光明",
+   "belong": "光明",
+   "nature": "公办",
+   "b": "第一批",
+   "ac2025": [
+    508,
+    495
+   ],
+   "d2025": [
+    526,
+    518
+   ],
+   "ac2026pred": 500.7,
+   "d2026pred": 524.3,
+   "plan2025": 1584,
+   "plan2025_board": 1512
+  },
+  {
+   "name": "福海中学",
+   "grade": "B+中",
+   "district": "宝安",
+   "belong": "宝安",
+   "nature": "公办",
+   "b": "第一批",
+   "ac2025": [
+    507,
+    482
+   ],
+   "d2025": [
+    523,
+    513
+   ],
+   "ac2026pred": 497.3,
+   "d2026pred": 519.7,
+   "plan2025": 707,
+   "plan2025_board": 600
+  },
+  {
+   "name": "龙华外高",
+   "grade": "B+中",
+   "district": "龙华",
+   "belong": "龙华",
+   "nature": "公办",
+   "b": "第一批",
+   "ac2025": [
+    507,
+    501
+   ],
+   "d2025": [
+    522,
+    515
+   ],
+   "ac2026pred": 495.3,
+   "d2026pred": 515.7,
+   "plan2025": 630,
+   "plan2025_board": 600
+  },
+  {
+   "name": "第七高级",
+   "grade": "B+中",
+   "district": "宝安",
+   "belong": "市直属",
+   "nature": "公办",
+   "b": "第一批",
+   "ac2025": [
+    504,
+    488
+   ],
+   "d2025": [
+    520,
+    515
+   ],
+   "ac2026pred": 497.7,
+   "d2026pred": 519,
+   "plan2025": 1050,
+   "plan2025_board": 1000
+  },
+  {
+   "name": "深实卓越",
+   "grade": "B+中",
+   "district": "坪山",
+   "belong": "市直属",
+   "nature": "公办",
+   "b": "第一批",
+   "ac2025": [
+    503,
+    474
+   ],
+   "d2025": [
+    514,
+    501
+   ],
+   "ac2026pred": 493.3,
+   "d2026pred": 508.3,
+   "plan2025": 840,
+   "plan2025_board": 800
+  },
+  {
+   "name": "第一职技",
+   "grade": "B+中",
+   "district": "福田",
+   "belong": "市直属",
+   "nature": "公办",
+   "b": "第一批",
+   "ac2025": [
+    503,
+    null
+   ],
+   "d2025": [
+    503,
+    null
+   ],
+   "ac2026pred": null,
+   "d2026pred": null,
+   "plan2025": 120,
+   "plan2025_board": 120
+  },
+  {
+   "name": "致理中学",
+   "grade": "B+中",
+   "district": "龙华",
+   "belong": "龙华",
+   "nature": "公办",
+   "b": "第一批",
+   "ac2025": [
+    501,
+    484
+   ],
+   "d2025": [
+    521,
+    513
+   ],
+   "ac2026pred": 489,
+   "d2026pred": 516.7,
+   "plan2025": 1575,
+   "plan2025_board": 1500
+  },
+  {
+   "name": "深实至臻",
+   "grade": "B+中",
+   "district": "坪山",
+   "belong": "市直属",
+   "nature": "公办",
+   "b": "第一批",
+   "ac2025": [
+    501,
+    483
+   ],
+   "d2025": [
+    514,
+    501
+   ],
+   "ac2026pred": 488,
+   "d2026pred": 508,
+   "plan2025": 420,
+   "plan2025_board": 400
+  },
+  {
+   "name": "深外博雅",
+   "grade": "B+中",
+   "district": "光明",
+   "belong": "市直属",
+   "nature": "公办",
+   "b": "第一批",
+   "ac2025": [
+    501,
+    479
+   ],
+   "d2025": [
+    513,
+    509
+   ],
+   "ac2026pred": 496.7,
+   "d2026pred": 510.7,
+   "plan2025": 945,
+   "plan2025_board": 900
+  },
+  {
+   "name": "北大附深",
+   "grade": "B+尾",
+   "district": "福田",
+   "belong": "福田",
+   "nature": "公办",
+   "b": "第一批",
+   "ac2025": [
+    495,
+    491
+   ],
+   "d2025": [
+    517,
+    513
+   ],
+   "ac2026pred": 479.7,
+   "d2026pred": 508.7,
+   "plan2025": 525,
+   "plan2025_board": 500
+  },
+  {
+   "name": "观澜中学",
+   "grade": "B+尾",
+   "district": "龙华",
+   "belong": "龙华",
+   "nature": "公办",
+   "b": "第一批",
+   "ac2025": [
+    495,
+    485
+   ],
+   "d2025": [
+    517,
+    512
+   ],
+   "ac2026pred": 490.7,
+   "d2026pred": 515.7,
+   "plan2025": 1050,
+   "plan2025_board": 1000
+  },
+  {
+   "name": "深外致远",
+   "grade": "B+尾",
+   "district": "光明",
+   "belong": "市直属",
+   "nature": "公办",
+   "b": "第一批",
+   "ac2025": [
+    495,
+    477
+   ],
+   "d2025": [
+    513,
+    506
+   ],
+   "ac2026pred": 485,
+   "d2026pred": 509,
+   "plan2025": 630,
+   "plan2025_board": 600
+  },
+  {
+   "name": "坪山高级",
+   "grade": "B+尾",
+   "district": "坪山",
+   "belong": "坪山",
+   "nature": "公办",
+   "b": "第一批",
+   "ac2025": [
+    492,
+    467
+   ],
+   "d2025": [
+    518,
+    506
+   ],
+   "ac2026pred": 484.3,
+   "d2026pred": 512,
+   "plan2025": 800,
+   "plan2025_board": 700
+  },
+  {
+   "name": "盐港中学",
+   "grade": "B+尾",
+   "district": "盐田",
+   "belong": "盐田",
+   "nature": "公办",
+   "b": "第一批",
+   "ac2025": [
+    492,
+    null
+   ],
+   "d2025": [
+    492,
+    null
+   ],
+   "ac2026pred": null,
+   "d2026pred": null,
+   "plan2025": 100,
+   "plan2025_board": 100
+  },
+  {
+   "name": "行知职技",
+   "grade": "B+尾",
+   "district": "罗湖",
+   "belong": "罗湖",
+   "nature": "公办",
+   "b": "第一批",
+   "ac2025": [
+    491,
+    null
+   ],
+   "d2025": [
+    491,
+    null
+   ],
+   "ac2026pred": null,
+   "d2026pred": null,
+   "plan2025": 150,
+   "plan2025_board": 150
+  },
+  {
+   "name": "龙华科实",
+   "grade": "B+尾",
+   "district": "龙华",
+   "belong": "龙华",
+   "nature": "公办",
+   "b": "第一批",
+   "ac2025": [
+    489,
+    472
+   ],
+   "d2025": [
+    514,
+    506
+   ],
+   "ac2026pred": 480.3,
+   "d2026pred": 508.3,
+   "plan2025": 1732,
+   "plan2025_board": 1650
+  },
+  {
+   "name": "深外理工",
+   "grade": "B+尾",
+   "district": "光明",
+   "belong": "市直属",
+   "nature": "公办",
+   "b": "第一批",
+   "ac2025": [
+    489,
+    475
+   ],
+   "d2025": [
+    511,
+    506
+   ],
+   "ac2026pred": 481.3,
+   "d2026pred": 507.3,
+   "plan2025": 525,
+   "plan2025_board": 500
+  },
+  {
+   "name": "聚龙科中",
+   "grade": "B+尾",
+   "district": "坪山",
+   "belong": "坪山",
+   "nature": "公办",
+   "b": "第一批",
+   "ac2025": [
+    485,
+    461
+   ],
+   "d2025": [
+    516,
+    508
+   ],
+   "ac2026pred": 479.7,
+   "d2026pred": 512,
+   "plan2025": 1050,
+   "plan2025_board": 1000
+  },
+  {
+   "name": "宝安石岩外",
+   "grade": "B",
+   "district": "宝安",
+   "belong": "宝安",
+   "nature": "公办",
+   "b": "第一批",
+   "ac2025": [
+    482,
+    465
+   ],
+   "d2025": [
+    512,
+    504
+   ],
+   "ac2026pred": 480.3,
+   "d2026pred": 506,
+   "plan2025": 567,
+   "plan2025_board": 500
+  },
+  {
+   "name": "横岗高级",
+   "grade": "B",
+   "district": "龙岗",
+   "belong": "龙岗",
+   "nature": "公办",
+   "b": "第一批",
+   "ac2025": [
+    480,
+    474
+   ],
+   "d2025": [
+    510,
+    507
+   ],
+   "ac2026pred": 472.7,
+   "d2026pred": 506.7,
+   "plan2025": 850,
+   "plan2025_board": 800
+  },
+  {
+   "name": "光明中学",
+   "grade": "B",
+   "district": "光明",
+   "belong": "光明",
+   "nature": "公办",
+   "b": "第一批",
+   "ac2025": [
+    480,
+    473
+   ],
+   "d2025": [
+    509,
+    506
+   ],
+   "ac2026pred": 473.7,
+   "d2026pred": 507,
+   "plan2025": 630,
+   "plan2025_board": 600
+  },
+  {
+   "name": "龙华中学",
+   "grade": "B",
+   "district": "龙华",
+   "belong": "龙华",
+   "nature": "公办",
+   "b": "第一批",
+   "ac2025": [
+    475,
+    462
+   ],
+   "d2025": [
+    510,
+    501
+   ],
+   "ac2026pred": 464,
+   "d2026pred": 505,
+   "plan2025": 420,
+   "plan2025_board": 300
+  },
+  {
+   "name": "二实明远",
+   "grade": "B",
+   "district": "大鹏",
+   "belong": "市直属",
+   "nature": "公办",
+   "b": "第一批",
+   "ac2025": [
+    474,
+    457
+   ],
+   "d2025": [
+    509,
+    501
+   ],
+   "ac2026pred": 474.7,
+   "d2026pred": 505,
+   "plan2025": 630,
+   "plan2025_board": 600
+  },
+  {
+   "name": "龙岗区二高",
+   "grade": "B",
+   "district": "龙岗",
+   "belong": "龙岗",
+   "nature": "公办",
+   "b": "第一批",
+   "ac2025": [
+    474,
+    470
+   ],
+   "d2025": [
+    508,
+    505
+   ],
+   "ac2026pred": 468,
+   "d2026pred": 504,
+   "plan2025": 1050,
+   "plan2025_board": 1000
+  },
+  {
+   "name": "平湖外",
+   "grade": "B",
+   "district": "龙岗",
+   "belong": "龙岗",
+   "nature": "公办",
+   "b": "第一批",
+   "ac2025": [
+    471,
+    464
+   ],
+   "d2025": [
+    506,
+    502
+   ],
+   "ac2026pred": 465.7,
+   "d2026pred": 502.7,
+   "plan2025": 350,
+   "plan2025_board": 300
+  },
+  {
+   "name": "深中科技",
+   "grade": "B",
+   "district": "深汕",
+   "belong": "市直属",
+   "nature": "公办",
+   "b": "第一批",
+   "ac2025": [
+    470,
+    null
+   ],
+   "d2025": [
+    505,
+    null
+   ],
+   "ac2026pred": 473.3,
+   "d2026pred": 504.7,
+   "plan2025": 1000,
+   "plan2025_board": 1000
+  },
+  {
+   "name": "沙井中学",
+   "grade": "B",
+   "district": "宝安",
+   "belong": "宝安",
+   "nature": "公办",
+   "b": "第一批",
+   "ac2025": [
+    469,
+    465
+   ],
+   "d2025": [
+    508,
+    505
+   ],
+   "ac2026pred": 464.3,
+   "d2026pred": 504,
+   "plan2025": 650,
+   "plan2025_board": 600
+  },
+  {
+   "name": "深中数理",
+   "grade": "B",
+   "district": "深汕",
+   "belong": "市直属",
+   "nature": "公办",
+   "b": "第一批",
+   "ac2025": [
+    468,
+    null
+   ],
+   "d2025": [
+    511,
+    null
+   ],
+   "ac2026pred": 493,
+   "d2026pred": 519.7,
+   "plan2025": 1000,
+   "plan2025_board": 1000
+  },
+  {
+   "name": "深中实验",
+   "grade": "B",
+   "district": "深汕",
+   "belong": "市直属",
+   "nature": "公办",
+   "b": "第一批",
+   "ac2025": [
+    468,
+    null
+   ],
+   "d2025": [
+    506,
+    null
+   ],
+   "ac2026pred": 473.7,
+   "d2026pred": 504.7,
+   "plan2025": 1000,
+   "plan2025_board": 1000
+  },
+  {
+   "name": "二高深汕",
+   "grade": "B",
+   "district": "深汕",
+   "belong": "市直属",
+   "nature": "公办",
+   "b": "第一批",
+   "ac2025": [
+    466,
+    null
+   ],
+   "d2025": [
+    505,
+    null
+   ],
+   "ac2026pred": 459,
+   "d2026pred": 501,
+   "plan2025": 900,
+   "plan2025_board": 900
+  },
+  {
+   "name": "艺术高中",
+   "grade": "B",
+   "district": "龙华",
+   "belong": "龙华",
+   "nature": "公办",
+   "b": "第一批",
+   "ac2025": [
+    464,
+    460
+   ],
+   "d2025": [
+    499,
+    494
+   ],
+   "ac2026pred": 461.7,
+   "d2026pred": 498,
+   "plan2025": 420,
+   "plan2025_board": 400
+  },
+  {
+   "name": "布吉中学",
+   "grade": "B",
+   "district": "龙岗",
+   "belong": "龙岗",
+   "nature": "公办",
+   "b": "第一批",
+   "ac2025": [
+    null,
+    462
+   ],
+   "d2025": [
+    null,
+    503
+   ],
+   "ac2026pred": 454.3,
+   "d2026pred": 496,
+   "plan2025": 450,
+   "plan2025_board": 0
+  },
+  {
+   "name": "美术学校",
+   "grade": "B",
+   "district": "罗湖",
+   "belong": "罗湖",
+   "nature": "公办",
+   "b": "第一批",
+   "ac2025": [
+    459,
+    444
+   ],
+   "d2025": [
+    492,
+    470
+   ],
+   "ac2026pred": 457.7,
+   "d2026pred": 486.7,
+   "plan2025": 417,
+   "plan2025_board": 350
+  },
+  {
+   "name": "三高留学",
+   "grade": "B",
+   "district": "龙岗",
+   "belong": "市直属",
+   "nature": "公办",
+   "b": "第一批",
+   "ac2025": [
+    423,
+    null
+   ],
+   "d2025": [
+    423,
+    null
+   ],
+   "ac2026pred": 429.7,
+   "d2026pred": 429.7,
+   "plan2025": 376,
+   "plan2025_board": 376
+  },
+  {
+   "name": "深圳市富源学校",
+   "grade": null,
+   "district": "宝安区",
+   "belong": null,
+   "nature": "民办",
+   "b": "第一批",
+   "ac2025": [
+    415,
+    415
+   ],
+   "d2025": [
+    415,
+    415
+   ],
+   "ac2026pred": null,
+   "d2026pred": null,
+   "plan2025": 1000,
+   "tuition": "学费39400元/期,住宿费4600元/期,生活用品及校服费2100元,校车费1100元,伙食费自理",
+   "board": "全寄宿",
+   "courses": "英语"
+  },
+  {
+   "name": "深圳市桃源居中澳实验学校",
+   "grade": null,
+   "district": "宝安区",
+   "belong": null,
+   "nature": "民办",
+   "b": "第一批",
+   "ac2025": [
+    400,
+    400
+   ],
+   "d2025": [
+    400,
+    400
+   ],
+   "ac2026pred": null,
+   "d2026pred": null,
+   "plan2025": 1300,
+   "tuition": "43500元/学期(含学杂费33000,伙食费5500,住宿费5000)",
+   "board": "全寄宿",
+   "courses": "英、日、俄"
+  },
+  {
+   "name": "深圳市承翰学校",
+   "grade": null,
+   "district": "龙岗区",
+   "belong": null,
+   "nature": "民办",
+   "b": "第一批",
+   "ac2025": [
+    377,
+    377
+   ],
+   "d2025": [
+    377,
+    377
+   ],
+   "ac2026pred": null,
+   "d2026pred": null,
+   "plan2025": 850,
+   "tuition": "学费30000元/学期:住宿费4200元/学期,餐费:5000元/学期(自愿选读艺术/小语种/国际课程实验班,另适当收取费用)",
+   "board": "全寄宿",
+   "courses": "英、日、俄"
+  },
+  {
+   "name": "深圳市华侨(康桥)书院",
+   "grade": null,
+   "district": "宝安区",
+   "belong": null,
+   "nature": "民办",
+   "b": "第一批",
+   "ac2025": [
+    369,
+    369
+   ],
+   "d2025": [
+    369,
+    369
+   ],
+   "ac2026pred": null,
+   "d2026pred": null,
+   "plan2025": 600,
+   "tuition": "学费:24800元/学期,住宿费:3200元/学期(餐费等另计)",
+   "board": "全寄宿",
+   "courses": "英语"
+  },
+  {
+   "name": "深圳市福桥高级中学",
+   "grade": null,
+   "district": "宝安区",
+   "belong": null,
+   "nature": "民办",
+   "b": "第一批",
+   "ac2025": [
+    360,
+    360
+   ],
+   "d2025": [
+    360,
+    360
+   ],
+   "ac2026pred": null,
+   "d2026pred": null,
+   "plan2025": 360,
+   "tuition": "学费29500元/学期,住宿费4000元/学期",
+   "board": "全寄宿",
+   "courses": "英、日"
+  },
+  {
+   "name": "深圳市龙岗区德琳学校",
+   "grade": null,
+   "district": "龙岗区",
+   "belong": null,
+   "nature": "民办",
+   "b": "第一批",
+   "ac2025": [
+    353,
+    353
+   ],
+   "d2025": [
+    353,
+    353
+   ],
+   "ac2026pred": null,
+   "d2026pred": null,
+   "plan2025": 850,
+   "tuition": "学费29500元/学期,食宿费8500元/学期",
+   "board": "全寄宿",
+   "courses": "英、日、西"
+  },
+  {
+   "name": "深圳市中荟高级中学",
+   "grade": null,
+   "district": "龙岗区",
+   "belong": null,
+   "nature": "民办",
+   "b": "第一批",
+   "ac2025": [
+    325,
+    325
+   ],
+   "d2025": [
+    325,
+    325
+   ],
+   "ac2026pred": null,
+   "d2026pred": null,
+   "plan2025": 1000,
+   "tuition": "学费:31800元/期,住宿费5500元/期,伙食费5000元/期",
+   "board": "全寄宿",
+   "courses": "英语"
+  },
+  {
+   "name": "深圳市盐田区梅沙双语学校",
+   "grade": null,
+   "district": "盐田区",
+   "belong": null,
+   "nature": "民办",
+   "b": "第一批",
+   "ac2025": [
+    325,
+    325
+   ],
+   "d2025": [
+    325,
+    325
+   ],
+   "ac2026pred": null,
+   "d2026pred": null,
+   "plan2025": 170,
+   "tuition": "学费:64,000元/学期,住宿费:8,500元/学期",
+   "board": "全寄宿",
+   "courses": "英语"
+  },
+  {
+   "name": "深圳市万科梅沙书院",
+   "grade": null,
+   "district": "盐田区",
+   "belong": null,
+   "nature": "民办",
+   "b": "第一批",
+   "ac2025": [
+    325,
+    325
+   ],
+   "d2025": [
+    325,
+    325
+   ],
+   "ac2026pred": null,
+   "d2026pred": null,
+   "plan2025": 175,
+   "tuition": "学术生27万/年,住宿费1.8万/年",
+   "board": "54个床位",
+   "courses": "英语"
+  },
+  {
+   "name": "深圳(南山)中加学校",
+   "grade": null,
+   "district": "南山区",
+   "belong": null,
+   "nature": "民办",
+   "b": "第一批",
+   "ac2025": [
+    325,
+    325
+   ],
+   "d2025": [
+    325,
+    325
+   ],
+   "ac2026pred": null,
+   "d2026pred": null,
+   "plan2025": 220,
+   "tuition": "学费:16万/年,住宿费:8000元/年",
+   "board": "全寄宿",
+   "courses": "英语"
+  },
+  {
+   "name": "深圳市枫叶学校",
+   "grade": null,
+   "district": "龙岗区",
+   "belong": null,
+   "nature": "民办",
+   "b": "第一批",
+   "ac2025": [
+    325,
+    325
+   ],
+   "d2025": [
+    325,
+    325
+   ],
+   "ac2026pred": null,
+   "d2026pred": null,
+   "plan2025": 180,
+   "tuition": "高中15.84万/年",
+   "board": "全寄宿",
+   "courses": "英语"
+  },
+  {
+   "name": "深圳市宝安区中英公学",
+   "grade": null,
+   "district": "宝安区",
+   "belong": null,
+   "nature": "民办",
+   "b": "第一批",
+   "ac2025": [
+    325,
+    325
+   ],
+   "d2025": [
+    325,
+    325
+   ],
+   "ac2026pred": null,
+   "d2026pred": null,
+   "plan2025": 80,
+   "tuition": "学杂费77000元/期,住宿费5000元/期,餐费4000元/期",
+   "board": "全寄宿",
+   "courses": "英语"
+  },
+  {
+   "name": "深圳市云顶学校",
+   "grade": null,
+   "district": "福田区",
+   "belong": null,
+   "nature": "民办",
+   "b": "第一批",
+   "ac2025": [
+    325,
+    325
+   ],
+   "d2025": [
+    325,
+    325
+   ],
+   "ac2026pred": null,
+   "d2026pred": null,
+   "plan2025": 360,
+   "tuition": "35800元/学期(日语高考班39800元/学期),4800元/学期(6人/宿舍)",
+   "board": "200个床位",
+   "courses": "英、日"
+  },
+  {
+   "name": "深圳市明德外语实验学校",
+   "grade": null,
+   "district": "宝安区",
+   "belong": null,
+   "nature": "民办",
+   "b": "第一批",
+   "ac2025": [
+    325,
+    325
+   ],
+   "d2025": [
+    325,
+    325
+   ],
+   "ac2026pred": null,
+   "d2026pred": null,
+   "plan2025": 300,
+   "tuition": "学杂费29500元/学生学期(英语班);学杂费31500元/学期(日语班);住宿费2600元/学期",
+   "board": "全寄宿",
+   "courses": "英、日"
+  },
+  {
+   "name": "深圳市美中学校",
+   "grade": null,
+   "district": "龙华区",
+   "belong": null,
+   "nature": "民办",
+   "b": "第一批",
+   "ac2025": [
+    325,
+    325
+   ],
+   "d2025": [
+    325,
+    325
+   ],
+   "ac2026pred": null,
+   "d2026pred": null,
+   "plan2025": 960,
+   "tuition": "学费:29800元/学期;住宿费:3500元/学期;伙食费:4500元/学期",
+   "board": "全寄宿",
+   "courses": "英日俄西法"
+  },
+  {
+   "name": "深圳市龙岗区东升学校",
+   "grade": null,
+   "district": "龙岗区",
+   "belong": null,
+   "nature": "民办",
+   "b": "第一批",
+   "ac2025": [
+    325,
+    325
+   ],
+   "d2025": [
+    325,
+    325
+   ],
+   "ac2026pred": null,
+   "d2026pred": null,
+   "plan2025": 920,
+   "tuition": "学费30000元/学期(含教材教辅);住宿费3500元/学期",
+   "board": "全寄宿",
+   "courses": "英、日"
+  },
+  {
+   "name": "深圳东方英文书院",
+   "grade": null,
+   "district": "宝安区",
+   "belong": null,
+   "nature": "民办",
+   "b": "第一批",
+   "ac2025": [
+    325,
+    325
+   ],
+   "d2025": [
+    325,
+    325
+   ],
+   "ac2026pred": null,
+   "d2026pred": null,
+   "plan2025": 640,
+   "tuition": "普高:30000元/学期;国际57400元/学期)(含住宿费3200元/学期,伙食费4000元/学期",
+   "board": "全寄宿",
+   "courses": "英、日"
+  },
+  {
+   "name": "深圳市建文外国语学校",
+   "grade": null,
+   "district": "龙岗区",
+   "belong": null,
+   "nature": "民办",
+   "b": "第一批",
+   "ac2025": [
+    325,
+    325
+   ],
+   "d2025": [
+    325,
+    325
+   ],
+   "ac2026pred": null,
+   "d2026pred": null,
+   "plan2025": 2000,
+   "tuition": "英语班学杂费:36800元/学期,小语种班学杂费:39800元/学期,住宿费3500元/学期",
+   "board": "全寄宿",
+   "courses": "英日俄西德法"
+  },
+  {
+   "name": "深圳市华一实验学校",
+   "grade": null,
+   "district": "宝安区",
+   "belong": null,
+   "nature": "民办",
+   "b": "第一批",
+   "ac2025": [
+    325,
+    325
+   ],
+   "d2025": [
+    325,
+    325
+   ],
+   "ac2026pred": null,
+   "d2026pred": null,
+   "plan2025": 350,
+   "tuition": "学费35000元/学期;住宿费3500元/学期,伙食费4500元/学期;日语班:3000元/学期",
+   "board": "全寄宿",
+   "courses": "英、日"
+  },
+  {
+   "name": "深圳市展华实验学校",
+   "grade": null,
+   "district": "龙华区",
+   "belong": null,
+   "nature": "民办",
+   "b": "第一批",
+   "ac2025": [
+    325,
+    325
+   ],
+   "d2025": [
+    325,
+    325
+   ],
+   "ac2026pred": null,
+   "d2026pred": null,
+   "plan2025": 500,
+   "tuition": "学费33600元/学期;住宿费4000元/学期,餐费:4700元/期",
+   "board": "全寄宿",
+   "courses": "英、日"
+  },
+  {
+   "name": "深圳菁华中英文实验中学",
+   "grade": null,
+   "district": "龙岗区",
+   "belong": null,
+   "nature": "民办",
+   "b": "第一批",
+   "ac2025": [
+    325,
+    325
+   ],
+   "d2025": [
+    325,
+    325
+   ],
+   "ac2026pred": null,
+   "d2026pred": null,
+   "plan2025": 1000,
+   "tuition": "学费:29800元/学期,住宿费4800元/学期,伙食费:4800元/学期,日语班学费:31800元/学期;港澳台联考班学费:37800元/学期",
+   "board": "全寄宿",
+   "courses": "英、日"
+  },
+  {
+   "name": "深圳市立人高级中学",
+   "grade": null,
+   "district": "坪山区",
+   "belong": null,
+   "nature": "民办",
+   "b": "第一批",
+   "ac2025": [
+    325,
+    325
+   ],
+   "d2025": [
+    325,
+    325
+   ],
+   "ac2026pred": null,
+   "d2026pred": null,
+   "plan2025": 700,
+   "tuition": "学费33800元/学期;住宿费4500元/学期,餐费:5000元/期(自助餐,50元/天,按校历实际收取)",
+   "board": "全寄宿",
+   "courses": "英、日"
+  },
+  {
+   "name": "深圳市龙华中英文实验学校",
+   "grade": null,
+   "district": "龙华区",
+   "belong": null,
+   "nature": "民办",
+   "b": "第一批",
+   "ac2025": [
+    325,
+    325
+   ],
+   "d2025": [
+    325,
+    325
+   ],
+   "ac2026pred": null,
+   "d2026pred": null,
+   "plan2025": 300,
+   "tuition": "学费28000元/学期;",
+   "board": "全寄宿",
+   "courses": "英、日"
+  },
+  {
+   "name": "深圳杰仁高级中学",
+   "grade": null,
+   "district": "光明区",
+   "belong": null,
+   "nature": "民办",
+   "b": "第一批",
+   "ac2025": [
+    325,
+    325
+   ],
+   "d2025": [
+    325,
+    325
+   ],
+   "ac2026pred": null,
+   "d2026pred": null,
+   "plan2025": 400,
+   "tuition": "学费31700元/学期,选择小语种另交2000元/学期;住宿费3800元/学期;伙食费5000元/学期,床上用品一次性850元。",
+   "board": "全寄宿",
+   "courses": "英、日、西"
+  },
+  {
+   "name": "深圳市崛起实验中学",
+   "grade": null,
+   "district": "宝安区",
+   "belong": null,
+   "nature": "民办",
+   "b": "第一批",
+   "ac2025": [
+    325,
+    325
+   ],
+   "d2025": [
+    325,
+    325
+   ],
+   "ac2026pred": null,
+   "d2026pred": null,
+   "plan2025": 560,
+   "tuition": "学费30000元/学期;住宿费3350元/学期,伙食费另计",
+   "board": "走读",
+   "courses": "英语"
+  },
+  {
+   "name": "深圳市华胜实验学校",
+   "grade": null,
+   "district": "宝安区",
+   "belong": null,
+   "nature": "民办",
+   "b": "第一批",
+   "ac2025": [
+    325,
+    325
+   ],
+   "d2025": [
+    325,
+    325
+   ],
+   "ac2026pred": null,
+   "d2026pred": null,
+   "plan2025": 600,
+   "tuition": "学费35000元/学期,住宿费4000元/学期,伙食费4000元/学期,新高一学生第一学期加收1000元的床上用品",
+   "board": "全寄宿",
+   "courses": "英、日"
+  },
+  {
+   "name": "深圳市坤翔高级中学",
+   "grade": null,
+   "district": "龙岗区",
+   "belong": null,
+   "nature": "民办",
+   "b": "第一批",
+   "ac2025": [
+    325,
+    325
+   ],
+   "d2025": [
+    325,
+    325
+   ],
+   "ac2026pred": null,
+   "d2026pred": null,
+   "plan2025": 1400,
+   "tuition": "学费29800元/期,住宿费4500/6500元/期",
+   "board": "全寄宿",
+   "courses": "英、日、俄"
+  },
+  {
+   "name": "深圳市光明书院",
+   "grade": null,
+   "district": "光明区",
+   "belong": null,
+   "nature": "民办",
+   "b": "第一批",
+   "ac2025": [
+    325,
+    325
+   ],
+   "d2025": [
+    325,
+    325
+   ],
+   "ac2026pred": null,
+   "d2026pred": null,
+   "plan2025": 900,
+   "tuition": "学费:26800元/学期;住宿费:2800元/学期,伙食费:4500元/学期",
+   "board": "全寄宿",
+   "courses": "英、日"
+  },
+  {
+   "name": "深圳市松岗中英文实验学校",
+   "grade": null,
+   "district": "宝安区",
+   "belong": null,
+   "nature": "民办",
+   "b": "第一批",
+   "ac2025": [
+    325,
+    325
+   ],
+   "d2025": [
+    325,
+    325
+   ],
+   "ac2026pred": null,
+   "d2026pred": null,
+   "plan2025": 250,
+   "tuition": "学费28000元/学期;住宿费:3000元/学期(床上六件套配齐);伙食费:4500元/学期",
+   "board": "全寄宿",
+   "courses": "英语"
+  },
+  {
+   "name": "深圳市龙岗区珊蒂泉外国语学校",
+   "grade": null,
+   "district": "龙岗区",
+   "belong": null,
+   "nature": "民办",
+   "b": "第一批",
+   "ac2025": [
+    325,
+    325
+   ],
+   "d2025": [
+    325,
+    325
+   ],
+   "ac2026pred": null,
+   "d2026pred": null,
+   "plan2025": 1000,
+   "tuition": "学费:28000元/学期;住宿费:3500元/学期",
+   "board": "全寄宿",
+   "courses": "英、日、俄"
+  },
+  {
+   "name": "深圳市龙翔学校",
+   "grade": null,
+   "district": "坪山区",
+   "belong": null,
+   "nature": "民办",
+   "b": "第一批",
+   "ac2025": [
+    325,
+    325
+   ],
+   "d2025": [
+    325,
+    325
+   ],
+   "ac2026pred": null,
+   "d2026pred": null,
+   "plan2025": 600,
+   "tuition": "英语班29800元/学期;日语班学费29800元/学期;住宿费3000元/学期;伙食费3500元/学期",
+   "board": "全寄宿",
+   "courses": "英、日"
+  },
+  {
+   "name": "深圳市格睿特高级中学",
+   "grade": null,
+   "district": "龙华区",
+   "belong": null,
+   "nature": "民办",
+   "b": "第一批",
+   "ac2025": [
+    325,
+    325
+   ],
+   "d2025": [
+    325,
+    325
+   ],
+   "ac2026pred": null,
+   "d2026pred": null,
+   "plan2025": 510,
+   "tuition": "学费:29800元/学期,住宿费3900元/学期(普高班收费标准)",
+   "board": "全寄宿",
+   "courses": "英、日、俄"
+  },
+  {
+   "name": "深圳市龙岗区科城实验学校",
+   "grade": null,
+   "district": "龙岗区",
+   "belong": null,
+   "nature": "民办",
+   "b": "第一批",
+   "ac2025": [
+    325,
+    325
+   ],
+   "d2025": [
+    325,
+    325
+   ],
+   "ac2026pred": null,
+   "d2026pred": null,
+   "plan2025": 400,
+   "tuition": "收费:25800元/学期",
+   "board": "走读",
+   "courses": "英、日"
+  },
+  {
+   "name": "深圳市宝安区翻身实验学校",
+   "grade": null,
+   "district": "宝安区",
+   "belong": null,
+   "nature": "民办",
+   "b": "第一批",
+   "ac2025": [
+    325,
+    325
+   ],
+   "d2025": [
+    325,
+    325
+   ],
+   "ac2026pred": null,
+   "d2026pred": null,
+   "plan2025": 650,
+   "tuition": "学杂费30000元/学期,住宿费3550元/学期,餐费4400元/学期",
+   "board": "全寄宿",
+   "courses": "英语"
+  },
+  {
+   "name": "深圳市中新中学",
+   "grade": null,
+   "district": "坪山区",
+   "belong": null,
+   "nature": "民办",
+   "b": "第一批",
+   "ac2025": [
+    325,
+    325
+   ],
+   "d2025": [
+    325,
+    325
+   ],
+   "ac2026pred": null,
+   "d2026pred": null,
+   "plan2025": 560,
+   "tuition": "学费:39800元/学期;住宿费:5000元/学期",
+   "board": "全寄宿",
+   "courses": "英、日"
+  },
+  {
+   "name": "深圳市华朗学校",
+   "grade": null,
+   "district": "坪山区",
+   "belong": null,
+   "nature": "民办",
+   "b": "第一批",
+   "ac2025": [
+    325,
+    325
+   ],
+   "d2025": [
+    325,
+    325
+   ],
+   "ac2026pred": null,
+   "d2026pred": null,
+   "plan2025": 360,
+   "tuition": "学费68000元/学期;住宿费8000元/学期(2人间);6500元/学期(4人间)",
+   "board": "全寄宿",
+   "courses": "英语"
+  },
+  {
+   "name": "深圳市鹏达高级中学",
+   "grade": null,
+   "district": "龙岗区",
+   "belong": null,
+   "nature": "民办",
+   "b": "第一批",
+   "ac2025": [
+    325,
+    325
+   ],
+   "d2025": [
+    325,
+    325
+   ],
+   "ac2026pred": null,
+   "d2026pred": null,
+   "plan2025": 520,
+   "tuition": "学费36000元/学期,住宿费4000元/学期",
+   "board": "全寄宿",
+   "courses": "英、日"
+  },
+  {
+   "name": "深圳市滨海高级中学",
+   "grade": null,
+   "district": "宝安区",
+   "belong": null,
+   "nature": "民办",
+   "b": "第一批",
+   "ac2025": [
+    325,
+    325
+   ],
+   "d2025": [
+    325,
+    325
+   ],
+   "ac2026pred": null,
+   "d2026pred": null,
+   "plan2025": 500,
+   "tuition": "文化课学费:4万/学期;艺术专业学费:2.5万/学期;住宿费:5000元/学期",
+   "board": "全寄宿",
+   "courses": "英语"
+  },
+  {
+   "name": "深圳市正德高级中学",
+   "grade": null,
+   "district": "大鹏新区",
+   "belong": null,
+   "nature": "民办",
+   "b": "第一批",
+   "ac2025": [
+    325,
+    325
+   ],
+   "d2025": [
+    325,
+    325
+   ],
+   "ac2026pred": null,
+   "d2026pred": null,
+   "plan2025": 500,
+   "tuition": "学费:48000元/学期,住宿费:公寓4000元/学期,别墅6000元/学期",
+   "board": "全寄宿",
+   "courses": "英、日"
+  },
+  {
+   "name": "深圳市龙华区博恒实验学校",
+   "grade": null,
+   "district": "龙华区",
+   "belong": null,
+   "nature": "民办",
+   "b": "第一批",
+   "ac2025": [
+    325,
+    325
+   ],
+   "d2025": [
+    325,
+    325
+   ],
+   "ac2026pred": null,
+   "d2026pred": null,
+   "plan2025": 500,
+   "tuition": "学费:35000元/学期;住宿费:4500元/学期",
+   "board": "全寄宿",
+   "courses": "英语"
+  },
+  {
+   "name": "深圳市晟才高级中学",
+   "grade": null,
+   "district": "龙岗区",
+   "belong": null,
+   "nature": "民办",
+   "b": "第一批",
+   "ac2025": [
+    325,
+    325
+   ],
+   "d2025": [
+    325,
+    325
+   ],
+   "ac2026pred": null,
+   "d2026pred": null,
+   "plan2025": 500,
+   "tuition": "学费31000元/学期;住宿费4800元/学期",
+   "board": "全寄宿",
+   "courses": "英、日"
+  },
+  {
+   "name": "深圳市知源高级中学",
+   "grade": null,
+   "district": "坪山区",
+   "belong": null,
+   "nature": "民办",
+   "b": "第一批",
+   "ac2025": [
+    325,
+    325
+   ],
+   "d2025": [
+    325,
+    325
+   ],
+   "ac2026pred": null,
+   "d2026pred": null,
+   "plan2025": 300,
+   "tuition": "学费标准:33000元/学期,住宿费5000元(4人间) 8000元(2人间)/期",
+   "board": "全寄宿",
+   "courses": "英语"
+  },
+  {
+   "name": "深圳市弘毅高级中学",
+   "grade": null,
+   "district": "宝安区",
+   "belong": null,
+   "nature": "民办",
+   "b": "第一批",
+   "ac2025": [
+    325,
+    325
+   ],
+   "d2025": [
+    325,
+    325
+   ],
+   "ac2026pred": null,
+   "d2026pred": null,
+   "plan2025": 800,
+   "tuition": "学费:29800元/学期;住宿费:4800元/期",
+   "board": "全寄宿",
+   "courses": "英语"
+  },
+  {
+   "name": "深圳市龙华区诺德双语学校",
+   "grade": null,
+   "district": "龙华区",
+   "belong": null,
+   "nature": "民办",
+   "b": "第一批",
+   "ac2025": [
+    325,
+    325
+   ],
+   "d2025": [
+    325,
+    325
+   ],
+   "ac2026pred": null,
+   "d2026pred": null,
+   "plan2025": 600,
+   "tuition": "学费:33800元/学期,住宿费:5000元/学期,餐费:5000元/学期",
+   "board": "全寄宿",
+   "courses": "英语"
+  },
+  {
+   "name": "深圳市华文高级中学",
+   "grade": null,
+   "district": "坪山区",
+   "belong": null,
+   "nature": "民办",
+   "b": "第一批",
+   "ac2025": [
+    325,
+    325
+   ],
+   "d2025": [
+    325,
+    325
+   ],
+   "ac2026pred": null,
+   "d2026pred": null,
+   "plan2025": 450,
+   "tuition": "学费:36800元/学期,住宿费:5000元/学期",
+   "board": "全寄宿",
+   "courses": "英语"
+  },
+  {
+   "name": "深圳奥斯翰外语学校",
+   "grade": null,
+   "district": "罗湖区",
+   "belong": null,
+   "nature": "民办",
+   "b": "第一批",
+   "ac2025": [
+    325,
+    325
+   ],
+   "d2025": [
+    325,
+    325
+   ],
+   "ac2026pred": null,
+   "d2026pred": null,
+   "plan2025": null,
+   "tuition": "普高班学费32800元/学期,住宿费:5000元/学期,港澳台:40000元/学期,中日留学:64000元/学期;国际课程(OSSD)学费:94500元/学期",
+   "board": "全寄宿",
+   "courses": "英、日、西"
+  },
+  {
+   "name": "深圳市汉开数理高中",
+   "grade": null,
+   "district": "龙岗区",
+   "belong": null,
+   "nature": "民办",
+   "b": "第一批",
+   "ac2025": [
+    325,
+    325
+   ],
+   "d2025": [
+    325,
+    325
+   ],
+   "ac2026pred": null,
+   "d2026pred": null,
+   "plan2025": 640,
+   "tuition": "普高/港澳台学费:48000元/学期;A-LEVEL:208000元/年,DES学费:168000元/学年,住宿费:6000元/学期",
+   "board": "全寄宿",
+   "courses": "英、日"
+  },
+  {
+   "name": "深圳市罗湖区华美外国语学校",
+   "grade": null,
+   "district": "罗湖区",
+   "belong": null,
+   "nature": "民办",
+   "b": "第一批",
+   "ac2025": [
+    325,
+    325
+   ],
+   "d2025": [
+    325,
+    325
+   ],
+   "ac2026pred": null,
+   "d2026pred": null,
+   "plan2025": 440,
+   "tuition": "学费:38000元/期,住宿费:6800元/期(四人间) 4800元/期(六人间)",
+   "board": null,
+   "courses": null
+  },
+  {
+   "name": "深圳市皇御苑学校",
+   "grade": null,
+   "district": "福田区",
+   "belong": null,
+   "nature": "民办",
+   "b": "第一批",
+   "ac2025": [
+    null,
+    null
+   ],
+   "d2025": [
+    null,
+    null
+   ],
+   "ac2026pred": null,
+   "d2026pred": null,
+   "plan2025": null,
+   "tuition": "-",
+   "board": "-",
+   "courses": null
+  },
+  {
+   "name": "深圳市明瑞高级中学",
+   "grade": null,
+   "district": "龙华区",
+   "belong": null,
+   "nature": "民办",
+   "b": "第一批",
+   "ac2025": [
+    null,
+    null
+   ],
+   "d2025": [
+    null,
+    null
+   ],
+   "ac2026pred": null,
+   "d2026pred": null,
+   "plan2025": null,
+   "tuition": "-",
+   "board": "-",
+   "courses": null
+  },
+  {
+   "name": "深圳市明瑞高级中学",
+   "grade": null,
+   "district": "龙华区",
+   "belong": null,
+   "nature": "民办",
+   "b": "第一批",
+   "ac2025": [
+    null,
+    null
+   ],
+   "d2025": [
+    null,
+    null
+   ],
+   "ac2026pred": null,
+   "d2026pred": null,
+   "plan2025": null,
+   "tuition": "-",
+   "board": "-",
+   "courses": null
+  },
+  {
+   "name": "深圳市明德实验双语学校",
+   "grade": null,
+   "district": "龙岗区",
+   "belong": null,
+   "nature": "民办",
+   "b": "第一批",
+   "ac2025": [
+    null,
+    null
+   ],
+   "d2025": [
+    null,
+    null
+   ],
+   "ac2026pred": null,
+   "d2026pred": null,
+   "plan2025": null,
+   "tuition": "-",
+   "board": "-",
+   "courses": null
+  },
+  {
+   "name": "深圳市厚德书院",
+   "grade": null,
+   "district": "龙华区",
+   "belong": null,
+   "nature": "民办",
+   "b": "第一批",
+   "ac2025": [
+    null,
+    null
+   ],
+   "d2025": [
+    null,
+    null
+   ],
+   "ac2026pred": null,
+   "d2026pred": null,
+   "plan2025": null,
+   "tuition": "-",
+   "board": "-",
+   "courses": null
+  },
+  {
+   "name": "深圳市南山为明学校",
+   "grade": null,
+   "district": "南山区",
+   "belong": null,
+   "nature": "民办",
+   "b": "第一批",
+   "ac2025": [
+    null,
+    null
+   ],
+   "d2025": [
+    null,
+    null
+   ],
+   "ac2026pred": null,
+   "d2026pred": null,
+   "plan2025": null,
+   "tuition": "-",
+   "board": "-",
+   "courses": null
+  },
+  {
+   "name": "深圳市福景外国语学校",
+   "grade": null,
+   "district": "福田区",
+   "belong": null,
+   "nature": "民办",
+   "b": "第一批",
+   "ac2025": [
+    null,
+    null
+   ],
+   "d2025": [
+    null,
+    null
+   ],
+   "ac2026pred": null,
+   "d2026pred": null,
+   "plan2025": null,
+   "tuition": "-",
+   "board": "-",
+   "courses": null
+  }
+ ],
+ "indicator": [
+  {
+   "name": "南外高级中学",
+   "year": 2024,
+   "ac_rec": 551,
+   "d_rec": 551,
+   "ac_ctrl": 529,
+   "d_ctrl": 529
+  },
+  {
+   "name": "人大附中",
+   "year": 2024,
+   "ac_rec": 545,
+   "d_rec": 544,
+   "ac_ctrl": 513,
+   "d_ctrl": 518
+  },
+  {
+   "name": "南科大附中",
+   "year": 2024,
+   "ac_rec": 549,
+   "d_rec": 552,
+   "ac_ctrl": 524,
+   "d_ctrl": 525
+  },
+  {
+   "name": "东师附深",
+   "year": 2024,
+   "ac_rec": 535,
+   "d_rec": 534,
+   "ac_ctrl": 488,
+   "d_ctrl": 503
+  },
+  {
+   "name": "华侨城高级中学",
+   "year": 2024,
+   "ac_rec": 530,
+   "d_rec": 532,
+   "ac_ctrl": 500,
+   "d_ctrl": 502
+  },
+  {
+   "name": "中科附高",
+   "year": 2024,
+   "ac_rec": 528,
+   "d_rec": 531,
+   "ac_ctrl": 489,
+   "d_ctrl": 505
+  },
+  {
+   "name": "深二外",
+   "year": 2024,
+   "ac_rec": 523,
+   "d_rec": 525,
+   "ac_ctrl": 488,
+   "d_ctrl": 499
+  },
+  {
+   "name": "平冈中学",
+   "year": 2024,
+   "ac_rec": 504,
+   "d_rec": 520,
+   "ac_ctrl": 465,
+   "d_ctrl": 497
+  },
+  {
+   "name": "坪山高级中学",
+   "year": 2024,
+   "ac_rec": 468,
+   "d_rec": 498,
+   "ac_ctrl": 445,
+   "d_ctrl": 483
+  },
+  {
+   "name": "省实深圳",
+   "year": 2024,
+   "ac_rec": null,
+   "d_rec": null,
+   "ac_ctrl": null,
+   "d_ctrl": null
+  },
+  {
+   "name": "第三高级",
+   "year": 2024,
+   "ac_rec": null,
+   "d_rec": null,
+   "ac_ctrl": null,
+   "d_ctrl": null
+  },
+  {
+   "name": "深实验光明部",
+   "year": 2024,
+   "ac_rec": null,
+   "d_rec": null,
+   "ac_ctrl": null,
+   "d_ctrl": null
+  },
+  {
+   "name": "致理中学",
+   "year": 2024,
+   "ac_rec": null,
+   "d_rec": null,
+   "ac_ctrl": null,
+   "d_ctrl": null
+  },
+  {
+   "name": "盐田高级中学",
+   "year": 2024,
+   "ac_rec": null,
+   "d_rec": null,
+   "ac_ctrl": null,
+   "d_ctrl": null
+  },
+  {
+   "name": "光明区高级中学",
+   "year": 2024,
+   "ac_rec": null,
+   "d_rec": null,
+   "ac_ctrl": null,
+   "d_ctrl": null
+  },
+  {
+   "name": "新安中学",
+   "year": 2024,
+   "ac_rec": null,
+   "d_rec": null,
+   "ac_ctrl": null,
+   "d_ctrl": null
+  },
+  {
+   "name": "深二实",
+   "year": 2024,
+   "ac_rec": null,
+   "d_rec": null,
+   "ac_ctrl": null,
+   "d_ctrl": null
+  },
+  {
+   "name": "翠园中学",
+   "year": 2024,
+   "ac_rec": null,
+   "d_rec": null,
+   "ac_ctrl": null,
+   "d_ctrl": null
+  },
+  {
+   "name": "南头中学",
+   "year": 2024,
+   "ac_rec": null,
+   "d_rec": null,
+   "ac_ctrl": null,
+   "d_ctrl": null
+  },
+  {
+   "name": "第二高级",
+   "year": 2024,
+   "ac_rec": null,
+   "d_rec": null,
+   "ac_ctrl": null,
+   "d_ctrl": null
+  },
+  {
+   "name": "北师大南山",
+   "year": 2024,
+   "ac_rec": null,
+   "d_rec": null,
+   "ac_ctrl": null,
+   "d_ctrl": null
+  },
+  {
+   "name": "科高&科高龙岗",
+   "year": 2024,
+   "ac_rec": null,
+   "d_rec": null,
+   "ac_ctrl": null,
+   "d_ctrl": null
+  }
+ ],
+ "zizhu": [
+  {
+   "name": "深圳中学",
+   "type": "拔尖创新",
+   "dir": "数理化",
+   "plan": 180,
+   "ac2025": [
+    574,
+    570
+   ],
+   "d2025": [
+    574,
+    570
+   ],
+   "ctrl": 510
+  },
+  {
+   "name": "深圳中学",
+   "type": "拔尖创新",
+   "dir": "港澳台",
+   "plan": 40,
+   "ac2025": [
+    574,
+    570
+   ],
+   "d2025": [
+    574,
+    570
+   ],
+   "ctrl": 510
+  },
+  {
+   "name": "深圳实验学校(高中部)",
+   "type": "拔尖创新",
+   "dir": "语数英物化",
+   "plan": 47,
+   "ac2025": [
+    570,
+    569
+   ],
+   "d2025": [
+    570,
+    565
+   ],
+   "ctrl": 511
+  },
+  {
+   "name": "深圳市高级中学中心校区",
+   "type": "拔尖创新",
+   "dir": "语数英",
+   "plan": 90,
+   "ac2025": [
+    569,
+    568
+   ],
+   "d2025": [
+    569,
+    564
+   ],
+   "ctrl": 509
+  },
+  {
+   "name": "深圳外国语学校",
+   "type": "拔尖创新",
+   "dir": "数理化",
+   "plan": 80,
+   "ac2025": [
+    568,
+    566
+   ],
+   "d2025": [
+    568,
+    562
+   ],
+   "ctrl": 509
+  },
+  {
+   "name": "宝安中学(集团)高中部",
+   "type": "拔尖创新",
+   "dir": "语数物",
+   "plan": 40,
+   "ac2025": [
+    564,
+    562
+   ],
+   "d2025": [
+    562,
+    558
+   ],
+   "ctrl": 520
+  },
+  {
+   "name": "深圳科学高中",
+   "type": "拔尖创新",
+   "dir": "普通方向",
+   "plan": 50,
+   "ac2025": [
+    560,
+    558
+   ],
+   "d2025": [
+    560,
+    550
+   ],
+   "ctrl": 500
+  },
+  {
+   "name": "龙城高级中学",
+   "type": "拔尖创新",
+   "dir": "普通方向",
+   "plan": 50,
+   "ac2025": [
+    557,
+    554
+   ],
+   "d2025": [
+    557,
+    554
+   ],
+   "ctrl": 500
+  },
+  {
+   "name": "深圳外国语学校龙华高中部",
+   "type": "拔尖创新",
+   "dir": "参考本部",
+   "plan": 30,
+   "ac2025": [
+    549,
+    543
+   ],
+   "d2025": [
+    549,
+    541
+   ],
+   "ctrl": 489
+  },
+  {
+   "name": "广东实验中学深圳学校",
+   "type": "拔尖创新",
+   "dir": "考语数英+物理",
+   "plan": 33,
+   "ac2025": [
+    549,
+    540
+   ],
+   "d2025": [
+    550,
+    536
+   ],
+   "ctrl": 500
+  },
+  {
+   "name": "深圳市高级中学东校区",
+   "type": "拔尖创新",
+   "dir": "普通方向",
+   "plan": 20,
+   "ac2025": [
+    548,
+    538
+   ],
+   "d2025": [
+    546,
+    539
+   ],
+   "ctrl": 485
+  },
+  {
+   "name": "新安中学(集团)高中部",
+   "type": "拔尖创新",
+   "dir": "普通方向",
+   "plan": 14,
+   "ac2025": [
+    547,
+    544
+   ],
+   "d2025": [
+    549,
+    542
+   ],
+   "ctrl": 486
+  },
+  {
+   "name": "盐田高级中学",
+   "type": "拔尖创新",
+   "dir": "数理文化(考数学、物理)",
+   "plan": 8,
+   "ac2025": [
+    539,
+    525
+   ],
+   "d2025": [
+    541,
+    530
+   ],
+   "ctrl": 508
+  },
+  {
+   "name": "深圳中学数理高中",
+   "type": "拔尖创新",
+   "dir": "普通方向",
+   "plan": 80,
+   "ac2025": [
+    468,
+    null
+   ],
+   "d2025": [
+    511,
+    null
+   ],
+   "ctrl": 435
+  },
+  {
+   "name": "蛇口育才教育集团育才中学",
+   "type": "拔尖创新",
+   "dir": "机考(语数英物化)加面试",
+   "plan": 33,
+   "ac2025": [
+    564,
+    563
+   ],
+   "d2025": [
+    564,
+    561
+   ],
+   "ctrl": 520
+  },
+  {
+   "name": "蛇口育才教育集团育才中学",
+   "type": "拔尖创新",
+   "dir": "港澳台",
+   "plan": 20,
+   "ac2025": [
+    564,
+    563
+   ],
+   "d2025": [
+    564,
+    561
+   ],
+   "ctrl": 520
+  }
+ ],
+ "timeline": [
+  {
+   "date": "日期",
+   "event": "中考大事件"
+  },
+  {
+   "date": "3月14日-3月19日",
+   "event": "进行网上预报名,提交材料"
+  },
+  {
+   "date": "3月14日-3月21日",
+   "event": "网上确认报名"
+  },
+  {
+   "date": "3月28日前",
+   "event": "向网上报名选定的报名点缴纳考试费"
+  },
+  {
+   "date": "2025-04-12 00:00:00",
+   "event": "全省文化课统一考试"
+  },
+  {
+   "date": "3月21日-3月28日",
+   "event": "中考及初二学考报名"
+  },
+  {
+   "date": "3月23日-3月31日",
+   "event": "中考及初二学考报名缴费"
+  },
+  {
+   "date": "4月13日-4月30日",
+   "event": "中考体育考试\n(网球考试4月29日,游泳考试4月30日)"
+  },
+  {
+   "date": "5月上旬",
+   "event": "中职自主招生计划公布"
+  },
+  {
+   "date": "5月中旬",
+   "event": "中等职业学校及技工院校自主招生"
+  },
+  {
+   "date": "5月6日-5月7日",
+   "event": "申报体育补考"
+  },
+  {
+   "date": "2025-05-13 00:00:00",
+   "event": "体育补考"
+  },
+  {
+   "date": "5月13日-5月14日",
+   "event": "体育统一补考"
+  },
+  {
+   "date": "2025-05-17 00:00:00",
+   "event": "中考招生计划公布"
+  },
+  {
+   "date": "5月17日-5月18日",
+   "event": "中考英语听说考试"
+  },
+  {
+   "date": "5月24日-5月25日",
+   "event": "2025年中考理化实验操作满分12分,计入中考总分"
+  },
+  {
+   "date": "5月22日-6月3日",
+   "event": "中考志愿填报"
+  },
+  {
+   "date": "2025-05-22 00:00:00",
+   "event": "公布普高自主招生计划和招生工作方案"
+  },
+  {
+   "date": "2025-06-06 00:00:00",
+   "event": "经市教育局审核备案后公布各校自主招生简章"
+  },
+  {
+   "date": "6月11日至15日",
+   "event": "公办普高一类自主招生网上报名\n民办普高自主招生网上报名"
+  },
+  {
+   "date": null,
+   "event": "公办普高二类自主招生现场报名,初审学生资格"
+  },
+  {
+   "date": "6月16日至19日",
+   "event": "审核/复核公办普高一类、二类及民办普高自主招生报名\n考生资料及信息"
+  },
+  {
+   "date": "6月20日至24日",
+   "event": "一类自主招生、民办自主招生专项考核入围名单公示"
+  },
+  {
+   "date": "7月5日至6日",
+   "event": "一类自主招生专项考核时间统一安排在7月5日"
+  },
+  {
+   "date": null,
+   "event": "二类自主招生专项考核时间安排在7月5日或7月6日(招\n生学校自行安排)"
+  },
+  {
+   "date": "7月7日至11日",
+   "event": "一类自主招生、民办自主招生专项考核结果公示/二类自\n主招生专项合格考生名单及合格分数线公示"
+  },
+  {
+   "date": "中考成绩复核结束第二天\n起公示5天",
+   "event": "普高自主招生拟录取名单公示"
+  },
+  {
+   "date": "6月26日-6月28日",
+   "event": "全市统一中考"
+  },
+  {
+   "date": "6月29日-7月16日",
+   "event": "统一评卷,复核及公布成绩"
+  },
+  {
+   "date": "7月24日-8月下旬",
+   "event": "中考招生录取"
+  },
+  {
+   "date": "2025-07-16 00:00:00",
+   "event": "中考成绩公布,考生可查询"
+  },
+  {
+   "date": "2025-07-19 00:00:00",
+   "event": "中考成绩复核结果公布"
+  },
+  {
+   "date": "2025-07-20 00:00:00",
+   "event": "各校自招拟录取名单公示"
+  },
+  {
+   "date": "2025-07-25 00:00:00",
+   "event": "各校发送自招录取短信"
+  },
+  {
+   "date": "2025-07-26 00:00:00",
+   "event": "指标生、自主招生录取开放查询"
+  },
+  {
+   "date": "2025-07-27 00:00:00",
+   "event": "第一批次录取分数线公布,录取结果开放查询"
+  },
+  {
+   "date": "2025-07-28 00:00:00",
+   "event": "第二批次录取分数线公布,录取结果开放查询"
+  },
+  {
+   "date": "8月8日-8月9日",
+   "event": "第二次划线录取志愿填报"
+  },
+  {
+   "date": "8月下旬",
+   "event": "民办普高补录"
+  }
+ ]
+};
+const $ = id => document.getElementById(id);
+const TYPE_MAP = {ac:'AC类', d:'D类'};
+const TYPE_FULL = {ac:'AC 类（深户 / 不限户籍）', d:'D 类（非深户）'};
+const WISH_ORDER = ['自招批','指标生批','第一批','第二批','第三批'];
+const BATCH_FULL = {'自招批':'自主招生批','指标生批':'指标生批','第一批':'第一批（普通高中）','第二批':'第二批（中职）','第三批':'第三批（部省属中职）'};
+const BATCH_OPT = {'第一批':'第一批'};
+let state = {student:{}, draft:[], wish:{}};
+let dirSel = new Set();
+
+function num(x){ if(x===null||x===undefined||x===''||x==='-') return null; const n=parseFloat(x); return isNaN(n)?null:n; }
+function fmt(x){ const n=num(x); return n===null?'—':(Number.isInteger(n)?n.toString():n.toFixed(1)); }
+function esc(s){ return (s==null?'':String(s)).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c])); }
+// 主录取线（住宿）
+function lineOf(r, type){ if(type==='ac') return num((r.ac2025||[])[0]); if(type==='d') return num((r.d2025||[])[0]); return null; }
+function lineWalk(r, type){ if(type==='ac') return num((r.ac2025||[])[1]); if(type==='d') return num((r.d2025||[])[1]); return null; }
+
+/* ---------- ① 报考规则 ---------- */
+function renderRules(){
+  const p = DATA.policy;
+  let html = '<div class="flow">';
+  (p.batches||[]).forEach(b=>{ html += `<div class="stage"><b>${esc(b.name)}</b><span>${esc(b.vol||'')}</span>${b.note?`<span>${esc(b.note)}</span>`:''}</div>`; });
+  html += '</div>';
+  html += '<div class="rule-grid">';
+  (p.batches||[]).forEach(b=>{ html += `<div class="rule-card"><h4>${esc(b.name)}</h4><p><b>志愿设置：</b>${esc(b.vol||'')}</p>${b.note?`<p>${esc(b.note)}</p>`:''}</div>`; });
+  html += '</div>';
+  // 等级线
+  const lines = p.lines && p.lines['2025'];
+  if(lines){
+    const order=['A+','A','B+','B','C+','C'];
+    html += `<div class="rule-card" style="margin-top:10px"><h4>中考总分等级线（2025）</h4><p>深圳按总分等级线定位，以下是 2025 年各等级总分控制线（满分 610）。</p>`;
+    html += '<table class="lvl-tbl"><tr><th>等级</th>'+order.map(x=>`<th>${x}</th>`).join('')+'</tr><tr><td>总分</td>'+order.map(x=>`<td>${fmt(lines[x])}</td>`).join('')+'</tr></table></div>';
+  }
+  html += `<div class="rule-grid" style="margin-top:10px">
+    <div class="rule-card"><h4>投档规则</h4><p>${esc(p.rule)}</p></div>
+    <div class="rule-card"><h4>ACD 类（户籍 / 随迁）</h4><p>${esc(p.hukou)}</p></div>
+    <div class="rule-card"><h4>指标生（降分渠道）</h4><p>${esc(p.minge)}</p></div>
+    <div class="rule-card"><h4>填报原则</h4><p>${esc(p.principle)}</p></div>
+  </div>`;
+  const nPub = (DATA.scores||[]).filter(s=>s.nature==='公办').length;
+  const nMin = (DATA.scores||[]).filter(s=>s.nature==='民办').length;
+  const nInd = (DATA.indicator||[]).length, nZz = (DATA.zizhu||[]).length;
+  html += `<div class="rule-card" style="margin-top:10px"><h4>本工具数据规模（2025 / 2026）</h4>
+    <p class="mini">以下为工具内置数据，分数与计划以官方最终公布为准。</p>
+    <table><tr><th>项目</th><th>规模</th></tr>
+      <tr><td>公办高中录取分</td><td>${nPub} 所（2025 AC/D 住走 + 2026 预测）</td></tr>
+      <tr><td>民办高中录取分</td><td>${nMin} 所（2025 录取分 + 招生计划）</td></tr>
+      <tr><td>指标生控制线</td><td>${nInd} 所（2024 年 AC/D 控制线）</td></tr>
+      <tr><td>一类自主招生</td><td>${nZz} 所（2025 分数线）</td></tr>
+    </table></div>`;
+  $('rulesOut').innerHTML = html;
+}
+
+/* ---------- ② 位次测算 ---------- */
+function levelOf(score){
+  const lines = (DATA.policy.lines&&DATA.policy.lines['2025']);
+  if(!lines||score==null) return null;
+  const order=['A+','A','B+','B','C+','C'];
+  let lv=null;
+  for(const k of order){ if(num(lines[k])!=null && score>=num(lines[k])) lv=k; }
+  return lv;
+}
+function rankInner(score, type){
+  if(score==null) return {err:'请输入预估总分'};
+  const arr = DATA.scores.filter(r=>lineOf(r,type)!=null)
+     .map(r=>({name:r.n, score:lineOf(r,type), nature:r.nature, district:r.district, belong:r.belong, ac:lineOf(r,'ac'), d:lineOf(r,'d')}))
+     .sort((a,b)=>b.score-a.score);
+  if(!arr.length) return {err:'无可用学校数据'};
+  let pos = arr.findIndex(x=>x.score<=score);
+  let anchor = pos>=0?arr[pos]:arr[arr.length-1];
+  let chong = pos>0?arr.slice(Math.max(0,pos-7),pos).reverse():[];
+  let bao = pos>=0?arr.slice(pos+1,pos+8):[];
+  const lv = levelOf(score);
+  const lines = DATA.policy.lines['2025']||{};
+  let lvlTxt = lv? (`处于 <b>${lv}</b> 线（${fmt(lines[lv])} 分）之上`) : '低于 C 线';
+  let html = `<div class="summary">
+    <div class="chip" style="background:var(--accent)"><b>${fmt(anchor.score)}</b><span>定位校：${esc(anchor.name)}</span></div>
+    <div class="chip" style="background:var(--chong)"><b>${fmt(score)}</b><span>你的分数</span></div>
+    <div class="chip" style="background:var(--bao)"><b>${TYPE_MAP[type]}</b><span>考生类型</span></div>
+    <div class="chip" style="background:var(--wen)"><b>${lv||'—'}</b><span>${lvlTxt}</span></div>
+  </div>`;
+  html += `<div class="check warn">深圳为全市统一录取，无分区位次。以上按“${TYPE_FULL[type]} 2025 住宿线”定位；<b>精确全市排名请查官方一分一段表</b>。</div>`;
+  html += `<div class="recwrap">
+    <div class="reccol"><h4 style="background:var(--chong)">冲刺（高于你 ${chong.length}）</h4>${chong.map(s=>recCard(s,'chong')).join('')||'<div class="mini">无</div>'}</div>
+    <div class="reccol"><h4 style="background:var(--accent)">稳妥（贴近你）</h4>${recCard(anchor,'wen')}</div>
+    <div class="reccol"><h4 style="background:var(--bao)">保底（低于你 ${bao.length}）</h4>${bao.map(s=>recCard(s,'bao')).join('')||'<div class="mini">无</div>'}</div>
+  </div>`;
+  return {html};
+}
+function recCard(s,kind){
+  return `<div class="rec"><div class="nm">${esc(s.name)}</div><div class="sch">${TYPE_MAP.ac} ${fmt(s.ac)} · ${TYPE_MAP.d} ${fmt(s.d)} ${s.nature==='民办'?'· 民办':''}</div></div>`;
+}
+function calcRank(){
+  const score=num($('rkScore').value), type=$('rkType').value;
+  const r = rankInner(score,type);
+  $('rkOut').innerHTML = r.err? `<div class="dstat err">${r.err}</div>` : r.html;
+}
+
+/* ---------- ③ 考生信息 ---------- */
+function saveStudent(){
+  state.student = {
+    name:$('stName').value.trim(), dist:$('stDist').value.trim(), school:$('stSchool').value.trim(),
+    type:$('stType').value, score:num($('stScore').value), batch:$('stBatch').value
+  };
+  let html = '<div class="dstat ok">已保存：'+esc(state.student.name||'考生')+
+    `（${TYPE_FULL[state.student.type]}${state.student.score!=null?'，'+state.student.score+'分':''}${state.student.dist?'，'+esc(state.student.dist):''}）`;
+  if(state.student.school){
+    const q = (DATA.indicator||[]).find(x=>x.name && x.name.indexOf(state.student.school)>=0);
+    if(q){ html += `；查询到“${esc(q.name)}”2024 指标生控制线 AC ${fmt(q.ac_ctrl)} / D ${fmt(q.d_ctrl)}（录取分 AC ${fmt(q.ac_rec)} / D ${fmt(q.d_rec)}）。`; }
+    else { html += `；未匹配到“${esc(state.student.school)}”的指标生记录，请核对校名（或该校暂无公开指标生控制线）。`; }
+  }
+  html += '</div>';
+  $('stOut').innerHTML = html;
+}
+
+/* ---------- ④ 智能推荐 ---------- */
+function recommend(){
+  let type=$('recType').value, score=num($('recScore').value);
+  if(score===null){ score = state.student.score; type = state.student.type||type; }
+  if(score===null){ $('recOut').innerHTML='<div class="dstat err">请先输入分数或填写考生信息</div>'; return; }
+  const arr = DATA.scores.filter(r=>lineOf(r,type)!=null)
+     .map(r=>({name:r.n, score:lineOf(r,type), nature:r.nature, district:r.district, belong:r.belong,
+               ac:lineOf(r,'ac'), d:lineOf(r,'d'), pred: type==='ac'?num(r.ac2026pred):num(r.d2026pred), plan:num(r.plan2025)}))
+     .sort((a,b)=>a.score-b.score);
+  const chong=arr.filter(x=>x.score>score).slice(-7).reverse();
+  const bao=arr.filter(x=>x.score<=score).slice(0,8);
+  const anchor = arr.filter(x=>x.score<=score).slice(-1)[0];
+  let html = `<div class="summary">
+    <div class="chip" style="background:var(--accent)"><b>${fmt(score)}</b><span>${TYPE_MAP[type]}分数</span></div>
+    <div class="chip" style="background:var(--chong)"><b>${chong.length}</b><span>冲刺校</span></div>
+    <div class="chip" style="background:var(--bao)"><b>${bao.length}</b><span>保底校</span></div></div>`;
+  html += `<div class="recwrap">
+    <div class="reccol"><h4 style="background:var(--chong)">冲刺（高于你 ${chong.length}）</h4>${chong.map(s=>recCard2(s,'chong',type)).join('')||'<div class="mini">无</div>'}</div>
+    <div class="reccol"><h4 style="background:var(--accent)">稳妥（贴近你）</h4>${anchor?recCard2(anchor,'wen',type):'<div class="mini">无</div>'}</div>
+    <div class="reccol"><h4 style="background:var(--bao)">保底（低于你 ${bao.length}）</h4>${bao.map(s=>recCard2(s,'bao',type)).join('')||'<div class="mini">无</div>'}</div>
+  </div>`;
+  $('recOut').innerHTML = html;
+}
+function recCard2(s,kind,type){
+  const cb = kind==='chong'?'var(--chong)':kind==='bao'?'var(--bao)':'var(--accent)';
+  const planTxt = s.plan!=null? `<div class="sch">2025 计划 ${fmt(s.plan)} 人${s.pred!=null?(' · 26 预测 '+fmt(s.pred)):''}</div>`:'';
+  return `<div class="rec"><div class="nm">${esc(s.name)}</div><div class="sch">${TYPE_MAP[type]}最低 ${fmt(s.score)}${s.nature==='民办'?' · 民办':''}</div>${planTxt}
+    <div class="btns"><button class="btn sm" style="background:${cb};color:#fff" onclick="addWish('第一批','${esc(s.name).replace(/'/g,"\\'")}',${s.score||'null'})">加入志愿表</button></div></div>`;
+}
+
+/* ---------- ⑤ 选方向生成 ---------- */
+const DIRS = [
+  {id:'top', label:'冲顶尖（市直属 A+）', f:r=>r.belong==='市直属'&&r.grade==='A+'},
+  {id:'qu', label:'稳市直属（其他等级）', f:r=>r.belong==='市直属'&&r.grade&&r.grade!=='A+'},
+  {id:'pu', label:'保底区属公办', f:r=>r.belong&&r.belong!=='市直属'&&r.nature==='公办'},
+  {id:'min', label:'走民办高中', f:r=>r.nature==='民办'},
+];
+function renderDirTags(){
+  $('dirTags').innerHTML = DIRS.map(d=>`<span class="tag${dirSel.has(d.id)?' on':''}" onclick="toggleDir('${d.id}')">${esc(d.label)}</span>`).join('');
+}
+function toggleDir(id){ if(dirSel.has(id)) dirSel.delete(id); else dirSel.add(id); renderDirTags(); }
+function genByDirection(){
+  let picks=[];
+  DIRS.forEach(d=>{ if(dirSel.has(d.id)){ const sub=DATA.scores.filter(r=>d.f(r)).map(r=>({name:r.n, score:lineOf(r,'ac'), nature:r.nature, district:r.district, belong:r.belong})).sort((a,b)=>b.score-a.score).slice(0,12); picks=picks.concat(sub); } });
+  if(!picks.length){ $('dirOut').innerHTML='<div class="dstat err">请先勾选至少一个方向</div>'; return; }
+  state.draft = picks;
+  $('dirOut').innerHTML = '<div class="hint">已生成 '+picks.length+' 所候选（按 AC 类 2025 住宿线排序）</div>'+
+    picks.map(s=>`<div class="rec"><div class="nm">${esc(s.name)}</div><div class="sch">${fmt(s.score)} 分${s.nature==='民办'?' · 民办':''} · ${esc(s.district||'')}</div>
+      <div class="btns"><button class="btn sm" style="background:var(--accent);color:#fff" onclick="addWish('第一批','${esc(s.name).replace(/'/g,"\\'")}',${s.score||'null'})">加入志愿表</button></div></div>`).join('');
+}
+function addDraftToWish(){ if(!state.draft.length){ return; } let n=0; state.draft.forEach(s=>{ if(addWish('第一批',s.name,s.score)) n++; }); $('dirOut').innerHTML='<div class="dstat ok">已将 '+n+' 所候选加入志愿表（第一批）</div>'; }
+
+/* ---------- ⑥ 我的志愿表 ---------- */
+function addWish(batch,name,score){
+  if(!batch||!name) return false;
+  name = (name||'').toString().trim(); if(!name) return false;
+  state.wish[batch] = state.wish[batch]||[];
+  if(state.wish[batch].some(x=>x.name===name)) return false;
+  state.wish[batch].push({name, score:num(score)});
+  renderWish(); save(); return true;
+}
+function addWishManual(){
+  const b=$('wishBatch').value, n=$('wishName').value.trim(), s=num($('wishScore').value);
+  if(addWish(b,n,s)){ $('wishName').value=''; $('wishScore').value=''; }
+}
+function renderWish(){
+  let html='';
+  WISH_ORDER.forEach(b=>{
+    const list=state.wish[b]||[];
+    html += `<div class="batch"><h4><span class="batchsel">${esc(BATCH_FULL[b]||b)}</span> <span class="mini">${list.length} 个</span></h4>`;
+    if(!list.length) html+='<div class="mini">— 未填 —</div>';
+    list.forEach((x,i)=>{
+      html += `<div class="wishrow"><span class="wn">${i+1}</span><span class="wname">${esc(x.name)}</span><span class="wm">${x.score!=null?('参考 '+x.score):''}</span><button class="btn danger sm" onclick="delWish('${b}','${esc(x.name).replace(/'/g,"\\'")}')">删</button></div>`;
+    });
+    html+='</div>';
+  });
+  $('wishOut').innerHTML = html;
+  healthCheck();
+}
+function delWish(batch,name){ state.wish[batch]=(state.wish[batch]||[]).filter(x=>x.name!==name); renderWish(); save(); }
+function clearWish(){ state.wish={}; renderWish(); save(); }
+
+/* ---------- ⑦ 方案体检 ---------- */
+function healthCheck(){
+  const msgs=[];
+  const total = WISH_ORDER.reduce((a,b)=>a+(state.wish[b]||[]).length,0);
+  if(total===0){ msgs.push(['warn','志愿表还是空的，先去智能推荐或选方向生成候选。']); }
+  const pwBatch = state.wish['第一批']||[];
+  const list=pwBatch.filter(x=>x.score!=null).sort((a,c)=>c.score-a.score);
+  let flat=0;
+  for(let i=1;i<list.length;i++){ if(list[i-1].score-list[i].score < 10) flat++; }
+  if(list.length>=2 && flat>0) msgs.push(['warn',`第一批中 ${flat} 对相邻志愿分差小于 10 分，梯度未拉开，存在同档扎堆风险。`]);
+  if(!list.length) msgs.push(['warn','第一批（普通高中）未填写。']);
+  // D 类：是否选了有 D 类计划的学校
+  if(state.student.type==='d'){
+    const bad=[];
+    (state.wish['第一批']||[]).forEach(x=>{ const r=DATA.scores.find(s=>s.n===x.name); if(r && lineOf(r,'d')==null) bad.push(x.name); });
+    if(bad.length) msgs.push(['err',`D 类（非深户）填报了无“D 类”招生计划的学校：${bad.join('、')}，可能无法投档。`]);
+  }
+  // 全冲无保底 / 全保浪费
+  const allScores=WISH_ORDER.flatMap(b=>(state.wish[b]||[]).map(x=>x.score).filter(s=>s!=null));
+  if(state.student.score!=null && allScores.length){
+    const base = state.student.score;
+    if(allScores.every(s=>s>base)) msgs.push(['err','志愿表全部高于你的分数，没有保底校，滑档风险极高！']);
+    if(allScores.every(s=>s<=base-40)) msgs.push(['warn','志愿表全部远低于你的分数，过于保守，可能浪费分数。']);
+  }
+  // 指标生资格
+  if(state.student.school){
+    const q=(DATA.indicator||[]).find(x=>x.name&&x.name.indexOf(state.student.school)>=0);
+    if(q && !(state.wish['指标生批']&&state.wish['指标生批'].length))
+      msgs.push(['warn',`你勾选了初中“${esc(state.student.school)}”，可查到指标生控制线（AC ${fmt(q.ac_ctrl)} / D ${fmt(q.d_ctrl)}）；若该校有指标生名额，建议利用指标生批降分机会。`]);
+  }
+  if(!msgs.length) msgs.push(['ok','方案结构合理，冲稳保梯度清晰。']);
+  const cls={'ok':'ok','warn':'warn','err':'err'};
+  const out=$('hcOut'); if(out) out.innerHTML = msgs.map(m=>`<div class="check ${cls[m[0]]}">${m[1]}</div>`).join('');
+}
+
+/* ---------- ⑧ 导出存档 ---------- */
+function save(){ try{ localStorage.setItem('sz_wish_v1', JSON.stringify({student:state.student, wish:state.wish})); }catch(e){} }
+function loadWish(){ try{ const d=JSON.parse(localStorage.getItem('sz_wish_v1')||'{}'); if(d.student) state.student=d.student; if(d.wish) state.wish=d.wish; renderWish(); $('expOut').innerHTML='<div class="dstat ok">已载入本机保存的方案</div>'; }catch(e){ $('expOut').innerHTML='<div class="dstat err">无已存方案</div>'; } }
+function buildText(){
+  let t=`深圳中考志愿方案（考生：${esc(state.student.name||'—')}｜${TYPE_FULL[state.student.type]||''}${state.student.score!=null?'｜'+state.student.score+'分':''}）\n`;
+  WISH_ORDER.forEach(b=>{ const list=state.wish[b]||[]; t+=`\n【${BATCH_FULL[b]||b}】\n`; list.forEach((x,i)=>t+=`  ${i+1}. ${x.name}${x.score!=null?'（参考分'+x.score+'）':''}\n`); if(!list.length)t+='  （未填）\n'; });
+  return t;
+}
+function copyText(){ const t=buildText(); if(navigator.clipboard) navigator.clipboard.writeText(t); $('expOut').innerHTML='<div class="dstat ok">已复制方案文本</div>'; }
+function exportHTML(){
+  const txt=buildText().replace(/\n/g,'<br>');
+  const html=`<!DOCTYPE html><html><head><meta charset="UTF-8"><title>深圳中考志愿方案</title><style>body{font-family:-apple-system,"Microsoft YaHei",sans-serif;padding:24px;color:#1f2430} h1{font-size:18px} .b{margin:12px 0} h3{font-size:15px;border-left:4px solid #15803d;padding-left:8px} ol{line-height:1.9}</style></head><body><h1>深圳中考志愿方案</h1><div>${txt}</div><p style="color:#888;font-size:12px">由中高考考情分析平台生成，仅供参考</p></body></html>`;
+  const blob=new Blob([html],{type:'text/html'}); const url=URL.createObjectURL(blob);
+  const a=document.createElement('a'); a.href=url; a.download='深圳中考志愿方案.html'; a.click();
+  $('expOut').innerHTML='<div class="dstat ok">已导出自包含 HTML 文件</div>';
+}
+
+/* ---------- ⑨ 录取分·指标生·自招 ---------- */
+function renderScore(){
+  const kw=($('p26Kw').value||'').trim(), nat=$('p26Nat').value;
+  let arr = DATA.scores.filter(r=>(!nat||r.nature===nat) && (!kw||(r.name||'').indexOf(kw)>=0));
+  arr = arr.sort((a,b)=>(lineOf(b,'ac')||0)-(lineOf(a,'ac')||0));
+  const out=$('p26Out');
+  if(!arr.length){ out.innerHTML='<div class="hint">没有匹配的高中。</div>'; return; }
+  const show=arr.slice(0,200);
+  out.innerHTML = '<div class="hint">匹配 <b>'+arr.length+'</b> 所'+(arr.length>show.length?'，显示前 '+show.length+' 所':'')+'</div>'+
+    show.map(r=>{
+      const ac=lineOf(r,'ac'), d=lineOf(r,'d'), wac=lineWalk(r,'ac'), wd=lineWalk(r,'d');
+      return '<div class="schcard"><div class="schhd"><b>'+esc(r.name)+'</b><span class="pill">'+(r.nature||'')+'</span>'+(r.grade?'<span class="pill">'+esc(r.grade)+'</span>':'')+(r.district?'<span class="pill">'+esc(r.district)+'</span>':'')+'</div>'+
+        '<div class="schcols">'+
+        '<div class="schband"><div class="schbandhd" style="background:var(--accent)">AC 类(深户)</div>'+
+          '<div class="schi"><span class="schnm">2025 住宿</span><b>'+fmt(ac)+'</b></div>'+
+          '<div class="schi"><span class="schnm">2025 走读</span><b>'+fmt(wac)+'</b></div>'+
+          '<div class="schi"><span class="schnm">2026 预测</span><b>'+fmt(r.ac2026pred)+'</b></div></div>'+
+        '<div class="schband"><div class="schbandhd" style="background:var(--chong)">D 类(非深户)</div>'+
+          '<div class="schi"><span class="schnm">2025 住宿</span><b>'+fmt(d)+'</b></div>'+
+          '<div class="schi"><span class="schnm">2025 走读</span><b>'+fmt(wd)+'</b></div>'+
+          '<div class="schi"><span class="schnm">2026 预测</span><b>'+fmt(r.d2026pred)+'</b></div></div>'+
+        '<div class="schband"><div class="schbandhd" style="background:var(--wen)">招生计划</div>'+
+          '<div class="schi"><span class="schnm">2025 总计划</span><b>'+fmt(r.plan2025)+'</b></div>'+
+          '<div class="schi"><span class="schnm">住宿计划</span><b>'+fmt(r.plan2025_board)+'</b></div>'+
+          (r.tuition?'<div class="schi"><span class="schnm">学费</span><b style="font-size:11px">'+esc(r.tuition.slice(0,12))+'</b></div>':'')+
+        '</div></div></div>';
+    }).join('');
+}
+function renderQuota(){
+  const kw=($('p26qKw').value||'').trim(); const out=$('p26qOut');
+  if(!kw){ out.innerHTML='<div class="hint">请输入高中学校名称。</div>'; return; }
+  const arr=(DATA.indicator||[]).filter(x=>x.name&&x.name.indexOf(kw)>=0);
+  if(!arr.length){ out.innerHTML='<div class="hint">未找到该高中的指标生记录，请核对学校全称。</div>'; return; }
+  out.innerHTML = arr.map(q=>`<div class="schcard"><div class="schhd"><b>${esc(q.name)}</b><span class="pill">${q.year} 年</span></div>
+    <div class="schcols">
+      <div class="schband"><div class="schbandhd" style="background:var(--accent)">AC 类</div>
+        <div class="schi"><span class="schnm">录取分</span><b>${fmt(q.ac_rec)}</b></div>
+        <div class="schi"><span class="schnm">指标生控制线</span><b>${fmt(q.ac_ctrl)}</b></div></div>
+      <div class="schband"><div class="schbandhd" style="background:var(--chong)">D 类</div>
+        <div class="schi"><span class="schnm">录取分</span><b>${fmt(q.d_rec)}</b></div>
+        <div class="schi"><span class="schnm">指标生控制线</span><b>${fmt(q.d_ctrl)}</b></div></div>
+    </div>
+    <div class="mini">指标生为户籍生专属降分渠道：达到控制线后，在同初中校内竞争中优先录取。</div></div>`).join('');
+}
+function renderZZ(){
+  const out=$('p26zOut'); const arr=(DATA.zizhu||[]).sort((a,b)=>(lineOf(b,'ac')||0)-(lineOf(a,'ac')||0));
+  if(!arr.length){ out.innerHTML='<div class="hint">暂无自主招生数据。</div>'; return; }
+  out.innerHTML = '<div class="hint">共 '+arr.length+' 所一类自主招生学校</div>'+arr.map(r=>`<div class="schcard"><div class="schhd"><b>${esc(r.name)}</b><span class="pill">${esc(r.type||'')}</span>${r.dir?'<span class="pill">'+esc(r.dir)+'</span>':''}</div>
+    <div class="schcols">
+      <div class="schband"><div class="schbandhd" style="background:var(--accent)">AC 类</div>
+        <div class="schi"><span class="schnm">2025 住宿</span><b>${fmt(lineOf(r,'ac'))}</b></div>
+        <div class="schi"><span class="schnm">2025 走读</span><b>${fmt(lineWalk(r,'ac'))}</b></div></div>
+      <div class="schband"><div class="schbandhd" style="background:var(--chong)">D 类</div>
+        <div class="schi"><span class="schnm">2025 住宿</span><b>${fmt(lineOf(r,'d'))}</b></div>
+        <div class="schi"><span class="schnm">2025 走读</span><b>${fmt(lineWalk(r,'d'))}</b></div></div>
+      <div class="schband"><div class="schbandhd" style="background:var(--wen)">计划</div>
+        <div class="schi"><span class="schnm">招生计划</span><b>${fmt(r.plan)}</b></div>
+        <div class="schi"><span class="schnm">中考控制</span><b>${fmt(r.ctrl)}</b></div></div>
+    </div></div>`).join('');
+}
+function switchP26(k){
+  ['score','quota','zz'].forEach(x=>{
+    const box=$('p26-'+x), btn=$('p26t'+(x==='score'?1:x==='quota'?2:3));
+    if(box) box.style.display = (x===k)?'':'none';
+    if(btn) btn.classList.toggle('on', x===k);
+  });
+  if(k==='zz') renderZZ();
+}
+
+/* ---------- init ---------- */
+$('p26Total').textContent = (DATA.scores||[]).length;
+renderRules(); renderDirTags(); renderWish();
+</script>
+</body>
+</html>
