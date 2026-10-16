@@ -4019,7 +4019,7 @@ function levelOf(score){
 function rankInner(score, type){
   if(score==null) return {err:'请输入预估总分'};
   const arr = DATA.scores.filter(r=>lineOf(r,type)!=null)
-     .map(r=>({name:r.n, score:lineOf(r,type), nature:r.nature, district:r.district, belong:r.belong, ac:lineOf(r,'ac'), d:lineOf(r,'d')}))
+     .map(r=>({name:r.name, score:lineOf(r,type), nature:r.nature, district:r.district, belong:r.belong, ac:lineOf(r,'ac'), d:lineOf(r,'d')}))
      .sort((a,b)=>b.score-a.score);
   if(!arr.length) return {err:'无可用学校数据'};
   let pos = arr.findIndex(x=>x.score<=score);
@@ -4075,7 +4075,7 @@ function recommend(){
   if(score===null){ score = state.student.score; type = state.student.type||type; }
   if(score===null){ $('recOut').innerHTML='<div class="dstat err">请先输入分数或填写考生信息</div>'; return; }
   const arr = DATA.scores.filter(r=>lineOf(r,type)!=null)
-     .map(r=>({name:r.n, score:lineOf(r,type), nature:r.nature, district:r.district, belong:r.belong,
+     .map(r=>({name:r.name, score:lineOf(r,type), nature:r.nature, district:r.district, belong:r.belong,
                ac:lineOf(r,'ac'), d:lineOf(r,'d'), pred: type==='ac'?num(r.ac2026pred):num(r.d2026pred), plan:num(r.plan2025)}))
      .sort((a,b)=>a.score-b.score);
   const chong=arr.filter(x=>x.score>score).slice(-7).reverse();
@@ -4112,7 +4112,7 @@ function renderDirTags(){
 function toggleDir(id){ if(dirSel.has(id)) dirSel.delete(id); else dirSel.add(id); renderDirTags(); }
 function genByDirection(){
   let picks=[];
-  DIRS.forEach(d=>{ if(dirSel.has(d.id)){ const sub=DATA.scores.filter(r=>d.f(r)).map(r=>({name:r.n, score:lineOf(r,'ac'), nature:r.nature, district:r.district, belong:r.belong})).sort((a,b)=>b.score-a.score).slice(0,12); picks=picks.concat(sub); } });
+  DIRS.forEach(d=>{ if(dirSel.has(d.id)){ const sub=DATA.scores.filter(r=>d.f(r)).map(r=>({name:r.name, score:lineOf(r,'ac'), nature:r.nature, district:r.district, belong:r.belong})).sort((a,b)=>b.score-a.score).slice(0,12); picks=picks.concat(sub); } });
   if(!picks.length){ $('dirOut').innerHTML='<div class="dstat err">请先勾选至少一个方向</div>'; return; }
   state.draft = picks;
   $('dirOut').innerHTML = '<div class="hint">已生成 '+picks.length+' 所候选（按 AC 类 2025 住宿线排序）</div>'+
@@ -4165,7 +4165,7 @@ function healthCheck(){
   // D 类：是否选了有 D 类计划的学校
   if(state.student.type==='d'){
     const bad=[];
-    (state.wish['第一批']||[]).forEach(x=>{ const r=DATA.scores.find(s=>s.n===x.name); if(r && lineOf(r,'d')==null) bad.push(x.name); });
+    (state.wish['第一批']||[]).forEach(x=>{ const r=DATA.scores.find(s=>s.name===x.name); if(r && lineOf(r,'d')==null) bad.push(x.name); });
     if(bad.length) msgs.push(['err',`D 类（非深户）填报了无“D 类”招生计划的学校：${bad.join('、')}，可能无法投档。`]);
   }
   // 全冲无保底 / 全保浪费
