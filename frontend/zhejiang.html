@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>浙江初升高升学路径全景 · 11 市</title>
+<style>
+:root{--bg:#f6f7fb;--card:#fff;--ink:#3a3f4b;--sub:#7a8090;--line:#e9ebf0;--accent:#3b5bdb}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:-apple-system,"PingFang SC","Microsoft YaHei",Roboto,Arial,sans-serif;font-size:15px;line-height:1.6}
+.hero{background:linear-gradient(135deg,#d6e4f7,#e9dcf4 50%,#d9ede9);color:#51586a;padding:32px 18px 28px;text-align:center}
+.hero h1{margin:0 0 6px;font-size:24px;letter-spacing:1px}
+.hero p{margin:0;opacity:.82;font-size:14px}
+.wrap{max-width:1080px;margin:0 auto;padding:18px}
+.back{display:inline-block;margin:6px 0 14px;color:var(--accent);text-decoration:none;font-size:14px;font-weight:600}
+.back:hover{text-decoration:underline}
+.pcard{background:#fff;border-radius:16px;padding:20px;box-shadow:0 6px 22px rgba(70,80,130,.08);border:1px solid var(--line)}
+.pcard .tag{display:inline-block;font-size:12px;font-weight:700;padding:2px 9px;border-radius:20px;color:#5660a8;background:#d9def7;margin-bottom:8px}
+.pcard h2{margin:0 0 4px;font-size:20px}
+.pcard p.desc{color:var(--sub);font-size:13px;margin:0 0 16px}
+.cities{display:grid;grid-template-columns:repeat(auto-fit,minmax(110px,1fr));gap:10px}
+.cities a.cc{text-align:center;text-decoration:none;padding:16px 8px;border-radius:12px;font-size:16px;font-weight:700;transition:filter .15s,transform .15s;border:1px solid rgba(0,0,0,.05)}
+.cities a.cc:hover{filter:brightness(.97);transform:translateY(-1px)}
+.cities a.cc small{display:block;font-size:11px;font-weight:500;opacity:.75;margin-top:3px}
+.chart{background:#fff;border-radius:16px;padding:20px;box-shadow:0 6px 22px rgba(70,80,130,.08);border:1px solid var(--line);margin-top:16px}
+.chart .tag{display:inline-block;font-size:12px;font-weight:700;padding:2px 9px;border-radius:20px;color:#5660a8;background:#d9def7;margin-bottom:8px}
+.chart h2{margin:0 0 4px;font-size:20px}
+.chart p.csub{color:var(--sub);font-size:13px;margin:0 0 14px}
+.tabs{display:flex;gap:8px;margin:0 0 14px;flex-wrap:wrap}
+.tab{border:1px solid var(--line);background:#fff;color:var(--sub);font-size:13px;font-weight:600;padding:7px 15px;border-radius:20px;cursor:pointer;transition:.15s}
+.tab:hover{border-color:var(--accent);color:var(--accent)}
+.tab.active{background:var(--accent);color:#fff;border-color:var(--accent)}
+.panel{display:none}
+.panel.active{display:block}
+.bar{display:grid;grid-template-columns:62px 1fr 56px;align-items:center;gap:10px;text-decoration:none;color:var(--ink);padding:5px 0}
+.bar:hover .bn{color:var(--accent)}
+.bar:hover .bf{filter:brightness(.95)}
+.bn{font-size:14px;font-weight:600;text-align:right}
+.bt{background:#eef0f5;border-radius:9px;height:22px;overflow:hidden}
+.bf{display:block;height:100%;border-radius:9px;min-width:6px}
+.bv{font-size:13px;font-weight:700;text-align:left;color:#5a6072}
+.cnote{background:#fdf3e7;border:1px solid #f6dcc0;border-radius:12px;padding:12px 14px;font-size:12.5px;color:#a9763f;margin-top:14px}
+.dai{color:#b45309;background:#fff7ed;border-radius:5px;padding:0 4px;font-weight:600}
+.ctable{width:100%;border-collapse:collapse;font-size:13px;margin-top:2px}
+.ctable th{text-align:left;color:var(--sub);font-weight:600;padding:9px 10px;border-bottom:2px solid var(--line);position:sticky;top:0;background:#fff}
+.ctable td{padding:9px 10px;border-bottom:1px solid var(--line);vertical-align:top}
+.ctable tr:hover td{background:#fafbff}
+.ctable .city{font-weight:700;white-space:nowrap}
+.tscroll{overflow-x:auto;-webkit-overflow-scrolling:touch;margin-top:2px}
+.clamp{display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden;line-height:1.55}
+.csub2{color:var(--sub);font-size:12px;font-weight:400;display:block;margin-top:3px}
+.note{background:#fdf3e7;border:1px solid #f6dcc0;border-radius:12px;padding:12px 14px;font-size:13px;color:#a9763f;margin:16px 0}
+.foot{text-align:center;color:var(--sub);font-size:12px;margin:22px 0 10px}
+@media(max-width:520px){.bar{grid-template-columns:52px 1fr 48px;gap:7px}.bn{font-size:13px}.ctable{font-size:12px}}
+</style>
+</head>
+<body>
+<header class="hero">
+  <h1>浙江初升高升学路径全景</h1>
+  <p>11 个地级市 · 一张图看全初升高（计分 / 批次 / 名额分配 / 自主招生 / 随迁门槛 / 中职贯通）</p>
+</header>
+<div class="wrap">
+  <a class="back" href="index.html">← 返回门户</a>
+  <div class="pcard">
+    <span class="tag">浙江 · 11 市</span>
+    <h2>选择城市，进入初升高升学路径全景</h2>
+    <p class="desc">浙江中考由各地级市自主命题录取（高考虽全省统一，中考由市管，非全省统一）。每个城市页含 9 大模块：中考概况 / 录取批次与路径 / 名额分配 / 自主招生 / 随迁门槛 / 路径总览 / 中职职教 / 关键数据 / 官方信源。官方未单列的数据均如实标注“待核”。</p>
+    <div class="cities"><a class="cc" style="background:hsl(0 58% 86%);color:hsl(0 48% 30%)" href="zhejiang-hangzhou-shengxue-lujing.html">杭州<small>满分 650</small></a><a class="cc" style="background:hsl(47 58% 86%);color:hsl(47 48% 30%)" href="zhejiang-ningbo-shengxue-lujing.html">宁波<small>满分 660</small></a><a class="cc" style="background:hsl(94 58% 86%);color:hsl(94 48% 30%)" href="zhejiang-jiaxing-shengxue-lujing.html">嘉兴<small>满分 680</small></a><a class="cc" style="background:hsl(141 58% 86%);color:hsl(141 48% 30%)" href="zhejiang-huzhou-shengxue-lujing.html">湖州<small>满分 670</small></a><a class="cc" style="background:hsl(188 58% 86%);color:hsl(188 48% 30%)" href="zhejiang-shaoxing-shengxue-lujing.html">绍兴<small>满分 660</small></a><a class="cc" style="background:hsl(235 58% 86%);color:hsl(235 48% 30%)" href="zhejiang-wenzhou-shengxue-lujing.html">温州<small>满分 660</small></a><a class="cc" style="background:hsl(282 58% 86%);color:hsl(282 48% 30%)" href="zhejiang-jinhua-shengxue-lujing.html">金华<small>满分 660</small></a><a class="cc" style="background:hsl(329 58% 86%);color:hsl(329 48% 30%)" href="zhejiang-quzhou-shengxue-lujing.html">衢州<small>满分 660</small></a><a class="cc" style="background:hsl(16 58% 86%);color:hsl(16 48% 30%)" href="zhejiang-zhoushan-shengxue-lujing.html">舟山<small>满分 660</small></a><a class="cc" style="background:hsl(63 58% 86%);color:hsl(63 48% 30%)" href="zhejiang-taizhou-shengxue-lujing.html">台州<small>满分 660</small></a><a class="cc" style="background:hsl(110 58% 86%);color:hsl(110 48% 30%)" href="zhejiang-lishui-shengxue-lujing.html">丽水<small>满分 650</small></a></div>
+  </div>
+
+  <div class="chart">
+    <span class="tag">一图看懂 · 11 市</span>
+    <h2>浙江各市初升高关键差异</h2>
+    <p class="csub">横向对比各市中考方案。柱条按数值从高到低排列，点击可进入该市中心页；官方未单列的维度诚实标注“待核 / 未公布”，不作估算填充。</p>
+    <div class="panel active" id="p-total">
+      <p class="csub" style="margin-top:0">各市中考满分不同（650–680 分），反映计分科目与权重差异，不代表考试难易或录取难度。普高录取率等更细维度，点柱条进对应城市页查看（官方未单列的均如实标注“待核”，不作估算填充）。</p>
+      <a class="bar" href="zhejiang-jiaxing-shengxue-lujing.html"><span class="bn">嘉兴</span><span class="bt"><span class="bf" style="background:hsl(94 58% 86%);width:100%"></span></span><span class="bv">680</span></a><a class="bar" href="zhejiang-huzhou-shengxue-lujing.html"><span class="bn">湖州</span><span class="bt"><span class="bf" style="background:hsl(141 58% 86%);width:99%"></span></span><span class="bv">670</span></a><a class="bar" href="zhejiang-ningbo-shengxue-lujing.html"><span class="bn">宁波</span><span class="bt"><span class="bf" style="background:hsl(47 58% 86%);width:97%"></span></span><span class="bv">660</span></a><a class="bar" href="zhejiang-shaoxing-shengxue-lujing.html"><span class="bn">绍兴</span><span class="bt"><span class="bf" style="background:hsl(188 58% 86%);width:97%"></span></span><span class="bv">660</span></a><a class="bar" href="zhejiang-wenzhou-shengxue-lujing.html"><span class="bn">温州</span><span class="bt"><span class="bf" style="background:hsl(235 58% 86%);width:97%"></span></span><span class="bv">660</span></a><a class="bar" href="zhejiang-jinhua-shengxue-lujing.html"><span class="bn">金华</span><span class="bt"><span class="bf" style="background:hsl(282 58% 86%);width:97%"></span></span><span class="bv">660</span></a><a class="bar" href="zhejiang-quzhou-shengxue-lujing.html"><span class="bn">衢州</span><span class="bt"><span class="bf" style="background:hsl(329 58% 86%);width:97%"></span></span><span class="bv">660</span></a><a class="bar" href="zhejiang-zhoushan-shengxue-lujing.html"><span class="bn">舟山</span><span class="bt"><span class="bf" style="background:hsl(16 58% 86%);width:97%"></span></span><span class="bv">660</span></a><a class="bar" href="zhejiang-taizhou-shengxue-lujing.html"><span class="bn">台州</span><span class="bt"><span class="bf" style="background:hsl(63 58% 86%);width:97%"></span></span><span class="bv">660</span></a><a class="bar" href="zhejiang-hangzhou-shengxue-lujing.html"><span class="bn">杭州</span><span class="bt"><span class="bf" style="background:hsl(0 58% 86%);width:96%"></span></span><span class="bv">650</span></a><a class="bar" href="zhejiang-lishui-shengxue-lujing.html"><span class="bn">丽水</span><span class="bt"><span class="bf" style="background:hsl(110 58% 86%);width:96%"></span></span><span class="bv">650</span></a>
+    </div>
+  </div>
+
+  <div class="chart">
+    <span class="tag">路径差异 · 全市对照</span>
+    <h2>浙江各市初升高政策维度对照</h2>
+    <p class="csub">7 列横向对比：中考满分 / 划线方式 / 录取批次 / 随迁子女门槛 / 名额分配 / 自主招生。文字较长处折叠为 3 行，点城市名进页看全文。标“待核”表示官方未单列。不作估算填充。</p>
+    <div class="tscroll">
+    <table class="ctable">
+      <thead><tr><th>城市</th><th>中考满分</th><th>划线方式（户籍 / 随迁）</th><th>录取批次与投档</th><th>随迁子女报考门槛</th><th>名额分配（指标生）</th><th>普通高中自主招生</th></tr></thead>
+      <tbody><tr>
+      <td class="city"><a href="zhejiang-hangzhou-shengxue-lujing.html" style="color:hsl(0 48% 30%);font-weight:700">杭州</a><br><span class="csub2">满分 650</span></td>
+      <td>650</td>
+      <td><div class="clamp">杭州市区按各类高中招生计划数与考生志愿、人数，从高分到低分按比例划定集中统一第一段、第二段招生录取最低控制分数线；不区分户籍线与随迁子女线（符合条件随迁子女同等报考）。名额分配招生按初中学校逐校（校额到校）录取，不划全市统一基准线。</div></td>
+      <td><div class="clamp">中本一体化招生（中职与本科一体化） → 名额分配招生 → 自主招生 → 集中统一招生第一段 → 集中统一招生第二段 → 集中统一招生第三段</div></td>
+      <td><div class="clamp">随迁子女（外省籍进城务工人员随迁子女）报考市区普高：在杭州市区初中学校就读的2025届毕业班，须具杭州市区初中阶段连续3年学习经历和学籍，且父母一方在市区有合法稳定职业、合法稳定住所（含租赁），并近3年内至少参加1年社会保险；往届生须毕业当年符合上述条件。浙江省内非杭州户籍、港澳台及外籍应届生同等可报。不符合条件者仅可报中职等。</div></td>
+      <td><div class="clamp">省一级重点普通高中名额分配招生比例为学校招生计划数的70%；省一级重点普通高中分设校区及领办分校、省一级普通高中特色示范学校等比例为40%。名额分配到初中学校，考生具分配生资格最多填5志愿，平行志愿、按初中学校逐校录取。分配生录取后不再参加后续批次。2025年分配生志愿数由4个增至5个。</div></td>
+      <td><div class="clamp">自主招生分两类：(1)特长特色自主招生——特长生、纳入自主招生的特色班、中外合作办学项目班，考生选一类一校，先术科测试，中考后按术科+中考成绩（中考权重≥30%）录取；(2)中等职业学校自主招生——专业适应性测试，中考成绩权重90%，平行志愿录取。2025年新增普高自主招生的职普融通试点班、综合高中试点班（在第一段招生）。</div></td>
+    </tr><tr>
+      <td class="city"><a href="zhejiang-ningbo-shengxue-lujing.html" style="color:hsl(47 48% 30%);font-weight:700">宁波</a><br><span class="csub2">满分 660</span></td>
+      <td>660</td>
+      <td><div class="clamp">市直属高中段学校招生录取按投档成绩从高到低，结合综合素质评价；同分依次比较数学、语数、语数英、语数英科、语数英科社。录取分提前批→第一批次(中本一体/五年制学前/普高自招/中职特长)→第二批次(定向分配+统招)→征求志愿。定向分配按各校计划1.5倍划基准线、分初中校择优。</div></td>
+      <td><div class="clamp">提前批 → 第一批次 → 第二批次 → 征求志愿</div></td>
+      <td><div class="clamp">非本市户籍（其他户籍）应届初三生报考普通高中：须具宁波市（或所在区，如北仑/奉化要求本区）初中连续完整3年学习经历和学籍，且父（母）一方近3年内有1年及以上社会保险证明（北仑/奉化另要求合法住所与合法职业）；高层次人才子女不受此限。不符合普高条件者2025年仍可报考中职学校。</div></td>
+      <td><div class="clamp">优质示范普通高中普通班招生计划的70%用于定向分配（2024年为60%，2025年提高10个百分点）；名额原则上按各初中符合普高报名条件人数均衡分配。报名须同一初中完整3年学籍应届，综合素质评价品德表现良好及以上、运动健康/艺术素养/创新实践/科学能力原则上2A2B及以上；按各校计划1.5倍划基准线分初中校择优，可降10分录1名；剩余名额计入统招。</div></td>
+      <td><div class="clamp">自主招生含强基计划、特长生、特色班、中外合作办学项目。强基计划综合总分=(中考投档成绩÷660×100)×30%+强基测试(满分100)×70%；自主招生中考成绩权重不低于30%，原则上不低于中考总分50%（特长类顶尖可单独办法）。普通高中自主招生报名5月17—19日，每名考生可报1—2项（强基限1）。中外合作项目60%自主招生、40%统招。</div></td>
+    </tr><tr>
+      <td class="city"><a href="zhejiang-jiaxing-shengxue-lujing.html" style="color:hsl(94 48% 30%);font-weight:700">嘉兴</a><br><span class="csub2">满分 680</span></td>
+      <td>680</td>
+      <td><div class="clamp">市本级通过嘉兴市高中招生系统统一报名录取；按志愿与中考成绩（含综评赋分）从高分到低分录取。名额分配生录取在统招前，原则上不划基准线，确保分配到校名额录取率不低于95%。各县（市）分别组织实施。</div></td>
+      <td><div class="clamp">提前批 → 第一批次（普高统招） → 普职融通/综合高中 → 中职招生</div></td>
+      <td><div class="clamp">在本市初中就读的非本市户籍应届初三学生，可报考我市公办普通高中、民办普通高中、中职学校（凭本市初中学籍即可，无额外社保/居住证门槛）。（来源：嘉兴市初中学业水平考试通知）</div></td>
+      <td><div class="clamp">2025年起全市优质普通高中分配生比例不低于学校总招生计划70%（省教育厅要求）。市本级：嘉兴一中、秀州中学、嘉兴高级中学名额分配按年度计划70%；清华附中嘉兴实验高中、北师大嘉兴南湖高中按60%。名额按初中毕业生人数均衡分配到校；须同一初中连续3年学籍应届，综合素质评价为前置条件。</div></td>
+      <td><div class="clamp">普通高中可申请特色特长招生：嘉兴一中/秀州中学/嘉兴高级中学特色特长招生数原则上≤招生计划10%，其他普高≤20%，其中特长生≤5%。另有国际合作办学项目（如嘉兴高级中学中加班、中德DSD班）。所有招生统一在嘉兴市高中招生系统进行，禁线下自主招生。</div></td>
+    </tr><tr>
+      <td class="city"><a href="zhejiang-huzhou-shengxue-lujing.html" style="color:hsl(141 48% 30%);font-weight:700">湖州</a><br><span class="csub2">满分 670</span></td>
+      <td>670</td>
+      <td><div class="clamp">市区（吴兴区、南浔区、南太湖新区）与三县按县域分别组织报名、考试、志愿填报与招生录取。按招生总分（文化+体育+加分）从高分到低分，参照高考按位次录取。第一批含创新实验班、定向分配、普通班等；第二批10个平行志愿（民办普高≤3+中职专业≤7）。</div></td>
+      <td><div class="clamp">第一批 → 第二批 → 市外中职双向选择</div></td>
+      <td><div class="clamp">非本市户籍随迁子女具有湖州市初中学校学籍的应届毕业生，可在就读学校报名，招生录取时与本市户籍考生享受同等待遇；无学籍的市外户籍学生不得报考。（来源：湖州市教育考试中心/湖州公安中考报名公告）</div></td>
+      <td><div class="clamp">市区优质普通高中（湖州中学、湖州二中、吴兴高级中学）定向分配生比例为招生计划的70%，按三校计划70%定向分配到两区及市属初中，以各初中具学籍且读满3年应届毕业生数为基数分配。须同一初中读满3年、综合素质品德表现良好及以上且其他三维度1A2B及以上；设定最低控制线，未完成可在对应高中线以下20分内降分，录取率低于95%时动态调整至95%。已录分配生不参加后续，剩余名额纳入统招。</div></td>
+      <td><div class="clamp">市属普通高中特长生招生（须填提前批志愿）；省一级普通高中特色示范校面向特长生降分不超过20分，其他普高不超过40分。具体见《2025年湖州市属普通高中特长生招生实施办法》。另有创新实验班等特殊类型。</div></td>
+    </tr><tr>
+      <td class="city"><a href="zhejiang-shaoxing-shengxue-lujing.html" style="color:hsl(188 48% 30%);font-weight:700">绍兴</a><br><span class="csub2">满分 660</span></td>
+      <td>660</td>
+      <td><div class="clamp">录取顺序：全市零批（体育重点特色项目、中本一体、绍兴护士学校自招）→市区提前批（各区公民办普高自招、优质公办普高分配生）→市区统招/中职统筹（打通招生，普高与中职同平台同批平行志愿，最多11普高+12中职）→民办剩余/中职剩余/市外省内中职双向选择。同分依次比语数英三科和、语数两科和，再按单科。</div></td>
+      <td><div class="clamp">零批（全市） → 提前批（市区） → 打通招生（统招/中职统筹） → 双向选择招生</div></td>
+      <td><div class="clamp">市区打通招生中，非市区户籍应届毕业生参加市区公办普高（含民办公费计划）录取，须同时具备市区内初中连续三年完整就读经历（含市区内转学）。仅具本市初中学籍但不满三年者，可报民办高中、职业高中等；诸暨等地规定连续3年学籍可报高中，未满3年有房/户籍可报，否则仅报职高和民办高中。</div></td>
+      <td><div class="clamp">优质公办普通高中分配生招生比例达学校招生总计划的70%（2024年为≥60%），仅面向本行政区（越城/柯桥/上虞各自独立），按符合条件的初中毕业生人数比例均衡分配到校；依据中考总分3录取，分配生录取覆盖率达100%，原则上不划基准线、确保到校名额录取率不低于95%。须本行政区同一初中连续三年完整就读（人籍一致）、综合素质终评1B2C及以上。</div></td>
+      <td><div class="clamp">普通高中自主招生（特色招生、特长招生）：公办普高自主招生计划不超过学校总计划20%，仅面向本行政区；特长招生按专门测试+学业成绩（学业权重≥30%）择优。民办普高可安排专门测试、签约固化或系统内征询志愿。绍兴龙山书院90名公费计划实行自主招生。</div></td>
+    </tr><tr>
+      <td class="city"><a href="zhejiang-wenzhou-shengxue-lujing.html" style="color:hsl(235 48% 30%);font-weight:700">温州</a><br><span class="csub2">满分 660</span></td>
+      <td>660</td>
+      <td><div class="clamp">全市统一招生管理系统录取，按招生区域（市区/各县市）分别划线录取。统一划定普高最低录取控制线（2025年市区普高最低控制线450分，民办普高可降分）。分统招线、名额分配（定向）线、特殊类别招生线；第三批次民办普高跨区域统筹招生实行征求志愿。遵循“分数优先、遵循志愿”平行志愿，同分依次比较文化总分、语数总分、语/数单科高者、英语、科学、社会。</div></td>
+      <td><div class="clamp">第一批次(特殊类别招生) → 第二批次(统一招生+名额分配) → 第三批次(民办普高跨区域统筹)</div></td>
+      <td><div class="clamp">省内非本市户籍考生在温州就读可直接享受同城待遇；省外户籍考生须具有本市初中三年连续完整学籍，且学生或其父母一方持有有效《浙江省居住证》（或具备房产/养老保险缴纳等条件之一）可享同城待遇，可报考公办普高。不符合上述条件的可报考民办普高和中职学校，具体由各县（市、区）结合实际执行。</div></td>
+      <td><div class="clamp">分配生（定向生）招生比例达到学校中考招生计划数的70%，具体方案由各地制定。市局直属和鹿城区属初中定向对象须在该校连续就读两年及以上（以学籍为准，其中一年为九年级）；自2024年秋季入学的初一新生起，须同一初中学校（校区）在籍在读满3年应届方可参与，中途转学不得参与。按初中毕业生人数比例分配到校。</div></td>
+      <td><div class="clamp">特长生：原则上省级及以上体育/艺术特色学校等可面向全市招体育、艺术特长生，招生总数不超过学校当年计划5%（面向全市单项≤5人，足球单列）；专业测试由县（市）组织，按学业+专业+综合素质择优。特色生：经市教育局审批的学术/体育/艺术类特色高中建设学校在规定范围招生，特色生+特长生总数原则上不超过20%。另含中外合作项目、专门类别学校招生。</div></td>
+    </tr><tr>
+      <td class="city"><a href="zhejiang-jinhua-shengxue-lujing.html" style="color:hsl(282 48% 30%);font-weight:700">金华</a><br><span class="csub2">满分 660</span></td>
+      <td>660</td>
+      <td><div class="clamp">全市推行“公民同招、普职同招”，统一招生录取网络平台实施。分提前批、普通批两批次，未完成的计划经审核补充录取。按招生区域属地招生（县市公办本县市、市区公办市区）。2025年市区普高最低控制线450分（民办可降15分），普职融通班383分，中本一体化495分。</div></td>
+      <td><div class="clamp">提前批 → 普通批 → 补充录取</div></td>
+      <td><div class="clamp">非金华市户籍、具有金华市初中学籍的应届（历届）毕业生可报名并参加高中段招生录取。随迁子女符合条件可视同本市户籍录取（如东阳市：外来务工人员夫妻一方或双方在本市参加社会养老保险连续两年及以上，且子女在本市初中有连续三年学习经历和正式学籍），具体由各县（市、区）确定。</div></td>
+      <td><div class="clamp">优质普通高中定向分配招生名额比例不低于学校普通类招生计划的75%，以初中毕业生人数为主要依据按比例分配到初中学校。金华一中、浙师大附中、汤溪中学、艾青中学四所省一级重点普高2025年定向各初中指标合计2092人。</div></td>
+      <td><div class="clamp">特长生：在艺术、体育、创新发明、信息技术、自然科学、文学创作等方面有特长的学生，招生数不超过学校招生总数5%，学业水平成绩权重不低于30%，中考后组织。特色班、普通高中中外合作班(出国)、金华市外国语学校中德小语种班等经审核在提前批招生。</div></td>
+    </tr><tr>
+      <td class="city"><a href="zhejiang-quzhou-shengxue-lujing.html" style="color:hsl(329 48% 30%);font-weight:700">衢州</a><br><span class="csub2">满分 660</span></td>
+      <td>660</td>
+      <td><div class="clamp">公办、民办普高均属地招生（县市公办本县市、市区公办两区）。录取实行“遵循志愿、分数优先”平行志愿投档，按总分（位次）从高到低投档，每位考生一次投档机会。设统招线、分配生（定向）线（控制在统招线25分以内）、特长生/特色生线。市区统一招录平台。</div></td>
+      <td><div class="clamp">提前批(特殊类型招生) → 定向指标分配生 → 统招生 → 中本一体化(3+4)</div></td>
+      <td><div class="clamp">报名条件：非衢州市户籍、具有衢州市初中学籍的应届或往届毕业生均可报名并参加高中阶段学校招生录取。随迁子女报考普通高中的具体门槛细则由各地执行（市级未单列额外限制，以各县招生文件为准）。</div></td>
+      <td><div class="clamp">衢州一中、二中、三中按学校招生计划总数70%作为指标分配生计划，衢州高级中学按(总计划−体艺特色生)×70%。定向分配到市区各初中，按应届毕业生数(25%)+中考报考人数(75%)权重；须在该校读满三年（不含休学）的应届初中毕业生方可享受；录取线一般控制在统招线25分以内，确保名额完成率至少95%，剩余转统招。</div></td>
+      <td><div class="clamp">特长生（按衢教办〔2025〕12号）、特色生（衢教办〔2025〕11号）、市体育运动学校（衢市体〔2025〕18号）、海航班（浙教办函〔2025〕13号）。特长生未完成的转统招，特色生未完成的转所在招生区域统招。体艺（小语种）特色高中的特色生可在设区市范围内跨区域招生。</div></td>
+    </tr><tr>
+      <td class="city"><a href="zhejiang-zhoushan-shengxue-lujing.html" style="color:hsl(16 48% 30%);font-weight:700">舟山</a><br><span class="csub2">满分 660</span></td>
+      <td>660</td>
+      <td><div class="clamp">普通高中不录取未参加中考学生。按“总分2”（文化课+体育+综合素质评价折算分）编排成绩名次，分录取区域（市区再分定海、普陀、市属）。并列分优先按综合素质A多者、再B多者，再语数英三科总分、数学。普高最低控制线未统一公布（<span class="dai">待核</span>）。</div></td>
+      <td><div class="clamp">中本一体化(提前批) → 特长生 → 特色招生 → 分配生 → 统招生 → 中外合作项目招生 → 中职(平台统一录取+学校自主招生)</div></td>
+      <td><div class="clamp">舟山市2025年学业考试与高中招生文件未单列随迁子女额外门槛；随迁子女在舟就读并参加中考后，按录取区域统一录取规则参与（具体报考普通高中的户籍/居住证细则以各县区报名文件为准，<span class="dai">待核</span>）。</div></td>
+      <td><div class="clamp">2025年全市6所普高（舟山中学、定海一中、普陀中学、南海实验高中、岱山中学、嵊泗中学）分配生招生比例均不低于70%（较2024年提高10个百分点）。分配生资格须具有舟山市学籍且同一初中学校（校区）在籍在读完整3年应届（2024年起，中途转学不得参与）。先按原降分办法录取，未达95%完成率则按总分2从高到低至95%，剩余纳入统招。</div></td>
+      <td><div class="clamp">特长生（舟教基〔2016〕14号，不计入分配生名额但计入录取区域名额）；特色招生（计入分配生名额，未录足转统招）；少体校班（南海高中与舟山少体校联合招生35人）；中美AP班（舟山中学70人）。体艺特长生招生在统招前完成专业测试。</div></td>
+    </tr><tr>
+      <td class="city"><a href="zhejiang-taizhou-shengxue-lujing.html" style="color:hsl(63 48% 30%);font-weight:700">台州</a><br><span class="csub2">满分 660</span></td>
+      <td>660</td>
+      <td><div class="clamp">中考实施“两考合一”，所有初中毕业生须参加中考。实行考前填报志愿（市区5月22—26日），按“在哪里报考就在哪里录取”。每年按中考人数和普职招生比例划定普高最低录取控制分数线。设统招线、分配生（定向）线、特长生/自主招生线；市区未录取考生可填征集志愿。</div></td>
+      <td><div class="clamp">提前批/特殊类型 → 名额分配(定向) → 统招生 → 征集志愿 → 中职</div></td>
+      <td><div class="clamp">非台州户籍随迁子女报考普通高中须同时具备：父（母）或监护人在台州已领取《浙江省居住证》并缴纳社会保险；本人在台州初中学校具有3年完整学籍且就读至毕业。三个条件必须同时具备。不符合条件、初中学籍在台州的随迁子女可参加中考，但只能报考中等职业学校。高层次人才子女按相关政策执行。</div></td>
+      <td><div class="clamp">优质普通高中分配生比例从2024年的60%提高到2025年的70%。优质普通高中主管教育行政部门根据分配生招生计划和初中学校具有分配生资格的应届毕业生数，按比例分配到每所初中学校，分配生招生比例达到优质普通高中招生计划的70%。</div></td>
+      <td><div class="clamp">部分普通高中自主招生（如玉环中学自主招生76人、楚门中学自主招生40人等，预录取后须填报对应志愿）；特长生、特色生按学校招生章程在中考后组织。具体自主招生/特长生计划由各县（市、区）制定。</div></td>
+    </tr><tr>
+      <td class="city"><a href="zhejiang-lishui-shengxue-lujing.html" style="color:hsl(110 48% 30%);font-weight:700">丽水</a><br><span class="csub2">满分 650</span></td>
+      <td>650</td>
+      <td><div class="clamp">全市统一招生录取平台（1个市总平台+县分平台）覆盖所有高中段学校，不在平台录取不予注册学籍。录取分三段次。按“总分3”从高到低排序，同分按数学→语文→英语→科学→社会单科次序。综合素质评价等第要求：丽水中学2A2P及以上，其他普高4P及以上。</div></td>
+      <td><div class="clamp">第一段 → 第二段 → 第三段</div></td>
+      <td><div class="clamp">在我市就读的流动人口随迁子女可在我市报名参加中考和高中阶段学校录取。外省籍务工人员子女须同时具备：在丽水有合法稳定职业、合法稳定住所、按照国家规定参加社会保险一年及以上、随迁子女注册有本市学籍且在本市连续就学一年及以上（浙政办发〔2012〕160号）。具体细则由各县（市、区）制定。</div></td>
+      <td><div class="clamp">继续实行优质示范普通高中分配生制度，招收分配生须在招生前由各县（市、区）制定分配方案并公布。分配生比例按省要求执行（具体统一比例以各县方案为准，<span class="dai">待核</span>）；青田县要求具备报考所在初中初二、初三连续两年及以上学籍并实际就读的应届毕业生方可享受分配生政策。</div></td>
+      <td><div class="clamp">特长学生单列招生：在艺术、体育、创新发明、信息技术、自然科学、文学创作等方面有特长的学生，经申报批准可在市域和县域范围分别招收特长生；中考成绩权重不低于规定比例并逐年提高；专业测试原则上中考前完成，入围名单公示，录取名单公布。</div></td>
+    </tr></tbody>
+    </table>
+    </div>
+  </div>
+
+  <div class="note"><b>关于数据：</b>各城市页基于 2025 年当地中招 / 教育局公开资料整理，分数为录取参考线 / 定位分估算，官方未单列的数据均标注“官方未公布 / 未单列 / 待核”，不构成录取承诺；最终以市中招办与学校官方公布为准。</div>
+  <div class="foot">中高考考情分析平台 · 浙江初升高升学路径</div>
+</div>
+<script>
+  document.querySelectorAll('.tab').forEach(function(b){
+    b.addEventListener('click', function(){
+      document.querySelectorAll('.tab').forEach(function(t){t.classList.remove('active')});
+      document.querySelectorAll('.panel').forEach(function(p){p.classList.remove('active')});
+      b.classList.add('active');
+      document.getElementById(b.dataset.p).classList.add('active');
+    });
+  });
+</script>
+</body>
+</html>

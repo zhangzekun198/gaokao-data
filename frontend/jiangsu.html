@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>江苏初升高升学路径全景 · 13 市</title>
+<style>
+:root{--bg:#f6f7fb;--card:#fff;--ink:#3a3f4b;--sub:#7a8090;--line:#e9ebf0;--accent:#3b5bdb}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:-apple-system,"PingFang SC","Microsoft YaHei",Roboto,Arial,sans-serif;font-size:15px;line-height:1.6}
+.hero{background:linear-gradient(135deg,#d6e4f7,#e9dcf4 50%,#d9ede9);color:#51586a;padding:32px 18px 28px;text-align:center}
+.hero h1{margin:0 0 6px;font-size:24px;letter-spacing:1px}
+.hero p{margin:0;opacity:.82;font-size:14px}
+.wrap{max-width:1080px;margin:0 auto;padding:18px}
+.back{display:inline-block;margin:6px 0 14px;color:var(--accent);text-decoration:none;font-size:14px;font-weight:600}
+.back:hover{text-decoration:underline}
+.pcard{background:#fff;border-radius:16px;padding:20px;box-shadow:0 6px 22px rgba(70,80,130,.08);border:1px solid var(--line)}
+.pcard .tag{display:inline-block;font-size:12px;font-weight:700;padding:2px 9px;border-radius:20px;color:#5660a8;background:#d9def7;margin-bottom:8px}
+.pcard h2{margin:0 0 4px;font-size:20px}
+.pcard p.desc{color:var(--sub);font-size:13px;margin:0 0 16px}
+.cities{display:grid;grid-template-columns:repeat(auto-fit,minmax(110px,1fr));gap:10px}
+.cities a.cc{text-align:center;text-decoration:none;padding:16px 8px;border-radius:12px;font-size:16px;font-weight:700;transition:filter .15s,transform .15s;border:1px solid rgba(0,0,0,.05)}
+.cities a.cc:hover{filter:brightness(.97);transform:translateY(-1px)}
+.cities a.cc small{display:block;font-size:11px;font-weight:500;opacity:.75;margin-top:3px}
+.chart{background:#fff;border-radius:16px;padding:20px;box-shadow:0 6px 22px rgba(70,80,130,.08);border:1px solid var(--line);margin-top:16px}
+.chart .tag{display:inline-block;font-size:12px;font-weight:700;padding:2px 9px;border-radius:20px;color:#5660a8;background:#d9def7;margin-bottom:8px}
+.chart h2{margin:0 0 4px;font-size:20px}
+.chart p.csub{color:var(--sub);font-size:13px;margin:0 0 14px}
+.tabs{display:flex;gap:8px;margin:0 0 14px;flex-wrap:wrap}
+.tab{border:1px solid var(--line);background:#fff;color:var(--sub);font-size:13px;font-weight:600;padding:7px 15px;border-radius:20px;cursor:pointer;transition:.15s}
+.tab:hover{border-color:var(--accent);color:var(--accent)}
+.tab.active{background:var(--accent);color:#fff;border-color:var(--accent)}
+.panel{display:none}
+.panel.active{display:block}
+.bar{display:grid;grid-template-columns:62px 1fr 56px;align-items:center;gap:10px;text-decoration:none;color:var(--ink);padding:5px 0}
+.bar:hover .bn{color:var(--accent)}
+.bar:hover .bf{filter:brightness(.95)}
+.bn{font-size:14px;font-weight:600;text-align:right}
+.bt{background:#eef0f5;border-radius:9px;height:22px;overflow:hidden}
+.bf{display:block;height:100%;border-radius:9px;min-width:6px}
+.bv{font-size:13px;font-weight:700;text-align:left;color:#5a6072}
+.cnote{background:#fdf3e7;border:1px solid #f6dcc0;border-radius:12px;padding:12px 14px;font-size:12.5px;color:#a9763f;margin-top:14px}
+.dai{color:#b45309;background:#fff7ed;border-radius:5px;padding:0 4px;font-weight:600}
+.ctable{width:100%;border-collapse:collapse;font-size:13px;margin-top:2px}
+.ctable th{text-align:left;color:var(--sub);font-weight:600;padding:9px 10px;border-bottom:2px solid var(--line);position:sticky;top:0;background:#fff}
+.ctable td{padding:9px 10px;border-bottom:1px solid var(--line);vertical-align:top}
+.ctable tr:hover td{background:#fafbff}
+.ctable .city{font-weight:700;white-space:nowrap}
+.tscroll{overflow-x:auto;-webkit-overflow-scrolling:touch;margin-top:2px}
+.clamp{display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden;line-height:1.55}
+.csub2{color:var(--sub);font-size:12px;font-weight:400;display:block;margin-top:3px}
+.note{background:#fdf3e7;border:1px solid #f6dcc0;border-radius:12px;padding:12px 14px;font-size:13px;color:#a9763f;margin:16px 0}
+.foot{text-align:center;color:var(--sub);font-size:12px;margin:22px 0 10px}
+@media(max-width:520px){.bar{grid-template-columns:52px 1fr 48px;gap:7px}.bn{font-size:13px}.ctable{font-size:12px}}
+</style>
+</head>
+<body>
+<header class="hero">
+  <h1>江苏初升高升学路径全景</h1>
+  <p>13 个地级市 · 一张图看全初升高（计分 / 批次 / 名额分配 / 自主招生 / 随迁门槛 / 中职贯通）</p>
+</header>
+<div class="wrap">
+  <a class="back" href="index.html">← 返回门户</a>
+  <div class="pcard">
+    <span class="tag">江苏 · 13 市</span>
+    <h2>选择城市，进入初升高升学路径全景</h2>
+    <p class="desc">江苏中考由各地级市自主命题录取（高考虽全省统一，中考由市管，非全省统一）。每个城市页含 9 大模块：中考概况 / 录取批次与路径 / 名额分配 / 自主招生 / 随迁门槛 / 路径总览 / 中职职教 / 关键数据 / 官方信源。官方未单列的数据均如实标注“待核”。</p>
+    <div class="cities"><a class="cc" style="background:hsl(0 58% 86%);color:hsl(0 48% 30%)" href="jiangsu-nanjing-shengxue-lujing.html">南京<small>满分 700</small></a><a class="cc" style="background:hsl(47 58% 86%);color:hsl(47 48% 30%)" href="jiangsu-suzhou-shengxue-lujing.html">苏州<small>满分 740</small></a><a class="cc" style="background:hsl(94 58% 86%);color:hsl(94 48% 30%)" href="jiangsu-wuxi-shengxue-lujing.html">无锡<small>满分 750</small></a><a class="cc" style="background:hsl(141 58% 86%);color:hsl(141 48% 30%)" href="jiangsu-changzhou-shengxue-lujing.html">常州<small>满分 700</small></a><a class="cc" style="background:hsl(188 58% 86%);color:hsl(188 48% 30%)" href="jiangsu-zhenjiang-shengxue-lujing.html">镇江<small>满分 700</small></a><a class="cc" style="background:hsl(235 58% 86%);color:hsl(235 48% 30%)" href="jiangsu-xuzhou-shengxue-lujing.html">徐州<small>满分 780</small></a><a class="cc" style="background:hsl(282 58% 86%);color:hsl(282 48% 30%)" href="jiangsu-huaian-shengxue-lujing.html">淮安<small>满分 780</small></a><a class="cc" style="background:hsl(329 58% 86%);color:hsl(329 48% 30%)" href="jiangsu-suqian-shengxue-lujing.html">宿迁<small>满分 800</small></a><a class="cc" style="background:hsl(16 58% 86%);color:hsl(16 48% 30%)" href="jiangsu-lianyungang-shengxue-lujing.html">连云港<small>满分 800</small></a><a class="cc" style="background:hsl(63 58% 86%);color:hsl(63 48% 30%)" href="jiangsu-nantong-shengxue-lujing.html">南通<small>满分 820</small></a><a class="cc" style="background:hsl(110 58% 86%);color:hsl(110 48% 30%)" href="jiangsu-yangzhou-shengxue-lujing.html">扬州<small>满分 780</small></a><a class="cc" style="background:hsl(157 58% 86%);color:hsl(157 48% 30%)" href="jiangsu-taizhou-shengxue-lujing.html">泰州<small>满分 830</small></a><a class="cc" style="background:hsl(204 58% 86%);color:hsl(204 48% 30%)" href="jiangsu-yancheng-shengxue-lujing.html">盐城<small>满分 800</small></a></div>
+  </div>
+
+  <div class="chart">
+    <span class="tag">一图看懂 · 13 市</span>
+    <h2>江苏各市初升高关键差异</h2>
+    <p class="csub">横向对比各市中考方案。柱条按数值从高到低排列，点击可进入该市中心页；官方未单列的维度诚实标注“待核 / 未公布”，不作估算填充。</p>
+    <div class="panel active" id="p-total">
+      <p class="csub" style="margin-top:0">各市中考满分不同（700–830 分），反映计分科目与权重差异，不代表考试难易或录取难度。普高录取率等更细维度，点柱条进对应城市页查看（官方未单列的均如实标注“待核”，不作估算填充）。</p>
+      <a class="bar" href="jiangsu-taizhou-shengxue-lujing.html"><span class="bn">泰州</span><span class="bt"><span class="bf" style="background:hsl(157 58% 86%);width:100%"></span></span><span class="bv">830</span></a><a class="bar" href="jiangsu-nantong-shengxue-lujing.html"><span class="bn">南通</span><span class="bt"><span class="bf" style="background:hsl(63 58% 86%);width:99%"></span></span><span class="bv">820</span></a><a class="bar" href="jiangsu-suqian-shengxue-lujing.html"><span class="bn">宿迁</span><span class="bt"><span class="bf" style="background:hsl(329 58% 86%);width:96%"></span></span><span class="bv">800</span></a><a class="bar" href="jiangsu-lianyungang-shengxue-lujing.html"><span class="bn">连云港</span><span class="bt"><span class="bf" style="background:hsl(16 58% 86%);width:96%"></span></span><span class="bv">800</span></a><a class="bar" href="jiangsu-yancheng-shengxue-lujing.html"><span class="bn">盐城</span><span class="bt"><span class="bf" style="background:hsl(204 58% 86%);width:96%"></span></span><span class="bv">800</span></a><a class="bar" href="jiangsu-xuzhou-shengxue-lujing.html"><span class="bn">徐州</span><span class="bt"><span class="bf" style="background:hsl(235 58% 86%);width:94%"></span></span><span class="bv">780</span></a><a class="bar" href="jiangsu-huaian-shengxue-lujing.html"><span class="bn">淮安</span><span class="bt"><span class="bf" style="background:hsl(282 58% 86%);width:94%"></span></span><span class="bv">780</span></a><a class="bar" href="jiangsu-yangzhou-shengxue-lujing.html"><span class="bn">扬州</span><span class="bt"><span class="bf" style="background:hsl(110 58% 86%);width:94%"></span></span><span class="bv">780</span></a><a class="bar" href="jiangsu-wuxi-shengxue-lujing.html"><span class="bn">无锡</span><span class="bt"><span class="bf" style="background:hsl(94 58% 86%);width:90%"></span></span><span class="bv">750</span></a><a class="bar" href="jiangsu-suzhou-shengxue-lujing.html"><span class="bn">苏州</span><span class="bt"><span class="bf" style="background:hsl(47 58% 86%);width:89%"></span></span><span class="bv">740</span></a><a class="bar" href="jiangsu-nanjing-shengxue-lujing.html"><span class="bn">南京</span><span class="bt"><span class="bf" style="background:hsl(0 58% 86%);width:84%"></span></span><span class="bv">700</span></a><a class="bar" href="jiangsu-changzhou-shengxue-lujing.html"><span class="bn">常州</span><span class="bt"><span class="bf" style="background:hsl(141 58% 86%);width:84%"></span></span><span class="bv">700</span></a><a class="bar" href="jiangsu-zhenjiang-shengxue-lujing.html"><span class="bn">镇江</span><span class="bt"><span class="bf" style="background:hsl(188 58% 86%);width:84%"></span></span><span class="bv">700</span></a>
+    </div>
+  </div>
+
+  <div class="chart">
+    <span class="tag">路径差异 · 全市对照</span>
+    <h2>江苏各市初升高政策维度对照</h2>
+    <p class="csub">7 列横向对比：中考满分 / 划线方式 / 录取批次 / 随迁子女门槛 / 名额分配 / 自主招生。文字较长处折叠为 3 行，点城市名进页看全文。标“待核”表示官方未单列。不作估算填充。</p>
+    <div class="tscroll">
+    <table class="ctable">
+      <thead><tr><th>城市</th><th>中考满分</th><th>划线方式（户籍 / 随迁）</th><th>录取批次与投档</th><th>随迁子女报考门槛</th><th>名额分配（指标生）</th><th>普通高中自主招生</th></tr></thead>
+      <tbody><tr>
+      <td class="city"><a href="jiangsu-nanjing-shengxue-lujing.html" style="color:hsl(0 48% 30%);font-weight:700">南京</a><br><span class="csub2">满分 700</span></td>
+      <td>700</td>
+      <td><div class="clamp">分批次划定投档控制线，不公开考生排名。原市区普通高中指标生投档控制线按全市中考成绩排名前30%考生最低分划定(2025年为585分)；第一批次原市区普高544分；浦口、江宁、六合、溧水、高淳各区指标生及普高线由各区教育局划定。特长生单独划线(科技/学科/数理贯通项目560、体育455、艺术490)。第一批次线上生源不足、征求后仍缺额的可在10分内降分投档。不按户籍/随迁分设不同线，随迁子女与户籍生同线同规则。</div></td>
+      <td><div class="clamp">零志愿(特长生/贯通项目) → 提前批次 → 第一批次(普高统招) → 第二批次 → 第三批次</div></td>
+      <td><div class="clamp">在南京市就读初中并取得学籍的非南京市户籍外来务工人员随迁子女，在就读初中学校报名，考试、填报志愿、录取与所在区南京市户籍考生相同(除特别说明外)。</div></td>
+      <td><div class="clamp">热点普通高中指标生按各初中校指标数和考生志愿从高分到低分择优录取。原市区指标生投档控制线按全市中考成绩排名前30%考生最低分划定(2025年585分)，其他区参照执行。考生须在学籍所在初中就读满三年，综合素质评价'道德品质''公民素养''交流与合作'合格、'学习能力''运动与健康''审美与表现'均B级及以上、生物和地理考查合格，方可填报指标生志愿。未完成的指标生计划返回统一招生计划录取。</div></td>
+      <td><div class="clamp">普通高中自主招生主要体现在：零志愿录取科技、学科、数理人才贯通培养实验项目特长生(2025年投档控制线560分)；提前批次体育、艺术特长生(体育455、艺术490)；另含南外部分计划。特长生具体类型与计划由各招生学校公布，须在中考后测试。</div></td>
+    </tr><tr>
+      <td class="city"><a href="jiangsu-suzhou-shengxue-lujing.html" style="color:hsl(47 48% 30%);font-weight:700">苏州</a><br><span class="csub2">满分 740</span></td>
+      <td>740</td>
+      <td><div class="clamp">实行'分数优先、遵循志愿'的平行志愿模式，各招生区域划定普通高中录取最低控制分数线。设四星级高中自主招生中考成绩最低控制线、指标生最低控制线。同分按语数英三科之和排序，仍同分则一并录取。姑苏区、工业园区、高新区为同一招生区域，吴江、吴中、相城为独立招生区域。</div></td>
+      <td><div class="clamp">跨区招生录取 → 自主招生录取 → 提前录取 → 第一批次 → 第二批次 → 第三批次</div></td>
+      <td><div class="clamp">在苏州市区就读初中并取得学籍的外省市户籍考生，和本市考生同等享受报考高中段学校的权利(含报考各类职业类学校和苏州幼儿师范高等专科学校)，执行统一的收费政策。</div></td>
+      <td><div class="clamp">四星级高中指标生比例为招生计划的70%。指标生计划按符合条件的毕业生人数均衡分配到统招区域内各初中校，填报志愿、依据计划、按分录取；各地划定指标生录取最低控制分数线。自2023级初一年级起，享受指标生须满足地段生认定或积分入学等要求且在其服务片区初中连续在籍在读满三年。跨区/自主招生/实验项目/国际课程等未招满计划转入统招计划。</div></td>
+      <td><div class="clamp">四星级普通高中面向所在区域自主招生，名额不超过学校当年招生计划总数5%，面向基础学科、体育、艺术、科技创新等特长学生。综合成绩=中考(折算百分制)×70%+面试×30%；各统招区域划定自主招生中考成绩最低控制分数线(2025年六区600分)。课程基地实验项目参照自主招生同步进行。</div></td>
+    </tr><tr>
+      <td class="city"><a href="jiangsu-wuxi-shengxue-lujing.html" style="color:hsl(94 48% 30%);font-weight:700">无锡</a><br><span class="csub2">满分 750</span></td>
+      <td>750</td>
+      <td><div class="clamp">中招录取分四个批次，提前批及第一批次各阶段、第二批次分别划定最低控制线。第一批次第一阶段采用传统志愿(以志愿先后为序)，其余批次平行志愿('按分排序、遵循志愿')。线上生源不足经批准可适当降分投档。考生须在学籍所在校读满三年方具热门普高分配指标资格。</div></td>
+      <td><div class="clamp">提前批次 → 第一批次第一阶段 → 第一批次第二阶段 → 第一批次第三阶段 → 第二批次 → 第三批次</div></td>
+      <td><div class="clamp"><span class="dai">待核</span>（检索到的无锡市2025年官方招生文件未单列随迁子女/非本市户籍报考普通高中的具体资格条件；文件总体原则为在无锡市区就读并取得学籍的应届初中毕业生同等对待，辖市如张家港明确'外省市户籍考生和本市考生同等享受高中段教育权利'，市区细化门槛标'<span class="dai">待核</span>'）</div></td>
+      <td><div class="clamp">继续实行热门普通高中招生指标(分配生)按比例分配到初中。市区：无锡一中、辅仁、梅村、太湖高中分配范围为梁溪、滨湖、新吴、经开及市属初中；天一中学、锡山高中分别分配到锡山区、惠山区。2025年市区热门高中将统招计划中的大部分(不低于70%，其中无锡一中/辅仁/梅村/太湖'其余招生指标全部分配到相关初中')作为分配生；江阴南菁/江阴高中为80%(70%基础+10%绩效)、宜兴为70%-80%。分配生录取在统招前，按学业考试总分从高分到低分，设最低控制线，生源不足时指标可转择优录取其他学校填报该志愿考生。须在学籍所在校读满三年。</div></td>
+      <td><div class="clamp">热门普通高中自主招生：科技特色班(特长生)同批次(阶段)提前单独录取，依据加试和中考成绩；艺术、体育特色班/特长生实行同批次单独录取、投档线单独划定，特长生计划数不超过招生总计划2%。完中直升：市一女中、湖滨中学、大桥实验、外国语、狄邦文理、协和双语、匡园双语、天一中学少年班按批准方案实施。自主招生预录取、科技特色班预录取6月22日前完成，且不得兼报。</div></td>
+    </tr><tr>
+      <td class="city"><a href="jiangsu-changzhou-shengxue-lujing.html" style="color:hsl(141 48% 30%);font-weight:700">常州</a><br><span class="csub2">满分 700</span></td>
+      <td>700</td>
+      <td><div class="clamp">按'平行志愿+辅助分排序'原则录取(总成绩从高到低依次检索考生志愿，被检索志愿中一经出现符合投档条件的学校即投档；同分按语数英三科之和→语数两科之和→语文→一并录取)。分别设置公办高中(含综合高中)、民办高中(含综合高中)、国际课程班最低录取控制分数线。热点优质普高分配名额在招生学校录取分数线下30分以内从高分到低分录取A志愿考生。非应届初中毕业生报考四星级普高减30分投档。</div></td>
+      <td><div class="clamp">提前批次 → 第一批次 → 第二批次第1小批 → 第二批次第2小批 → 征求志愿/注册入学</div></td>
+      <td><div class="clamp"><span class="dai">待核</span>（检索到的常州市2025年官方招生文件未单列随迁子女/非本市户籍报考普通高中的具体资格条件；在常州市就读的应届初中毕业生按常规渠道报考，细化随迁门槛以属地教育局规定为准，标'<span class="dai">待核</span>'）</div></td>
+      <td><div class="clamp">热点优质普通高中招生计划可分配名额的70%统一分配到初中学校。享受分配名额的考生须在本市同一学校在籍在读满3年；在招生学校录取分数线下30分以内从高分到低分依次录取A志愿考生；未完成的分配名额计划纳入统招计划。溧阳市、金坛区结合实际制定属地实施办法。</div></td>
+      <td><div class="clamp">普通高中创新人才培养实验班招生计划随高中招生计划一并下达；体育、艺术特长生招生计划原则上不超过该校招生计划的5%；'强基计划'后备人才协同培养计划对象，完成培养学分且A志愿填报培养高中、总分达属地四星级普高最低录取分数线的即可录取；常州市体育运动学校、'名校办名队'按计划实施。</div></td>
+    </tr><tr>
+      <td class="city"><a href="jiangsu-zhenjiang-shengxue-lujing.html" style="color:hsl(188 48% 30%);font-weight:700">镇江</a><br><span class="csub2">满分 700</span></td>
+      <td>700</td>
+      <td><div class="clamp">志愿填报为考前网上统一填报(5月28-30日)。以学生中考成绩总分和综合素质评定为依据，按志愿和学校计划公平、公正、择优录取。所有公办、民办普通高中不得跨区域招生。实行指标生到校(热点普高不低于70%计划分配到初中，录取设最低分数线控制)。热点普高不实行平行志愿(以保护指标到校落实)。</div></td>
+      <td><div class="clamp">志愿类别(1)热点普通高中 → 志愿类别(2)其他普通高中等 → 志愿类别(3)五年制高职/高技等 → 志愿类别(4)各类中等职业学校</div></td>
+      <td><div class="clamp"><span class="dai">待核</span>（检索到的镇江市2025年官方招生文件未单列随迁子女/非本市户籍报考普通高中的具体资格条件；文件规定具有本市学籍的八、九年级学生及未注册高中学籍的本市往届生可报考，随迁子女细化门槛以属地规定为准，标'<span class="dai">待核</span>'）</div></td>
+      <td><div class="clamp">将热点优质普通高中不低于70%的招生计划作为指标生计划分配到各初中，适当向薄弱初中、农村初中倾斜；指标生录取实行最低分数线控制(不得低于该热点普高统招分数线下20分)，按志愿择优录取。省丹中70%以上计划按报名考试学生数分配到各初中，从高分到低分择优，不得低于同批次工作分数线20分；指标分配生须在学籍所在校读满三年。镇江不实行平行志愿以保护指标到校。</div></td>
+      <td><div class="clamp">普通高中体育、艺术特长生及其他特色招生按各校计划实施(如省丹中美术班按专业测试成绩录取，资格线587分)。镇江官方文件中'自主招生'表述较少，特长生招生纳入相应批次与计划；具体普通高中自主招生类型与计划标'<span class="dai">待核</span>'。</div></td>
+    </tr><tr>
+      <td class="city"><a href="jiangsu-xuzhou-shengxue-lujing.html" style="color:hsl(235 48% 30%);font-weight:700">徐州</a><br><span class="csub2">满分 780</span></td>
+      <td>780</td>
+      <td><div class="clamp">普通高中实行属地招生（县域公办高中本县域招、主城区公办高中在所在区或若干城区招）；全市统一分批次依序录取，划定普通高中最低录取控制线；四星级高中设A志愿统招投档线，指标生在该校A志愿投档线下加45分投档；不单列随迁子女分数线，随迁子女与本地考生同等待遇。</div></td>
+      <td><div class="clamp">第一批次 → 第二批次 → 第三批次</div></td>
+      <td><div class="clamp">就读于本市初中并有本市学籍的外来经商务工人员子女，与就读地县（市、区）户口的考生享受同等待遇（依据徐教〔2025〕21号）。无专门随迁分数线，凭本市初中学籍即可报考普通高中。</div></td>
+      <td><div class="clamp">有指标生计划的普通高中，指标生计划不低于本校当年招生总计划的70%（特长生+统招占30%）。对分配到指标的考生，投档指标生志愿学校时加45分；指标生名额适当向农村初中和城区薄弱初中倾斜；在初始注册学籍学校就读不满三年（含主动放弃、违规转学）的中考时不享受指标生待遇。</div></td>
+      <td><div class="clamp">具备特色办学基础的普通高中可自主招收特长生，名额纳入学校统一招生计划，特长生招生在中考结束后进行；中小学拔尖创新人才早期培养招生及培养方案须报省教育厅审核；外语/艺术/体育类特色校特殊类型招生须报省厅备案；中外合作办学项目招生须报市局备案，且未达本校普通班录取线者不得转入普通班。</div></td>
+    </tr><tr>
+      <td class="city"><a href="jiangsu-huaian-shengxue-lujing.html" style="color:hsl(282 48% 30%);font-weight:700">淮安</a><br><span class="csub2">满分 780</span></td>
+      <td>780</td>
+      <td><div class="clamp">全市划分4个招生区域（涟水县、盱眙县、金湖县、城区含经开/清江浦/淮安/淮阴/洪泽/工业园/生态文旅区），普通高中属地招生、不得跨区域；中考后公布各招生区域普通高中最低录取控制线，任何普高不得录取控制线下考生；四星级高中在统招计划30%录取线下降20分录取定向分配计划；自主招生最多降60分；非应届生报考普高减20分。</div></td>
+      <td><div class="clamp">单列计划志愿（提前） → 普通高中（含综合高中班、职普融通班） → 职业院校 → 征求志愿</div></td>
+      <td><div class="clamp">应届初中毕业生须在学籍所在招生区域报名并填报志愿，非应届初中毕业生须在户籍所在招生区域报名（淮教发〔2025〕7号）；随迁子女（外来务工人员子女）凭本市初中学籍在学籍地报考，与本地学生执行相同考试招生政策（依据省教育厅2025年招生入学通知及淮安市户籍改革文件“同等待遇”要求）。官方2025招生意见未单列专门随迁材料条款，具体居住证/社保证明要求：<span class="dai">待核</span>。</div></td>
+      <td><div class="clamp">四星级高中（含新校区）统招计划的70%定向分配到本县区初中学校；在统招计划30%录取线下降20分、按第一志愿择优录取定向分配计划；2023年入学起须在本校连续读满三年，非在籍生/借读生/2024年7月1日后转入者不享受；未完成的定向计划转入统招补录。</div></td>
+      <td><div class="clamp">四星级高中及部分经审批同意的非四星级高中可自主招生，计划数原则上不超过本校招生总计划的5%，鼓励招收科技/体艺特长生；录取分数最多在该校统招线下降60分（非四星经审批也降60分）；6月23日前公示合格人选；淮海中学招足球特长生40名（不低于区域普高最低控制线）。</div></td>
+    </tr><tr>
+      <td class="city"><a href="jiangsu-suqian-shengxue-lujing.html" style="color:hsl(329 48% 30%);font-weight:700">宿迁</a><br><span class="csub2">满分 800</span></td>
+      <td>800</td>
+      <td><div class="clamp">全市划分4个招生区域（中心城区含市直/宿豫/宿城/经开/湖滨/苏宿园/洋河，以及沭阳、泗阳、泗洪），普通高中按区域招生、严禁跨区跨市；中心城区普高最低控制线由市教育局测定、三县自定，报政府批准；按平行志愿1:1投档，同分跟进；热点高中指标生最低控制在录取线下20分。</div></td>
+      <td><div class="clamp">第一批次 → 第二批次 → 第三批次</div></td>
+      <td><div class="clamp">报名条件：宿迁市初三年级学籍应届生，或宿迁市户籍往届初中毕业生；“无本市户籍也无本市初三学籍的学生不得报名参加中考”。即随迁子女（非本市户籍）须具有本市初三学籍方可报考，凭学籍在学籍地参考、与本地生同待遇；我市户籍在外省市就读应届生须在中考前将学籍转入我市方可回宿参考。</div></td>
+      <td><div class="clamp">热点公办普通高中招生计划的70%作为指标生分配到区域内所有初中学校（热点民办高中可申请部分分配）；录取时根据考生志愿和所在学校指标数从高分到低分择优，最低分数控制在热点高中录取线下20分；指标生计划未录满转入统招正常录取；须初中连续三年（初一至初三）在校在籍，符合指标生认定条件（四星级普高只招应届生）。</div></td>
+      <td><div class="clamp">普通高中高品质特色发展试行体艺特长生自主招生，经批准招收特长生计划不得超过招生总计划的3%；符合条件的获奖运动员就读普高计划单列、按政策自主招生；支持部分热点普高探索基础学科拔尖创新人才培养；特长生须先资格审核+加试，依据中考与加试成绩择优。</div></td>
+    </tr><tr>
+      <td class="city"><a href="jiangsu-lianyungang-shengxue-lujing.html" style="color:hsl(16 48% 30%);font-weight:700">连云港</a><br><span class="csub2">满分 800</span></td>
+      <td>800</td>
+      <td><div class="clamp">全市划分4个招生区域（市区含海州/赣榆/连云及经开/徐圩/云台山，以及东海、灌云、灌南），公民办普高按区域招生、严禁违规跨区；按“分数优先、遵循志愿顺序”择优录取，划定各批次录取控制线；指标生取得四星级普高指标生资格后加10分投档（A志愿）；总分相同依次比文化总分、语数外三科总分、语数外单科。</div></td>
+      <td><div class="clamp">提前录取批次 → 第一录取批次 → 第二录取批次 → 自主招生批次</div></td>
+      <td><div class="clamp">报名条件：具有我市初中学籍的应届初三学生，或具有同等学力的我市户籍社会考生均可报考；凡被高中段学校投档录取或注册过学籍的不得报考四星级普高；“外省初中毕业的社会考生不得报考公办普通高中”。即随迁子女（非本市户籍）凭本市初中学籍即可报考普通高中，与本地学生同政策；非本市户籍但取得本市初中毕业证书的往届生可到原毕业学校所在县区报名。</div></td>
+      <td><div class="clamp">四星普通高中指标生计划全部分配到学校所在的市、县区内相关初中（不跨属地）；分配依据：九年级在籍考生数70%+落实“双减”及规范办学20%+推进教改10%；推荐条件：本校学籍且就读满三年、学业成绩本校优异、综合素质评价优秀；须在平行志愿A志愿填报相应普高方有效；录取时加10分投档（新海高级中学创新人才实验班不享受）。</div></td>
+      <td><div class="clamp">提前录取批次自主招生：新海高级中学创新人才实验班、新海高级中学开发区分校（南师附连云）自主招生；普通高中高品质特色发展自主招生（艺术类须艺术素质测评B及以上）；高中段学校按自主招生计划招生。</div></td>
+    </tr><tr>
+      <td class="city"><a href="jiangsu-nantong-shengxue-lujing.html" style="color:hsl(63 48% 30%);font-weight:700">南通</a><br><span class="csub2">满分 820</span></td>
+      <td>820</td>
+      <td><div class="clamp">全市统一划定普通高中最低录取控制线，公民办高中、综合高中同步招生、坚持属地招生（公办普高/综合高中不得跨县域招生，未完成的民办普高可经同意后市域补招）；不另设分区线或单独指标生线，南通称名额分配为“推荐生”（不低于70%计划分配到初中，由各地制定录取办法）。</div></td>
+      <td><div class="clamp">提前批次 → 第一批次第1小批（普高自主招生） → 第一批次第2小批 → 第二批次</div></td>
+      <td><div class="clamp">随迁子女在南通中考招生录取方面100%享受“同城待遇”（南通市政府/人民网江苏报道）：符合条件的外来务工人员随迁子女统筹安排入读公办学校，报考普通高中与本地户籍考生同等待遇。具体资格条件（居住证/社保年限等）官方未在网上公开明细，<span class="dai">待核</span>。</div></td>
+      <td><div class="clamp">热点普通高中招生按不低于70%的招生计划确定“推荐生”(指标生)，按当地初中毕业生源数比例均衡分配到各初中学校；在招生区域范围内初中学校在籍在读满三年的学生方可享受；具体录取(实施)办法由各地教育行政部门制定；同一招生学校的特长生与推荐生资格可累计加分投档。</div></td>
+      <td><div class="clamp">普通高中自主招生含：①艺体、科技特长生（计划单列，不超过该校当年招生计划5%）；②课程基地/创新人才培养基地学校自主招收特长生及学科特长、创新潜质学生；③中外合作办学项目、民办高中国际化教育实验班（计划单列，经批准全市范围招生，第一批次第1小批，不低于全市普高最低控制线）；④江苏省南通中学面向徐州、南通、连云港、淮安、盐城、泰州、宿迁等市招航空实验班50名左右。每生限报1所自主招生学校。</div></td>
+    </tr><tr>
+      <td class="city"><a href="jiangsu-yangzhou-shengxue-lujing.html" style="color:hsl(110 48% 30%);font-weight:700">扬州</a><br><span class="csub2">满分 780</span></td>
+      <td>780</td>
+      <td><div class="clamp">分招生区域（市直广陵、邗江、江都、各县市）分别组织招生与划线；热点高中指标生录取控制在该校统招线(非指标生线)下50分以内(新华中学不设分数底线)；地理生物会考均达C及以上方可报三星及以上普高，艺术素质测评C及以上方可报四星普高；录取“高分优先、遵循志愿”，同分按语数外等排序。</div></td>
+      <td><div class="clamp">第一批次（热点高中统招/跨区） → 第二批次（指标生/定向） → 第三批次（综合高中班） → 第四批次（其他普高/职教）</div></td>
+      <td><div class="clamp">招生对象明确包含随迁子女（应届或往届初中毕业生含随迁子女）；随迁子女报考普通高中须满足与本地生相同的会考/艺术测评等级要求（地生会考C及以上报三星及以上普高、艺术测评C及以上报四星普高）。具体居住证/社保年限等落户类门槛官方文件未在网上公开明细，<span class="dai">待核</span>。</div></td>
+      <td><div class="clamp">市直广陵招生区域：扬州中学、扬大附中(淮海路校区/广陵新城校区)、新华中学面向该区域统招生计划的70%作为定向指标，按学生数均衡分配给所有公民办初中；指标生须初中3年学籍和就读一致、地生会考均达B及以上、理化生实验合格、艺术测评C及以上，且平行志愿第一顺序(第一批次1志愿)填报；录取控制在该校统招线下50分以内(新华中学不设底线)。江都区：江都中学、丁沟中学、大桥高级中学、仙城中学70%指标，育才中学、邵伯高级中学、江都区第一中学20%指标定向全区初中。</div></td>
+      <td><div class="clamp">自主招生含：①扬州中学创新人才培养实验班（面向市直广陵招45人，录取后按中考成绩高分到低分确定）；②科技创新、学科、信息技术、体育、艺术特长生面向全市自主招生（占相应高中招生计划）；③宝应县画川高级中学国防班面向全市招50人；④国际班（扬州中学中美高中课程实验班、扬大附中苏教国际预科班、北京新东方扬州外国语学校国际班）；⑤各区县高中体育/艺术/科技特长生（如邗江中学体育特长生12人、科创/信息技术/文学特长生≤7人等）。</div></td>
+    </tr><tr>
+      <td class="city"><a href="jiangsu-taizhou-shengxue-lujing.html" style="color:hsl(157 48% 30%);font-weight:700">泰州</a><br><span class="csub2">满分 830</span></td>
+      <td>830</td>
+      <td><div class="clamp">各市(区)分别划定普通高中录取控制线（海陵区/医药高新区541、姜堰区590.5、兴化市460、靖江市577.5、泰兴市523）；热点优质普通高中指标生优先录取并设最低控制线（“老五所”按招生区域前25%最低分、其余8所按前45%最低分）；非指标生在指标生后录取；平行志愿“同分跟进”；所有普高(含国际班)严禁接收控制线下考生。</div></td>
+      <td><div class="clamp">指标生批次（热点优质普高） → 非指标生批次（热点优质普高） → 其他四星/三星普通高中 → 综合高中试点班 → 中职/五年制高职等</div></td>
+      <td><div class="clamp">中考报名对象含具有泰州市初中学籍的九年级学生；具有泰州市户籍在外地就读的随迁子女回泰州报考普高，须在规定时间回泰州办理报名、填报志愿手续（省内回泰考试，省外原则上回泰，特殊情况可借考并折算成绩）。非泰州户籍在泰州有正式学籍的随迁子女按学籍参考。具体报考普高的居住证/社保年限门槛官方未在网上公开明细，<span class="dai">待核</span>。</div></td>
+      <td><div class="clamp">热点优质普通高中（江苏省泰州中学等13所）实行指标生政策，指标生为招生计划总数的70%，均衡分配到本地所有初中；须具有本校学籍并在本校读满3年，公办初中择校生不享受；指标生优先录取，按招生区域中考成绩排名前25%（老五所：泰州中学、姜堰中学、兴化中学、靖江高级中学、泰兴中学）或前45%（其余8所）划定最低控制线；根据各初中分配数和考生志愿从高分到低分依次录取；未完成指标生计划转为非指标生同批次录取。</div></td>
+      <td><div class="clamp">普通高中特长生自主招生（依据泰教基〔2025〕1号），项目含科创类、体育类、艺术类、“5621”项目，每生限报1校1项目，部分在提前批次录取（如泰州二中招科创8人、体育4人、艺术4人等）；江苏省泰州中学“强基计划”后备人才培养面向全市招生，姜堰/兴化/靖江/泰兴中学强基计划面向本区；公办普通高中国际班面向全市招生。</div></td>
+    </tr><tr>
+      <td class="city"><a href="jiangsu-yancheng-shengxue-lujing.html" style="color:hsl(204 48% 30%);font-weight:700">盐城</a><br><span class="csub2">满分 800</span></td>
+      <td>800</td>
+      <td><div class="clamp">全市高中阶段招生分5个批次、全市统筹；第一批次公办热点高中/四星实验班采用“志愿优先、遵循分数”传统志愿（盐城中学定向指标生须第一志愿填报方可享受），民办合作办学学校平行志愿；分招生区域（市区及各县市）分别划定普通高中录取最低控制线（2025年全市普高最低控制线约461分，民间汇总待官方确认）。</div></td>
+      <td><div class="clamp">第一批次 → 第二批次 → 第三批次 → 第四批次 → 第五批次</div></td>
+      <td><div class="clamp">随迁子女（进城务工人员子女）可报考，须提供户口簿、父母居住证、务工证明等材料（以大丰区中考报名要求为例）；具体全市统一的报考普通高中资格条件与年限要求，官方《招生工作意见》未在网上公开检索到详细门槛，<span class="dai">待核</span>。</div></td>
+      <td><div class="clamp">热点优质普通高中按规定比例将指标生(定向)计划定向分配到当地初中，具体比例由各县(市、区)制定（全市统一比例<span class="dai">待核</span>）；考生须在学籍所在学校至少有两学年以上学籍且实际就读两学年以上、整个初三学年在学籍所在学校就读，方具定向指标生资格；回户籍地报名考生不享受定向指标生。示例：江苏省盐城中学面向原一般初中定向指标计划72名，录取控制线不低于盐中不含定向指标生招生分数线40分。</div></td>
+      <td><div class="clamp">普通高中特长生自主招生（体育、艺术、科技等），高水平运动队和艺术科技社团专项计划543人单列；特长生须参加专项测试，录取多采用“专业成绩+文化成绩”综合排序，部分要求中考成绩达总分70%、艺术素质测评A等；每生限报1所高中1个特长项目；另新增南京师范大学盐城高级中学等。具体见《盐城市2025年高中阶段学校招生工作意见》。</div></td>
+    </tr></tbody>
+    </table>
+    </div>
+  </div>
+
+  <div class="note"><b>关于数据：</b>各城市页基于 2025 年当地中招 / 教育局公开资料整理，分数为录取参考线 / 定位分估算，官方未单列的数据均标注“官方未公布 / 未单列 / 待核”，不构成录取承诺；最终以市中招办与学校官方公布为准。</div>
+  <div class="foot">中高考考情分析平台 · 江苏初升高升学路径</div>
+</div>
+<script>
+  document.querySelectorAll('.tab').forEach(function(b){
+    b.addEventListener('click', function(){
+      document.querySelectorAll('.tab').forEach(function(t){t.classList.remove('active')});
+      document.querySelectorAll('.panel').forEach(function(p){p.classList.remove('active')});
+      b.classList.add('active');
+      document.getElementById(b.dataset.p).classList.add('active');
+    });
+  });
+</script>
+</body>
+</html>
