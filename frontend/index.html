@@ -27,7 +27,7 @@
   .pcard.kb .enter .main{background:#ea580c}
   .regions{margin-top:auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:8px}
   .regions a{text-align:center;text-decoration:none;padding:11px 8px;border-radius:10px;font-size:14px;font-weight:600;color:#fff}
-  .regions a.sh{background:#0e7490} .regions a.gz{background:#16a34a} .regions a.sz{background:#3b5bdb} .regions a.bj{background:#c2410c}
+  .regions a.sh{background:#0e7490} .regions a.gz{background:#16a34a} .regions a.sz{background:#3b5bdb} .regions a.bj{background:#c2410c} .regions a.gd{background:#3b5bdb} .regions a.zj{background:#0d9488} .regions a.js{background:#7c3aed}
   .regions a:hover{filter:brightness(1.06)}
   .pcard.lujing .tag{background:#3b5bdb} .pcard.lujing .mods li::before{color:#3b5bdb}
   .provinces{margin-top:auto;display:grid;grid-template-columns:1fr 1fr;gap:8px}
@@ -64,7 +64,7 @@
     <div class="pcard gk">
       <span class="tag">高考</span>
       <h2>高考志愿填报</h2>
-      <p class="desc">位次法定位、选科与专业推荐、冲稳保梯度、志愿表体检。已上线，按省数据驱动。</p>
+      <p class="desc">位次法定位、选科与专业推荐、冲稳保梯度、志愿表体检。已上线，按省数据驱动，已覆盖广东 / 浙江 / 江苏等 31 省区市（选省加载对应数据库）。</p>
       <ul class="mods">
         <li>报考规则介绍</li><li>位次测算</li><li>考生信息</li>
         <li>智能推荐</li><li>资料库（查校 / 查专业）</li>
@@ -81,7 +81,7 @@
     <div class="pcard zk">
       <span class="tag">中考</span>
       <h2>中考志愿填报</h2>
-      <p class="desc">分数 + 区 / 全市定位，批次化推荐（到区 / 到校 / 统招 / 中本贯通），数据自包含、离线可用。当前覆盖：上海 / 广州 / 深圳 / 北京。</p>
+      <p class="desc">分数 + 区 / 全市定位，批次化推荐（到区 / 到校 / 统招 / 中本贯通），数据自包含、离线可用。当前覆盖：上海 / 广州 / 深圳 / 北京 中考志愿工具 + 广东 21 市 / 浙江 11 市 / 江苏 13 市 初升高路径（点省份入口进入）。</p>
       <ul class="mods">
         <li>报考规则介绍</li><li>位次测算</li><li>考生信息</li>
         <li>智能推荐</li><li>资料库（查校 / 查专业）</li>
@@ -93,13 +93,16 @@
         <a class="gz" href="gz-zhongkao.html">广州中考 →</a>
         <a class="sz" href="sz-zhongkao.html">深圳中考 →</a>
         <a class="bj" href="zhongkao-bj.html">北京中考 →</a>
+        <a class="gd" href="guangdong.html">广东21市 →</a>
+        <a class="zj" href="zhejiang.html">浙江11市 →</a>
+        <a class="js" href="jiangsu.html">江苏13市 →</a>
       </div>
     </div>
     <!-- 快速规划 -->
     <div class="pcard qk">
       <span class="tag">快速</span>
       <h2>快速规划</h2>
-      <p class="desc">一段话说清学生情况，自动解析确认后直接出报告。不用逐项翻模块，适合先摸清定位与方向。</p>
+      <p class="desc">一段话说清学生情况，自动解析确认后直接出报告。不用逐项翻模块，适合先摸清定位与方向。已支持广东 / 浙江 / 江苏等地高考与中考考区识别与规划。</p>
       <ul class="mods">
         <li>输入学生情况</li><li>自动解析并确认</li>
         <li>分数定位 / 梯度档位</li><li>冲 / 稳 / 保 三档清单</li>
@@ -113,11 +116,11 @@
     <div class="pcard kb">
       <span class="tag">资料库</span>
       <h2>资料库</h2>
-      <p class="desc">查学校、查专业的统一入口。高考院校 / 专业库<b>按需从 CDN 加载</b>；中考各地区的学校与专业资料已内联，离线可用。</p>
+      <p class="desc">查学校、查专业的统一入口。高考院校 / 专业库<b>按需从 CDN 加载</b>，已含广东 / 浙江 / 江苏等全国省份；中考各地区的学校与专业资料已内联，离线可用。</p>
       <ul class="mods">
         <li>高考院校 3,605 所</li><li>高考专业 2,090 个</li>
         <li>985 / 211 / 双一流</li><li>保研率 · 硕博点</li>
-        <li>中考学校（沪 / 穗 / 京）</li><li>中本贯通专业</li>
+        <li>中考学校（沪 / 穗 / 京）+ 初升高路径（粤 / 浙 / 苏）</li><li>中本贯通专业</li>
         <li>广州中职专业</li><li>就业方向</li>
       </ul>
       <div class="enter">
