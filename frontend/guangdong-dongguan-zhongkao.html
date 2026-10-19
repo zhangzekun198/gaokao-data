@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>东莞中考志愿智能推荐</title>
+<style>
+:root{--reach:#dc2626;--safe:#2563eb;--hold:#15803d;--brand:#3b5bdb;--ink:#1f2733;--mut:#5b6472;--bg:#f5f7fb;--card:#fff;--bd:#e3e8f0}
+*{box-sizing:border-box}
+body{margin:0;font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;color:var(--ink);background:var(--bg);font-size:15px;line-height:1.6}
+.top{background:linear-gradient(135deg,var(--brand),#2747c7);color:#fff;padding:22px 18px}
+.top h1{margin:0 0 4px;font-size:22px}
+.top .sub{opacity:.92;font-size:13px}
+.top .topstu{margin-top:8px;font-size:13px;background:rgba(255,255,255,.15);display:inline-block;padding:3px 10px;border-radius:20px}
+.nav{position:sticky;top:0;z-index:20;display:flex;gap:4px;overflow-x:auto;background:#fff;border-bottom:1px solid var(--bd);padding:8px 10px}
+.nav a{flex:0 0 auto;text-decoration:none;color:var(--mut);font-size:13px;font-weight:600;padding:7px 12px;border-radius:8px}
+.nav a.on{background:var(--brand);color:#fff}
+.wrap{max-width:900px;margin:0 auto;padding:16px}
+.sec{display:none}.sec.show{display:block}
+.sec h3{font-size:16px;margin:18px 0 8px;border-left:4px solid var(--brand);padding-left:8px}
+.note-in{background:#fff7ed;border:1px solid #fed7aa;color:#9a3412;padding:10px 12px;border-radius:10px;font-size:13px}
+.lm{font-size:13px;color:var(--mut);margin:8px 0}
+.desc{color:var(--mut);font-size:14px;margin:6px 0 12px}
+.tbl-wrap{overflow-x:auto}.tbl{width:100%;border-collapse:collapse;background:var(--card);border:1px solid var(--bd);border-radius:10px;overflow:hidden;font-size:13px}
+.tbl th,.tbl td{border-bottom:1px solid var(--bd);padding:8px 10px;text-align:left;vertical-align:top}
+.tbl th{background:#eef2fb;font-weight:700}
+.lines{display:flex;flex-wrap:wrap;gap:8px;margin:8px 0}
+.ln{background:var(--card);border:1px solid var(--bd);border-radius:10px;padding:8px 12px;min-width:120px}
+.ln b{display:block;font-size:12px;color:var(--mut);font-weight:600}.ln i{font-style:normal;font-size:18px;font-weight:700;color:var(--brand)}
+.pts{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:10px}
+.pt{background:var(--card);border:1px solid var(--bd);border-radius:10px;padding:10px 12px}.pt b{color:var(--brand);font-size:13px}.pt p{margin:4px 0 0;font-size:13px}
+.inrow{display:flex;gap:8px;flex-wrap:wrap;margin:10px 0}
+input,select{font:inherit;padding:8px 10px;border:1px solid var(--bd);border-radius:8px;background:#fff}
+.btn{background:var(--brand);color:#fff;border:0;border-radius:8px;padding:9px 16px;font-weight:600;cursor:pointer}
+.btn.ghost{background:#fff;color:var(--brand);border:1px solid var(--brand)}
+.form{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:10px;align-items:end}
+.form label{display:flex;flex-direction:column;gap:4px;font-size:13px;color:var(--mut)}
+#stuMsg .ok,#locOut .loc-ok{color:var(--hold)}.ok{color:var(--hold);font-weight:600}
+.warn{color:#b45309;font-size:13px}.empty{color:var(--mut);font-size:13px;padding:8px 0}
+.loc-ok,.loc-next{background:var(--card);border:1px solid var(--bd);border-radius:10px;padding:10px 12px;margin:8px 0;font-size:14px}
+.tier{margin:14px 0}.tier-h{font-weight:700;padding:8px 12px;border-radius:8px 8px 0 0;color:#fff}
+.t-reach{background:var(--reach)}.t-safe{background:var(--safe)}.t-hold{background:var(--hold)}
+.tier-h span{opacity:.8;font-weight:400;font-size:13px}
+.rlist,.sk-list{background:var(--card);border:1px solid var(--bd);border-radius:0 0 10px 10px;overflow:hidden}
+.rk,.sk{display:flex;flex-wrap:wrap;align-items:center;gap:8px;padding:10px 12px;border-bottom:1px solid var(--bd)}
+.rk:last-child,.sk:last-child{border-bottom:0}
+.rkn{font-weight:600;flex:1 1 180px}.rkn .rkg{font-size:11px;color:var(--mut);margin-left:6px;font-weight:400}
+.rkm{font-size:12px;color:var(--mut);flex:1 1 160px}
+.rkl{font-size:13px;flex:0 0 auto}.rkl b{color:var(--brand)}.gap{margin-left:6px;font-weight:700}.gap.up{color:var(--reach)}.gap.down{color:var(--hold)}
+.mini{background:#eef2fb;color:var(--brand);border:0;border-radius:6px;padding:5px 10px;font-size:12px;cursor:pointer;font-weight:600}
+.mini.del{color:#b91c1c;background:#fef2f2}
+.filters{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:10px}
+.sk-n{font-weight:600;flex:1 1 180px}.sk-n span{font-size:11px;color:var(--mut);margin-left:6px;font-weight:400}
+.sk-m{font-size:12px;color:var(--mut);flex:1 1 160px}.sk-s{font-size:12px;color:var(--ink);flex:1 1 100%;background:#f8fafc;padding:6px 8px;border-radius:6px}
+.wlist{list-style:none;padding:0;margin:0;counter-reset:w}
+.wlist li{background:var(--card);border:1px solid var(--bd);border-radius:8px;padding:8px 12px;margin:6px 0;display:flex;align-items:center;gap:8px}
+.wlist li i{color:var(--mut);font-style:normal;font-size:12px}.wx{margin-left:auto;display:flex;gap:4px}
+.wt{font-size:11px;font-weight:700;padding:2px 8px;border-radius:20px;color:#fff}
+.wt-reach{background:var(--reach)}.wt-safe{background:var(--safe)}.wt-hold{background:var(--hold)}
+.chkc{display:flex;gap:10px;margin:10px 0}.chk-ct{flex:1;text-align:center;background:var(--card);border:1px solid var(--bd);border-radius:10px;padding:10px;font-size:13px;color:var(--mut)}
+.chk-ct b{display:block;font-size:24px}.chk-ct.t-reach b{color:var(--reach)}.chk-ct.t-safe b{color:var(--safe)}.chk-ct.t-hold b{color:var(--hold)}
+.warns .warn{background:#fffbeb;border:1px solid #fde68a;padding:8px 10px;border-radius:8px;margin:6px 0}
+.expout{background:#0f172a;color:#e2e8f0;padding:12px;border-radius:10px;font-size:12px;white-space:pre-wrap;max-height:360px;overflow:auto}
+.src{list-style:none;padding:0;margin:0}.src li{padding:6px 0;border-bottom:1px solid var(--bd)}.src a{color:var(--brand);word-break:break-all}
+@media(max-width:576px){.top h1{font-size:19px}.rk,.sk{gap:6px}.rkn,.rkm{flex:1 1 100%}}
+</style>
+</head>
+<body>
+<header class="top">
+  <h1>东莞中考志愿智能推荐</h1>
+  <div class="sub">undefined · 2025 年 · 满分 800 分 · 数据驱动</div>
+  <div class="topstu" id="topStu"></div>
+</header>
+<nav class="nav"><a href="javascript:void(0)" data-t="rules">报考规则</a><a href="javascript:void(0)" data-t="locate">分数定位</a><a href="javascript:void(0)" data-t="student">考生信息</a><a href="javascript:void(0)" data-t="reco">智能推荐</a><a href="javascript:void(0)" data-t="schools">探校</a><a href="javascript:void(0)" data-t="wish">志愿表</a><a href="javascript:void(0)" data-t="check">方案体检</a><a href="javascript:void(0)" data-t="export">导出</a><a href="javascript:void(0)" data-t="sources">信源</a></nav>
+<main class="wrap"><section class="sec" id="sec-rules"><div id="rules"></div></section><section class="sec" id="sec-locate"><div id="locate"></div></section><section class="sec" id="sec-student"><div id="student"></div></section><section class="sec" id="sec-reco"><div id="reco"></div></section><section class="sec" id="sec-schools"><div id="schools"></div></section><section class="sec" id="sec-wish"><div id="wish"></div></section><section class="sec" id="sec-check"><div id="check"></div></section><section class="sec" id="sec-export"><div id="export"></div></section><section class="sec" id="sec-sources"><div id="sources"></div></section></main>
+<script>window.DATA = {"meta":{"city":"东莞","province":"广东","year":2025,"total":800,"src":"东莞市教育局官网《2025年东莞市中考提前批和第一批录取分数线通告》及附件xlsx(官方)、100hsl转引全文、东莞时间网/南方+/羊城派/广州日报报道","note":"东莞官方以xlsx附件公布第一批逐校录取分，含本市户籍/随迁子女、走读生、第一至四志愿线。本JSON已尽量完整收录第一批公办普通高中(含走读)与主要民办高中(公费/自费/国际班)第一二志愿线。2024年线由官方2025与2024对比新闻推导(如东莞中学736=743-7)，仅列可核验校。民办不分户籍，公费生线即通用线，自费/国际班列于note。计划数、2026预测均为null。","lineMode":"东莞按『本市户籍生/随迁子女(非东莞户籍)』两套线，部分公办校另设『走读生』线；普通高中最低录取控制线520分(不含提前批自主招生)。同一校第二志愿线通常比第一志愿高15分。"},"policy":{"batches":[{"name":"提前批","vol":"自主招生/中职自主招生","note":"普高自主招生、公办中职自主招生"},{"name":"第一批","vol":"普通高中(含走读)、综合高中普高班、3+4中本贯通","note":"公办普高、民办普高(公费/自费)、综合高中、中本贯通班"},{"name":"第二批","vol":"中职/技校等","note":"中职、技校录取"}],"lines":{"2025":{"普通高中最低录取控制线":520,"备注":"不含提前批自主招生；去年(2024)为530，今年降10分"}},"rule":"志愿优先、从高分到低分录取；第一志愿未录取则第二志愿分数线提高(普遍+15分)。末位同分按组合1(语数英)及组合2(道物化历)总分排序。","hukou":"本市户籍生与随迁子女(非东莞户籍)分别划线；随迁子女线多数高于或接近户籍线(部分校走读随迁线显著低于户籍线，如厚街中学走读随迁522 vs 户籍674)。","minge":"2025年传统『八大校』扩容为『十一大校』(新增石龙、常平、万江中学)，11所优质公办普高均实施名额分配，将招生计划50%分配到初中学校。","principle":"合理梯度、志愿优先；注意同分排位录取条件(语数英/道物化历组合总分)。","total":800},"scores":[{"name":"东莞中学","grade":"国家级示范性普通高中","district":"市直属","belong":"市直属","nature":"公办","b":"第一批(住宿)","hu2025":[743,758],"fei2025":[743,758],"wai2025":[],"hu2024":[736],"hu2026pred":null,"plan2025":null,"note":"户籍/随迁第一志愿均743;末位同分需语数英320(户籍)322.75(随迁)"},{"name":"东莞中学松山湖学校","grade":"国家级示范性普通高中","district":"市直属","belong":"市直属","nature":"公办","b":"第一批(住宿)","hu2025":[739,754],"fei2025":[742,757],"wai2025":[],"hu2024":[728],"hu2026pred":null,"plan2025":null,"note":"户籍第一志愿739"},{"name":"东莞松山湖未来学校","grade":"普通高中","district":"市直属","belong":"市直属","nature":"公办","b":"第一批(住宿)","hu2025":[733,748],"fei2025":[736,751],"wai2025":[],"hu2024":[724],"hu2026pred":null,"plan2025":null,"note":"另设港澳班第一志愿729"},{"name":"东莞市第一中学","grade":"国家级示范性普通高中","district":"市直属","belong":"市直属","nature":"公办","b":"第一批(住宿)","hu2025":[728,743],"fei2025":[736,751],"wai2025":[],"hu2024":[717],"hu2026pred":null,"plan2025":null,"note":"户籍第一志愿728"},{"name":"东莞实验中学","grade":"国家级示范性普通高中","district":"市直属","belong":"市直属","nature":"公办","b":"第一批(住宿)","hu2025":[711,726],"fei2025":[723,738],"wai2025":[],"hu2024":[703],"hu2026pred":null,"plan2025":null,"note":"户籍第一志愿711"},{"name":"东莞高级中学","grade":"国家级示范性普通高中","district":"市直属","belong":"市直属","nature":"公办","b":"第一批(住宿)","hu2025":[719,734],"fei2025":[727,742],"wai2025":[],"hu2024":[711],"hu2026pred":null,"plan2025":null,"note":"户籍第一志愿719"},{"name":"东莞外国语学校","grade":"市直属公办","district":"市直属","belong":"市直属","nature":"公办","b":"第一批(住宿)","hu2025":[693,708],"fei2025":[721,736],"wai2025":[],"hu2024":[717],"hu2026pred":null,"plan2025":null,"note":"2025爆冷降24分;走读户籍第一志愿仅542(见走读条)"},{"name":"东莞市第六高级中学","grade":"国家级示范性普通高中","district":"市直属","belong":"市直属","nature":"公办","b":"第一批(住宿)","hu2025":[717,732],"fei2025":[731,746],"wai2025":[],"hu2024":null,"hu2026pred":null,"plan2025":null,"note":"户籍第一志愿717"},{"name":"石龙中学","grade":"省一级普通高中","district":"石龙镇","belong":"镇街属","nature":"公办","b":"第一批(住宿)","hu2025":[708,723],"fei2025":[709,724],"wai2025":[],"hu2024":[688],"hu2026pred":null,"plan2025":null,"note":"2025新晋十一大校,涨20分"},{"name":"常平中学","grade":"省一级普通高中","district":"常平镇","belong":"镇街属","nature":"公办","b":"第一批(住宿)","hu2025":[702,717],"fei2025":[716,731],"wai2025":[],"hu2024":[675],"hu2026pred":null,"plan2025":null,"note":"2025新晋十一大校,涨27分"},{"name":"万江中学","grade":"省一级普通高中","district":"万江街道","belong":"镇街属","nature":"公办","b":"第一批(住宿)","hu2025":[700,715],"fei2025":[715,730],"wai2025":[],"hu2024":[674],"hu2026pred":null,"plan2025":null,"note":"2025新晋十一大校,涨26分"},{"name":"东莞市第二高级中学","grade":"省一级普通高中","district":"东城街道","belong":"市直属","nature":"公办","b":"第一批(住宿)","hu2025":[696,701,706,711],"fei2025":[697,702,707,712],"wai2025":[],"hu2024":null,"hu2026pred":null,"plan2025":null,"note":"户籍第一志愿696"},{"name":"东莞市第四高级中学","grade":"省一级普通高中","district":"中堂镇","belong":"市直属","nature":"公办","b":"第一批(住宿)","hu2025":[645,650,655,660],"fei2025":[646,651,656,661],"wai2025":[],"hu2024":null,"hu2026pred":null,"plan2025":null,"note":"户籍第一志愿645"},{"name":"东莞市第五高级中学","grade":"省一级普通高中","district":"高埗镇","belong":"市直属","nature":"公办","b":"第一批(住宿)","hu2025":[643,648,653,658],"fei2025":[637,642,647,652],"wai2025":[],"hu2024":null,"hu2026pred":null,"plan2025":null,"note":"户籍第一志愿643"},{"name":"东莞市第七高级中学","grade":"省一级普通高中","district":"企石镇","belong":"市直属","nature":"公办","b":"第一批(住宿)","hu2025":[676,681,686,691],"fei2025":[683,688,693,698],"wai2025":[],"hu2024":[666],"hu2026pred":null,"plan2025":null,"note":"户籍第一志愿676(2024户籍666)"},{"name":"东莞市第八高级中学","grade":"省一级普通高中","district":"樟木头镇","belong":"市直属","nature":"公办","b":"第一批(住宿)","hu2025":[639,644,649,654],"fei2025":[648,653,658,663],"wai2025":[],"hu2024":null,"hu2026pred":null,"plan2025":null,"note":"户籍第一志愿639"},{"name":"东莞市第十高级中学","grade":"省一级普通高中","district":"沙田镇","belong":"市直属","nature":"公办","b":"第一批(住宿)","hu2025":[650,655,660,665],"fei2025":[654,659,664,669],"wai2025":[],"hu2024":null,"hu2026pred":null,"plan2025":null,"note":"户籍第一志愿650"},{"name":"东莞市第十一中学","grade":"普通高中","district":"桥头镇","belong":"市直属","nature":"公办","b":"第一批(住宿)","hu2025":[676,681,686,691],"fei2025":[691,696,701,706],"wai2025":[],"hu2024":null,"hu2026pred":null,"plan2025":null,"note":"户籍第一志愿676"},{"name":"东莞市第十二高级中学","grade":"普通高中","district":"滨海湾新区","belong":"市直属","nature":"公办","b":"第一批(住宿)","hu2025":[679,684,689,694],"fei2025":[683,688,693,698],"wai2025":[],"hu2024":null,"hu2026pred":null,"plan2025":null,"note":"户籍第一志愿679"},{"name":"东莞市第十三高级中学","grade":"省一级普通高中","district":"大朗镇","belong":"市直属","nature":"公办","b":"第一批(住宿)","hu2025":[672,677,682,687],"fei2025":[672,677,682,687],"wai2025":[],"hu2024":null,"hu2026pred":null,"plan2025":null,"note":"户籍/随迁第一志愿均672"},{"name":"虎门中学","grade":"省一级普通高中","district":"虎门镇","belong":"镇街属","nature":"公办","b":"第一批(住宿)","hu2025":[665,670,675,680],"fei2025":[666,671,676,681],"wai2025":[],"hu2024":null,"hu2026pred":null,"plan2025":null,"note":"户籍第一志愿665"},{"name":"厚街中学","grade":"国家级示范性普通高中","district":"厚街镇","belong":"镇街属","nature":"公办","b":"第一批(住宿)","hu2025":[679,684,689,694],"fei2025":[678,683,688,693],"wai2025":[],"hu2024":[657],"hu2026pred":null,"plan2025":null,"note":"户籍第一志愿679(2024户籍657,随迁684)"},{"name":"塘厦中学","grade":"省一级普通高中","district":"塘厦镇","belong":"镇街属","nature":"公办","b":"第一批(住宿)","hu2025":[653,658,663,668],"fei2025":[659,664,669,674],"wai2025":[],"hu2024":null,"hu2026pred":null,"plan2025":null,"note":"户籍第一志愿653"},{"name":"麻涌中学","grade":"省一级普通高中","district":"麻涌镇","belong":"镇街属","nature":"公办","b":"第一批(住宿)","hu2025":[651,656,661,666],"fei2025":[643,648,653,658],"wai2025":[],"hu2024":null,"hu2026pred":null,"plan2025":null,"note":"户籍第一志愿651"},{"name":"长安中学","grade":"省一级普通高中","district":"长安镇","belong":"镇街属","nature":"公办","b":"第一批(住宿)","hu2025":[646,651,656,661],"fei2025":[651,656,661,666],"wai2025":[],"hu2024":null,"hu2026pred":null,"plan2025":null,"note":"户籍第一志愿646"},{"name":"济川中学","grade":"省一级普通高中","district":"道滘镇","belong":"镇街属","nature":"公办","b":"第一批(住宿)","hu2025":[638,643,648,653],"fei2025":[638,643,648,653],"wai2025":[],"hu2024":null,"hu2026pred":null,"plan2025":null,"note":"户籍第一志愿638"},{"name":"大岭山中学","grade":"普通高中","district":"大岭山镇","belong":"镇街属","nature":"公办","b":"第一批(住宿)","hu2025":[648,653,658,663],"fei2025":[637,642,647,652],"wai2025":[],"hu2024":null,"hu2026pred":null,"plan2025":null,"note":"户籍第一志愿648"},{"name":"清溪中学(东莞高级中学集团)","grade":"普通高中","district":"清溪镇","belong":"镇街属","nature":"公办","b":"第一批(住宿)","hu2025":[647,652,657,662],"fei2025":[671,676,681,686],"wai2025":[],"hu2024":null,"hu2026pred":null,"plan2025":null,"note":"户籍第一志愿647;随迁线高于户籍"},{"name":"东莞市商业学校(普高班)","grade":"公办综合高中","district":"市直属","belong":"市直属","nature":"公办","b":"第一批(综合高中普高班)","hu2025":[635,640,645,650],"fei2025":[637,642,647,652],"wai2025":[],"hu2024":null,"hu2026pred":null,"plan2025":null,"note":"公办综合高中试点,普高班第一志愿635"},{"name":"东莞中学松山湖学校(走读)","grade":"市直属公办","district":"市直属","belong":"市直属","nature":"公办","b":"第一批(走读生)","hu2025":[725,740],"fei2025":[700,715],"wai2025":[],"hu2024":null,"hu2026pred":null,"plan2025":null,"note":"走读户籍第一志愿725;随迁700"},{"name":"东莞高级中学(走读)","grade":"市直属公办","district":"市直属","belong":"市直属","nature":"公办","b":"第一批(走读生)","hu2025":[712,727],"fei2025":[],"wai2025":[],"hu2024":null,"hu2026pred":null,"plan2025":null,"note":"走读户籍第一志愿712"},{"name":"东莞外国语学校(走读)","grade":"市直属公办","district":"市直属","belong":"市直属","nature":"公办","b":"第一批(走读生)","hu2025":[542,557],"fei2025":[],"wai2025":[],"hu2024":null,"hu2026pred":null,"plan2025":null,"note":"走读户籍第一志愿542(爆冷,去年711)"},{"name":"石龙中学(走读)","grade":"省一级普通高中","district":"石龙镇","belong":"镇街属","nature":"公办","b":"第一批(走读生)","hu2025":[694,709],"fei2025":[],"wai2025":[],"hu2024":null,"hu2026pred":null,"plan2025":null,"note":"走读户籍第一志愿694"},{"name":"厚街中学(走读)","grade":"国家级示范性普通高中","district":"厚街镇","belong":"镇街属","nature":"公办","b":"第一批(走读生)","hu2025":[674,679,684,689],"fei2025":[522,527,532,537],"wai2025":[],"hu2024":null,"hu2026pred":null,"plan2025":null,"note":"走读户籍第一志愿674;随迁仅522(差152分)"},{"name":"东华高级中学(东城校区)","grade":"民办普通高中","district":"东城街道","belong":"民办","nature":"民办","b":"第一批(公费/自费)","hu2025":[745,760],"fei2025":[],"wai2025":[],"hu2024":null,"hu2026pred":null,"plan2025":null,"note":"公费生第一志愿745(不分户籍);自费生第一志愿693"},{"name":"东华高级中学(生态园校区)","grade":"民办普通高中","district":"生态园","belong":"民办","nature":"民办","b":"第一批(公费/自费)","hu2025":[744,759],"fei2025":[],"wai2025":[],"hu2024":null,"hu2026pred":null,"plan2025":null,"note":"公费生第一志愿744;自费生第一志愿685"},{"name":"东华松山湖高级中学","grade":"民办普通高中","district":"松山湖","belong":"民办","nature":"民办","b":"第一批(公费/自费)","hu2025":[741,746,751,756],"fei2025":[],"wai2025":[],"hu2024":null,"hu2026pred":null,"plan2025":null,"note":"公费生第一志愿741;自费生第一志愿633"},{"name":"光明中学","grade":"民办普通高中","district":"东城街道","belong":"民办","nature":"民办","b":"第一批(公费/自费/国际)","hu2025":[736,751],"fei2025":[],"wai2025":[],"hu2024":null,"hu2026pred":null,"plan2025":null,"note":"公费生第一志愿736;自费621;国际班604"},{"name":"翰林实验学校(万江)","grade":"民办普通高中","district":"万江街道","belong":"民办","nature":"民办","b":"第一批(公费/自费/国际)","hu2025":[740,745,750,755],"fei2025":[],"wai2025":[],"hu2024":null,"hu2026pred":null,"plan2025":null,"note":"公费生第一志愿740;自费624;国际班521"},{"name":"虎门外语学校","grade":"民办普通高中","district":"虎门镇","belong":"民办","nature":"民办","b":"第一批(公费/自费/国际)","hu2025":[747,752,757,762],"fei2025":[],"wai2025":[],"hu2024":null,"hu2026pred":null,"plan2025":null,"note":"公费生第一志愿747(涨155分);自费686;国际班627"},{"name":"新世纪英才学校(凤岗)","grade":"民办普通高中","district":"凤岗镇","belong":"民办","nature":"民办","b":"第一批(公费/自费)","hu2025":[682,687,692,697],"fei2025":[],"wai2025":[],"hu2024":null,"hu2026pred":null,"plan2025":null,"note":"公费生第一志愿682;自费559"},{"name":"南城开心实验学校","grade":"民办普通高中","district":"南城街道","belong":"民办","nature":"民办","b":"第一批(公费/自费)","hu2025":[735,740,745,750],"fei2025":[],"wai2025":[],"hu2024":null,"hu2026pred":null,"plan2025":null,"note":"公费生第一志愿735;自费653"},{"name":"光正实验学校(茶山)","grade":"民办普通高中","district":"茶山镇","belong":"民办","nature":"民办","b":"第一批(公费/自费)","hu2025":[703,708,713,718],"fei2025":[],"wai2025":[],"hu2024":null,"hu2026pred":null,"plan2025":null,"note":"公费生第一志愿703;自费533"},{"name":"东方明珠学校(沙田)","grade":"民办普通高中","district":"沙田镇","belong":"民办","nature":"民办","b":"第一批(公费/自费)","hu2025":[668,673,678,683],"fei2025":[],"wai2025":[],"hu2024":null,"hu2026pred":null,"plan2025":null,"note":"公费生第一志愿668;自费520"},{"name":"石竹实验学校(桥头)","grade":"民办普通高中","district":"桥头镇","belong":"民办","nature":"民办","b":"第一批(公费/自费/国际)","hu2025":[735,740,745,750],"fei2025":[],"wai2025":[],"hu2024":null,"hu2026pred":null,"plan2025":null,"note":"公费生第一志愿735;自费574;国际班524"},{"name":"塘厦水霖学校","grade":"民办普通高中","district":"塘厦镇","belong":"民办","nature":"民办","b":"第一批(公费/自费)","hu2025":[651,656,661,666],"fei2025":[],"wai2025":[],"hu2024":null,"hu2026pred":null,"plan2025":null,"note":"公费生第一志愿651;自费558"},{"name":"粤华学校(东城)","grade":"民办普通高中","district":"东城街道","belong":"民办","nature":"民办","b":"第一批(公费/自费)","hu2025":[731,736,741,746],"fei2025":[],"wai2025":[],"hu2024":null,"hu2026pred":null,"plan2025":null,"note":"公费生第一志愿731;自费521"},{"name":"松山湖莞美学校","grade":"民办普通高中","district":"松山湖","belong":"民办","nature":"民办","b":"第一批(公费/自费)","hu2025":[722,727,732,737],"fei2025":[],"wai2025":[],"hu2024":null,"hu2026pred":null,"plan2025":null,"note":"公费生第一志愿722;自费523(降88分)"},{"name":"礼仁外国语学校(黄江)","grade":"民办普通高中","district":"黄江镇","belong":"民办","nature":"民办","b":"第一批(公费/自费)","hu2025":[623,628,633,638],"fei2025":[],"wai2025":[],"hu2024":null,"hu2026pred":null,"plan2025":null,"note":"公费生第一志愿623;自费547"},{"name":"丰泰外国语实验高级中学(虎门)","grade":"民办普通高中","district":"虎门镇","belong":"民办","nature":"民办","b":"第一批(公费/自费)","hu2025":[741,746,751,756],"fei2025":[],"wai2025":[],"hu2024":null,"hu2026pred":null,"plan2025":null,"note":"公费生第一志愿741;自费522(降42分)"},{"name":"海德实验学校(黄江)","grade":"民办普通高中","district":"黄江镇","belong":"民办","nature":"民办","b":"第一批(公费/自费)","hu2025":[737,742,747,752],"fei2025":[],"wai2025":[],"hu2024":null,"hu2026pred":null,"plan2025":null,"note":"公费生第一志愿737;自费631"},{"name":"海德双语学校(清溪)","grade":"民办普通高中","district":"清溪镇","belong":"民办","nature":"民办","b":"第一批(公费/自费)","hu2025":[737,742,747,752],"fei2025":[],"wai2025":[],"hu2024":null,"hu2026pred":null,"plan2025":null,"note":"公费生第一志愿737;自费639"},{"name":"北辰高级中学(望牛墩)","grade":"民办普通高中","district":"望牛墩镇","belong":"民办","nature":"民办","b":"第一批(公费/自费)","hu2025":[695,700,705,710],"fei2025":[],"wai2025":[],"hu2024":null,"hu2026pred":null,"plan2025":null,"note":"公费生第一志愿695;自费520"},{"name":"众美中学(清溪)","grade":"民办普通高中","district":"清溪镇","belong":"民办","nature":"民办","b":"第一批(公费/自费)","hu2025":[696,701,706,711],"fei2025":[],"wai2025":[],"hu2024":null,"hu2026pred":null,"plan2025":null,"note":"公费生第一志愿696;自费520(降50分)"},{"name":"松山湖清澜山学校","grade":"民办普通高中","district":"松山湖","belong":"民办","nature":"民办","b":"第一批(自费)","hu2025":[522,527,532,537],"fei2025":[],"wai2025":[],"hu2024":null,"hu2026pred":null,"plan2025":null,"note":"仅自费生,第一志愿522"},{"name":"弘林高级中学(南城)","grade":"民办普通高中","district":"南城街道","belong":"民办","nature":"民办","b":"第一批(公费/自费)","hu2025":[679,684,689,694],"fei2025":[],"wai2025":[],"hu2024":null,"hu2026pred":null,"plan2025":null,"note":"公费生第一志愿679;自费520(降53分)"},{"name":"翰林高级中学(洪梅)","grade":"民办普通高中","district":"洪梅镇","belong":"民办","nature":"民办","b":"第一批(公费/自费)","hu2025":[721,726,731,736],"fei2025":[],"wai2025":[],"hu2024":null,"hu2026pred":null,"plan2025":null,"note":"公费生第一志愿721;自费520"},{"name":"嘉荣外国语学校(麻涌)","grade":"民办普通高中","district":"麻涌镇","belong":"民办","nature":"民办","b":"第一批(公费/自费)","hu2025":[750,755,760,765],"fei2025":[],"wai2025":[],"hu2024":null,"hu2026pred":null,"plan2025":null,"note":"公费生第一志愿750;自费618"},{"name":"海逸外国语学校(厚街)","grade":"民办普通高中","district":"厚街镇","belong":"民办","nature":"民办","b":"第一批(公费/自费)","hu2025":[718,723,728,733],"fei2025":[],"wai2025":[],"hu2024":null,"hu2026pred":null,"plan2025":null,"note":"公费生第一志愿718;自费562"},{"name":"东晖实验学校(南城)","grade":"民办普通高中","district":"南城街道","belong":"民办","nature":"民办","b":"第一批(公费/自费)","hu2025":[685,690,695,700],"fei2025":[],"wai2025":[],"hu2024":null,"hu2026pred":null,"plan2025":null,"note":"公费生第一志愿685;自费572(降42分)"},{"name":"嘉荣实验综合高级中学","grade":"民办综合高中","district":"麻涌镇","belong":"民办","nature":"民办","b":"第一批(综合高中普高班)","hu2025":[632,637,642,647],"fei2025":[540,545,550,555],"wai2025":[],"hu2024":null,"hu2026pred":null,"plan2025":null,"note":"民办综合高中试点,公费生第一志愿632,自费540"}],"sources":[{"title":"2025年东莞市中考提前批和第一批录取分数线通告(官方)","url":"https://edu.dg.gov.cn/gkmlpt/content/4/4412/post_4412943.html"},{"title":"附件2:2025年东莞市高中阶段学校录取分数线(第一批).xlsx","url":"https://edu.dg.gov.cn/attachment/0/350/350225/4412943.xlsx"},{"title":"东莞2025中考各校(普高与中职)录取分数(全文转引)","url":"http://www.100hsl.com/zhongkao/wz_7362.html"},{"title":"三校涨超20分!『十一大校』格局敲定(东莞时间网)","url":"https://pub.timedg.com/a/2025-07/20/AP687cf505e4b0d77aa1885451.html"},{"title":"今年东莞中考普高录取分数线公布(南方+)","url":"https://static.nfnews.com/content/202507/20/c11528403.html"},{"title":"直降24分 东莞外国语学校录取爆冷(羊城派)","url":"https://6nis.ycwb.com/app/template/displayTemplate/news/newsDetail/110018/53550416.html"},{"title":"东莞2025中考录取线:莞外遇冷,两民办降80多分(广州日报)","url":"https://huacheng.gz-cmc.com/pages/2025/07/20/SF14142838093bdecf9a87431d9732b4.html"}]};</script>
+<script>/* 中考志愿填报引擎（浏览器端，依赖全局 window.DATA）
+   模块：规则 / 分数定位 / 智能推荐(冲稳保) / 探校 / 志愿表 / 方案体检 / 导出
+   设计 token：冲#dc2626 稳#2563eb 保#15803d 品牌#3b5bdb */
+(function () {
+  "use strict";
+  var D = window.DATA;
+  if (!D) { document.body.innerHTML = "<p style='padding:24px'>数据未加载</p>"; return; }
+  var meta = D.meta, pol = D.policy, scores = D.scores || [], sources = D.sources || [];
+  var city = meta.city, prov = meta.province, year = meta.year, total = meta.total;
+
+  var STU_KEY = "zk_" + prov + "_" + city + "_stu";
+  var WISH_KEY = "zk_" + prov + "_" + city + "_wish";
+
+  function $(s) { return document.querySelector(s); }
+  function $all(s) { return Array.prototype.slice.call(document.querySelectorAll(s)); }
+  function el(tag, cls, html) {
+    var e = document.createElement(tag);
+    if (cls) e.className = cls;
+    if (html != null) e.innerHTML = html;
+    return e;
+  }
+  function load(k) { try { return JSON.parse(localStorage.getItem(k)); } catch (e) { return null; } }
+  function save(k, v) { try { localStorage.setItem(k, JSON.stringify(v)); } catch (e) {} }
+
+  // 户籍类型选项：依据数据里是否有 fei/wai 字段决定
+  var hasFei = scores.some(function (s) { return s.fei2025 && s.fei2025.some(function (x) { return x != null; }); });
+  var hasWai = scores.some(function (s) { return s.wai2025 && s.wai2025.some(function (x) { return x != null; }); });
+  var HUKOU_OPTS = [{ v: "hu", t: "户籍生/本市生" }];
+  if (hasFei) HUKOU_OPTS.push({ v: "fei", t: "非户籍/随迁" });
+  if (hasWai) HUKOU_OPTS.push({ v: "wai", t: "外区生" });
+
+  // 取某校某户籍类型的参考线：优先预测线，否则用当年线首值
+  function getLine(s, type) {
+    var arr = type === "fei" ? s.fei2025 : type === "wai" ? s.wai2025 : s.hu2025;
+    if (!arr || !arr.some(function (x) { return x != null; })) arr = s.hu2025;
+    var base = arr ? arr.filter(function (x) { return x != null; })[0] : null;
+    var pred = (s.hu2026pred != null) ? s.hu2026pred : null;
+    return { line: (pred != null ? pred : base), base: base, pred: pred };
+  }
+  function tierOf(gap) {
+    if (gap >= 8) return "冲";
+    if (gap <= -8) return "保";
+    return "稳";
+  }
+  function fmtArr(a) {
+    if (!a) return "—";
+    var v = a.filter(function (x) { return x != null; });
+    return v.length ? v.join(" / ") : "—";
+  }
+  function esc(s) {
+    return String(s == null ? "" : s).replace(/[&<>"]/g, function (c) {
+      return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c];
+    });
+  }
+
+  // ---------- 考生信息 ----------
+  var stu = load(STU_KEY) || { score: "", hukou: "hu", batch: "" };
+  var wish = load(WISH_KEY) || [];
+
+  // ---------- 模块① 报考规则 ----------
+  function renderRules() {
+    var box = $("#rules");
+    var h = "";
+    h += "<p class='note-in'>" + esc(meta.note || "") + "</p>";
+    if (meta.lineMode) h += "<p class='lm'><b>划线方式：</b>" + esc(meta.lineMode) + "</p>";
+    // 批次
+    h += "<h3>录取批次与志愿</h3><div class='tbl-wrap'><table class='tbl'><thead><tr><th>批次</th><th>志愿数</th><th>说明</th></tr></thead><tbody>";
+    (pol.batches || []).forEach(function (b) {
+      h += "<tr><td>" + esc(b.name) + "</td><td>" + esc(b.vol || "—") + "</td><td>" + esc(b.note || "") + "</td></tr>";
+    });
+    h += "</tbody></table></div>";
+    // 定位基准线
+    var yrs = Object.keys(pol.lines || {}).sort().reverse();
+    if (yrs.length) {
+      var ly = yrs[0];
+      h += "<h3>" + ly + " 分数定位基准（控制线 / 段线）</h3><div class='lines'>";
+      Object.keys(pol.lines[ly]).forEach(function (k) {
+        h += "<span class='ln'><b>" + esc(k) + "</b><i>" + esc(pol.lines[ly][k]) + " 分</i></span>";
+      });
+      h += "</div>";
+    }
+    // 政策要点
+    var items = [
+      ["投档规则", pol.rule], ["户籍 / 随迁", pol.hukou], ["名额分配（指标生）", pol.minge],
+      ["填报梯度原则", pol.principle]
+    ];
+    h += "<h3>政策要点</h3><div class='pts'>";
+    items.forEach(function (it) {
+      if (it[1]) h += "<div class='pt'><b>" + esc(it[0]) + "</b><p>" + esc(it[1]) + "</p></div>";
+    });
+    h += "</div>";
+    box.innerHTML = h;
+  }
+
+  // ---------- 模块② 分数定位 ----------
+  function renderLocate() {
+    var box = $("#locate");
+    var yrs = Object.keys(pol.lines || {}).sort().reverse();
+    var ly = yrs[0];
+    var linesObj = ly ? pol.lines[ly] : {};
+    var entries = Object.keys(linesObj).map(function (k) { return { k: k, v: linesObj[k] }; })
+      .sort(function (a, b) { return b.v - a.v; });
+    var h = "<p class='desc'>输入中考总分，立即看处在哪个分数线档位、距下一段还差多少。</p>";
+    h += "<div class='inrow'><input id='locScore' type='number' min='0' max='" + (total || 800) + "' placeholder='输入" + (total || "") + "分制总分'> <button class='btn' id='locBtn'>定位</button></div>";
+    h += "<div id='locOut'></div>";
+    box.innerHTML = h;
+    $("#locBtn").onclick = function () {
+      var sc = parseFloat($("#locScore").value);
+      var out = $("#locOut");
+      if (isNaN(sc)) { out.innerHTML = "<p class='warn'>请输入分数</p>"; return; }
+      var passed = entries.filter(function (e) { return sc >= e.v; });
+      var next = entries.filter(function (e) { return sc < e.v; }).sort(function (a, b) { return a.v - b.v; })[0];
+      var html = "";
+      if (passed.length) {
+        html += "<div class='loc-ok'>已过线 <b>" + passed.length + "</b> 条：" +
+          passed.map(function (e) { return esc(e.k) + "(" + e.v + ")"; }).join("、") + "</div>";
+      } else {
+        html += "<div class='loc-warn'>尚未达到已公布的任何控制线，建议优先确保批次线。</div>";
+      }
+      if (next) {
+        html += "<div class='loc-next'>距离下一段 <b>" + esc(next.k) + "</b> 还差 <b>" + (next.v - sc) + "</b> 分（线 " + next.v + "）。</div>";
+      } else {
+        html += "<div class='loc-next'>已达到公布的最高控制线档位。</div>";
+      }
+      out.innerHTML = html;
+    };
+  }
+
+  // ---------- 模块③ 考生信息 ----------
+  function renderStudent() {
+    var box = $("#student");
+    var h = "<p class='desc'>填写后全局复用，智能推荐与志愿表自动套用。</p><div class='form'>";
+    h += "<label>中考总分<input id='stuScore' type='number' min='0' max='" + (total || 800) + "' value='" + esc(stu.score) + "'></label>";
+    h += "<label>考生类别<select id='stuHukou'>";
+    HUKOU_OPTS.forEach(function (o) {
+      h += "<option value='" + o.v + "'" + (stu.hukou === o.v ? " selected" : "") + ">" + esc(o.t) + "</option>";
+    });
+    h += "</select></label>";
+    var batches = (pol.batches || []).map(function (b) { return b.name; });
+    h += "<label>目标批次<select id='stuBatch'><option value=''>不限</option>";
+    batches.forEach(function (b) {
+      h += "<option value='" + esc(b) + "'" + (stu.batch === b ? " selected" : "") + ">" + esc(b) + "</option>";
+    });
+    h += "</select></label>";
+    h += "<button class='btn' id='stuSave'>保存并测算</button></div>";
+    h += "<div id='stuMsg'></div>";
+    box.innerHTML = h;
+    $("#stuSave").onclick = function () {
+      stu.score = $("#stuScore").value;
+      stu.hukou = $("#stuHukou").value;
+      stu.batch = $("#stuBatch").value;
+      save(STU_KEY, stu);
+      $("#stuMsg").innerHTML = "<p class='ok'>已保存，分数 " + esc(stu.score) + " / " + esc(HUKOU_OPTS.filter(function (o) { return o.v === stu.hukou; })[0].t) + "</p>";
+      renderRecommend();
+    };
+  }
+
+  // ---------- 模块④ 智能推荐（冲稳保） ----------
+  function computeReco() {
+    var sc = parseFloat(stu.score);
+    if (isNaN(sc)) return null;
+    var list = scores.map(function (s) {
+      var g = getLine(s, stu.hukou);
+      if (g.line == null) return null;
+      var gap = g.line - sc;
+      return { s: s, line: g.line, pred: g.pred, gap: gap, tier: tierOf(gap) };
+    }).filter(Boolean);
+    if (stu.batch) list = list.filter(function (r) { return r.s.b === stu.batch; });
+    var groups = { 冲: [], 稳: [], 保: [] };
+    list.forEach(function (r) { groups[r.tier].push(r); });
+    ["冲", "稳", "保"].forEach(function (t) {
+      groups[t].sort(function (a, b) { return (t === "保" ? b.gap - a.gap : a.gap - b.gap); });
+    });
+    return groups;
+  }
+  function recoRow(r) {
+    var s = r.s;
+    return "<div class='rk'><div class='rkn'>" + esc(s.name) + "<span class='rkg'>" + esc(s.grade || "") + "</span></div>" +
+      "<div class='rkm'>" + esc(s.b) + " · " + esc(s.nature || "") + " · " + esc(s.district || "") + "</div>" +
+      "<div class='rkl'>参考线 <b>" + r.line + "</b> 分<span class='gap " + (r.gap >= 0 ? "up" : "down") + "'>" + (r.gap >= 0 ? "+" : "") + r.gap + "</span></div>" +
+      "<button class='mini' onclick='addWish(\"" + esc(s.name).replace(/"/g, "&quot;") + "\"," + r.line + ",\"" + r.tier + "\")'>加入志愿表</button></div>";
+  }
+  function renderRecommend() {
+    var box = $("#reco");
+    var h = "<p class='desc'>依据你填写的分数与考生类别，按「参考线 − 你的分数」自动分冲 / 稳 / 保。" +
+      (scores.some(function (s) { return s.hu2026pred != null; }) ? "优先使用 2026 预测线。" : "以 " + year + " 实际录取分为基准。") + "</p>";
+    if (!stu.score) {
+      h += "<p class='warn'>请先在「考生信息」填写分数并保存。</p>";
+      box.innerHTML = h; return;
+    }
+    var g = computeReco();
+    if (!g) { h += "<p class='warn'>无可推荐学校（数据缺失）。</p>"; box.innerHTML = h; return; }
+    var tiers = [["冲", "reach"], ["稳", "safe"], ["保", "hold"]];
+    tiers.forEach(function (t) {
+      var arr = g[t[0]];
+      h += "<div class='tier'><div class='tier-h t-" + t[1] + "'>" + t[0] + " <span>(" + arr.length + ")</span></div>";
+      if (!arr.length) h += "<p class='empty'>暂无</p>";
+      else h += "<div class='rlist'>" + arr.slice(0, 40).map(recoRow).join("") + "</div>";
+      h += "</div>";
+    });
+    box.innerHTML = h;
+  }
+
+  // ---------- 模块⑤ 探校 ----------
+  function renderSchools() {
+    var box = $("#schools");
+    var natures = {}; var batches = {};
+    scores.forEach(function (s) { if (s.nature) natures[s.nature] = 1; if (s.b) batches[s.b] = 1; });
+    var h = "<div class='filters'>";
+    h += "<input id='sk' placeholder='搜索学校名'>";
+    h += "<select id='skBatch'><option value=''>全部批次</option>" + Object.keys(batches).map(function (b) { return "<option>" + esc(b) + "</option>"; }).join("") + "</select>";
+    h += "<select id='skNature'><option value=''>全部性质</option>" + Object.keys(natures).map(function (n) { return "<option>" + esc(n) + "</option>"; }).join("") + "</select>";
+    h += "</div><div id='skList' class='sk-list'></div>";
+    box.innerHTML = h;
+    function draw() {
+      var kw = $("#sk").value.trim(); var bsel = $("#skBatch").value; var nsel = $("#skNature").value;
+      var rows = scores.filter(function (s) {
+        return (!kw || s.name.indexOf(kw) >= 0) && (!bsel || s.b === bsel) && (!nsel || s.nature === nsel);
+      });
+      var html = rows.map(function (s) {
+        return "<div class='sk'><div class='sk-n'>" + esc(s.name) + "<span>" + esc(s.grade || "") + "</span></div>" +
+          "<div class='sk-m'>" + esc(s.b) + " · " + esc(s.nature || "") + " · " + esc(s.district || "") + "</div>" +
+          "<div class='sk-s'>户籍/本市 " + fmtArr(s.hu2025) + " ｜ 非户籍 " + fmtArr(s.fei2025) + " ｜ 外区 " + fmtArr(s.wai2025) +
+          " ｜ 2024 " + fmtArr(s.hu2024) + " ｜ 预测 " + (s.hu2026pred != null ? s.hu2026pred : "—") + " ｜ 计划 " + (s.plan2025 != null ? s.plan2025 : "—") + "</div>" +
+          "<button class='mini' onclick='addWish(\"" + esc(s.name).replace(/"/g, "&quot;") + "\",0,\"\")'>加入志愿表</button></div>";
+      }).join("");
+      $("#skList").innerHTML = html || "<p class='empty'>无匹配</p>";
+    }
+    $("#sk").oninput = draw; $("#skBatch").onchange = draw; $("#skNature").onchange = draw;
+    draw();
+  }
+
+  // ---------- 模块⑨ 我的志愿表 ----------
+  window.addWish = function (name, line, tier) {
+    if (wish.some(function (w) { return w.name === name; })) { return; }
+    wish.push({ name: name, line: line, tier: tier || "" });
+    save(WISH_KEY, wish); renderWish();
+  };
+  function renderWish() {
+    var box = $("#wish");
+    var h = "<p class='desc'>已加入 <b>" + wish.length + "</b> 所。可调整顺序、删除；数据存本地浏览器。</p>";
+    if (!wish.length) { h += "<p class='empty'>志愿表为空，去「智能推荐」或「探校」加入学校。</p>"; box.innerHTML = h; return; }
+    h += "<ol class='wlist'>";
+    wish.forEach(function (w, i) {
+      h += "<li><span class='wt " + (w.tier ? "wt-" + ({ "冲": "reach", "稳": "safe", "保": "hold" }[w.tier]) : "") + "'>" + (w.tier || "—") + "</span>" +
+        esc(w.name) + (w.line ? " <i>" + w.line + "分</i>" : "") +
+        "<span class='wx'><button class='mini' onclick='moveWish(" + i + ",-1)'>↑</button><button class='mini' onclick='moveWish(" + i + ",1)'>↓</button><button class='mini del' onclick='delWish(" + i + ")'>删</button></span></li>";
+    });
+    h += "</ol>";
+    box.innerHTML = h;
+  }
+  window.delWish = function (i) { wish.splice(i, 1); save(WISH_KEY, wish); renderWish(); renderCheck(); };
+  window.moveWish = function (i, d) {
+    var j = i + d; if (j < 0 || j >= wish.length) return;
+    var t = wish[i]; wish[i] = wish[j]; wish[j] = t; save(WISH_KEY, wish); renderWish();
+  };
+
+  // ---------- 模块⑩ 方案体检 ----------
+  function renderCheck() {
+    var box = $("#check");
+    var h = "<p class='desc'>检查志愿梯度是否合理。</p>";
+    if (!wish.length) { h += "<p class='empty'>志愿表为空，无法体检。</p>"; box.innerHTML = h; return; }
+    var cnt = { 冲: 0, 稳: 0, 保: 0 };
+    wish.forEach(function (w) { if (cnt[w.tier] != null) cnt[w.tier]++; });
+    var warns = [];
+    if (cnt.冲 === 0) warns.push("缺少「冲」档志愿，可能错失更高层次学校。");
+    if (cnt.稳 === 0) warns.push("缺少「稳」档志愿，录取主力空缺。");
+    if (cnt.保 === 0) warns.push("缺少「保」档志愿，存在滑档风险！");
+    if (wish.length > 0 && cnt.保 < 2) warns.push("「保」档建议至少 2 所，确保兜底。");
+    // 同分扎堆
+    var byLine = {};
+    wish.forEach(function (w) { if (w.line) byLine[w.line] = (byLine[w.line] || 0) + 1; });
+    Object.keys(byLine).forEach(function (l) { if (byLine[l] >= 3) warns.push("有 " + byLine[l] + " 所志愿参考线同为 " + l + " 分，存在扎堆，建议拉开梯度。"); });
+    h += "<div class='chkc'>";
+    ["冲", "稳", "保"].forEach(function (t) {
+      h += "<div class='chk-ct t-" + ({ "冲": "reach", "稳": "safe", "保": "hold" }[t]) + "'>" + t + "<b>" + cnt[t] + "</b></div>";
+    });
+    h += "</div>";
+    if (!warns.length) h += "<p class='ok'>梯度结构合理，冲稳保齐全。</p>";
+    else h += "<div class='warns'>" + warns.map(function (w) { return "<p class='warn'>⚠ " + esc(w) + "</p>"; }).join("") + "</div>";
+    box.innerHTML = h;
+  }
+
+  // ---------- 模块⑪ 导出 ----------
+  function renderExport() {
+    var box = $("#export");
+    var h = "<p class='desc'>导出 / 打印你的志愿方案。</p>";
+    h += "<button class='btn' id='expBtn'>生成方案文本</button><button class='btn ghost' id='printBtn'>打印</button>";
+    h += "<pre id='expOut' class='expout'></pre>";
+    box.innerHTML = h;
+    $("#expBtn").onclick = function () {
+      var t = city + " 中考志愿填报方案\n";
+      t += "考生：总分 " + (stu.score || "未填") + " / " + (HUKOU_OPTS.filter(function (o) { return o.v === stu.hukou; })[0] || {}).t + (stu.batch ? " / 目标批次：" + stu.batch : "") + "\n";
+      t += "数据年份：" + year + "（" + (meta.src || "") + "）\n";
+      t += "--------------------------------------------------\n";
+      if (!wish.length) t += "（志愿表为空）\n";
+      wish.forEach(function (w, i) {
+        t += (i + 1) + ". [" + (w.tier || "—") + "] " + w.name + (w.line ? "  参考线 " + w.line + " 分" : "") + "\n";
+      });
+      t += "--------------------------------------------------\n";
+      t += "体检：" + ($("#check").querySelector(".warns") ? "存在风险提示，见方案体检页" : "梯度结构合理") + "\n";
+      t += "声明：本方案基于公开录取分估算，最终以官方公布为准。\n";
+      $("#expOut").textContent = t;
+    };
+    $("#printBtn").onclick = function () { window.print(); };
+  }
+
+  // ---------- 信源 ----------
+  function renderSources() {
+    var box = $("#sources");
+    if (!sources.length) { box.innerHTML = "<p class='empty'>暂无信源记录。</p>"; return; }
+    box.innerHTML = "<ul class='src'>" + sources.map(function (s) {
+      return "<li><a href='" + esc(s.url) + "' target='_blank' rel='noopener'>" + esc(s.title || s.url) + "</a></li>";
+    }).join("") + "</ul>";
+  }
+
+  // ---------- 导航 ----------
+  function initNav() {
+    $all(".nav a").forEach(function (a) {
+      a.onclick = function () {
+        $all(".nav a").forEach(function (x) { x.classList.remove("on"); });
+        $all(".sec").forEach(function (x) { x.classList.remove("show"); });
+        a.classList.add("on");
+        var id = a.getAttribute("data-t");
+        var sec = $("#sec-" + id); if (sec) sec.classList.add("show");
+        try { window.scrollTo(0, 0); } catch (e) {}
+      };
+    });
+    // 默认显示第一个
+    var first = $(".nav a"); if (first) first.click();
+  }
+
+  // ---------- 启动 ----------
+  function start() {
+    renderRules(); renderLocate(); renderStudent(); renderRecommend();
+    renderSchools(); renderWish(); renderCheck(); renderExport(); renderSources();
+    initNav();
+    // 顶部考生信息联动
+    var st = $("#topStu");
+    if (st) st.innerHTML = (stu.score ? "当前：<b>" + esc(stu.score) + "</b> 分 · " + esc(HUKOU_OPTS.filter(function (o) { return o.v === stu.hukou; })[0].t) : "尚未填写考生信息");
+  }
+  if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", start);
+  else start();
+})();
+</script>
+</body>
+</html>
