@@ -47,6 +47,13 @@ const PINYIN = {
 function cityFile(prov, city) {
   return `${prov}-${PINYIN[city]}-shengxue-lujing.html`;
 }
+// 志愿填报工具页（与政策页分设；工具存在时城市卡片优先指向它）
+function toolFile(prov, city) {
+  return `${prov}-${PINYIN[city]}-zhongkao.html`;
+}
+function hasTool(prov, city) {
+  return fs.existsSync(path.join(FRONTEND, toolFile(prov, city)));
+}
 
 // 提取"普高录取率"真实百分比（仅当明确出现"普高录取率"短语+数字，否则 null 诚实标注）
 function extractRate(d) {
@@ -59,6 +66,10 @@ function extractRate(d) {
 function buildCityPage(prov, d, hubFile) {
   const provName = d.province;
   const cls = ['brand', 'wen', 'bao', 'special', 'teal', 'amber', 'chong'];
+  // 志愿填报工具入口横幅（工具存在时显示，引导用户进入真正的志愿填报工具）
+  const toolBanner = hasTool(prov, d.city)
+    ? `<a class="toolbanner" href="${esc(toolFile(prov, d.city))}">🎯 本城市已上线中考志愿填报工具：输入分数，自动生成冲 / 稳 / 保推荐与志愿表 → 进入工具</a>`
+    : '';
   // 各章节
   const sect = (idx, cat, title, sub, inner) => `
     <section id="s${idx}">
@@ -200,6 +211,8 @@ section{padding:28px 0 8px}
 .srclist a{word-break:break-all}
 .dai{color:#b45309;background:#fff7ed;border-radius:5px;padding:0 4px;font-weight:600}
 .callout{background:var(--card);border-left:4px solid var(--brand);border-radius:0 12px 12px 0;padding:15px 18px;margin:16px 0;color:var(--ink-2);font-size:var(--fs-sm);line-height:1.7;box-shadow:var(--shadow-sm)}
+.toolbanner{display:block;margin:14px auto 0;max-width:1080px;background:linear-gradient(135deg,#dc2626,#b91c1c);color:#fff;text-decoration:none;text-align:center;font-weight:700;font-size:15px;padding:13px 18px;border-radius:12px;box-shadow:0 6px 18px rgba(220,38,38,.25)}
+.toolbanner:hover{filter:brightness(1.05)}
 footer{margin:34px 0;padding:20px 0;border-top:1px solid var(--line);color:var(--muted);font-size:var(--fs-xs);line-height:1.7}
 footer b{color:var(--ink)}
 @media(max-width:576px){header.hero{padding:28px 0 22px}header.hero h1{font-size:22px}.stage h3{font-size:16px}.card{padding:14px}}
@@ -218,6 +231,7 @@ footer b{color:var(--ink)}
     <a class="back" href="${esc(hubFile)}">← 返回${provName}枢纽</a>
   </div>
 </header>
+${toolBanner}
 ${nav}
 <div class="wrap">
   ${sect(1, cls[0], '中考概况与计分', '考试科目、满分与划线投档规则', examCard + lineCard)}
@@ -247,10 +261,13 @@ function buildHub(prov, data) {
   const provName = data.province;
   const cities = data.cities;
   const n = cities.length;
-  // 城市网格
+  // 城市网格（工具存在时优先指向志愿填报工具，另附"路径"次级入口）
   const grid = cities.map((d, i) => {
     const c = softColor(i);
-    return `<a class="cc" style="background:${c.bg};color:${c.fg}" href="${esc(cityFile(prov, d.city))}">${esc(d.city)}<small>满分 ${esc(d.total)}</small></a>`;
+    const tool = hasTool(prov, d.city);
+    const primary = tool ? toolFile(prov, d.city) : cityFile(prov, d.city);
+    const sec = tool ? `<a class="ccp" href="${esc(cityFile(prov, d.city))}">路径</a>` : '';
+    return `<a class="cc" style="background:${c.bg};color:${c.fg}" href="${esc(primary)}">${esc(d.city)}<small>满分 ${esc(d.total)}</small></a>${sec}`;
   }).join('');
 
   // 满分条形图（按满分降序）
@@ -259,7 +276,7 @@ function buildHub(prov, data) {
   const bars = byTotal.map((d, i) => {
     const c = softColor(cities.indexOf(d));
     const w = Math.max(8, Math.round(d.total / maxT * 100));
-    return `<a class="bar" href="${esc(cityFile(prov, d.city))}"><span class="bn">${esc(d.city)}</span><span class="bt"><span class="bf" style="background:${c.bg};width:${w}%"></span></span><span class="bv">${esc(d.total)}</span></a>`;
+    return `<a class="bar" href="${esc(hasTool(prov, d.city) ? toolFile(prov, d.city) : cityFile(prov, d.city))}"><span class="bn">${esc(d.city)}</span><span class="bt"><span class="bf" style="background:${c.bg};width:${w}%"></span></span><span class="bv">${esc(d.total)}</span></a>`;
   }).join('');
 
   // 政策维度对比表
@@ -301,6 +318,7 @@ body{margin:0;background:var(--bg);color:var(--ink);font-family:-apple-system,"P
 .cities a.cc{text-align:center;text-decoration:none;padding:16px 8px;border-radius:12px;font-size:16px;font-weight:700;transition:filter .15s,transform .15s;border:1px solid rgba(0,0,0,.05)}
 .cities a.cc:hover{filter:brightness(.97);transform:translateY(-1px)}
 .cities a.cc small{display:block;font-size:11px;font-weight:500;opacity:.75;margin-top:3px}
+.cities a.ccp{display:inline-block;margin:2px 4px 0 0;font-size:11px;font-weight:600;color:#5660a8;text-decoration:none;background:#eef1fb;padding:2px 8px;border-radius:10px}
 .chart{background:#fff;border-radius:16px;padding:20px;box-shadow:0 6px 22px rgba(70,80,130,.08);border:1px solid var(--line);margin-top:16px}
 .chart .tag{display:inline-block;font-size:12px;font-weight:700;padding:2px 9px;border-radius:20px;color:#5660a8;background:#d9def7;margin-bottom:8px}
 .chart h2{margin:0 0 4px;font-size:20px}

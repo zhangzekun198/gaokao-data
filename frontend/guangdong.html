@@ -76,6 +76,13 @@
   .chip{display:inline-block;font-size:11px;padding:2px 9px;border-radius:10px;background:#eef0f5;color:#9aa0ad}
   .note{background:#fdf3e7;border:1px solid #f6dcc0;border-radius:12px;padding:12px 14px;font-size:13px;color:#a9763f;margin:16px 0}
   .foot{text-align:center;color:var(--sub);font-size:12px;margin:22px 0 10px}
+
+  /* 城市卡片：主链接=工具页，次级=升学路径页 */
+  .ccw{display:flex;flex-direction:column;border:1px solid rgba(0,0,0,.05);border-radius:12px;overflow:hidden;background:#fff}
+  .ccw>a:first-child{border:none!important;border-radius:0!important}
+  .cities a.ccp{font-size:11px;font-weight:700;text-align:center;color:#5660a8;background:#eef1fb;padding:4px 0;border:none;border-radius:0;letter-spacing:1px}
+  .cities a.ccp:hover{background:#e2e7f7;color:#3b5bdb}
+  .ccw:hover{filter:brightness(.985);transform:translateY(-1px);transition:filter .15s,transform .15s}
 </style>
 </head>
 <body>
@@ -90,29 +97,29 @@
     <h2>选择城市，进入升学路径全景</h2>
     <p class="desc">每个城市页含 12 大模块：名额分配 / 自主招生 / 优质校线 / 公办版图 / 体艺特长生 / 分数线趋势 / 民办梯队，以及全省通用的中本贯通 / 综合评价 / 专项 / 卫生 / 教师专项。官方未单列数据均如实标注。</p>
     <div class="cities">
-      <a class="c-gzlu" href="gz-shengxue-lujing.html">广州<small>gz</small></a>
-      <a class="c-szlu" href="sz-shengxue-lujing.html">深圳<small>sz</small></a>
-      <a class="c-dglu" href="guangdong-dongguan-zhongkao.html">东莞<small>dg</small></a>
-      <a class="c-zhlu" href="guangdong-zhuhai-zhongkao.html">珠海<small>zh</small></a>
-      <a class="c-fslu" href="guangdong-foshan-zhongkao.html">佛山<small>fs</small></a>
-      <a class="c-hzlu" href="huizhou-shengxue-lujing.html">惠州<small>hz</small></a>
-      <a class="c-zslu" href="zhongshan-shengxue-lujing.html">中山<small>zs</small></a>
-      <a class="c-jmlu" href="jiangmen-shengxue-lujing.html">江门<small>jm</small></a>
-      <a class="c-stlu" href="shantou-shengxue-lujing.html">汕头<small>st</small></a>
-      <a class="c-zjlu" href="zhanjiang-shengxue-lujing.html">湛江<small>zj</small></a>
-      <a class="c-zqlu" href="zhaoqing-shengxue-lujing.html">肇庆<small>zq</small></a>
-      <a class="c-mmlu" href="maoming-shengxue-lujing.html">茂名<small>mm</small></a>
-      <a class="c-mzlu" href="meizhou-shengxue-lujing.html">梅州<small>mz</small></a>
-      <a class="c-swlu" href="shanwei-shengxue-lujing.html">汕尾<small>sw</small></a>
-      <a class="c-hylm" href="heyuan-shengxue-lujing.html">河源<small>hy</small></a>
-      <a class="c-yjlu" href="yangjiang-shengxue-lujing.html">阳江<small>yj</small></a>
-      <a class="c-qylu" href="qingyuan-shengxue-lujing.html">清远<small>qy</small></a>
-      <a class="c-sglu" href="shaoguan-shengxue-lujing.html">韶关<small>sg</small></a>
-      <a class="c-czlu" href="chaozhou-shengxue-lujing.html">潮州<small>cz</small></a>
-      <a class="c-jylu" href="jieyang-shengxue-lujing.html">揭阳<small>jy</small></a>
-      <a class="c-yflu" href="yunfu-shengxue-lujing.html">云浮<small>yf</small></a>
+      <span class="ccw"><a class="c-gzlu" href="gz-zhongkao.html">广州<small>gz</small></a><a class="ccp" href="gz-shengxue-lujing.html">路径</a></span>
+      <span class="ccw"><a class="c-szlu" href="sz-zhongkao.html">深圳<small>sz</small></a><a class="ccp" href="sz-shengxue-lujing.html">路径</a></span>
+      <span class="ccw"><a class="c-dglu" href="guangdong-dongguan-zhongkao.html">东莞<small>dg</small></a><a class="ccp" href="dg-shengxue-lujing.html">路径</a></span>
+      <span class="ccw"><a class="c-zhlu" href="guangdong-zhuhai-zhongkao.html">珠海<small>zh</small></a><a class="ccp" href="zhuhai-shengxue-lujing.html">路径</a></span>
+      <span class="ccw"><a class="c-fslu" href="guangdong-foshan-zhongkao.html">佛山<small>fs</small></a><a class="ccp" href="foshan-shengxue-lujing.html">路径</a></span>
+      <span class="ccw"><a class="c-hzlu" href="guangdong-huizhou-zhongkao.html">惠州<small>hz</small></a><a class="ccp" href="huizhou-shengxue-lujing.html">路径</a></span>
+      <span class="ccw"><a class="c-zslu" href="guangdong-zhongshan-zhongkao.html">中山<small>zs</small></a><a class="ccp" href="zhongshan-shengxue-lujing.html">路径</a></span>
+      <span class="ccw"><a class="c-jmlu" href="guangdong-jiangmen-zhongkao.html">江门<small>jm</small></a><a class="ccp" href="jiangmen-shengxue-lujing.html">路径</a></span>
+      <span class="ccw"><a class="c-stlu" href="guangdong-shantou-zhongkao.html">汕头<small>st</small></a><a class="ccp" href="shantou-shengxue-lujing.html">路径</a></span>
+      <span class="ccw"><a class="c-zjlu" href="guangdong-zhanjiang-zhongkao.html">湛江<small>zj</small></a><a class="ccp" href="zhanjiang-shengxue-lujing.html">路径</a></span>
+      <span class="ccw"><a class="c-zqlu" href="guangdong-zhaoqing-zhongkao.html">肇庆<small>zq</small></a><a class="ccp" href="zhaoqing-shengxue-lujing.html">路径</a></span>
+      <span class="ccw"><a class="c-mmlu" href="guangdong-maoming-zhongkao.html">茂名<small>mm</small></a><a class="ccp" href="maoming-shengxue-lujing.html">路径</a></span>
+      <span class="ccw"><a class="c-mzlu" href="guangdong-meizhou-zhongkao.html">梅州<small>mz</small></a><a class="ccp" href="meizhou-shengxue-lujing.html">路径</a></span>
+      <span class="ccw"><a class="c-swlu" href="guangdong-shanwei-zhongkao.html">汕尾<small>sw</small></a><a class="ccp" href="shanwei-shengxue-lujing.html">路径</a></span>
+      <span class="ccw"><a class="c-hylm" href="guangdong-heyuan-zhongkao.html">河源<small>hy</small></a><a class="ccp" href="heyuan-shengxue-lujing.html">路径</a></span>
+      <span class="ccw"><a class="c-yjlu" href="guangdong-yangjiang-zhongkao.html">阳江<small>yj</small></a><a class="ccp" href="yangjiang-shengxue-lujing.html">路径</a></span>
+      <span class="ccw"><a class="c-qylu" href="guangdong-qingyuan-zhongkao.html">清远<small>qy</small></a><a class="ccp" href="qingyuan-shengxue-lujing.html">路径</a></span>
+      <span class="ccw"><a class="c-sglu" href="guangdong-shaoguan-zhongkao.html">韶关<small>sg</small></a><a class="ccp" href="shaoguan-shengxue-lujing.html">路径</a></span>
+      <span class="ccw"><a class="c-czlu" href="guangdong-chaozhou-zhongkao.html">潮州<small>cz</small></a><a class="ccp" href="chaozhou-shengxue-lujing.html">路径</a></span>
+      <span class="ccw"><a class="c-jylu" href="guangdong-jieyang-zhongkao.html">揭阳<small>jy</small></a><a class="ccp" href="jieyang-shengxue-lujing.html">路径</a></span>
+      <span class="ccw"><a class="c-yflu" href="guangdong-yunfu-zhongkao.html">云浮<small>yf</small></a><a class="ccp" href="yunfu-shengxue-lujing.html">路径</a></span>
     </div>
-    <p style="margin:14px 0 0"><a href="sz-zhongkao.html" style="display:inline-block;background:var(--accent,#3b5bdb);color:#fff;font-weight:700;padding:9px 16px;border-radius:9px;text-decoration:none">深圳已上线中考志愿智能推荐（冲稳保 · 2025 录取分 + 2026 预测）→</a> <span style="color:#5b6472;font-size:12.5px">其余 20 市志愿填报工具建设中</span></p>
+    <p style="margin:14px 0 0"><span style="display:inline-block;background:linear-gradient(135deg,#dc2626,#b91c1c);color:#fff;font-weight:700;padding:10px 16px;border-radius:10px;font-size:14px;box-shadow:0 6px 18px rgba(220,38,38,.22)">🎯 广东 21 市中考志愿智能推荐工具已全部上线：点击上方城市卡片，进入对应城市的志愿填报（冲 / 稳 / 保 + 志愿表）</span></p>
   </div>
 
   <div class="chart">
@@ -128,64 +135,64 @@
     <!-- 中考满分 -->
     <div class="panel active" id="p-total">
       <p class="csub" style="margin-top:0">各市中考满分（600–1000 分）不同，反映计分科目与权重差异，不代表考试难易或录取难度。</p>
-      <a class="bar" href="yangjiang-shengxue-lujing.html"><span class="bn">阳江</span><span class="bt"><span class="bf c-yjlu" style="width:100%"></span></span><span class="bv">1000</span></a>
-      <a class="bar" href="jieyang-shengxue-lujing.html"><span class="bn">揭阳</span><span class="bt"><span class="bf c-jylu" style="width:87%"></span></span><span class="bv">870</span></a>
-      <a class="bar" href="yunfu-shengxue-lujing.html"><span class="bn">云浮</span><span class="bt"><span class="bf c-yflu" style="width:87%"></span></span><span class="bv">870</span></a>
-      <a class="bar" href="shantou-shengxue-lujing.html"><span class="bn">汕头</span><span class="bt"><span class="bf c-stlu" style="width:85.5%"></span></span><span class="bv">855</span></a>
-      <a class="bar" href="heyuan-shengxue-lujing.html"><span class="bn">河源</span><span class="bt"><span class="bf c-hylm" style="width:85%"></span></span><span class="bv">850</span></a>
-      <a class="bar" href="meizhou-shengxue-lujing.html"><span class="bn">梅州</span><span class="bt"><span class="bf c-mzlu" style="width:85%"></span></span><span class="bv">850</span></a>
-      <a class="bar" href="shanwei-shengxue-lujing.html"><span class="bn">汕尾</span><span class="bt"><span class="bf c-swlu" style="width:84%"></span></span><span class="bv">840</span></a>
-      <a class="bar" href="chaozhou-shengxue-lujing.html"><span class="bn">潮州</span><span class="bt"><span class="bf c-czlu" style="width:83%"></span></span><span class="bv">830</span></a>
-      <a class="bar" href="zhaoqing-shengxue-lujing.html"><span class="bn">肇庆</span><span class="bt"><span class="bf c-zqlu" style="width:83%"></span></span><span class="bv">830</span></a>
-      <a class="bar" href="gz-shengxue-lujing.html"><span class="bn">广州</span><span class="bt"><span class="bf c-gzlu" style="width:81%"></span></span><span class="bv">810</span></a>
+      <a class="bar" href="guangdong-yangjiang-zhongkao.html"><span class="bn">阳江</span><span class="bt"><span class="bf c-yjlu" style="width:100%"></span></span><span class="bv">1000</span></a>
+      <a class="bar" href="guangdong-jieyang-zhongkao.html"><span class="bn">揭阳</span><span class="bt"><span class="bf c-jylu" style="width:87%"></span></span><span class="bv">870</span></a>
+      <a class="bar" href="guangdong-yunfu-zhongkao.html"><span class="bn">云浮</span><span class="bt"><span class="bf c-yflu" style="width:87%"></span></span><span class="bv">870</span></a>
+      <a class="bar" href="guangdong-shantou-zhongkao.html"><span class="bn">汕头</span><span class="bt"><span class="bf c-stlu" style="width:85.5%"></span></span><span class="bv">855</span></a>
+      <a class="bar" href="guangdong-heyuan-zhongkao.html"><span class="bn">河源</span><span class="bt"><span class="bf c-hylm" style="width:85%"></span></span><span class="bv">850</span></a>
+      <a class="bar" href="guangdong-meizhou-zhongkao.html"><span class="bn">梅州</span><span class="bt"><span class="bf c-mzlu" style="width:85%"></span></span><span class="bv">850</span></a>
+      <a class="bar" href="guangdong-shanwei-zhongkao.html"><span class="bn">汕尾</span><span class="bt"><span class="bf c-swlu" style="width:84%"></span></span><span class="bv">840</span></a>
+      <a class="bar" href="guangdong-chaozhou-zhongkao.html"><span class="bn">潮州</span><span class="bt"><span class="bf c-czlu" style="width:83%"></span></span><span class="bv">830</span></a>
+      <a class="bar" href="guangdong-zhaoqing-zhongkao.html"><span class="bn">肇庆</span><span class="bt"><span class="bf c-zqlu" style="width:83%"></span></span><span class="bv">830</span></a>
+      <a class="bar" href="gz-zhongkao.html"><span class="bn">广州</span><span class="bt"><span class="bf c-gzlu" style="width:81%"></span></span><span class="bv">810</span></a>
       <a class="bar" href="guangdong-dongguan-zhongkao.html"><span class="bn">东莞</span><span class="bt"><span class="bf c-dglu" style="width:80%"></span></span><span class="bv">800</span></a>
-      <a class="bar" href="jiangmen-shengxue-lujing.html"><span class="bn">江门</span><span class="bt"><span class="bf c-jmlu" style="width:80%"></span></span><span class="bv">800</span></a>
-      <a class="bar" href="maoming-shengxue-lujing.html"><span class="bn">茂名</span><span class="bt"><span class="bf c-mmlu" style="width:80%"></span></span><span class="bv">800</span></a>
-      <a class="bar" href="qingyuan-shengxue-lujing.html"><span class="bn">清远</span><span class="bt"><span class="bf c-qylu" style="width:80%"></span></span><span class="bv">800</span></a>
-      <a class="bar" href="zhanjiang-shengxue-lujing.html"><span class="bn">湛江</span><span class="bt"><span class="bf c-zjlu" style="width:76%"></span></span><span class="bv">760</span></a>
+      <a class="bar" href="guangdong-jiangmen-zhongkao.html"><span class="bn">江门</span><span class="bt"><span class="bf c-jmlu" style="width:80%"></span></span><span class="bv">800</span></a>
+      <a class="bar" href="guangdong-maoming-zhongkao.html"><span class="bn">茂名</span><span class="bt"><span class="bf c-mmlu" style="width:80%"></span></span><span class="bv">800</span></a>
+      <a class="bar" href="guangdong-qingyuan-zhongkao.html"><span class="bn">清远</span><span class="bt"><span class="bf c-qylu" style="width:80%"></span></span><span class="bv">800</span></a>
+      <a class="bar" href="guangdong-zhanjiang-zhongkao.html"><span class="bn">湛江</span><span class="bt"><span class="bf c-zjlu" style="width:76%"></span></span><span class="bv">760</span></a>
       <a class="bar" href="guangdong-foshan-zhongkao.html"><span class="bn">佛山</span><span class="bt"><span class="bf c-fslu" style="width:74%"></span></span><span class="bv">740</span></a>
-      <a class="bar" href="huizhou-shengxue-lujing.html"><span class="bn">惠州</span><span class="bt"><span class="bf c-hzlu" style="width:74%"></span></span><span class="bv">740</span></a>
-      <a class="bar" href="shaoguan-shengxue-lujing.html"><span class="bn">韶关</span><span class="bt"><span class="bf c-sglu" style="width:72%"></span></span><span class="bv">720</span></a>
+      <a class="bar" href="guangdong-huizhou-zhongkao.html"><span class="bn">惠州</span><span class="bt"><span class="bf c-hzlu" style="width:74%"></span></span><span class="bv">740</span></a>
+      <a class="bar" href="guangdong-shaoguan-zhongkao.html"><span class="bn">韶关</span><span class="bt"><span class="bf c-sglu" style="width:72%"></span></span><span class="bv">720</span></a>
       <a class="bar" href="guangdong-zhuhai-zhongkao.html"><span class="bn">珠海</span><span class="bt"><span class="bf c-zhlu" style="width:70%"></span></span><span class="bv">700</span></a>
-      <a class="bar" href="sz-shengxue-lujing.html"><span class="bn">深圳</span><span class="bt"><span class="bf c-szlu" style="width:61%"></span></span><span class="bv">610</span></a>
-      <a class="bar" href="zhongshan-shengxue-lujing.html"><span class="bn">中山</span><span class="bt"><span class="bf c-zslu" style="width:60%"></span></span><span class="bv">600</span></a>
+      <a class="bar" href="sz-zhongkao.html"><span class="bn">深圳</span><span class="bt"><span class="bf c-szlu" style="width:61%"></span></span><span class="bv">610</span></a>
+      <a class="bar" href="guangdong-zhongshan-zhongkao.html"><span class="bn">中山</span><span class="bt"><span class="bf c-zslu" style="width:60%"></span></span><span class="bv">600</span></a>
       <div class="cnote"><b>怎么看：</b>柱长只反映各市中考“满分”不同（计分科目与权重不同），不代表考试难易或录取难度。录取率、招生计划、校线等更细维度，点柱条进对应城市页查看（官方未单列的均如实标注）。</div>
     </div>
 
     <!-- 普高录取率 -->
     <div class="panel" id="p-rate">
       <p class="csub" style="margin-top:0">官方公布的普高录取率（升入普通高中比例，多数为全市 / 含民办口径）。深圳为“全市含民办”口径，珠海仅公布“普高计划占报名比”（实际录取率未单列，不计入）。</p>
-      <a class="bar" href="shantou-shengxue-lujing.html"><span class="bn">汕头</span><span class="bt"><span class="bf c-stlu" style="width:100%"></span></span><span class="bv">74.6%</span></a>
-      <a class="bar" href="sz-shengxue-lujing.html"><span class="bn">深圳</span><span class="bt"><span class="bf c-szlu" style="width:97.9%"></span></span><span class="bv">73%</span></a>
-      <a class="bar" href="foshan-shengxue-lujing.html"><span class="bn">佛山</span><span class="bt"><span class="bf c-fslu" style="width:89.8%"></span></span><span class="bv">67%</span></a>
-      <a class="bar" href="jieyang-shengxue-lujing.html"><span class="bn">揭阳</span><span class="bt"><span class="bf c-jylu" style="width:83.1%"></span></span><span class="bv">62%</span></a>
-      <a class="bar" href="huizhou-shengxue-lujing.html"><span class="bn">惠州</span><span class="bt"><span class="bf c-hzlu" style="width:80.4%"></span></span><span class="bv">60%</span></a>
-      <a class="bar" href="qingyuan-shengxue-lujing.html"><span class="bn">清远</span><span class="bt"><span class="bf c-qylu" style="width:78.3%"></span></span><span class="bv">58.4%</span></a>
-      <a class="bar" href="maoming-shengxue-lujing.html"><span class="bn">茂名</span><span class="bt"><span class="bf c-mmlu" style="width:72.4%"></span></span><span class="bv">54%</span></a>
+      <a class="bar" href="guangdong-shantou-zhongkao.html"><span class="bn">汕头</span><span class="bt"><span class="bf c-stlu" style="width:100%"></span></span><span class="bv">74.6%</span></a>
+      <a class="bar" href="sz-zhongkao.html"><span class="bn">深圳</span><span class="bt"><span class="bf c-szlu" style="width:97.9%"></span></span><span class="bv">73%</span></a>
+      <a class="bar" href="guangdong-foshan-zhongkao.html"><span class="bn">佛山</span><span class="bt"><span class="bf c-fslu" style="width:89.8%"></span></span><span class="bv">67%</span></a>
+      <a class="bar" href="guangdong-jieyang-zhongkao.html"><span class="bn">揭阳</span><span class="bt"><span class="bf c-jylu" style="width:83.1%"></span></span><span class="bv">62%</span></a>
+      <a class="bar" href="guangdong-huizhou-zhongkao.html"><span class="bn">惠州</span><span class="bt"><span class="bf c-hzlu" style="width:80.4%"></span></span><span class="bv">60%</span></a>
+      <a class="bar" href="guangdong-qingyuan-zhongkao.html"><span class="bn">清远</span><span class="bt"><span class="bf c-qylu" style="width:78.3%"></span></span><span class="bv">58.4%</span></a>
+      <a class="bar" href="guangdong-maoming-zhongkao.html"><span class="bn">茂名</span><span class="bt"><span class="bf c-mmlu" style="width:72.4%"></span></span><span class="bv">54%</span></a>
       <div class="cnote"><b>未公布：</b>广州、东莞、中山、江门、河源、阳江、韶关、湛江、肇庆、梅州、汕尾、潮州、云浮——官方未单列 2025 实际普高录取率（珠海仅公布计划占报名比 65.28%，非实际录取率）。这些城市点对应卡片进页查看招生计划与校线。</div>
     </div>
 
     <!-- 考生规模 -->
     <div class="panel" id="p-scale">
       <p class="csub" style="margin-top:0">中考报考 / 参考人数（单位：万人）。部分市含八年级生地中考，口径略有差异，仅供量级比较。</p>
-      <a class="bar" href="gz-shengxue-lujing.html"><span class="bn">广州</span><span class="bt"><span class="bf c-gzlu" style="width:100%"></span></span><span class="bv">15.1</span></a>
-      <a class="bar" href="sz-shengxue-lujing.html"><span class="bn">深圳</span><span class="bt"><span class="bf c-szlu" style="width:96.0%"></span></span><span class="bv">14.5</span></a>
-      <a class="bar" href="zhanjiang-shengxue-lujing.html"><span class="bn">湛江</span><span class="bt"><span class="bf c-zjlu" style="width:73.5%"></span></span><span class="bv">11.1</span></a>
-      <a class="bar" href="maoming-shengxue-lujing.html"><span class="bn">茂名</span><span class="bt"><span class="bf c-mmlu" style="width:72.8%"></span></span><span class="bv">11.0</span></a>
-      <a class="bar" href="huizhou-shengxue-lujing.html"><span class="bn">惠州</span><span class="bt"><span class="bf c-hzlu" style="width:60.4%"></span></span><span class="bv">9.12</span></a>
-      <a class="bar" href="foshan-shengxue-lujing.html"><span class="bn">佛山</span><span class="bt"><span class="bf c-fslu" style="width:59.6%"></span></span><span class="bv">9.0</span></a>
-      <a class="bar" href="shaoguan-shengxue-lujing.html"><span class="bn">韶关</span><span class="bt"><span class="bf c-sglu" style="width:58.5%"></span></span><span class="bv">8.83</span></a>
-      <a class="bar" href="jieyang-shengxue-lujing.html"><span class="bn">揭阳</span><span class="bt"><span class="bf c-jylu" style="width:56.5%"></span></span><span class="bv">8.53</span></a>
-      <a class="bar" href="shantou-shengxue-lujing.html"><span class="bn">汕头</span><span class="bt"><span class="bf c-stlu" style="width:55.0%"></span></span><span class="bv">8.3</span></a>
-      <a class="bar" href="zhaoqing-shengxue-lujing.html"><span class="bn">肇庆</span><span class="bt"><span class="bf c-zqlu" style="width:43.8%"></span></span><span class="bv">6.61</span></a>
-      <a class="bar" href="qingyuan-shengxue-lujing.html"><span class="bn">清远</span><span class="bt"><span class="bf c-qylu" style="width:41.8%"></span></span><span class="bv">6.31</span></a>
-      <a class="bar" href="jiangmen-shengxue-lujing.html"><span class="bn">江门</span><span class="bt"><span class="bf c-jmlu" style="width:35.1%"></span></span><span class="bv">5.3</span></a>
-      <a class="bar" href="heyuan-shengxue-lujing.html"><span class="bn">河源</span><span class="bt"><span class="bf c-hylm" style="width:34.6%"></span></span><span class="bv">5.23</span></a>
-      <a class="bar" href="zhongshan-shengxue-lujing.html"><span class="bn">中山</span><span class="bt"><span class="bf c-zslu" style="width:31.8%"></span></span><span class="bv">4.8</span></a>
-      <a class="bar" href="yunfu-shengxue-lujing.html"><span class="bn">云浮</span><span class="bt"><span class="bf c-yflu" style="width:27.4%"></span></span><span class="bv">4.14</span></a>
-      <a class="bar" href="yangjiang-shengxue-lujing.html"><span class="bn">阳江</span><span class="bt"><span class="bf c-yjlu" style="width:26.6%"></span></span><span class="bv">4.02</span></a>
-      <a class="bar" href="chaozhou-shengxue-lujing.html"><span class="bn">潮州</span><span class="bt"><span class="bf c-czlu" style="width:20.9%"></span></span><span class="bv">3.15</span></a>
-      <a class="bar" href="zhuhai-shengxue-lujing.html"><span class="bn">珠海</span><span class="bt"><span class="bf c-zhlu" style="width:18.7%"></span></span><span class="bv">2.82</span></a>
+      <a class="bar" href="gz-zhongkao.html"><span class="bn">广州</span><span class="bt"><span class="bf c-gzlu" style="width:100%"></span></span><span class="bv">15.1</span></a>
+      <a class="bar" href="sz-zhongkao.html"><span class="bn">深圳</span><span class="bt"><span class="bf c-szlu" style="width:96.0%"></span></span><span class="bv">14.5</span></a>
+      <a class="bar" href="guangdong-zhanjiang-zhongkao.html"><span class="bn">湛江</span><span class="bt"><span class="bf c-zjlu" style="width:73.5%"></span></span><span class="bv">11.1</span></a>
+      <a class="bar" href="guangdong-maoming-zhongkao.html"><span class="bn">茂名</span><span class="bt"><span class="bf c-mmlu" style="width:72.8%"></span></span><span class="bv">11.0</span></a>
+      <a class="bar" href="guangdong-huizhou-zhongkao.html"><span class="bn">惠州</span><span class="bt"><span class="bf c-hzlu" style="width:60.4%"></span></span><span class="bv">9.12</span></a>
+      <a class="bar" href="guangdong-foshan-zhongkao.html"><span class="bn">佛山</span><span class="bt"><span class="bf c-fslu" style="width:59.6%"></span></span><span class="bv">9.0</span></a>
+      <a class="bar" href="guangdong-shaoguan-zhongkao.html"><span class="bn">韶关</span><span class="bt"><span class="bf c-sglu" style="width:58.5%"></span></span><span class="bv">8.83</span></a>
+      <a class="bar" href="guangdong-jieyang-zhongkao.html"><span class="bn">揭阳</span><span class="bt"><span class="bf c-jylu" style="width:56.5%"></span></span><span class="bv">8.53</span></a>
+      <a class="bar" href="guangdong-shantou-zhongkao.html"><span class="bn">汕头</span><span class="bt"><span class="bf c-stlu" style="width:55.0%"></span></span><span class="bv">8.3</span></a>
+      <a class="bar" href="guangdong-zhaoqing-zhongkao.html"><span class="bn">肇庆</span><span class="bt"><span class="bf c-zqlu" style="width:43.8%"></span></span><span class="bv">6.61</span></a>
+      <a class="bar" href="guangdong-qingyuan-zhongkao.html"><span class="bn">清远</span><span class="bt"><span class="bf c-qylu" style="width:41.8%"></span></span><span class="bv">6.31</span></a>
+      <a class="bar" href="guangdong-jiangmen-zhongkao.html"><span class="bn">江门</span><span class="bt"><span class="bf c-jmlu" style="width:35.1%"></span></span><span class="bv">5.3</span></a>
+      <a class="bar" href="guangdong-heyuan-zhongkao.html"><span class="bn">河源</span><span class="bt"><span class="bf c-hylm" style="width:34.6%"></span></span><span class="bv">5.23</span></a>
+      <a class="bar" href="guangdong-zhongshan-zhongkao.html"><span class="bn">中山</span><span class="bt"><span class="bf c-zslu" style="width:31.8%"></span></span><span class="bv">4.8</span></a>
+      <a class="bar" href="guangdong-yunfu-zhongkao.html"><span class="bn">云浮</span><span class="bt"><span class="bf c-yflu" style="width:27.4%"></span></span><span class="bv">4.14</span></a>
+      <a class="bar" href="guangdong-yangjiang-zhongkao.html"><span class="bn">阳江</span><span class="bt"><span class="bf c-yjlu" style="width:26.6%"></span></span><span class="bv">4.02</span></a>
+      <a class="bar" href="guangdong-chaozhou-zhongkao.html"><span class="bn">潮州</span><span class="bt"><span class="bf c-czlu" style="width:20.9%"></span></span><span class="bv">3.15</span></a>
+      <a class="bar" href="guangdong-zhuhai-zhongkao.html"><span class="bn">珠海</span><span class="bt"><span class="bf c-zhlu" style="width:18.7%"></span></span><span class="bv">2.82</span></a>
       <div class="cnote"><b>未公布：</b>梅州、汕尾——官方未单列 2025 中考报考人数（进页查看招生计划与校线）。韶关等部分市人数含八年级生地中考，口径不完全一致。</div>
     </div>
   </div>

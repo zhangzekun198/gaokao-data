@@ -43,7 +43,9 @@
     return "稳";
   }
   function fmtArr(a) {
-    if (!a) return "—";
+    if (a == null) return "—";
+    if (typeof a === "number") return String(a);
+    if (!Array.isArray(a)) return "—";
     var v = a.filter(function (x) { return x != null; });
     return v.length ? v.join(" / ") : "—";
   }

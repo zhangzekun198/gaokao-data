@@ -1,0 +1,8 @@
+# 本地依赖（符号链接 / 安装产物，不入库）
+/work/node_modules
+work/node_modules
+
+# 临时文件
+work/zztest.txt
+__pycache__/
+*.pyc
